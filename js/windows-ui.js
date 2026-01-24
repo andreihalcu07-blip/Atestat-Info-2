@@ -195,11 +195,25 @@
         const existingMessage = document.querySelector('.windows-restricted-message');
         if (existingMessage) {
             existingMessage.classList.add('show');
+            // Ensure the page body can scroll on mobile when the restriction message is visible
+            document.body.classList.add('windows-restricted-active');
+            // Make sure the message (and window) are scrolled to the top so the header is visible
+            try {
+                existingMessage.scrollTop = 0;
+            } catch (e) {}
+            try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) {}
             return;
         }
         
         const message = createRestrictedMessage();
         document.body.insertBefore(message, document.body.firstChild);
+        // Allow scrolling while the message is visible (some windows pages set body overflow:hidden)
+        document.body.classList.add('windows-restricted-active');
+        // Ensure newly-inserted message is scrolled to top so user can reach the header
+        setTimeout(() => {
+            try { message.scrollTop = 0; } catch (e) {}
+            try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) {}
+        }, 0);
     }
 
     /**
@@ -243,6 +257,8 @@
         if (main) {
             main.style.display = '';
         }
+        // When we enable simulation remove the scroll override (restore original body overflow)
+        document.body.classList.remove('windows-restricted-active');
     }
 
     // =========================================================================

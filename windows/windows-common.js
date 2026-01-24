@@ -174,31 +174,27 @@
         let bootContent = '';
         
         if (currentVersion === 'win95' || currentVersion === 'win98') {
+            // Image-based boot screen (strict implementation for Win95/Win98)
+            // - Use the existing boot.jpg placed in the same directory as the page (do NOT modify the image)
+            // - Overlay a simple classic loading bar at the bottom-center
+            // - Animate the loader for config.bootDuration, then remove the overlay
+
+            // Build minimal DOM instead of SVG/text markup
             bootContent = `
-                <div class="boot-logo-classic">
-                    <div class="boot-flag"></div>
-                </div>
-                <div class="boot-text-classic">${config.bootText}</div>
-                <div class="boot-progress-classic">
-                    <div class="boot-progress-bar"></div>
+                <img class="boot-bg-image" src="boot.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover;">
+                <div class="boot-loader" aria-hidden="true" style="position:absolute;left:50%;transform:translateX(-50%);bottom:38px;width:60%;max-width:640px;height:14px;border:2px solid #888;background:#000;box-sizing:border-box;">
+                    <div class="boot-loader-fill" style="width:0%;height:100%;background:#2b6fb3;"></div>
                 </div>
             `;
         } else if (currentVersion === 'winxp') {
+            // Image-based Windows XP boot screen
+            // - Use existing boot.jpg in the same folder (do NOT modify the image)
+            // - Overlay a segmented classic XP loading bar centered (positioned per spec)
+            // - No additional text or logos added
             bootContent = `
-                <div class="boot-logo-xp">
-                    <svg viewBox="0 0 100 100" width="120" height="120">
-                        <polygon points="5,10 45,5 45,45 5,45" fill="#ff6b35"/>
-                        <polygon points="55,4 95,0 95,44 55,44" fill="#7fba00"/>
-                        <polygon points="5,55 45,55 45,95 5,88" fill="#00a4ef"/>
-                        <polygon points="55,56 95,56 95,100 55,94" fill="#ffb900"/>
-                    </svg>
-                </div>
-                <div class="boot-text-xp">Microsoft<sup>®</sup></div>
-                <div class="boot-text-xp-sub">Windows<sup>®</sup><span class="xp">XP</span></div>
-                <div class="boot-progress-xp">
-                    <div class="boot-blocks">
-                        <span></span><span></span><span></span>
-                    </div>
+                <img class="boot-bg-image" src="boot.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover;">
+                <div class="boot-loading-xp" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,120px);width:520px;max-width:80%;height:18px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:2px solid #888;background:#000;padding:2px;">
+                    <!-- segments will be created by JS to avoid global CSS -->
                 </div>
             `;
         } else if (currentVersion === 'vista' || currentVersion === 'win7') {
@@ -236,10 +232,79 @@
                 </div>
             `;
         }
+
+        // XP-specific: build segmented loader and animate (separate flow from 95/98)
+        if (currentVersion === 'winxp') {
+            // Ensure overlay covers viewport
+            bootScreen.style.position = 'fixed';
+            bootScreen.style.top = '0';
+            bootScreen.style.left = '0';
+            bootScreen.style.width = '100%';
+            bootScreen.style.height = '100%';
+            bootScreen.style.zIndex = '9999';
+            bootScreen.style.backgroundColor = '#000';
+            bootScreen.style.overflow = 'hidden';
+
+            const loaderContainer = bootScreen.querySelector('.boot-loading-xp');
+            if (loaderContainer) {
+                // Clear any existing content (defensive)
+                loaderContainer.innerHTML = '';
+                // Create segments
+                const segments = 12;
+                const gap = 4; // px between segments
+                const totalGap = gap * (segments - 1);
+                // containerWidth in px is approximated by computed width
+                const containerWidth = loaderContainer.clientWidth || 520;
+                const segWidth = Math.max(6, Math.floor((containerWidth - totalGap) / segments));
+
+                for (let i = 0; i < segments; i++) {
+                    const s = document.createElement('div');
+                    s.className = 'boot-xp-seg';
+                    s.style.width = segWidth + 'px';
+                    s.style.height = '100%';
+                    s.style.marginRight = i === segments - 1 ? '0' : gap + 'px';
+                    s.style.background = '#111';
+                    s.style.boxSizing = 'border-box';
+                    loaderContainer.appendChild(s);
+                }
+
+                // Animate segments sequentially to blue over config.bootDuration
+                const segEls = loaderContainer.querySelectorAll('.boot-xp-seg');
+                const duration = Math.max(200, config.bootDuration || 2500);
+                const interval = Math.floor(duration / segments);
+                segEls.forEach((el, idx) => {
+                    setTimeout(() => {
+                        el.style.background = '#2b6fb3';
+                    }, idx * interval);
+                });
+            }
+        }
         
         bootScreen.innerHTML = bootContent;
         document.body.appendChild(bootScreen);
-        
+
+        // If this is the image-based Win95/Win98 flow, ensure the overlay covers viewport
+        if (currentVersion === 'win95' || currentVersion === 'win98') {
+            // Inline styles only for this overlay (no global stylesheet changes)
+            bootScreen.style.position = 'fixed';
+            bootScreen.style.top = '0';
+            bootScreen.style.left = '0';
+            bootScreen.style.width = '100%';
+            bootScreen.style.height = '100%';
+            bootScreen.style.zIndex = '9999';
+            bootScreen.style.backgroundColor = '#000';
+            bootScreen.style.overflow = 'hidden';
+
+            // Start the loader animation (fill width over config.bootDuration)
+            const fill = bootScreen.querySelector('.boot-loader-fill');
+            if (fill) {
+                // Apply transition and then trigger it
+                fill.style.transition = `width ${config.bootDuration}ms linear`;
+                // Small timeout to ensure the element is rendered before changing width
+                setTimeout(() => { fill.style.width = '100%'; }, 20);
+            }
+        }
+
         // Ascunde desktop-ul
         const desktop = document.querySelector('.desktop') || document.querySelector('.metro-interface');
         if (desktop) desktop.style.opacity = '0';
@@ -291,51 +356,88 @@
             const titleBar = win.querySelector('.title-bar');
             if (!titleBar) return;
             
+            // Use pointer events where available for better mouse/touch support
             let isDragging = false;
-            let startX, startY, initialX, initialY;
-            
+            let startX = 0, startY = 0, initialX = 0, initialY = 0;
+
             titleBar.style.cursor = 'move';
-            
-            titleBar.addEventListener('mousedown', (e) => {
-                // Nu permite drag pe butoanele de control
-                if (e.target.closest('.title-btn, .title-bar-controls, .title-buttons')) return;
-                
+
+            const startDrag = (e) => {
+                // Allow only primary button
+                if (e.button !== undefined && e.button !== 0) return;
+                // Don't start drag when clicking on control buttons
+                if (e.target && e.target.closest && e.target.closest('.title-btn, .title-bar-controls, .title-buttons')) return;
+
+                // Prevent text selection/other side-effects
+                e.preventDefault();
+
+                const rect = win.getBoundingClientRect();
+
+                // Freeze current computed position by setting left/top and removing centering transform
+                win.style.position = 'absolute';
+                win.style.left = rect.left + 'px';
+                win.style.top = rect.top + 'px';
+                win.style.transform = 'none';
+                win.style.zIndex = '1000';
+
                 isDragging = true;
                 startX = e.clientX;
                 startY = e.clientY;
-                
-                const rect = win.getBoundingClientRect();
                 initialX = rect.left;
                 initialY = rect.top;
-                
-                win.style.position = 'absolute';
-                win.style.zIndex = '1000';
-                
-                e.preventDefault();
-            });
-            
-            document.addEventListener('mousemove', (e) => {
+
+                // If pointer events supported, capture pointer so we get move/up even if outside element
+                if (e.pointerId && titleBar.setPointerCapture) {
+                    try { titleBar.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+                }
+
+                // attach move/up handlers specific to this window
+                document.addEventListener('pointermove', onMove);
+                document.addEventListener('pointerup', endDrag);
+                document.addEventListener('pointercancel', endDrag);
+            };
+
+            const onMove = (e) => {
                 if (!isDragging) return;
-                
+
                 const deltaX = e.clientX - startX;
                 const deltaY = e.clientY - startY;
-                
+
                 let newX = initialX + deltaX;
                 let newY = initialY + deltaY;
-                
-                // Restricționează în viewport
+
+                // Constrain to viewport (taskbar assumed 40px high)
                 const maxX = window.innerWidth - win.offsetWidth;
-                const maxY = window.innerHeight - win.offsetHeight - 40; // 40px pentru taskbar
-                
+                const maxY = window.innerHeight - win.offsetHeight - 40;
+
                 newX = Math.max(0, Math.min(newX, maxX));
                 newY = Math.max(0, Math.min(newY, maxY));
-                
+
                 win.style.left = newX + 'px';
                 win.style.top = newY + 'px';
-            });
-            
-            document.addEventListener('mouseup', () => {
+            };
+
+            const endDrag = (e) => {
+                if (!isDragging) return;
                 isDragging = false;
+
+                // release pointer capture if any
+                if (e.pointerId && titleBar.releasePointerCapture) {
+                    try { titleBar.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+                }
+
+                // remove handlers attached for this drag
+                document.removeEventListener('pointermove', onMove);
+                document.removeEventListener('pointerup', endDrag);
+                document.removeEventListener('pointercancel', endDrag);
+            };
+
+            // Prefer pointer events, fall back to mouse for older browsers
+            titleBar.addEventListener('pointerdown', startDrag);
+            titleBar.addEventListener('mousedown', (e) => {
+                // If pointer events are available, they will handle it; otherwise use the mouse path
+                if (window.PointerEvent) return;
+                startDrag(e);
             });
         });
     }
@@ -915,6 +1017,19 @@
             initTaskbarClock();
             initDraggableWindows();
             createDidYouKnowCard();
+
+            // Recreate Did-You-Know card when language changes so translated title/content updates
+            if (typeof window.onLanguageChange === 'function') {
+                window.onLanguageChange(function() {
+                    try {
+                        const existing = document.getElementById('didYouKnowCard');
+                        if (existing) existing.remove();
+                        createDidYouKnowCard();
+                    } catch (e) {
+                        console.warn('[windows-common] Error recreating DYK on language change', e);
+                    }
+                });
+            }
             initSounds();
             initShutdownHandler();
         }, bootDuration);

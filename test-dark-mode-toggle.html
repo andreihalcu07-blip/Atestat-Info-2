@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dark Mode Toggle - Dimensiuni</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            padding: 40px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        body.dark-mode .test-container {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+        
+        body.dark-mode .test-section {
+            background: #0f172a;
+        }
+        
+        .toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .info-box {
+            background: #dbeafe;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            font-size: 0.9rem;
+        }
+        
+        body.dark-mode .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: #60a5fa;
+        }
+        
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        
+        body.dark-mode .results {
+            background: #0f172a;
+            color: #cbd5e1;
+        }
+        
+        .pass { color: #22c55e; font-weight: bold; }
+        .fail { color: #ef4444; font-weight: bold; }
+        
+        h1 { color: #1e293b; margin-bottom: 10px; }
+        body.dark-mode h1 { color: #f1f5f9; }
+        
+        h2 { color: #3b82f6; margin-bottom: 15px; font-size: 1.3rem; }
+        body.dark-mode h2 { color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test Dark Mode Toggle - Dimensiuni și Comportament</h1>
+        <p>Acest test verifică că toggle-ul de dark mode respectă specificațiile exacte.</p>
+        
+        <div class="test-section">
+            <h2>1️⃣ Toggle-ul de Test</h2>
+            <div class="toggle-wrapper">
+                <button class="btn btn--utility btn--icon dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+                <span>← Click pentru a activa/dezactiva dark mode</span>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>2️⃣ Verificare Dimensiuni</h2>
+            <button class="btn btn--primary" onclick="runDimensionTests()">▶️ Rulează Test Dimensiuni</button>
+            <div id="dimensionResults" class="results" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>3️⃣ Verificare Hover</h2>
+            <div class="info-box">
+                <strong>Instrucțiuni:</strong><br>
+                Treci cu mouse-ul peste toggle. Hover-ul trebuie să fie subtil:<br>
+                ✅ Background mai luminos<br>
+                ✅ Border mai vizibil<br>
+                ✅ Box-shadow subtil<br>
+                ❌ FĂRĂ rotație sau scale
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>4️⃣ Verificare Dark Mode</h2>
+            <button class="btn btn--primary" onclick="runDarkModeTests()">▶️ Rulează Test Dark Mode</button>
+            <div id="darkModeResults" class="results" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>5️⃣ Verificare Responsive</h2>
+            <div class="info-box">
+                <strong>Instrucțiuni:</strong><br>
+                Redimensionează fereastra browser-ului sau deschide DevTools și testează pe diferite breakpoint-uri:<br>
+                • Desktop (>992px): 42x42px<br>
+                • Tablet (768-992px): 42x42px<br>
+                • Mobile (<768px): 42x42px<br>
+                <br>
+                <button class="btn btn--secondary" onclick="simulateMobile()">📱 Simulează Mobile</button>
+                <button class="btn btn--secondary" onclick="simulateDesktop()">🖥️ Simulează Desktop</button>
+            </div>
+            <div id="responsiveResults" class="results" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Dark Mode Toggle Logic
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.textContent = '☀️';
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkModeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkModeToggle.textContent = '🌙';
+            }
+        });
+        
+        // Test Functions
+        function runDimensionTests() {
+            const toggle = document.querySelector('.dark-mode-toggle');
+            const styles = window.getComputedStyle(toggle);
+            const results = document.getElementById('dimensionResults');
+            
+            const tests = [
+                {
+                    name: 'Width',
+                    expected: '42px',
+                    actual: styles.width,
+                    pass: styles.width === '42px'
+                },
+                {
+                    name: 'Height',
+                    expected: '42px',
+                    actual: styles.height,
+                    pass: styles.height === '42px'
+                },
+                {
+                    name: 'Border-radius',
+                    expected: '50% (circular)',
+                    actual: styles.borderRadius,
+                    pass: styles.borderRadius === '21px' || styles.borderRadius.includes('50%')
+                },
+                {
+                    name: 'Padding',
+                    expected: '0px',
+                    actual: styles.padding,
+                    pass: styles.padding === '0px'
+                },
+                {
+                    name: 'Font-size',
+                    expected: '~19.2px (1.2rem)',
+                    actual: styles.fontSize,
+                    pass: parseFloat(styles.fontSize) >= 19 && parseFloat(styles.fontSize) <= 20
+                },
+                {
+                    name: 'Transform',
+                    expected: 'none',
+                    actual: styles.transform,
+                    pass: styles.transform === 'none'
+                }
+            ];
+            
+            let html = '<strong>Rezultate Test Dimensiuni:</strong><br><br>';
+            let allPass = true;
+            
+            tests.forEach(test => {
+                const status = test.pass ? '<span class="pass">✅ PASS</span>' : '<span class="fail">❌ FAIL</span>';
+                html += `${status} ${test.name}: ${test.actual} (expected: ${test.expected})<br>`;
+                if (!test.pass) allPass = false;
+            });
+            
+            html += '<br><strong>Rezultat Final: ';
+            if (allPass) {
+                html += '<span class="pass">✅ TOATE TESTELE AU TRECUT!</span></strong>';
+            } else {
+                html += '<span class="fail">❌ UNELE TESTE AU EȘUAT</span></strong>';
+            }
+            
+            results.innerHTML = html;
+            results.style.display = 'block';
+        }
+        
+        function runDarkModeTests() {
+            const toggle = document.querySelector('.dark-mode-toggle');
+            const results = document.getElementById('darkModeResults');
+            const isDarkMode = body.classList.contains('dark-mode');
+            
+            const styles = window.getComputedStyle(toggle);
+            
+            const tests = [
+                {
+                    name: 'Width în ' + (isDarkMode ? 'dark' : 'light') + ' mode',
+                    expected: '42px',
+                    actual: styles.width,
+                    pass: styles.width === '42px'
+                },
+                {
+                    name: 'Height în ' + (isDarkMode ? 'dark' : 'light') + ' mode',
+                    expected: '42px',
+                    actual: styles.height,
+                    pass: styles.height === '42px'
+                },
+                {
+                    name: 'LocalStorage',
+                    expected: isDarkMode ? 'enabled' : 'disabled',
+                    actual: localStorage.getItem('darkMode'),
+                    pass: localStorage.getItem('darkMode') === (isDarkMode ? 'enabled' : 'disabled')
+                },
+                {
+                    name: 'Body class',
+                    expected: 'dark-mode ' + (isDarkMode ? 'prezent' : 'absent'),
+                    actual: body.classList.contains('dark-mode') ? 'prezent' : 'absent',
+                    pass: body.classList.contains('dark-mode') === isDarkMode
+                }
+            ];
+            
+            let html = '<strong>Rezultate Test Dark Mode (' + (isDarkMode ? '🌙 Dark' : '☀️ Light') + '):</strong><br><br>';
+            let allPass = true;
+            
+            tests.forEach(test => {
+                const status = test.pass ? '<span class="pass">✅ PASS</span>' : '<span class="fail">❌ FAIL</span>';
+                html += `${status} ${test.name}: ${test.actual} (expected: ${test.expected})<br>`;
+                if (!test.pass) allPass = false;
+            });
+            
+            html += '<br><strong>Rezultat Final: ';
+            if (allPass) {
+                html += '<span class="pass">✅ TOATE TESTELE AU TRECUT!</span></strong>';
+            } else {
+                html += '<span class="fail">❌ UNELE TESTE AU EȘUAT</span></strong>';
+            }
+            
+            results.innerHTML = html;
+            results.style.display = 'block';
+        }
+        
+        function simulateMobile() {
+            const toggle = document.querySelector('.dark-mode-toggle');
+            const styles = window.getComputedStyle(toggle);
+            const results = document.getElementById('responsiveResults');
+            
+            const width = window.innerWidth;
+            let html = `<strong>Simulare Mobile (viewport actual: ${width}px):</strong><br><br>`;
+            
+            if (width > 768) {
+                html += '⚠️ Pentru test real, redimensionează fereastra la <768px sau folosește DevTools (F12 → Toggle Device Toolbar).<br><br>';
+            }
+            
+            html += `Width toggle: ${styles.width}<br>`;
+            html += `Height toggle: ${styles.height}<br>`;
+            
+            const pass = styles.width === '42px' && styles.height === '42px';
+            html += '<br><strong>Rezultat: ';
+            if (pass) {
+                html += '<span class="pass">✅ Dimensiuni corecte pe mobile!</span></strong>';
+            } else {
+                html += '<span class="fail">❌ Dimensiuni greșite pe mobile!</span></strong>';
+            }
+            
+            results.innerHTML = html;
+            results.style.display = 'block';
+        }
+        
+        function simulateDesktop() {
+            const toggle = document.querySelector('.dark-mode-toggle');
+            const styles = window.getComputedStyle(toggle);
+            const results = document.getElementById('responsiveResults');
+            
+            const width = window.innerWidth;
+            let html = `<strong>Simulare Desktop (viewport actual: ${width}px):</strong><br><br>`;
+            
+            html += `Width toggle: ${styles.width}<br>`;
+            html += `Height toggle: ${styles.height}<br>`;
+            
+            const pass = styles.width === '42px' && styles.height === '42px';
+            html += '<br><strong>Rezultat: ';
+            if (pass) {
+                html += '<span class="pass">✅ Dimensiuni corecte pe desktop!</span></strong>';
+            } else {
+                html += '<span class="fail">❌ Dimensiuni greșite pe desktop!</span></strong>';
+            }
+            
+            results.innerHTML = html;
+            results.style.display = 'block';
+        }
+        
+        // Auto-run dimension tests on load
+        window.addEventListener('load', () => {
+            setTimeout(runDimensionTests, 500);
+        });
+    </script>
+</body>
+</html>

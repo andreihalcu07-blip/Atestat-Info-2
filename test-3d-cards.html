@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Animații Carduri</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            padding: 50px;
+            background: #f0f4f8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-header h1 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .test-header p {
+            color: #6b7280;
+            margin: 5px 0;
+        }
+        
+        .instructions {
+            background: #e0f2fe;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .instructions h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ul {
+            margin-left: 20px;
+            color: #374151;
+        }
+        
+        .instructions li {
+            margin: 5px 0;
+        }
+        
+        .os-grid {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>✨ Test Animații Carduri</h1>
+            <p>Comportament simplu și predictibil</p>
+            <p><strong>Status:</strong> <span style="color: #10b981;">Efecte 3D eliminate</span></p>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Comportament Actual:</h3>
+            <ul>
+                <li><strong>✅ Animație de intrare:</strong> Fade-in + translate de jos în sus</li>
+                <li><strong>✅ Hover simplu:</strong> Card se ridică + scale mic + shadow mai mare</li>
+                <li><strong>❌ Fără 3D:</strong> Nu mai există rotații rotateX/rotateY</li>
+                <li><strong>❌ Fără mousemove:</strong> Nu mai există tracking al mouse-ului</li>
+            </ul>
+            <p style="margin-top: 15px; color: #059669; font-weight: 600;">
+                ✨ Rezultat: Animații simple, performante și consistente
+            </p>
+        </div>
+        
+        <section class="os-types">
+            <div class="os-grid">
+                <div class="os-card visible">
+                    <h3>Windows</h3>
+                    <p>Cel mai utilizat SO pe desktop-uri. Dezvoltat de Microsoft.</p>
+                    <ul>
+                        <li>Versiuni: XP, 7, 10, 11</li>
+                        <li>Arhitectură: Monolitic</li>
+                        <li>Licență: Proprietară</li>
+                    </ul>
+                </div>
+
+                <div class="os-card visible">
+                    <h3>macOS</h3>
+                    <p>Sistemul de operare al calculatoarelor Apple. Design elegant.</p>
+                    <ul>
+                        <li>Versiuni: Big Sur, Monterey, Ventura</li>
+                        <li>Arhitectură: Hibrid (XNU)</li>
+                        <li>Licență: Proprietară</li>
+                    </ul>
+                </div>
+
+                <div class="os-card visible">
+                    <h3>Linux</h3>
+                    <p>Sistemul de operare open-source, gratuit. Foarte flexibil.</p>
+                    <ul>
+                        <li>Distribuții: Ubuntu, Debian, Fedora</li>
+                        <li>Arhitectură: Monolitic</li>
+                        <li>Licență: GPL (open-source)</li>
+                    </ul>
+                </div>
+
+                <div class="os-card visible">
+                    <h3>Android</h3>
+                    <p>SO pentru dispozitive mobile. Dezvoltat de Google.</p>
+                    <ul>
+                        <li>Bază: Linux kernel</li>
+                        <li>Versiuni: 11, 12, 13, 14</li>
+                        <li>Licență: Open source</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script>
+        console.log('✅ Pagină de test încărcată');
+        console.log('ℹ️ Efectele 3D au fost eliminate');
+        console.log('✨ Hover: translateY(-5px) scale(1.02)');
+    </script>
+</body>
+</html>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            padding: 50px;
+            background: #f0f4f8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-header h1 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .test-header p {
+            color: #6b7280;
+            margin: 5px 0;
+        }
+        
+        .instructions {
+            background: #e0f2fe;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .instructions h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ul {
+            margin-left: 20px;
+            color: #374151;
+        }
+        
+        .instructions li {
+            margin: 5px 0;
+        }
+        
+        .os-grid {
+            margin-top: 30px;
+        }
+        
+        .debug-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            max-width: 300px;
+            z-index: 9999;
+        }
+        
+        .debug-info h4 {
+            margin: 0 0 10px 0;
+            color: #60a5fa;
+        }
+        
+        .debug-item {
+            margin: 5px 0;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🎯 Test Animații 3D Carduri</h1>
+            <p>Verificare comportament transformări 3D</p>
+            <p><strong>Status:</strong> <span id="status" style="color: #10b981;">Gata de testare</span></p>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Instrucțiuni de testare:</h3>
+            <ul>
+                <li><strong>Test 1:</strong> Mișcă mouse-ul peste un card și observă rotația 3D</li>
+                <li><strong>Test 2:</strong> Mișcă mouse-ul continuu peste același card pentru 10 secunde</li>
+                <li><strong>Test 3:</strong> Verifică că rotația este limitată (max ±15 grade)</li>
+                <li><strong>Test 4:</strong> Scoate mouse-ul din card și verifică că revine exact la poziția inițială</li>
+                <li><strong>Test 5:</strong> Intră și ieși rapid din mai multe carduri</li>
+            </ul>
+            <p style="margin-top: 10px; color: #b91c1c;">
+                <strong>❌ Problema veche:</strong> Cardurile se deformau și acumulau transformări după câteva secunde
+            </p>
+            <p style="color: #059669;">
+                <strong>✅ Așteptat acum:</strong> Transformările sunt calculate mereu de la poziția inițială, fără acumulare
+            </p>
+        </div>
+        
+        <section class="os-types">
+            <div class="os-grid">
+                <div class="os-card visible">
+                    <h3>Windows</h3>
+                    <p>Cel mai utilizat SO pe desktop-uri. Dezvoltat de Microsoft.</p>
+                    <ul>
+                        <li>Versiuni: XP, 7, 10, 11</li>
+                        <li>Arhitectură: Monolitic</li>
+                        <li>Licență: Proprietară</li>
+                    </ul>
+                </div>
+
+                <div class="os-card visible">
+                    <h3>macOS</h3>
+                    <p>Sistemul de operare al calculatoarelor Apple. Design elegant.</p>
+                    <ul>
+                        <li>Versiuni: Big Sur, Monterey, Ventura</li>
+                        <li>Arhitectură: Hibrid (XNU)</li>
+                        <li>Licență: Proprietară</li>
+                    </ul>
+                </div>
+
+                <div class="os-card visible">
+                    <h3>Linux</h3>
+                    <p>Sistemul de operare open-source, gratuit. Foarte flexibil.</p>
+                    <ul>
+                        <li>Distribuții: Ubuntu, Debian, Fedora</li>
+                        <li>Arhitectură: Monolitic</li>
+                        <li>Licență: GPL (open-source)</li>
+                    </ul>
+                </div>
+
+                <div class="os-card visible">
+                    <h3>Android</h3>
+                    <p>SO pentru dispozitive mobile. Dezvoltat de Google.</p>
+                    <ul>
+                        <li>Bază: Linux kernel</li>
+                        <li>Versiuni: 11, 12, 13, 14</li>
+                        <li>Licență: Open source</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <div class="debug-info">
+        <h4>🔍 Debug Info</h4>
+        <div class="debug-item">Mouse: <span id="mousePos">-</span></div>
+        <div class="debug-item">Card Hover: <span id="cardHover">None</span></div>
+        <div class="debug-item">Transform: <span id="transform">-</span></div>
+        <div class="debug-item">RAF Active: <span id="rafActive">No</span></div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Enhanced debugging
+        const cards = document.querySelectorAll('.os-card');
+        const debugMousePos = document.getElementById('mousePos');
+        const debugCardHover = document.getElementById('cardHover');
+        const debugTransform = document.getElementById('transform');
+        const debugRafActive = document.getElementById('rafActive');
+        
+        let currentHoveredCard = null;
+        
+        // Track global mouse position
+        document.addEventListener('mousemove', (e) => {
+            debugMousePos.textContent = `(${e.clientX}, ${e.clientY})`;
+        });
+        
+        // Monitor each card
+        cards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                currentHoveredCard = index + 1;
+                debugCardHover.textContent = `Card ${index + 1}`;
+                card.style.border = '2px solid #f59e0b';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                currentHoveredCard = null;
+                debugCardHover.textContent = 'None';
+                debugTransform.textContent = '-';
+                card.style.border = '2px solid rgba(37, 99, 235, 0.1)';
+            });
+            
+            // Monitor transform changes
+            const observer = new MutationObserver(() => {
+                if (currentHoveredCard === index + 1) {
+                    const transform = card.style.transform;
+                    if (transform) {
+                        // Extract rotation values
+                        const rotateX = transform.match(/rotateX\(([^)]+)\)/);
+                        const rotateY = transform.match(/rotateY\(([^)]+)\)/);
+                        if (rotateX && rotateY) {
+                            debugTransform.innerHTML = `
+                                X: ${rotateX[1]}<br>
+                                Y: ${rotateY[1]}
+                            `;
+                        }
+                    }
+                }
+            });
+            
+            observer.observe(card, {
+                attributes: true,
+                attributeFilter: ['style']
+            });
+        });
+        
+        // Monitor RAF activity
+        let rafCount = 0;
+        const originalRAF = window.requestAnimationFrame;
+        window.requestAnimationFrame = function(callback) {
+            rafCount++;
+            debugRafActive.textContent = `Yes (${rafCount})`;
+            setTimeout(() => {
+                rafCount--;
+                debugRafActive.textContent = rafCount > 0 ? `Yes (${rafCount})` : 'No';
+            }, 100);
+            return originalRAF.call(window, callback);
+        };
+        
+        console.log('✅ Test page loaded successfully!');
+        console.log('📊 Monitoring', cards.length, 'cards for 3D transformations');
+    </script>
+</body>
+</html>

@@ -33,6 +33,7 @@
     <header>
         <nav class="navbar">
             <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
                 <!-- STÂNGA: Logo -->
                 <div class="navbar-left">
                     <div class="logo-container">
@@ -51,7 +52,7 @@
                 
                 <!-- MIJLOC: Meniu navigare -->
                 <div class="navbar-center">
-                    <ul class="nav-links">
+                    <ul id="main-nav" class="nav-links">
                         <li><a href="index.html" data-i18n="nav_home">Acasă</a></li>
                         <li><a href="pages/about.html" data-i18n="nav_about">Despre</a></li>
                         <li><a href="pages/history.html" data-i18n="nav_history">Istoria SO</a></li>
@@ -66,9 +67,9 @@
                 </div>
                 
                 <!-- DREAPTA: Toggle-uri -->
-                <div class="navbar-right">
-                    <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
-                    <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+<div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+                    <button class="btn btn--utility lang-toggle" id="langToggle" onclick="toggleLanguage()" aria-label="Change language">🇬🇧 EN</button>
                 </div>
             </div>
         </nav>
@@ -80,7 +81,7 @@
             <div class="hero-content">
                 <h2 data-i18n="hero_title">Evoluția Sistemelor de Operare – de la primele calculatoare la prezent</h2>
                 <p data-i18n="hero_subtitle">Acest site prezintă evoluția sistemelor de operare, rolul lor în funcționarea calculatoarelor și diferențele dintre principalele tipuri de sisteme utilizate de-a lungul timpului.</p>
-                <a href="#obiective" class="btn" data-i18n="hero_btn">Începe prezentarea</a>
+                <a href="#obiective" class="btn btn--primary" data-i18n="hero_btn">Începe prezentarea</a>
             </div>
         </section>
 
@@ -119,7 +120,7 @@
                         <div class="objective-icon">🪟</div>
                         <h3 data-i18n="learning_windows_title">Evoluția Windows</h3>
                         <p data-i18n="learning_windows_desc">Explorează vizual toate versiunile Windows de la 95 la 11, cu simulări interactive ale interfețelor originale.</p>
-                        <a href="windows/index.html" class="btn btn-card" data-i18n="learning_windows_btn">Vezi Galeria Windows →</a>
+                        <a href="windows/index.html" class="btn btn--primary btn--compact" data-i18n="learning_windows_btn">Vezi Galeria Windows →</a>
                     </div>
                 </div>
             </div>
@@ -263,7 +264,7 @@
                     <input type="text" data-i18n="contact_name" placeholder="Nume" required>
                     <input type="email" placeholder="Email" required>
                     <textarea data-i18n="contact_message" placeholder="Mesajul tău" rows="5" required></textarea>
-                    <button type="submit" class="btn" data-i18n="contact_send">Trimite</button>
+                    <button type="submit" class="btn btn--primary" data-i18n="contact_send">Trimite</button>
                 </form>
             </div>
         </section>
@@ -276,9 +277,9 @@
     </footer>
 
     <script src="js/os-detect.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
     <script src="js/enhancements.js"></script>
-    <script src="js/i18n.js"></script>
     <script src="js/pwa.js"></script>
 </body>
 </html>

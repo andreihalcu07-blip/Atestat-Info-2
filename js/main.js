@@ -1,3 +1,137 @@
+// Custom Dialog Component - replaces native alert/confirm/prompt with styled modals
+;(function(){
+    // Create DOM elements once
+    function createDialog() {
+        if (document.getElementById('customDialogOverlay')) return;
+
+        const overlay = document.createElement('div');
+        overlay.id = 'customDialogOverlay';
+        overlay.className = 'custom-dialog-overlay';
+
+        const dialog = document.createElement('div');
+        dialog.className = 'custom-dialog';
+        dialog.setAttribute('role','dialog');
+        dialog.setAttribute('aria-modal','true');
+
+        dialog.innerHTML = `
+            <div class="custom-dialog-body">
+                <div class="custom-dialog-message" id="customDialogMessage"></div>
+                <input class="custom-dialog-input" id="customDialogInput" style="display:none;" />
+            </div>
+            <div class="custom-dialog-actions" id="customDialogActions"></div>
+        `;
+
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+    }
+
+    function showDialog(options) {
+        return new Promise((resolve) => {
+            createDialog();
+            const overlay = document.getElementById('customDialogOverlay');
+            const dialog = overlay.querySelector('.custom-dialog');
+            const messageEl = document.getElementById('customDialogMessage');
+            const inputEl = document.getElementById('customDialogInput');
+            const actions = document.getElementById('customDialogActions');
+
+            // Set content
+            messageEl.textContent = options.message || '';
+            if (options.prompt) {
+                inputEl.style.display = 'block';
+                inputEl.value = options.defaultValue || '';
+            } else {
+                inputEl.style.display = 'none';
+            }
+
+            // Clear previous buttons
+            actions.innerHTML = '';
+
+            const prevActive = document.activeElement;
+
+            function close(result) {
+                overlay.classList.remove('open');
+                // small delay to allow transition
+                setTimeout(() => {
+                    resolve(result);
+                    if (prevActive && prevActive.focus) prevActive.focus();
+                }, 150);
+            }
+
+            // Helper to create buttons
+            function makeButton(text, cls, cb) {
+                const btn = document.createElement('button');
+                btn.className = 'btn ' + cls;
+                btn.textContent = text;
+                btn.addEventListener('click', cb);
+                return btn;
+            }
+
+            // Configure buttons based on type
+            if (options.type === 'alert') {
+                const ok = makeButton(options.okText || 'OK', 'btn--primary', () => close());
+                actions.appendChild(ok);
+                overlay.classList.add('open');
+                ok.focus();
+            } else if (options.type === 'confirm') {
+                const cancel = makeButton(options.cancelText || 'Cancel', 'btn--secondary', () => close(false));
+                const ok = makeButton(options.okText || 'OK', 'btn--primary', () => close(true));
+                actions.appendChild(cancel);
+                actions.appendChild(ok);
+                overlay.classList.add('open');
+                ok.focus();
+            } else if (options.type === 'prompt') {
+                const cancel = makeButton(options.cancelText || 'Cancel', 'btn--secondary', () => close(null));
+                const ok = makeButton(options.okText || 'OK', 'btn--primary', () => close(inputEl.value));
+                actions.appendChild(cancel);
+                actions.appendChild(ok);
+                overlay.classList.add('open');
+                inputEl.focus();
+            }
+
+            // Keyboard handling
+            function keyHandler(e) {
+                if (e.key === 'Escape') {
+                    if (options.type === 'confirm') close(false);
+                    else if (options.type === 'prompt') close(null);
+                    else close();
+                }
+                if (e.key === 'Enter') {
+                    if (options.type === 'prompt') {
+                        const okBtn = actions.querySelector('.btn--primary');
+                        if (okBtn) okBtn.click();
+                    }
+                }
+            }
+            document.addEventListener('keydown', keyHandler);
+
+            // Remove listener on close by wrapping resolve
+            const originalResolve = resolve;
+            resolve = (v) => {
+                document.removeEventListener('keydown', keyHandler);
+                originalResolve(v);
+            };
+        });
+    }
+
+    // Public API
+    window.customAlert = function(message) {
+        return showDialog({ type: 'alert', message });
+    };
+
+    window.customConfirm = function(message) {
+        return showDialog({ type: 'confirm', message });
+    };
+
+    window.customPrompt = function(message, defaultValue) {
+        return showDialog({ type: 'prompt', message, prompt: true, defaultValue });
+    };
+
+    // Replace native dialogs with custom ones (async)
+    window.alert = function(message) { customAlert(message); };
+    window.confirm = function(message) { return customConfirm(message); };
+    window.prompt = function(message, defaultValue) { return customPrompt(message, defaultValue); };
+})();
+
 // Dark Mode Toggle
 const darkModeToggle = document.getElementById('darkModeToggle');
 if (darkModeToggle) {
@@ -125,38 +259,37 @@ document.querySelectorAll('.timeline-item, .os-card, .feature-card').forEach((el
     observer.observe(el);
 });
 
-// Mobile menu toggle
-const createMobileMenu = () => {
-    const navbar = document.querySelector('.navbar .container');
+// Mobile menu toggle (accessible, mobile-only)
+function initMobileMenu() {
+    const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelector('.nav-links');
-    
-    if (window.innerWidth <= 768) {
-        if (!document.querySelector('.menu-toggle')) {
-            const menuToggle = document.createElement('button');
-            menuToggle.className = 'menu-toggle';
-            menuToggle.innerHTML = '☰';
-            menuToggle.style.background = 'rgba(0, 0, 0, 0.1)';
-            menuToggle.style.border = 'none';
-            menuToggle.style.fontSize = '1.5rem';
-            menuToggle.style.cursor = 'pointer';
-            menuToggle.style.padding = '10px 15px';
-            menuToggle.style.borderRadius = '8px';
-            menuToggle.style.transition = 'all 0.3s ease';
-            menuToggle.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-                menuToggle.style.transform = navLinks.style.display === 'flex' ? 'rotate(90deg)' : 'rotate(0deg)';
-            });
-            navbar.appendChild(menuToggle);
-        }
-    } else {
-        const menuToggle = document.querySelector('.menu-toggle');
-        if (menuToggle) menuToggle.remove();
-        navLinks.style.display = 'flex';
-    }
-};
+    const toggles = Array.from(document.querySelectorAll('.menu-toggle'));
+    if (!navbar || !navLinks || toggles.length === 0) return;
 
-window.addEventListener('resize', createMobileMenu);
-createMobileMenu();
+    // Ensure ARIA attributes and attach handlers
+    toggles.forEach(toggle => {
+        toggle.setAttribute('aria-controls', 'main-nav');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.addEventListener('click', () => {
+            // Only operate on mobile widths
+            if (window.innerWidth > 768) return;
+            const isOpen = navbar.classList.toggle('nav-open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            // Keep focus on toggle for accessibility
+            if (!isOpen) toggle.focus();
+        });
+    });
+
+    // Ensure nav is visible on desktop and nav-open removed
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            navbar.classList.remove('nav-open');
+            toggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initMobileMenu);
 
 // Enhanced scroll effect to navbar
 let lastScrollY = 0;
@@ -171,29 +304,6 @@ window.addEventListener('scroll', function() {
     }
     
     lastScrollY = scrollY;
-});
-
-// Add mouse tracker effect
-document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.os-card');
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const rotateX = (y - rect.height / 2) / 10;
-        const rotateY = (rect.width / 2 - x) / 10;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-});
-
-// Reset rotation on mouse leave
-document.addEventListener('mouseleave', () => {
-    const cards = document.querySelectorAll('.os-card');
-    cards.forEach(card => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-    });
 });
 
 // Add pulse effect on load
@@ -222,4 +332,34 @@ function animateValue(element, start, end, duration) {
     };
     window.requestAnimationFrame(step);
 }
+
+/* ------------------------------------------------------------------
+   Boot screen initialization
+   - Single template: <div class="boot-screen windows95" data-version="95"></div>
+   - Only the version text is changed by JS based on data-version
+   ------------------------------------------------------------------ */
+function initBootScreens() {
+    document.querySelectorAll('.boot-screen').forEach(function(el) {
+        const version = String(el.dataset.version || '');
+        // Support ONLY Windows 95 and 98 as requested
+        if (version !== '95' && version !== '98') return;
+
+        // Remove any previously injected inner content (defensive)
+        const prevInner = el.querySelector('.boot-inner');
+        if (prevInner) prevInner.remove();
+
+        // Ensure background image is controlled by CSS via [data-version] selectors
+
+        // Inject only the loading bar element (no text, no logos)
+        if (!el.querySelector('.boot-loader')) {
+            const loader = document.createElement('div');
+            loader.className = 'boot-loader';
+            loader.setAttribute('aria-hidden', 'true');
+            loader.innerHTML = '<div class="boot-loader-track"><div class="boot-loader-fill"></div></div>';
+            el.appendChild(loader);
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initBootScreens);
 

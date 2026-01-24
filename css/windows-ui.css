@@ -90,6 +90,28 @@
     transform: translateY(-3px);
 }
 
+/* Make restriction message scrollable on mobile even if page CSS forces body overflow:hidden */
+body.windows-restricted-active {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.windows-restricted-message {
+    /* limit to viewport and allow internal scrolling so buttons stay reachable */
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 80px; /* ensure action buttons aren't hidden by any fixed UI */
+}
+
+.windows-restricted-message .message-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
 /* =====================================================
    CONȚINUT WINDOWS - ASCUNS IMPLICIT
    ===================================================== */
@@ -196,6 +218,30 @@
     
     .windows-desktop-simulation {
         display: none !important;
+    }
+}
+
+/* Mobile-specific tweaks for the restriction message: align content to start and make actions sticky */
+@media (max-width: 1023px) {
+    .windows-restricted-message {
+        justify-content: flex-start; /* start at the top so user can scroll naturally */
+        align-items: stretch;
+        padding-top: 28px;
+        box-sizing: border-box;
+    }
+
+    .windows-restricted-message .message-actions {
+        position: sticky;
+        bottom: 12px;
+        background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.02));
+        padding-top: 8px;
+        justify-content: center;
+        z-index: 50;
+    }
+
+    .windows-restricted-message .message-details {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

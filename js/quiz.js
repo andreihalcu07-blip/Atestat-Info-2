@@ -204,6 +204,8 @@ let timeLeft = 15;
 let timerInterval = null;
 let totalQuizzes = parseInt(localStorage.getItem('totalQuizzes')) || 0;
 let consecutiveQuizzes = parseInt(localStorage.getItem('consecutiveQuizzes')) || 0;
+// track whether the quiz has been started by the user
+let quizStarted = false;
 
 // ===== ACHIEVEMENTS SYSTEM =====
 function getAchievements() {
@@ -228,8 +230,15 @@ let fastAnswer = false;
 
 function toggleAchievements() {
     const panel = document.getElementById('achievementsPanel');
-    panel.classList.toggle('show');
+    if (!panel) return;
+    const isShown = panel.classList.toggle('show');
+    panel.setAttribute('aria-hidden', String(!isShown));
     renderAchievements();
+    // focus management: focus close button when opened
+    if (isShown) {
+        const closeBtn = panel.querySelector('.achievements-close');
+        if (closeBtn) closeBtn.focus();
+    }
 }
 
 function renderAchievements() {
@@ -263,6 +272,8 @@ function unlockAchievement(id) {
     playSound('victory');
     
     setTimeout(() => popup.classList.remove('show'), 3000);
+    // update chip and panel render
+    try { renderAchievementChip(); } catch(e) { /* ignore */ }
 }
 
 function checkAchievements() {
@@ -432,6 +443,8 @@ function initQuiz() {
         totalQuestionsEl.textContent = currentQuizData.length;
     }
     renderAchievements();
+    // render the contextual achievement chip (under the page title)
+    renderAchievementChip();
     loadQuestion();
 }
 
@@ -595,12 +608,25 @@ function showResults() {
 
 function saveScore(percentage, totalScore) {
     const isEN = getCurrentLang() === 'en';
-    const name = prompt(isEN ? 'Enter your name for the leaderboard:' : 'Introduceți-vă nume pentru leaderboard:');
-    if (name) {
-        leaderboard.push({ name, score, percentage, totalScore: totalScore || score * 10, date: new Date().toLocaleDateString() });
-        leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
-        leaderboard = leaderboard.slice(0, 10); // Top 10
-        localStorage.setItem('quizLeaderboard', JSON.stringify(leaderboard));
+    // Use customPrompt which returns a Promise
+    if (window.customPrompt) {
+        window.customPrompt(isEN ? 'Enter your name for the leaderboard:' : 'Introduceți-vă nume pentru leaderboard:', '')
+            .then((name) => {
+                if (name) {
+                    leaderboard.push({ name, score, percentage, totalScore: totalScore || score * 10, date: new Date().toLocaleDateString() });
+                    leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
+                    leaderboard = leaderboard.slice(0, 10); // Top 10
+                    localStorage.setItem('quizLeaderboard', JSON.stringify(leaderboard));
+                }
+            });
+    } else {
+        const name = prompt(isEN ? 'Enter your name for the leaderboard:' : 'Introduceți-vă nume pentru leaderboard:');
+        if (name) {
+            leaderboard.push({ name, score, percentage, totalScore: totalScore || score * 10, date: new Date().toLocaleDateString() });
+            leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
+            leaderboard = leaderboard.slice(0, 10); // Top 10
+            localStorage.setItem('quizLeaderboard', JSON.stringify(leaderboard));
+        }
     }
 }
 
@@ -673,29 +699,85 @@ function restartQuiz() {
     loadQuestion();
 }
 
+// Start the quiz when user clicks Start on the overlay
+function startQuizFromOverlay() {
+    const quizStage = document.getElementById('quizStage');
+    const quizContainerEl = document.getElementById('quizContainer');
+    const resultsContainer = document.getElementById('resultsContainer');
+    const overlay = document.getElementById('quizOverlay');
+    if (!quizStage || !quizContainerEl) return;
+    // Reset state
+    currentQuestion = 0;
+    score = 0;
+    bonusPoints = 0;
+    selectedAnswer = null;
+    correctStreak = 0;
+    fastAnswer = false;
+    timeLeft = 15;
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+
+    // Mark started and remove locked overlay
+    quizStarted = true;
+    quizStage.classList.remove('quiz-locked');
+    // Hide overlay explicitly to ensure it's removed from the flow
+    if (overlay) {
+        overlay.classList.add('hidden');
+        overlay.style.display = 'none';
+    }
+    // Make quiz content accessible
+    quizContainerEl.setAttribute('aria-hidden', 'false');
+    if (resultsContainer) resultsContainer.setAttribute('aria-hidden', 'false');
+    // Also clear inline filters in case any remain (and clear inner element if present)
+    quizContainerEl.style.filter = '';
+    const inner = quizContainerEl.querySelector('.quiz-inner');
+    if (inner) inner.style.filter = '';
+    if (resultsContainer) resultsContainer.style.filter = '';
+
+    // Initialize quiz (this will call loadQuestion and start timer)
+    initQuiz();
+}
+
 // Initialize quiz when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('quizContainer')) {
-        initQuiz();
+    // If quiz exists on page, do NOT start automatically.
+    // Show the overlay and keep the quiz locked until the user presses Start.
+    const quizContainerEl = document.getElementById('quizContainer');
+    const quizStage = document.getElementById('quizStage');
+    const startBtn = document.getElementById('startQuizBtn');
+    if (quizContainerEl && quizStage) {
+        // ensure locked state (HTML is pre-marked with quiz-locked)
+        quizStage.classList.add('quiz-locked');
+        // render achievements and chip but don't load questions or start timer
+        renderAchievements();
+        try { renderAchievementChip(); } catch(e) {}
+        // set start button handler
+        if (startBtn) {
+            startBtn.addEventListener('click', function() {
+                startQuizFromOverlay();
+            });
+        }
     }
     
     // Re-initialize quiz when language changes (event is dispatched on window)
     window.addEventListener('languageChanged', function() {
         if (document.getElementById('quizContainer')) {
-            // Reset quiz state
-            currentQuestion = 0;
-            score = 0;
-            selectedAnswer = null;
-            bonusPoints = 0;
-            timeLeft = 15;
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
+            // If quiz already started, re-initialize it with the new language
+            if (quizStarted) {
+                // Reset quiz state
+                currentQuestion = 0;
+                score = 0;
+                selectedAnswer = null;
+                bonusPoints = 0;
+                timeLeft = 15;
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                initQuiz();
             }
-            // Re-initialize quiz with new language
-            initQuiz();
-            // Re-render achievements panel
+            // Always re-render achievements panel (language changed)
             renderAchievements();
+            try { renderAchievementChip(); } catch(e) {}
         }
     });
     
@@ -729,6 +811,20 @@ function renderAchievements() {
             ${a.check() ? '<span class="achievement-check">✓</span>' : '<span class="achievement-lock">🔒</span>'}
         </div>
     `).join('');
+}
+
+// Render the small contextual achievement chip (shows X / Y) under the page title
+function renderAchievementChip() {
+    const countEl = document.getElementById('achievementCount');
+    const chip = document.getElementById('achievementChip');
+    if (!countEl || !chip) return;
+    allAchievements = getAchievements();
+    const total = allAchievements.length || 0;
+    const unlocked = (unlockedAchievements && unlockedAchievements.length) || 0;
+    countEl.textContent = `${unlocked} / ${total}`;
+    chip.setAttribute('aria-label', `${unlocked} of ${total} achievements`);
+    // ensure chip is visible
+    chip.style.display = 'inline-flex';
 }
 
 // Make functions available globally

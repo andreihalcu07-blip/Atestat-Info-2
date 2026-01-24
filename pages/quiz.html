@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Evoluția Sistemelor de Operare</title>
+    <title>Quiz - Evolu?ia Sistemelor de Operare</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/advanced.css">
     <link rel="stylesheet" href="../css/pages.css">
@@ -15,42 +15,45 @@
     </svg>">
 </head>
 <body>
-    <!-- Achievement Toggle Button -->
-    <button class="achievement-toggle" onclick="toggleAchievements()" data-i18n="quiz_achievements">🏆 Realizări</button>
-    
-    <!-- Achievements Panel -->
-    <div class="achievements-panel" id="achievementsPanel">
-        <h3 style="margin-top:0;" data-i18n="quiz_achievements">🏆 Realizări</h3>
-        <div id="achievementsList"></div>
+    <!-- Achievements (contextual) -->
+    <!-- The small chip will be rendered under the page title; the modal panel lists achievements -->
+    <!-- Achievements Panel (modal) -->
+    <div class="achievements-panel" id="achievementsPanel" aria-hidden="true">
+        <div class="achievements-modal" role="dialog" aria-modal="true" aria-labelledby="achievementsTitle">
+            <button class="achievements-close" onclick="toggleAchievements()" aria-label="Close achievements">✕</button>
+            <h3 id="achievementsTitle" style="margin-top:0;" data-i18n="quiz_achievements">🏆 Realizări</h3>
+            <div id="achievementsList"></div>
+        </div>
     </div>
 
-    <!-- Achievement Popup -->
-    <div class="achievement-popup" id="achievementPopup">
+    <!-- Achievement Popup (small unlocked notification) -->
+    <div class="achievement-popup" id="achievementPopup" aria-hidden="true">
         <div class="icon" id="popupIcon">🏆</div>
-        <h3 data-i18n="quiz_achievement_unlocked">Realizare Deblocată!</h3>
+        <h3 data-i18n="quiz_achievement_unlocked">Realizare Deblocata!</h3>
         <p id="popupText"></p>
     </div>
 
     <header>
         <nav class="navbar">
             <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
                 <!-- STÂNGA: Logo -->
                 <div class="navbar-left">
                     <div class="logo-container">
                         <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="10" y="15" width="80" height="55" fill="none" stroke="#3b82f6" stroke-width="3" rx="5"/>
-                            <rect x="15" y="20" width="70" height="45" fill="#dbeafe" rx="3"/>
-                            <rect x="20" y="25" width="20" height="15" fill="#3b82f6" opacity="0.7" rx="2"/>
-                            <rect x="45" y="25" width="20" height="8" fill="#3b82f6" opacity="0.7" rx="2"/>
-                            <rect x="20" y="45" width="45" height="12" fill="#3b82f6" opacity="0.7" rx="2"/>
-                            <path d="M 35 70 L 30 80 L 70 80 L 65 70" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
-                            <circle cx="50" cy="80" r="3" fill="#3b82f6"/>
+                            <rect x="10" y="15" width="80" height="55" fill="none" stroke="#2563eb" stroke-width="3" rx="5"/>
+                            <rect x="15" y="20" width="70" height="45" fill="#e0e7ff" rx="3"/>
+                            <rect x="20" y="25" width="20" height="15" fill="#2563eb" opacity="0.7" rx="2"/>
+                            <rect x="45" y="25" width="20" height="8" fill="#f59e0b" opacity="0.7" rx="2"/>
+                            <rect x="20" y="45" width="45" height="12" fill="#10b981" opacity="0.7" rx="2"/>
+                            <path d="M 35 70 L 30 80 L 70 80 L 65 70" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                            <circle cx="50" cy="80" r="3" fill="#2563eb"/>
                         </svg>
                         <h1 class="logo-text">SistemOS</h1>
                     </div>
                 </div>
                 
-                <!-- MIJLOC: Meniu navigare -->
+                <!-- MIJLOC: Meniu navigare (copiat din index.html, adaptat pentru directorul pages/) -->
                 <div class="navbar-center">
                     <ul class="nav-links">
                         <li><a href="../index.html" data-i18n="nav_home">Acasă</a></li>
@@ -68,8 +71,8 @@
                 
                 <!-- DREAPTA: Toggle-uri -->
                 <div class="navbar-right">
-                    <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
-                    <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+                    <button class="btn btn--utility lang-toggle" id="langToggle" onclick="toggleLanguage()" aria-label="Change language">🇬🇧 EN</button>
                 </div>
             </div>
         </nav>
@@ -78,16 +81,26 @@
     <main>
         <section class="hero bg-gradient-hero">
             <div class="hero-content">
-                <h2 data-i18n="quiz_title">🎯 Quiz - Testează-ți Cunoștințele</h2>
-                <p data-i18n="quiz_subtitle">Cât de mult știi despre sistemele de operare?</p>
+                <h2 data-i18n="quiz_title">?? Quiz - Testeaza-?i Cuno?tin?ele</h2>
+                <p data-i18n="quiz_subtitle">C�t de mult ?tii despre sistemele de operare?</p>
+                <!-- Achievement chip (contextual, shown only on quiz page) -->
+                <div class="hero-actions">
+                    <button id="achievementChip" class="achievement-chip" onclick="toggleAchievements()" aria-haspopup="dialog" aria-controls="achievementsPanel" aria-label="Open achievements">
+                        <span class="achievement-icon">🏆</span>
+                        <span class="achievement-label">Achievements</span>
+                        <span id="achievementCount" class="achievement-count">0 / 0</span>
+                    </button>
+                </div>
             </div>
         </section>
 
         <div class="quiz-content">
-            <div id="quizContainer" class="quiz-container">
-                <!-- Timer -->
-                <div class="timer-container">
-                    <span class="timer-icon">⏱️</span>
+            <div id="quizStage" class="quiz-stage quiz-locked">
+                <div id="quizContainer" class="quiz-container" aria-hidden="true">
+                    <div class="quiz-inner">
+                    <!-- Timer -->
+                    <div class="timer-container">
+                    <span class="timer-icon">??</span>
                     <span class="timer-value" id="timerDisplay">15</span>
                     <span class="bonus-time" id="bonusDisplay">+0 bonus</span>
                 </div>
@@ -100,28 +113,44 @@
                 </div>
 
                 <div id="quizBody"></div>
-                <button class="quiz-button" id="submitBtn" onclick="nextQuestion()" data-i18n="quiz_next">Următoarea Întrebare</button>
+                <button class="quiz-button" id="submitBtn" onclick="nextQuestion()" data-i18n="quiz_next">Urmatoarea �ntrebare</button>
             </div>
 
-            <div id="resultsContainer" class="results">
+                    <!-- Start overlay (positioned INSIDE quiz container so it only covers quiz area) -->
+                    <div id="quizOverlay" class="quiz-overlay" role="dialog" aria-modal="true" aria-label="Start quiz overlay">
+                        <div class="quiz-overlay-card">
+                            <h3 data-i18n="quiz_start_title">Ready to test your knowledge?</h3>
+                            <p data-i18n="quiz_start_sub">Click below to begin the quiz. Good luck!</p>
+                            <button id="startQuizBtn" class="btn btn--primary">Start Quiz</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                    </div>
+
+                </div>
+
+                <div id="resultsContainer" class="results" aria-hidden="true">
                 <h2 data-i18n="quiz_results">Rezultatele Tale</h2>
                 <div class="score" id="finalScore"></div>
                 <p class="score-message" id="scoreMessage"></p>
                 <button class="restart-btn" onclick="restartQuiz()" data-i18n="quiz_restart">Reia Quiz-ul</button>
+                </div>
             </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+            <p>&copy; 2026 <span data-i18n="footer_site">Evolu?ia Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
         </div>
     </footer>
 
     <script src="../js/os-detect.js"></script>
+    <script src="../js/i18n.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/enhancements.js"></script>
-    <script src="../js/i18n.js"></script>
     <script src="../js/quiz.js"></script>
 </body>
 </html>

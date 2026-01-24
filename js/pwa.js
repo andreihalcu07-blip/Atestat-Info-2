@@ -15,8 +15,15 @@ if ('serviceWorker' in navigator) {
                     newWorker.addEventListener('statechange', () => {
                         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                             // New version available
-                            if (confirm('O nouă versiune este disponibilă! Reîncarcă pagina?')) {
-                                window.location.reload();
+                            // Use customConfirm (returns a Promise) instead of native confirm
+                            if (window.customConfirm) {
+                                window.customConfirm('O nouă versiune este disponibilă! Reîncarcă pagina?').then((res) => {
+                                    if (res) window.location.reload();
+                                });
+                            } else {
+                                if (confirm('O nouă versiune este disponibilă! Reîncarcă pagina?')) {
+                                    window.location.reload();
+                                }
                             }
                         }
                     });

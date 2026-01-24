@@ -213,47 +213,293 @@ body.dark-mode .navbar {
     margin-right: 4px;
 }
 
-/* Dark Mode Toggle Button */
+/* =========================================================================
+   BUTTON SYSTEM - Sistema unitară de butoane
+   ========================================================================= */
+
+/* Base Button - Toate butoanele moștenesc aceste stiluri */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-height: 44px; /* Touch-friendly WCAG 2.1 */
+    user-select: none;
+}
+
+/* Focus state pentru accesibilitate */
+.btn:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* -------------------------------------------------------------------------
+   Button Variants
+   ------------------------------------------------------------------------- */
+
+/* Utility Button - Pentru setări, limbă, etc. (stilul "pill" actual) */
+
+/* Utility Button - Pentru setări, limbă, etc. (stilul "pill" actual) */
+.btn--utility {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px !important; /* Pill shape */
+    padding: 8px 16px !important;
+    font-size: 0.95rem;
+    min-height: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Asigură că doar .btn--utility.btn--icon devine cerc, restul rămân pill */
+.btn--utility:not(.btn--icon) {
+    border-radius: 999px !important;
+    padding: 8px 16px !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0;
+    min-height: 40px;
+    max-width: none;
+    max-height: none;
+}
+
+.btn--utility:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn--utility:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Utility Icon Button - Pentru butoane doar cu icon */
+.btn--utility.btn--icon {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    font-size: 1.2rem;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn--utility.btn--icon:hover {
+    /* Hover subtil fără transform pentru consistență cu dark-mode-toggle */
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    transform: none !important;
+}
+
+/* Primary Button - Pentru CTA-uri principale */
+.btn--primary {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #d97706 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.btn--primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn--primary:hover::before {
+    left: 100%;
+}
+
+.btn--primary:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+}
+
+.btn--primary:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Primary Button Compact - Pentru carduri */
+.btn--primary.btn--compact {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+}
+
+/* Secondary Button - Pentru acțiuni secundare */
+.btn--secondary {
+    background: var(--bg-white);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    padding: 12px 32px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+}
+
+.btn--secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+
+.btn--secondary:active {
+    transform: translateY(0);
+}
+
+/* -------------------------------------------------------------------------
+   Button Sizes
+   ------------------------------------------------------------------------- */
+
+.btn--small {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    min-height: 36px;
+}
+
+.btn--large {
+    padding: 16px 48px;
+    font-size: 1.125rem;
+    min-height: 52px;
+}
+
+/* -------------------------------------------------------------------------
+   Button Groups
+   ------------------------------------------------------------------------- */
+
+.btn-group {
+    display: inline-flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* -------------------------------------------------------------------------
+   Legacy Support - Mapări pentru compatibilitate
+   ------------------------------------------------------------------------- */
+
+/* Dark Mode Toggle - Stil ORIGINAL simplu */
 .dark-mode-toggle {
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
+    border-radius: 50% !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    padding: 0 !important;
     font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .dark-mode-toggle:hover {
-    transform: rotate(20deg) scale(1.1);
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    transform: none !important;
 }
 
-/* Language Toggle Button */
-.lang-toggle {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-weight: 600;
+.dark-mode-toggle:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* Language Toggle - Pill style consistent across site
+   Light mode: dark text on subtle BG
+   Dark mode: white text on translucent white bg */
+.btn.lang-toggle,
+.btn--utility.lang-toggle {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.95rem;
     cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
-    white-space: nowrap;
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+    backdrop-filter: blur(5px);
 }
 
-.lang-toggle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+.btn.lang-toggle:hover,
+.btn--utility.lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
 }
+
+/* Dark mode variant */
+body.dark-mode .btn.lang-toggle,
+body.dark-mode .btn--utility.lang-toggle {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: none;
+}
+
+body.dark-mode .btn.lang-toggle:hover,
+body.dark-mode .btn--utility.lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* Explicit light-mode color override to ensure lang button text is dark in white mode */
+:not(body.dark-mode) .btn.lang-toggle,
+:not(body.dark-mode) .btn--utility.lang-toggle {
+    color: var(--text-dark) !important;
+}
+
+/* Explicit dark-mode color (reinforce) */
+body.dark-mode .btn.lang-toggle,
+body.dark-mode .btn--utility.lang-toggle {
+    color: #ffffff !important;
+}
+
+/* Legacy mapping removed - global .btn.lang-toggle and .btn--utility.lang-toggle
+   above provide consistent pill styles for language buttons (light & dark). */
 
 /* Logo Container */
 .logo-container {
@@ -508,52 +754,12 @@ body.dark-mode .navbar {
     }
 }
 
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 15px 40px;
-    background: linear-gradient(135deg, var(--accent-color) 0%, #d97706 100%);
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-    position: relative;
-    overflow: hidden;
-    min-height: 44px; /* Touch-friendly */
-}
+/* -------------------------------------------------------------------------
+   Form Buttons
+   ------------------------------------------------------------------------- */
 
-/* Buton în card-uri */
-.btn-card {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 25px;
-    font-size: 0.9rem;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
-}
-
-.btn:hover::before {
-    left: 100%;
-}
-
-.btn:hover {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+.contact-form button {
+    margin-top: 10px;
 }
 
 /* Learning Objectives Section - Ce vei învăța */
@@ -849,7 +1055,7 @@ body.dark-mode .objective-card p {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s ease,
                 border-color 0.3s ease;
 }
@@ -899,7 +1105,7 @@ body.dark-mode .objective-card p {
 }
 
 .os-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 16px 32px rgba(37, 99, 235, 0.18);
     border-color: var(--primary-color);
 }
@@ -1152,15 +1358,35 @@ footer::before {
         background: rgba(37, 99, 235, 0.1);
     }
 
-    .dark-mode-toggle {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
+    /* ❌ NU modifica dimensiunile dark-mode-toggle - trebuie să rămână 42x42px */
+    /* .dark-mode-toggle păstrează dimensiunile originale pe mobile */
+    
+
+    /* Elimină orice override care ar putea strica aspectul butonului de limbă */
+    .lang-toggle {
+        /* Nu forța background, border sau border-radius aici! */
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        min-height: 36px;
     }
     
-    .lang-toggle {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+    /* Button responsive */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .btn--primary {
+        padding: 12px 28px;
+    }
+    
+    .btn--primary.btn--compact {
+        padding: 10px 20px;
+    }
+    
+    .btn--large {
+        padding: 14px 32px;
+        font-size: 1rem;
     }
 
     .hero {
@@ -1240,11 +1466,6 @@ footer::before {
     .contact-form textarea {
         padding: 12px 15px;
         font-size: 1rem;
-    }
-
-    .btn {
-        padding: 12px 30px;
-        font-size: 0.95rem;
     }
 }
 
@@ -1655,13 +1876,66 @@ body.dark-mode footer a {
     color: #60a5fa;
 }
 
-/* Buttons Dark Mode */
-body.dark-mode .btn {
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+/* -------------------------------------------------------------------------
+   Buttons Dark Mode
+   ------------------------------------------------------------------------- */
+
+/* Primary button dark mode */
+body.dark-mode .btn--primary {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
 }
 
-body.dark-mode .btn:hover {
-    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+body.dark-mode .btn--primary:hover {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+}
+
+/* Secondary button dark mode */
+body.dark-mode .btn--secondary {
+    background: #1e293b;
+    color: #60a5fa;
+    border-color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+body.dark-mode .btn--secondary:hover {
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* Utility button dark mode - Already has transparent background */
+body.dark-mode .btn--utility {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .btn--utility:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark mode toggle - NU schimba dimensiunile, doar culorile */
+body.dark-mode .dark-mode-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Language toggle - NU schimba dimensiunile, doar culorile */
+body.dark-mode .lang-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Quiz Section Dark Mode */
@@ -2026,3 +2300,65 @@ body.dark-mode .accordion-body {
         transform: none !important;
     }
 }
+
+/* -------------------------------------------------------------------------
+   Custom Dialog Component Styles
+   ------------------------------------------------------------------------- */
+.custom-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+}
+.custom-dialog-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.custom-dialog {
+    width: 420px;
+    max-width: calc(100% - 40px);
+    background: var(--bg-white);
+    color: var(--text-dark);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(2,6,23,0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.custom-dialog .custom-dialog-message {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.custom-dialog-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.12);
+    font-size: 0.95rem;
+}
+
+.custom-dialog-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+body.dark-mode .custom-dialog {
+    background: #0f172a;
+    color: #f1f5f9;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Ensure buttons use design system classes - easy visual parity */
+.custom-dialog .btn { min-width: 88px; }
+

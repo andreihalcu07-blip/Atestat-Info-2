@@ -48,21 +48,27 @@ body {
 
 /* Desktop Icons */
 .desktop-icons {
+    /* Vertical desktop column for Win10; slightly more spacing than XP */
     position: absolute;
     top: 10px;
     left: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: grid;
+    grid-auto-rows: 100px;
+    row-gap: 14px;
     z-index: 1;
+    justify-items: start; /* align icons to the left within the column */
+    align-content: start;
+    width: 92px;
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
 }
 
 .desktop-icon {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 76px;
-    padding: 8px;
+    align-items: flex-start; /* left-align icon and label */
+    width: 84px;
+    padding: 8px 6px;
     cursor: pointer;
     text-decoration: none;
     color: white;
@@ -81,9 +87,11 @@ body {
 }
 
 .desktop-icon span {
-    text-align: center;
+    text-align: left;
     font-size: 12px;
     text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    display: block;
+    width: 100%;
 }
 
 /* Window */

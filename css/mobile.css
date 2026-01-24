@@ -598,6 +598,27 @@ html, body {
         min-height: 48px;
         width: 100%;
     }
+
+    /* Ensure quiz option labels (.option) are touch-friendly on mobile */
+    .option {
+        padding: 16px;
+        font-size: 1.05rem;
+        min-height: 52px;
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        box-sizing: border-box;
+    }
+
+    .option .option-text {
+        flex: 1 1 auto;
+    }
+
+    /* Make radio a little larger for easier tapping */
+    .option input[type="radio"] {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* Glossary Page */

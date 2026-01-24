@@ -639,11 +639,12 @@ function loadQuestion() {
     `;
     
     quiz.options.forEach((option, index) => {
-        // add touch-friendly triggers (ontouchstart / onpointerenter) so mobile plays hover sound
+        // add touch-friendly triggers and make the whole label tappable; include a .option-text span so we
+        // can style the selected state via CSS (input:checked + .option-text)
         html += `
-            <label class="option" onmouseenter="playSound('hover')" onpointerenter="playSound('hover')" ontouchstart="playSound('hover')">
-                <input type="radio" name="answer" value="${index}" onchange="selectOption(${index})">
-                ${option}
+            <label class="option" onclick="selectOption(${index})" onmouseenter="playSound('hover')" onpointerenter="playSound('hover')" ontouchstart="playSound('hover')">
+                <input type="radio" name="answer" value="${index}" onchange="selectOption(${index})" aria-label="Option ${index + 1}">
+                <span class="option-text">${option}</span>
             </label>
         `;
     });

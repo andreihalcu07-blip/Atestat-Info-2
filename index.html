@@ -283,3 +283,289 @@
     <script src="js/pwa.js"></script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explorează evoluția sistemelor de operare - de la primele mainframe-uri până la smartphone-uri moderne">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Evoluția Sistemelor de Operare</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/advanced.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect x='10' y='15' width='80' height='55' fill='none' stroke='%232563eb' stroke-width='3' rx='5'/>
+        <rect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='3'/>
+        <rect x='20' y='25' width='20' height='15' fill='%232563eb' opacity='0.7' rx='2'/>
+        <rect x='45' y='25' width='20' height='8' fill='%23f59e0b' opacity='0.7' rx='2'/>
+        <rect x='20' y='45' width='45' height='12' fill='%2310b981' opacity='0.7' rx='2'/>
+        <path d='M 35 70 L 30 80 L 70 80 L 65 70' fill='none' stroke='%232563eb' stroke-width='2.5'/>
+        <circle cx='50' cy='80' r='3' fill='%232563eb'/>
+    </svg>"
+    >
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232563eb' rx='20'/%3E%3Crect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='5'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+                <!-- STÂNGA: Logo -->
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="15" width="80" height="55" fill="none" stroke="#2563eb" stroke-width="3" rx="5"/>
+                            <rect x="15" y="20" width="70" height="45" fill="#e0e7ff" rx="3"/>
+                            <rect x="20" y="25" width="20" height="15" fill="#2563eb" opacity="0.7" rx="2"/>
+                            <rect x="45" y="25" width="20" height="8" fill="#f59e0b" opacity="0.7" rx="2"/>
+                            <rect x="20" y="45" width="45" height="12" fill="#10b981" opacity="0.7" rx="2"/>
+                            <path d="M 35 70 L 30 80 L 70 80 L 65 70" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                            <circle cx="50" cy="80" r="3" fill="#2563eb"/>
+                        </svg>
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                
+                <!-- MIJLOC: Meniu navigare -->
+                <div class="navbar-center">
+                    <ul id="main-nav" class="nav-links">
+                        <li><a href="index.html" data-i18n="nav_home">Acasă</a></li>
+                        <li><a href="pages/about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="pages/history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="pages/comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="windows/index.html">Windows</a></li>
+                        <li><a href="pages/glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="pages/faq.html">FAQ</a></li>
+                        <li><a href="pages/quiz.html">Quiz</a></li>
+                        <li><a href="pages/resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- DREAPTA: Toggle-uri -->
+<div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+                    <button class="btn btn--utility lang-toggle" id="langToggle" onclick="toggleLanguage()" aria-label="Change language">🇬🇧 EN</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="hero_title">Evoluția Sistemelor de Operare – de la primele calculatoare la prezent</h2>
+                <p data-i18n="hero_subtitle">Acest site prezintă evoluția sistemelor de operare, rolul lor în funcționarea calculatoarelor și diferențele dintre principalele tipuri de sisteme utilizate de-a lungul timpului.</p>
+                <a href="#obiective" class="btn btn--primary" data-i18n="hero_btn">Începe prezentarea</a>
+            </div>
+        </section>
+
+        <!-- Secțiunea Ce vei învăța -->
+        <section id="obiective" class="learning-objectives">
+            <div class="container">
+                <h2 data-i18n="learning_title">Ce vei învăța din acest site</h2>
+                <p class="section-intro" data-i18n="learning_intro">Acest material educațional acoperă principalele aspecte legate de sistemele de operare:</p>
+                <div class="objectives-grid">
+                    <div class="objective-card">
+                        <div class="objective-icon">💻</div>
+                        <h3 data-i18n="learning_what_title">Ce este un sistem de operare</h3>
+                        <p data-i18n="learning_what_desc">Definiția și componentele principale ale unui sistem de operare, software-ul de bază care controlează un calculator.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">⚙️</div>
+                        <h3 data-i18n="learning_role_title">Rolul sistemelor de operare</h3>
+                        <p data-i18n="learning_role_desc">Funcțiile esențiale: gestionarea memoriei, a proceselor, a fișierelor și a dispozitivelor de intrare/ieșire.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">📅</div>
+                        <h3 data-i18n="learning_evolution_title">Evoluția în timp</h3>
+                        <p data-i18n="learning_evolution_desc">Istoria sistemelor de operare din anii 1950 până în prezent, cu principalele etape și inovații.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">🔄</div>
+                        <h3 data-i18n="learning_diff_title">Diferențe vechi vs. moderne</h3>
+                        <p data-i18n="learning_diff_desc">Comparația între sistemele de operare din trecut și cele contemporane: interfețe, performanță, securitate.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">🖥️</div>
+                        <h3 data-i18n="learning_examples_title">Exemple importante</h3>
+                        <p data-i18n="learning_examples_desc">Prezentarea principalelor sisteme de operare: Windows, macOS, Linux, Android, iOS și altele.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">🪟</div>
+                        <h3 data-i18n="learning_windows_title">Evoluția Windows</h3>
+                        <p data-i18n="learning_windows_desc">Explorează vizual toate versiunile Windows de la 95 la 11, cu simulări interactive ale interfețelor originale.</p>
+                        <a href="windows/index.html" class="btn btn--primary btn--compact" data-i18n="learning_windows_btn">Vezi Galeria Windows →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline">
+            <div class="container">
+                <h2 data-i18n="timeline_title">Timeline: Evoluția Sistemelor de Operare</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1950s-1960s</div>
+                    <div class="timeline-content">
+                        <h3>Primele Sisteme de Operare</h3>
+                        <p><strong>UNIVAC, IBM System/360 OS</strong></p>
+                        <p>Primele SO au fost dezvoltate pentru calculatoarele mainframe. Acestea executau o singură sarcină la un moment dat. Utilizatorii trebuiau să folosească carduri perforate pentru intrare.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1970s</div>
+                    <div class="timeline-content">
+                        <h3>Era Unix și Multiprogramării</h3>
+                        <p><strong>Unix (1969)</strong></p>
+                        <p>Unix a adus o revoluție prin portabilitate și design modular. A permis mai mulți utilizatori să lucreze simultan pe același calculator. Limbajul C a făcut Unix să se răspândească ușor.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1980s</div>
+                    <div class="timeline-content">
+                        <h3>Calculatoare Personale - DOS și Macintosh</h3>
+                        <p><strong>MS-DOS (1981), Mac OS (1984)</strong></p>
+                        <p>Microsoft DOS a dominat calculatoarele personale. Apple Macintosh a introdus interfața grafică cu utilizatorul (GUI). Era calculatoarelor personale a început să înlocuiască mainframeurile.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1990s</div>
+                    <div class="timeline-content">
+                        <h3>Windows și Linux</h3>
+                        <p><strong>Windows 3.0+ (1990), Linux (1991)</strong></p>
+                        <p>Windows 3.0 a făcut GUI accesibil pentru masele. Linux a apărut ca alternativă open-source. Internetul a început să devină dominant. Windows 95 a marcat o schimbare majoră în interfața SO.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2000s</div>
+                    <div class="timeline-content">
+                        <h3>Era Cloud și Mobile</h3>
+                        <p><strong>Windows XP (2001), Mac OS X (2001), Android (2008), iOS (2007)</strong></p>
+                        <p>Apariția sistemelor de operare mobile. Cloud computing a început să se dezvolte. Seria Windows XP a fost extrem de populară. Consolidarea Linux pe servere.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2010s-2026</div>
+                    <div class="timeline-content">
+                        <h3>Era Modernă - AI și Hibrid</h3>
+                        <p><strong>Windows 10/11, macOS, Linux, iOS, Android</strong></p>
+                        <p>Sistemele de operare devin mai inteligente cu AI. Computere hibrid și fără limită între device-uri. Creșterea importanței securității și privacy. Open-source devine mainstream.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OS Types Section -->
+        <section id="os-types" class="os-types">
+            <div class="container">
+                <h2 data-i18n="os_types_title">Tipuri Majore de Sisteme de Operare</h2>
+                
+                <div class="os-grid">
+                    <div class="os-card">
+                        <h3>Windows</h3>
+                        <p>Cel mai utilizat SO pe desktop-uri. Dezvoltat de Microsoft. Domină piața calculatoarelor personale cu o cotă de piață de aproximativ 75%.</p>
+                        <ul>
+                            <li>Versiuni: Windows XP, Vista, 7, 8, 10, 11</li>
+                            <li>Arhitectură: Monolitic</li>
+                            <li>Licență: Proprietară</li>
+                        </ul>
+                    </div>
+
+                    <div class="os-card">
+                        <h3>macOS</h3>
+                        <p>Sistemul de operare al calculatoarelor Apple. Cunoscut pentru stabilitate și design elegant. Bază Unix, foarte popular printre creativi și developeri.</p>
+                        <ul>
+                            <li>Versiuni: Yosemite, Sierra, Big Sur, Monterey, Ventura</li>
+                            <li>Arhitectură: Hibrid (kernel XNU)</li>
+                            <li>Licență: Proprietară</li>
+                        </ul>
+                    </div>
+
+                    <div class="os-card">
+                        <h3>Linux</h3>
+                        <p>Sistemul de operare open-source, gratuit. Domină serverele web cu peste 96% din market share. Foarte flexibil și customizabil.</p>
+                        <ul>
+                            <li>Distribuții: Ubuntu, Debian, Red Hat, CentOS</li>
+                            <li>Arhitectură: Monolitic</li>
+                            <li>Licență: GPL (open-source)</li>
+                        </ul>
+                    </div>
+
+                    <div class="os-card">
+                        <h3>Android</h3>
+                        <p>SO pentru dispozitive mobile. Dezvoltat de Google. Cel mai utilizat SO la nivel global cu peste 70% din piață de smartphone-uri.</p>
+                        <ul>
+                            <li>Bază: Linux kernel</li>
+                            <li>Versiuni: Gingerbread până la Android 14+</li>
+                            <li>Licență: Open source (parțial)</li>
+                        </ul>
+                    </div>
+
+                    <div class="os-card">
+                        <h3>iOS</h3>
+                        <p>SO exclusiv pentru iPhone și iPad. Dezvoltat de Apple. Cunoscut pentru securitate și ecosistem închis.</p>
+                        <ul>
+                            <li>Versiuni: iOS 1.0 până la iOS 17+</li>
+                            <li>Arhitectură: Hibrid (kernel XNU)</li>
+                            <li>Licență: Proprietară</li>
+                        </ul>
+                    </div>
+
+                    <div class="os-card">
+                        <h3>ChromeOS</h3>
+                        <p>Sistemul de operare al Chromebook-urilor. Ușor, rapid și securizat. Bazat pe Linux, focusat pe cloud computing.</p>
+                        <ul>
+                            <li>Bază: Linux kernel</li>
+                            <li>Interfață: Chrome browser</li>
+                            <li>Licență: Open source</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 data-i18n="contact_title">Contactează-ne</h2>
+                <form class="contact-form">
+                    <input type="text" data-i18n="contact_name" placeholder="Nume" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea data-i18n="contact_message" placeholder="Mesajul tău" rows="5" required></textarea>
+                    <button type="submit" class="btn btn--primary" data-i18n="contact_send">Trimite</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+        </div>
+    </footer>
+
+    <script src="js/os-detect.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/enhancements.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

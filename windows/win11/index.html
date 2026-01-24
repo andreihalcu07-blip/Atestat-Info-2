@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -569,3 +570,576 @@
     <script src="../windows-common.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11 - Evoluția Windows</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../windows-common.css">
+    <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="../../css/windows-ui.css">
+</head>
+<body data-windows="win11">
+    <div class="desktop windows-desktop-simulation">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <a href="../index.html" class="desktop-icon">
+                <div class="icon">🏠</div>
+                <span>Înapoi</span>
+            </a>
+            <div class="desktop-icon">
+                <div class="icon icon-mycomputer"></div>
+                <span>This PC</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-documents"></div>
+                <span>Documents</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-edge"></div>
+                <span>Microsoft Edge</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-recyclebin"></div>
+                <span>Recycle Bin</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-network"></div>
+                <span>Network</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-user"></div>
+                <span>User's Files</span>
+            </div>
+        </div>
+        </div>
+
+        <!-- Window -->
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-left">
+                    <span class="win-icon">⚙️</span>
+                    <span class="title-text">Settings</span>
+                </div>
+                <div class="title-buttons">
+                    <button class="title-btn min">─</button>
+                    <button class="title-btn max">□</button>
+                    <button class="title-btn close">✕</button>
+                </div>
+            </div>
+            
+            <div class="window-content">
+                <div class="sidebar">
+                    <div class="search-wrapper">
+                        <input type="text" class="sidebar-search" placeholder="Find a setting">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    
+                    <nav class="nav-list">
+                        <div class="nav-item active" data-section="home">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Home</span>
+                        </div>
+                        <div class="nav-item" data-section="system">
+                            <span class="nav-icon">💻</span>
+                            <span class="nav-text">System</span>
+                        </div>
+                        <div class="nav-item" data-section="features">
+                            <span class="nav-icon">✨</span>
+                            <span class="nav-text">Features</span>
+                        </div>
+                        <div class="nav-item" data-section="design">
+                            <span class="nav-icon">🎨</span>
+                            <span class="nav-text">Design</span>
+                        </div>
+                        <div class="nav-item" data-section="editions">
+                            <span class="nav-icon">📦</span>
+                            <span class="nav-text">Editions</span>
+                        </div>
+                    </nav>
+                    
+                    <div class="sidebar-spacer"></div>
+                    
+                    <a href="../win10/index.html" class="nav-link">
+                        <span class="nav-icon">◀</span>
+                        <span class="nav-text">Windows 10</span>
+                    </a>
+                </div>
+
+                <div class="main-content">
+                    <!-- Home Section -->
+                    <div class="section active" id="home">
+                        <div class="hero-card">
+                            <div class="hero-icon">
+                                <svg viewBox="0 0 100 100" class="win11-logo">
+                                    <defs>
+                                        <linearGradient id="grad11" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#0078d4"/>
+                                            <stop offset="100%" style="stop-color:#00bcf2"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect x="3" y="3" width="44" height="44" rx="4" fill="url(#grad11)"/>
+                                    <rect x="53" y="3" width="44" height="44" rx="4" fill="url(#grad11)"/>
+                                    <rect x="3" y="53" width="44" height="44" rx="4" fill="url(#grad11)"/>
+                                    <rect x="53" y="53" width="44" height="44" rx="4" fill="url(#grad11)"/>
+                                </svg>
+                            </div>
+                            <div class="hero-content">
+                                <h1>Windows 11</h1>
+                                <p class="hero-tagline">A new era for the PC</p>
+                                <div class="hero-details">
+                                    <span class="detail">📅 5 Octombrie 2021</span>
+                                    <span class="detail">💙 Fluent Design 2.0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cards-grid">
+                            <div class="info-card">
+                                <div class="card-header">
+                                    <span class="card-icon">🪟</span>
+                                    <h3>Design Complet Nou</h3>
+                                </div>
+                                <p>Interfață modernă cu colțuri rotunjite, efecte Mica, taskbar centrat și un nou Start Menu fără Live Tiles.</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="card-header">
+                                    <span class="card-icon">📱</span>
+                                    <h3>Android Apps</h3>
+                                </div>
+                                <p>Prima versiune Windows care rulează aplicații Android nativ prin Windows Subsystem for Android (WSA).</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="card-header">
+                                    <span class="card-icon">🎮</span>
+                                    <h3>Gaming Enhanced</h3>
+                                </div>
+                                <p>DirectStorage, Auto HDR, Xbox Game Pass integration pentru cea mai bună experiență gaming.</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="card-header">
+                                    <span class="card-icon">🤖</span>
+                                    <h3>Copilot AI</h3>
+                                </div>
+                                <p>Asistent AI integrat în Windows 11, accesibil din taskbar pentru ajutor instant.</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-banner">
+                            <div class="banner-content">
+                                <h3>💡 Did you know?</h3>
+                                <p>Windows 11 sare de la Windows 10 deoarece Microsoft a sărit numărul 9 (Windows 9 nu a existat niciodată din cauza problemelor de compatibilitate cu cod care verifica "Windows 9*" pentru Windows 95/98).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- System Section -->
+                    <div class="section" id="system">
+                        <h2>💻 System Requirements</h2>
+                        
+                        <div class="requirements-notice">
+                            <span class="notice-icon">⚠️</span>
+                            <div class="notice-content">
+                                <strong>Cerințe Stricte</strong>
+                                <p>Windows 11 are cerințe hardware semnificativ mai stricte decât Windows 10, necesitând TPM 2.0 și Secure Boot.</p>
+                            </div>
+                        </div>
+
+                        <div class="specs-grid">
+                            <div class="spec-card">
+                                <div class="spec-icon">🔧</div>
+                                <div class="spec-info">
+                                    <span class="spec-label">Processor</span>
+                                    <span class="spec-value">1 GHz, 2+ cores, 64-bit</span>
+                                </div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-icon">💾</div>
+                                <div class="spec-info">
+                                    <span class="spec-label">RAM</span>
+                                    <span class="spec-value">Minimum 4 GB</span>
+                                </div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-icon">💿</div>
+                                <div class="spec-info">
+                                    <span class="spec-label">Storage</span>
+                                    <span class="spec-value">64 GB sau mai mult</span>
+                                </div>
+                            </div>
+                            <div class="spec-card critical">
+                                <div class="spec-icon">🔐</div>
+                                <div class="spec-info">
+                                    <span class="spec-label">TPM</span>
+                                    <span class="spec-value">TPM 2.0 (obligatoriu)</span>
+                                </div>
+                            </div>
+                            <div class="spec-card critical">
+                                <div class="spec-icon">🛡️</div>
+                                <div class="spec-info">
+                                    <span class="spec-label">Secure Boot</span>
+                                    <span class="spec-value">UEFI, Secure Boot capable</span>
+                                </div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-icon">🖼️</div>
+                                <div class="spec-info">
+                                    <span class="spec-label">Display</span>
+                                    <span class="spec-value">720p, 9" diagonal, 8 bpc</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Section -->
+                    <div class="section" id="features">
+                        <h2>✨ New Features</h2>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">🪟</div>
+                                <div class="feature-details">
+                                    <h4>Snap Layouts & Groups</h4>
+                                    <p>Organizează rapid ferestrele în layout-uri predefinite. Grupurile salvează configurația pentru taskbar.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📰</div>
+                                <div class="feature-details">
+                                    <h4>Widgets</h4>
+                                    <p>Panou personalizat cu știri, vreme, calendar, stocks și alte informații la un click distanță.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">💬</div>
+                                <div class="feature-details">
+                                    <h4>Teams Integration</h4>
+                                    <p>Microsoft Teams integrat în taskbar pentru comunicare instantă cu prieteni și colegi.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🖥️</div>
+                                <div class="feature-details">
+                                    <h4>Virtual Desktops Enhanced</h4>
+                                    <p>Fiecare desktop virtual poate avea propriul wallpaper și set de aplicații deschise.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🤖</div>
+                                <div class="feature-details">
+                                    <h4>Copilot</h4>
+                                    <p>Asistent AI bazat pe tehnologie GPT, integrat direct în Windows pentru productivitate.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📁</div>
+                                <div class="feature-details">
+                                    <h4>Tabbed File Explorer</h4>
+                                    <p>În sfârșit! Tab-uri în File Explorer pentru navigare mai eficientă.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🔊</div>
+                                <div class="feature-details">
+                                    <h4>New Sounds</h4>
+                                    <p>Sunete noi, mai calme și moderne pentru notificări și acțiuni sistem.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">⚡</div>
+                                <div class="feature-details">
+                                    <h4>Performance</h4>
+                                    <p>Optimizări pentru RAM, CPU și baterie. Foreground windows primesc prioritate.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design Section -->
+                    <div class="section" id="design">
+                        <h2>🎨 Fluent Design 2.0</h2>
+                        
+                        <p class="section-intro">Windows 11 introduce a doua iterație majoră a sistemului de design Fluent, cu accent pe simplitate, calm și conexiune emoțională.</p>
+
+                        <div class="design-showcase">
+                            <div class="design-element">
+                                <div class="demo-box rounded">
+                                    <span>Rounded</span>
+                                </div>
+                                <h4>Rounded Corners</h4>
+                                <p>Toate elementele UI au colțuri rotunjite pentru un aspect mai prietenos și modern.</p>
+                            </div>
+                            <div class="design-element">
+                                <div class="demo-box mica">
+                                    <span>Mica</span>
+                                </div>
+                                <h4>Mica Material</h4>
+                                <p>Efect de transparență care preia culorile din wallpaper pentru o experiență coerentă.</p>
+                            </div>
+                            <div class="design-element">
+                                <div class="demo-box acrylic">
+                                    <span>Acrylic</span>
+                                </div>
+                                <h4>Acrylic</h4>
+                                <p>Efect de sticlă mată pentru meniuri și flyouts, creând adâncime.</p>
+                            </div>
+                            <div class="design-element">
+                                <div class="demo-box centered">
+                                    <span>⊙ ⊙ ⊙</span>
+                                </div>
+                                <h4>Centered Taskbar</h4>
+                                <p>Iconițele taskbar sunt centrate pentru acces egal de ambele părți.</p>
+                            </div>
+                        </div>
+
+                        <div class="color-palette">
+                            <h3>🎨 New Color System</h3>
+                            <div class="colors">
+                                <div class="color-swatch" style="background: #0078d4;">Accent</div>
+                                <div class="color-swatch" style="background: #1a1a1a;">Dark</div>
+                                <div class="color-swatch" style="background: #f3f3f3; color: #000;">Light</div>
+                                <div class="color-swatch" style="background: #60cdff;">Sky</div>
+                                <div class="color-swatch" style="background: #6b69d6;">Iris</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Editions Section -->
+                    <div class="section" id="editions">
+                        <h2>📦 Editions</h2>
+                        
+                        <div class="editions-list">
+                            <div class="edition-card home">
+                                <div class="edition-badge">🏠</div>
+                                <div class="edition-info">
+                                    <h3>Home</h3>
+                                    <p>Pentru utilizatori casnici. Include toate funcțiile de bază Windows 11.</p>
+                                    <ul class="edition-features">
+                                        <li>Snap Layouts</li>
+                                        <li>Widgets</li>
+                                        <li>Microsoft Teams</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="edition-card pro">
+                                <span class="popular-tag">Popular</span>
+                                <div class="edition-badge">💼</div>
+                                <div class="edition-info">
+                                    <h3>Pro</h3>
+                                    <p>Pentru profesioniști și power users.</p>
+                                    <ul class="edition-features">
+                                        <li>BitLocker encryption</li>
+                                        <li>Remote Desktop</li>
+                                        <li>Hyper-V</li>
+                                        <li>Group Policy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="edition-card enterprise">
+                                <div class="edition-badge">🏢</div>
+                                <div class="edition-info">
+                                    <h3>Enterprise</h3>
+                                    <p>Pentru organizații mari cu volume licensing.</p>
+                                    <ul class="edition-features">
+                                        <li>DirectAccess</li>
+                                        <li>AppLocker</li>
+                                        <li>Windows Defender Credential Guard</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="edition-card education">
+                                <div class="edition-badge">🎓</div>
+                                <div class="edition-info">
+                                    <h3>Education</h3>
+                                    <p>Similar cu Enterprise, pentru instituții educaționale.</p>
+                                    <ul class="edition-features">
+                                        <li>Education-specific defaults</li>
+                                        <li>Toate funcțiile Enterprise</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="edition-card se">
+                                <div class="edition-badge">☁️</div>
+                                <div class="edition-info">
+                                    <h3>SE</h3>
+                                    <p>Pentru dispozitive cu preț redus, optimizat pentru cloud.</p>
+                                    <ul class="edition-features">
+                                        <li>Cloud-first experience</li>
+                                        <li>Microsoft 365 integration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Menu Windows 11 -->
+        <div class="start-menu hidden" id="startMenu">
+            <div class="start-menu-search">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search for apps, settings, and documents" id="startSearch">
+            </div>
+            
+            <div class="pinned-section">
+                <div class="section-header">
+                    <span>Pinned</span>
+                    <button class="all-apps-btn">All apps →</button>
+                </div>
+                <div class="pinned-grid">
+                    <div class="pinned-app" data-action="edge">
+                        <div class="app-icon">🌐</div>
+                        <span>Edge</span>
+                    </div>
+                    <div class="pinned-app" data-action="word">
+                        <div class="app-icon" style="color: #2b579a;">📝</div>
+                        <span>Word</span>
+                    </div>
+                    <div class="pinned-app" data-action="excel">
+                        <div class="app-icon" style="color: #217346;">📊</div>
+                        <span>Excel</span>
+                    </div>
+                    <div class="pinned-app" data-action="powerpoint">
+                        <div class="app-icon" style="color: #d24726;">📈</div>
+                        <span>PowerPoint</span>
+                    </div>
+                    <div class="pinned-app" data-action="outlook">
+                        <div class="app-icon" style="color: #0078d4;">📧</div>
+                        <span>Outlook</span>
+                    </div>
+                    <div class="pinned-app" data-action="teams">
+                        <div class="app-icon" style="color: #6264a7;">👥</div>
+                        <span>Teams</span>
+                    </div>
+                    <div class="pinned-app" data-action="store">
+                        <div class="app-icon">🛒</div>
+                        <span>Store</span>
+                    </div>
+                    <div class="pinned-app" data-action="photos">
+                        <div class="app-icon">📷</div>
+                        <span>Photos</span>
+                    </div>
+                    <div class="pinned-app" data-action="settings">
+                        <div class="app-icon">⚙️</div>
+                        <span>Settings</span>
+                    </div>
+                    <div class="pinned-app" data-action="explorer">
+                        <div class="app-icon">📁</div>
+                        <span>Files</span>
+                    </div>
+                    <div class="pinned-app" data-action="terminal">
+                        <div class="app-icon">⬛</div>
+                        <span>Terminal</span>
+                    </div>
+                    <div class="pinned-app" data-action="notepad">
+                        <div class="app-icon">📋</div>
+                        <span>Notepad</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recommended-section">
+                <div class="section-header">
+                    <span>Recommended</span>
+                    <button class="more-btn">More →</button>
+                </div>
+                <div class="recommended-list">
+                    <div class="recommended-item">
+                        <div class="rec-icon">📄</div>
+                        <div class="rec-info">
+                            <span class="rec-name">Document.docx</span>
+                            <span class="rec-time">Yesterday</span>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <div class="rec-icon">🖼️</div>
+                        <div class="rec-info">
+                            <span class="rec-name">Screenshot.png</span>
+                            <span class="rec-time">2 days ago</span>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <div class="rec-icon">📁</div>
+                        <div class="rec-info">
+                            <span class="rec-name">Projects folder</span>
+                            <span class="rec-time">Last week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="start-menu-footer">
+                <div class="user-profile">
+                    <div class="profile-avatar">👤</div>
+                    <span>Utilizator</span>
+                </div>
+                <button class="power-btn" id="powerButton">⏻</button>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <button class="widgets-btn">☀️</button>
+            </div>
+            
+            <div class="taskbar-center">
+                <button class="start-btn" id="startButton">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="9" height="9" rx="1.5" fill="currentColor"/>
+                        <rect x="13" y="2" width="9" height="9" rx="1.5" fill="currentColor"/>
+                        <rect x="2" y="13" width="9" height="9" rx="1.5" fill="currentColor"/>
+                        <rect x="13" y="13" width="9" height="9" rx="1.5" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button class="search-btn">🔍</button>
+                <button class="task-view-btn">📋</button>
+                <div class="taskbar-apps">
+                    <button class="app active">
+                        <span>⚙️</span>
+                        <div class="app-indicator"></div>
+                    </button>
+                    <button class="app">
+                        <span>📁</span>
+                    </button>
+                    <button class="app">
+                        <span>🌐</span>
+                    </button>
+                    <button class="app">
+                        <span>🛒</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="taskbar-right">
+                <div class="system-tray">
+                    <button class="tray-arrow">︿</button>
+                    <div class="tray-icons">
+                        <span>🔊</span>
+                        <span>📶</span>
+                        <span>🔋</span>
+                    </div>
+                </div>
+                <div class="clock-area">
+                    <div class="clock">
+                        <span id="clock-time">12:00</span>
+                        <span id="clock-date">05/10/2021</span>
+                    </div>
+                    <button class="notification-btn">🔔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/os-detect.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/windows-ui.js"></script>
+    <script src="script.js"></script>
+    <script src="../windows-common.js"></script>
+</body>
+</html>
+>>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768

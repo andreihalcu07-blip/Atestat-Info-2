@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Windows Common CSS - Stiluri comune pentru toate versiunile Windows
  * Proiect Atestat - Evoluția Sistemelor de Operare
@@ -1064,3 +1065,1071 @@
     letter-spacing: 0.3px;
 }
 
+=======
+/**
+ * Windows Common CSS - Stiluri comune pentru toate versiunile Windows
+ * Proiect Atestat - Evoluția Sistemelor de Operare
+ */
+
+/* =========================================================================
+   BOOT SCREEN - STILURI GENERALE
+   ========================================================================= */
+
+.boot-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+.boot-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Boot Win95/98 */
+.boot-win95,
+.boot-win98 {
+    background: #000;
+}
+
+.boot-logo-classic {
+    margin-bottom: 30px;
+}
+
+.boot-flag {
+    width: 200px;
+    height: 150px;
+    background: linear-gradient(135deg, 
+        #ff0000 0%, #ff0000 25%,
+        #00ff00 25%, #00ff00 50%,
+        #0000ff 50%, #0000ff 75%,
+        #ffff00 75%, #ffff00 100%
+    );
+    clip-path: polygon(10% 0%, 100% 5%, 95% 100%, 0% 90%);
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: skewX(-2deg); }
+    50% { transform: skewX(2deg); }
+}
+
+.boot-text-classic {
+    color: #fff;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.boot-progress-classic {
+    width: 300px;
+    height: 20px;
+    background: #000;
+    border: 2px solid #808080;
+}
+
+.boot-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #000080, #0000ff);
+    animation: bootProgress 2.5s linear forwards;
+}
+
+@keyframes bootProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+/* Boot XP */
+.boot-winxp {
+    background: #000;
+}
+
+.boot-logo-xp {
+    margin-bottom: 20px;
+    animation: fadeInScale 0.5s ease;
+}
+
+@keyframes fadeInScale {
+    from { 
+        opacity: 0; 
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+}
+
+.boot-text-xp {
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.boot-text-xp-sub {
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    margin-top: -5px;
+}
+
+.boot-text-xp-sub .xp {
+    color: #ff6b35;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+.boot-progress-xp {
+    margin-top: 40px;
+}
+
+.boot-blocks {
+    display: flex;
+    gap: 3px;
+}
+
+.boot-blocks span {
+    width: 12px;
+    height: 12px;
+    background: #0052cc;
+    animation: xpBlocks 1s infinite;
+}
+
+.boot-blocks span:nth-child(2) { animation-delay: 0.2s; }
+.boot-blocks span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes xpBlocks {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Boot Vista/Win7 - Aero */
+.boot-vista,
+.boot-win7 {
+    background: linear-gradient(180deg, #000 0%, #1a1a2e 100%);
+}
+
+.boot-logo-aero {
+    margin-bottom: 30px;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        filter: drop-shadow(0 0 10px rgba(0, 188, 242, 0.5));
+    }
+    50% { 
+        filter: drop-shadow(0 0 20px rgba(0, 188, 242, 0.8));
+    }
+}
+
+.boot-text-aero {
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.boot-spinner-aero {
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    border-top-color: #00bcf2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Boot Win8/10/11 - Modern */
+.boot-win8,
+.boot-win10,
+.boot-win11 {
+    background: #000;
+}
+
+.boot-logo-modern {
+    margin-bottom: 50px;
+}
+
+.boot-dots-modern {
+    display: flex;
+    gap: 10px;
+}
+
+.boot-dots-modern span {
+    width: 8px;
+    height: 8px;
+    background: #0078d4;
+    border-radius: 50%;
+    animation: dotsRotate 1.5s ease-in-out infinite;
+}
+
+.boot-dots-modern span:nth-child(1) { animation-delay: 0s; }
+.boot-dots-modern span:nth-child(2) { animation-delay: 0.1s; }
+.boot-dots-modern span:nth-child(3) { animation-delay: 0.2s; }
+.boot-dots-modern span:nth-child(4) { animation-delay: 0.3s; }
+.boot-dots-modern span:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes dotsRotate {
+    0%, 80%, 100% { 
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    40% { 
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* =========================================================================
+   CARD "ȘTIAI CĂ..."
+   ========================================================================= */
+
+.did-you-know-card {
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    width: 320px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 500;
+    overflow: hidden;
+    animation: slideInCard 0.5s ease;
+    transition: all 0.3s ease;
+}
+
+.did-you-know-card.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+@keyframes slideInCard {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dyk-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.dyk-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.dyk-title {
+    flex: 1;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.dyk-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.dyk-close:hover {
+    opacity: 1;
+}
+
+.dyk-content {
+    padding: 15px;
+}
+
+.dyk-content p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Stiluri specifice versiunilor */
+.dyk-win95 .dyk-header,
+.dyk-win98 .dyk-header {
+    background: linear-gradient(90deg, #000080, #1084d0);
+}
+
+.dyk-win95,
+.dyk-win98 {
+    border-radius: 0;
+    border: 2px outset #c0c0c0;
+}
+
+.dyk-winxp .dyk-header {
+    background: linear-gradient(180deg, #0054e3 0%, #0047d0 50%, #003bb5 100%);
+    border-radius: 6px 6px 0 0;
+}
+
+.dyk-winxp {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.dyk-vista .dyk-header,
+.dyk-win7 .dyk-header {
+    background: linear-gradient(180deg, rgba(200,220,255,0.9), rgba(150,180,220,0.8));
+    color: #000;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+.dyk-vista,
+.dyk-win7 {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.dyk-win8 .dyk-header,
+.dyk-win10 .dyk-header,
+.dyk-win11 .dyk-header {
+    background: #0078d4;
+}
+
+.dyk-win11 {
+    border-radius: 12px;
+}
+
+.dyk-win11 .dyk-header {
+    border-radius: 12px 12px 0 0;
+}
+
+/* =========================================================================
+   DIALOG MODAL WINDOWS - Înlocuiește confirm() cu experiență WOW
+   ========================================================================= */
+
+/* Overlay */
+.windows-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.windows-dialog-overlay.active {
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Dialog container */
+.windows-dialog {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    min-width: 400px;
+    max-width: 500px;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.windows-dialog-overlay.active .windows-dialog {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Header */
+.dialog-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #0078d4 0%, #0053a6 100%);
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+.dialog-header-icon {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.dialog-header-title {
+    font-size: 14px;
+}
+
+/* Body */
+.dialog-body {
+    display: flex;
+    align-items: flex-start;
+    padding: 25px;
+    gap: 20px;
+}
+
+.dialog-icon {
+    font-size: 48px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.dialog-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dialog-message {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    padding-top: 8px;
+}
+
+/* Input pentru prompt */
+.dialog-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.dialog-input:focus {
+    border-color: #0078d4;
+}
+
+/* Input stiluri per versiune */
+.dialog-win95 .dialog-input,
+.dialog-win98 .dialog-input {
+    border-radius: 0;
+    border: 2px inset #808080;
+    background: #fff;
+    font-family: 'MS Sans Serif', Tahoma, sans-serif;
+}
+
+.dialog-winxp .dialog-input {
+    border-radius: 3px;
+    border: 1px solid #7f9db9;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.dialog-vista .dialog-input,
+.dialog-win7 .dialog-input {
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.9);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.dialog-win8 .dialog-input,
+.dialog-win10 .dialog-input {
+    border-radius: 0;
+    border: 2px solid #0078d4;
+}
+
+.dialog-win11 .dialog-input {
+    border-radius: 6px;
+    border: 1px solid #d1d1d1;
+    background: #f9f9f9;
+}
+
+.dialog-win11 .dialog-input:focus {
+    border-color: #0078d4;
+    background: #fff;
+}
+
+/* Footer */
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 15px 25px 25px;
+}
+
+.dialog-btn {
+    padding: 8px 25px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.dialog-btn:focus {
+    box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.3);
+}
+
+.dialog-btn-confirm {
+    background: #0078d4;
+    color: #fff;
+}
+
+.dialog-btn-confirm:hover {
+    background: #005a9e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.4);
+}
+
+.dialog-btn-confirm:active {
+    transform: translateY(0);
+}
+
+.dialog-btn-cancel {
+    background: #e1e1e1;
+    color: #333;
+}
+
+.dialog-btn-cancel:hover {
+    background: #d0d0d0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dialog-btn-cancel:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   STILURI SPECIFICE VERSIUNI WINDOWS
+   ======================================== */
+
+/* Windows 95/98 - Retro Classic */
+.dialog-win95,
+.dialog-win98 {
+    border-radius: 0;
+    border: 2px solid #c0c0c0;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.dialog-win95 .dialog-header,
+.dialog-win98 .dialog-header {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    border-radius: 0;
+    padding: 3px 5px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    font-size: 13px;
+}
+
+.dialog-win95 .dialog-body,
+.dialog-win98 .dialog-body {
+    background: #c0c0c0;
+}
+
+.dialog-win95 .dialog-message,
+.dialog-win98 .dialog-message {
+    color: #000;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    font-size: 13px;
+}
+
+.dialog-win95 .dialog-footer,
+.dialog-win98 .dialog-footer {
+    background: #c0c0c0;
+}
+
+.btn-win95,
+.btn-win98 {
+    border: 2px solid;
+    border-color: #fff #000 #000 #fff;
+    border-radius: 0;
+    background: #c0c0c0;
+    color: #000;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    font-size: 13px;
+    padding: 6px 20px;
+}
+
+.btn-win95:hover,
+.btn-win98:hover {
+    background: #d4d4d4;
+}
+
+.btn-win95:active,
+.btn-win98:active {
+    border-color: #000 #fff #fff #000;
+    padding: 7px 19px 5px 21px;
+}
+
+/* Windows XP - Luna Blue */
+.dialog-winxp {
+    border-radius: 8px;
+    border: 3px solid #0055e5;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dialog-winxp .dialog-header {
+    background: linear-gradient(180deg, #0054e3 0%, #0047d0 50%, #003bb5 100%);
+    border-radius: 5px 5px 0 0;
+    padding: 8px 12px;
+}
+
+.dialog-winxp .dialog-body {
+    background: linear-gradient(180deg, #fff 0%, #ece9d8 100%);
+}
+
+.dialog-winxp .dialog-footer {
+    background: linear-gradient(180deg, #ece9d8 0%, #e2dfc8 100%);
+}
+
+.btn-winxp {
+    background: linear-gradient(180deg, #ece9d8 0%, #c1d2ee 100%);
+    border: 1px solid #003c74;
+    border-radius: 3px;
+    color: #000;
+    padding: 7px 24px;
+}
+
+.btn-winxp:hover {
+    background: linear-gradient(180deg, #fff 0%, #d0e0f5 100%);
+    border-color: #0053db;
+}
+
+.btn-winxp.dialog-btn-confirm {
+    background: linear-gradient(180deg, #d7e8fd 0%, #84b6ef 100%);
+    border-color: #003c74;
+    color: #000;
+}
+
+.btn-winxp.dialog-btn-confirm:hover {
+    background: linear-gradient(180deg, #e7f3ff 0%, #9ac5f5 100%);
+}
+
+/* Windows Vista/7 - Aero Glass */
+.dialog-vista,
+.dialog-win7 {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.dialog-vista .dialog-header,
+.dialog-win7 .dialog-header {
+    background: linear-gradient(180deg, rgba(200, 220, 255, 0.95), rgba(150, 180, 220, 0.9));
+    color: #000;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dialog-vista .dialog-body,
+.dialog-win7 .dialog-body {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.dialog-vista .dialog-footer,
+.dialog-win7 .dialog-footer {
+    background: rgba(240, 245, 250, 0.7);
+}
+
+.btn-vista,
+.btn-win7 {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(230, 240, 250, 0.9));
+    border: 1px solid rgba(0, 84, 153, 0.6);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.btn-vista:hover,
+.btn-win7:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(240, 248, 255, 1));
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.btn-vista.dialog-btn-confirm,
+.btn-win7.dialog-btn-confirm {
+    background: linear-gradient(180deg, rgba(180, 220, 255, 0.95), rgba(100, 180, 255, 0.95));
+    border-color: rgba(0, 84, 153, 0.8);
+    color: #003366;
+}
+
+.btn-vista.dialog-btn-confirm:hover,
+.btn-win7.dialog-btn-confirm:hover {
+    background: linear-gradient(180deg, rgba(200, 230, 255, 1), rgba(120, 195, 255, 1));
+}
+
+/* Windows 8/10/11 - Modern Flat/Fluent */
+.dialog-win8,
+.dialog-win10,
+.dialog-win11 {
+    background: #fff;
+}
+
+.dialog-win11 {
+    border-radius: 12px;
+}
+
+.dialog-win11 .dialog-header {
+    border-radius: 12px 12px 0 0;
+}
+
+.btn-win8,
+.btn-win10,
+.btn-win11 {
+    border-radius: 4px;
+}
+
+.btn-win11 {
+    border-radius: 6px;
+}
+
+.btn-win11:hover {
+    box-shadow: 0 4px 16px rgba(0, 120, 212, 0.3);
+}
+
+/* =========================================================================
+   CURSORI PERSONALIZAȚI
+   ========================================================================= */
+
+/* Cursor clasic Win95/98 */
+.cursor-classic,
+.cursor-classic * {
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23000" d="M0 0l12 12-4 0-2 4-2-6-4 2z"/><path fill="%23fff" d="M1 2l8 8-3 0-1.5 3-1.5-4.5-3 1.5z"/></svg>') 0 0, auto;
+}
+
+/* Cursor XP */
+.cursor-xp,
+.cursor-xp * {
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="22"><path fill="%23000" d="M1 0l0 17 4-4 3 6 2-1-3-6 5 0z"/><path fill="%23fff" d="M2 2l0 12 3-3 2.5 5 1-0.5-2.5-5 4 0z"/></svg>') 0 0, auto;
+}
+
+/* Cursor Aero Vista/Win7 */
+.cursor-aero,
+.cursor-aero * {
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="22"><defs><linearGradient id="g" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%23fff"/><stop offset="100%25" style="stop-color:%23ddd"/></linearGradient></defs><path fill="%23000" d="M1 0l0 17 4-4 3 6 2-1-3-6 5 0z"/><path fill="url(%23g)" d="M2 2l0 12 3-3 2.5 5 1-0.5-2.5-5 4 0z"/></svg>') 0 0, auto;
+}
+
+/* Cursor modern Win8/10/11 */
+.cursor-modern,
+.cursor-modern * {
+    cursor: default;
+}
+
+/* =========================================================================
+   STILURI EXTRA PENTRU FERESTRELE DRAGGABLE
+   ========================================================================= */
+
+.window {
+    transition: box-shadow 0.2s ease;
+}
+
+.window:active {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.window .title-bar {
+    user-select: none;
+}
+
+/* =========================================================================
+   SHUTDOWN SCREEN - ECRANE DE ÎNCHIDERE
+   ========================================================================= */
+
+.shutdown-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: shutdownFadeIn 0.8s ease forwards;
+}
+
+@keyframes shutdownFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Windows 95/98 - Classic Shutdown */
+.shutdown-win95,
+.shutdown-win98 {
+    background: #000;
+}
+
+.shutdown-classic-container {
+    text-align: center;
+}
+
+.shutdown-classic-text {
+    color: #ff8800;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #884400;
+    animation: shutdownTextGlow 1.5s ease-in-out infinite alternate;
+}
+
+.shutdown-classic-subtext {
+    color: #cccccc;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+@keyframes shutdownTextGlow {
+    from { text-shadow: 2px 2px 0 #884400, 0 0 10px #ff8800; }
+    to { text-shadow: 2px 2px 0 #884400, 0 0 20px #ffaa00; }
+}
+
+/* Windows XP Shutdown - Authentic Style */
+.shutdown-winxp {
+    background: linear-gradient(180deg, #5a7fdc 0%, #3a5795 30%, #3a5795 70%, #5a7fdc 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.shutdown-xp-bar-top,
+.shutdown-xp-bar-bottom {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(180deg, #0a246a 0%, #0a246a 50%, #1e4d8c 100%);
+    flex-shrink: 0;
+}
+
+.shutdown-xp-bar-top {
+    background: linear-gradient(180deg, #0a246a 0%, #1e4d8c 100%);
+}
+
+.shutdown-xp-bar-bottom {
+    background: linear-gradient(180deg, #1e4d8c 0%, #0a246a 100%);
+}
+
+.shutdown-xp-container {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shutdown-xp-logo {
+    margin-bottom: 30px;
+}
+
+.shutdown-xp-logo .xp-logo-img {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.shutdown-xp-text {
+    color: #fff;
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Windows Vista / 7 Shutdown - Aero Style */
+.shutdown-vista,
+.shutdown-win7 {
+    background: #000;
+}
+
+.shutdown-aero-container {
+    text-align: center;
+}
+
+.shutdown-aero-spinner {
+    width: 80px;
+    height: 80px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top: 4px solid rgba(100, 180, 255, 0.9);
+    border-radius: 50%;
+    animation: aeroSpin 1.2s linear infinite;
+    margin: 0 auto 40px;
+}
+
+@keyframes aeroSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.shutdown-aero-text {
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Windows 8 Shutdown - Metro Style */
+.shutdown-win8 {
+    background: #0078d4;
+}
+
+.shutdown-metro-container {
+    text-align: center;
+}
+
+.shutdown-metro-spinner {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin: 0 auto 40px;
+}
+
+.shutdown-metro-spinner::before,
+.shutdown-metro-spinner::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #fff;
+}
+
+.shutdown-metro-spinner::before {
+    animation: metroSpin 1s linear infinite;
+}
+
+.shutdown-metro-spinner::after {
+    animation: metroSpin 1s linear infinite reverse;
+    animation-delay: 0.5s;
+}
+
+@keyframes metroSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.shutdown-metro-text {
+    color: #fff;
+    font-family: 'Segoe UI Light', 'Segoe UI', sans-serif;
+    font-size: 28px;
+    font-weight: 200;
+}
+
+/* Windows 10 Shutdown - Fluent Style */
+.shutdown-win10 {
+    background: #000;
+}
+
+.shutdown-fluent-container {
+    text-align: center;
+}
+
+.shutdown-fluent-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.shutdown-fluent-dots span {
+    width: 10px;
+    height: 10px;
+    background: #0078d4;
+    border-radius: 50%;
+    animation: fluentDots 1.6s ease-in-out infinite;
+}
+
+.shutdown-fluent-dots span:nth-child(1) { animation-delay: 0s; }
+.shutdown-fluent-dots span:nth-child(2) { animation-delay: 0.2s; }
+.shutdown-fluent-dots span:nth-child(3) { animation-delay: 0.4s; }
+.shutdown-fluent-dots span:nth-child(4) { animation-delay: 0.6s; }
+.shutdown-fluent-dots span:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes fluentDots {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+.shutdown-fluent-text {
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Windows 11 Shutdown - Modern Fluent Style */
+.shutdown-win11 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+}
+
+.shutdown-win11-container {
+    text-align: center;
+}
+
+.shutdown-win11-logo {
+    margin-bottom: 50px;
+    animation: win11LogoReveal 1s ease;
+}
+
+.shutdown-win11-logo svg {
+    filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.4));
+}
+
+@keyframes win11LogoReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.shutdown-win11-ring {
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    border-top: 3px solid #60a5fa;
+    border-right: 3px solid #60a5fa;
+    border-radius: 50%;
+    animation: win11Ring 1s linear infinite;
+    margin: 0 auto 30px;
+}
+
+@keyframes win11Ring {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.shutdown-win11-text {
+    color: #e0e0e0;
+    font-family: 'Segoe UI Variable', 'Segoe UI', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+>>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =====================================================
    WINDOWS-UI.CSS - Stiluri pentru secțiunea Windows
    Proiect Atestat - Evoluția Sistemelor de Operare
@@ -387,3 +388,394 @@ body.dark-mode .simulation-not-available {
         justify-content: center;
     }
 }
+=======
+/* =====================================================
+   WINDOWS-UI.CSS - Stiluri pentru secțiunea Windows
+   Proiect Atestat - Evoluția Sistemelor de Operare
+   ===================================================== */
+
+/* =====================================================
+   MESAJ PENTRU UTILIZATORI NON-WINDOWS / MOBIL
+   ===================================================== */
+.windows-restricted-message {
+    display: none;
+    background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+    color: white;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.windows-restricted-message.show {
+    display: flex;
+}
+
+.windows-restricted-message .message-icon {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.windows-restricted-message h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.windows-restricted-message p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.windows-restricted-message .message-details {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px 35px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.windows-restricted-message .message-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.windows-restricted-message .message-details li {
+    padding: 10px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.windows-restricted-message .message-details li::before {
+    content: '✓';
+    color: #10b981;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.windows-restricted-message .btn-home {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-top: 20px;
+}
+
+.windows-restricted-message .btn-home:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Make restriction message scrollable on mobile even if page CSS forces body overflow:hidden */
+body.windows-restricted-active {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.windows-restricted-message {
+    /* limit to viewport and allow internal scrolling so buttons stay reachable */
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 80px; /* ensure action buttons aren't hidden by any fixed UI */
+}
+
+.windows-restricted-message .message-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+/* =====================================================
+   CONȚINUT WINDOWS - ASCUNS IMPLICIT
+   ===================================================== */
+.windows-content {
+    display: none;
+}
+
+.windows-content.show {
+    display: block;
+}
+
+/* =====================================================
+   WINDOWS GALLERY - RESPONSIVE
+   ===================================================== */
+@media (max-width: 768px) {
+    /* Windows Gallery Cards - Mobile */
+    .windows-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .windows-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+    }
+    
+    .card-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Timeline în gallery */
+    .timeline-summary .timeline {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .timeline-summary .timeline-item {
+        padding: 15px 25px;
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    /* Intro */
+    .intro h2 {
+        font-size: 1.6rem;
+    }
+    
+    .intro p {
+        font-size: 0.95rem;
+    }
+    
+    /* Header nav */
+    .header-nav {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 15px;
+    }
+    
+    .header-nav .home-button {
+        font-size: 0.85rem;
+        padding: 10px 18px;
+    }
+}
+
+/* =====================================================
+   WINDOWS SIMULARE - STILURI
+   ===================================================== */
+/* Desktop simulat - doar pe ecrane mari */
+.windows-desktop-simulation {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .windows-desktop-simulation.enabled {
+        display: block;
+    }
+}
+
+/* Mesaj pentru mobil/tablet în paginile de simulare */
+.simulation-not-available {
+    display: none;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: white;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+@media (max-width: 1023px) {
+    .simulation-not-available {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .windows-desktop-simulation {
+        display: none !important;
+    }
+}
+
+/* Mobile-specific tweaks for the restriction message: align content to start and make actions sticky */
+@media (max-width: 1023px) {
+    .windows-restricted-message {
+        justify-content: flex-start; /* start at the top so user can scroll naturally */
+        align-items: stretch;
+        padding-top: 28px;
+        box-sizing: border-box;
+    }
+
+    .windows-restricted-message .message-actions {
+        position: sticky;
+        bottom: 12px;
+        background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.02));
+        padding-top: 8px;
+        justify-content: center;
+        z-index: 50;
+    }
+
+    .windows-restricted-message .message-details {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.simulation-not-available .icon {
+    font-size: 5rem;
+    margin-bottom: 25px;
+}
+
+.simulation-not-available h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.simulation-not-available p {
+    font-size: 1rem;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.simulation-not-available .requirements {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px 30px;
+    margin-bottom: 25px;
+}
+
+.simulation-not-available .requirements h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #60a5fa;
+}
+
+.simulation-not-available .requirements ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.simulation-not-available .requirements li {
+    padding: 8px 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.simulation-not-available .requirements li::before {
+    content: '💻';
+}
+
+.simulation-not-available .btn-back {
+    display: inline-block;
+    background: #0078d4;
+    color: white;
+    padding: 14px 35px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.simulation-not-available .btn-back:hover {
+    background: #106ebe;
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   WINDOWS TASKBAR - MOBILE HIDDEN
+   ===================================================== */
+@media (max-width: 1023px) {
+    .taskbar,
+    .start-menu,
+    .desktop-icons,
+    .window-container {
+        display: none !important;
+    }
+}
+
+/* =====================================================
+   ANIMAȚII
+   ===================================================== */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.windows-restricted-message,
+.simulation-not-available {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* =====================================================
+   DARK MODE SUPPORT
+   ===================================================== */
+body.dark-mode .windows-restricted-message {
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 100%);
+}
+
+body.dark-mode .simulation-not-available {
+    background: linear-gradient(135deg, #000000 0%, #1e1b4b 100%);
+}
+
+/* =====================================================
+   WINDOWS VERSION PAGES - MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+    /* Boot screen - simplificat pe mobil */
+    .boot-screen {
+        padding: 20px;
+    }
+    
+    .boot-logo-classic,
+    .boot-logo-xp,
+    .boot-logo-modern {
+        transform: scale(0.8);
+    }
+    
+    .boot-text-classic,
+    .boot-text-xp,
+    .boot-text-modern {
+        font-size: 1rem;
+    }
+}
+
+/* =====================================================
+   GALLERY PAGE TABLET
+   ===================================================== */
+@media (min-width: 769px) and (max-width: 1023px) {
+    .windows-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .timeline-summary .timeline {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+>>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -448,3 +449,455 @@
     <script src="../windows-common.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Vista - Evoluția Windows</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../windows-common.css">
+    <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="../../css/windows-ui.css">
+</head>
+<body data-windows="vista">
+    <div class="desktop windows-desktop-simulation">
+        <!-- Sidebar Gadgets -->
+        <div class="gadgets-sidebar">
+            <div class="gadget clock-gadget">
+                <div class="gadget-title">Ceas</div>
+                <div class="clock-face">
+                    <span id="gadget-time">12:00</span>
+                </div>
+            </div>
+            <div class="gadget weather-gadget">
+                <div class="gadget-title">Vreme</div>
+                <div class="weather-info">
+                    <span class="weather-icon">☀️</span>
+                    <span class="weather-temp">22°C</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <a href="../index.html" class="desktop-icon">
+                <div class="icon">🏠</div>
+                <span>Înapoi</span>
+            </a>
+            <div class="desktop-icon">
+                <div class="icon icon-mycomputer"></div>
+                <span>Computer</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-documents"></div>
+                <span>Documents</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-ie"></div>
+                <span>Internet Explorer</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-recyclebin"></div>
+                <span>Recycle Bin</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-network"></div>
+                <span>Network</span>
+            </div>
+        </div>
+
+        <!-- Window -->
+        <div class="window">
+            <div class="window-frame">
+                <div class="title-bar">
+                    <div class="title-left">
+                        <span class="window-icon">🪟</span>
+                        <span class="title-text">Windows Vista - Informații</span>
+                    </div>
+                    <div class="title-controls">
+                        <button class="title-btn minimize">─</button>
+                        <button class="title-btn maximize">□</button>
+                        <button class="title-btn close">✕</button>
+                    </div>
+                </div>
+                
+                <div class="toolbar-area">
+                    <div class="nav-buttons">
+                        <button class="nav-btn back">◀</button>
+                        <button class="nav-btn forward">▶</button>
+                    </div>
+                    <div class="breadcrumb">
+                        <span class="crumb">🪟 Windows Vista</span>
+                        <span class="separator">›</span>
+                        <span class="crumb active">Informații Sistem</span>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" placeholder="🔍 Search">
+                    </div>
+                </div>
+
+                <div class="window-content">
+                    <div class="navigation-pane">
+                        <div class="nav-section">
+                            <div class="nav-header">📁 Navigare</div>
+                            <ul class="nav-list">
+                                <li class="nav-item active" data-section="overview">ℹ️ Overview</li>
+                                <li class="nav-item" data-section="aero">✨ Aero Glass</li>
+                                <li class="nav-item" data-section="features">⭐ Caracteristici</li>
+                                <li class="nav-item" data-section="editions">📦 Ediții</li>
+                                <li class="nav-item" data-section="legacy">📜 Moștenire</li>
+                            </ul>
+                        </div>
+                        <div class="nav-section">
+                            <div class="nav-header">🔗 Legături</div>
+                            <ul class="nav-list">
+                                <li><a href="../winxp/index.html" class="nav-link">Windows XP</a></li>
+                                <li><a href="../win7/index.html" class="nav-link">Windows 7</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-pane">
+                        <div class="section active" id="overview">
+                            <div class="vista-header">
+                                <div class="vista-orb">
+                                    <svg viewBox="0 0 100 100">
+                                        <defs>
+                                            <radialGradient id="orbGrad" cx="30%" cy="30%">
+                                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8"/>
+                                                <stop offset="100%" style="stop-color:#1e90ff;stop-opacity:1"/>
+                                            </radialGradient>
+                                        </defs>
+                                        <circle cx="50" cy="50" r="45" fill="url(#orbGrad)"/>
+                                        <polygon points="30,25 75,50 30,75" fill="rgba(255,255,255,0.9)"/>
+                                    </svg>
+                                </div>
+                                <div class="vista-title">
+                                    <h1>Windows Vista™</h1>
+                                    <p class="tagline">Clear, Confident, Connected</p>
+                                    <p class="release">Lansat: 30 Ianuarie 2007</p>
+                                </div>
+                            </div>
+                            
+                            <div class="glass-panel">
+                                <h2>🖥️ Despre Windows Vista</h2>
+                                <p>Windows Vista a fost un sistem de operare ambițios care a introdus <strong>Aero Glass</strong> - o interfață vizuală cu transparențe și efecte 3D spectaculoase.</p>
+                                <p>Deși a fost criticat pentru cerințe hardware ridicate, Vista a pus bazele pentru multe tehnologii folosite în Windows 7, 8 și 10.</p>
+                            </div>
+                            
+                            <div class="highlights">
+                                <div class="highlight-card">
+                                    <div class="highlight-icon">🎨</div>
+                                    <h3>Aero Glass</h3>
+                                    <p>Interfață transparentă cu efecte de sticlă și reflexii.</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon">🔍</div>
+                                    <h3>Instant Search</h3>
+                                    <p>Căutare instantanee în Start Menu și Explorer.</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon">🔒</div>
+                                    <h3>UAC</h3>
+                                    <p>User Account Control pentru securitate îmbunătățită.</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon">📊</div>
+                                    <h3>Sidebar</h3>
+                                    <p>Gadget-uri pe desktop pentru informații rapide.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="aero">
+                            <h2>✨ Aero Glass Experience</h2>
+                            <div class="aero-showcase">
+                                <div class="aero-feature">
+                                    <div class="aero-demo glass-effect">
+                                        <div class="demo-content">Transparență</div>
+                                    </div>
+                                    <h4>Glass Transparency</h4>
+                                    <p>Bare de titlu și margini transparente cu blur de fundal.</p>
+                                </div>
+                                <div class="aero-feature">
+                                    <div class="aero-demo flip3d-demo">
+                                        <div class="flip-window w1">📁</div>
+                                        <div class="flip-window w2">🌐</div>
+                                        <div class="flip-window w3">📝</div>
+                                    </div>
+                                    <h4>Flip 3D (Win+Tab)</h4>
+                                    <p>Comutare între ferestre în perspectivă 3D.</p>
+                                </div>
+                                <div class="aero-feature">
+                                    <div class="aero-demo peek-demo">
+                                        <div class="taskbar-preview">
+                                            <div class="preview-thumb">📄</div>
+                                        </div>
+                                    </div>
+                                    <h4>Live Previews</h4>
+                                    <p>Previzualizări live în taskbar la hover.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="aero-requirements">
+                                <h3>📋 Cerințe pentru Aero</h3>
+                                <ul>
+                                    <li>Placă grafică compatibilă DirectX 9 cu WDDM</li>
+                                    <li>Minim 128 MB memorie video</li>
+                                    <li>Suport Pixel Shader 2.0</li>
+                                    <li>32 bits per pixel</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="features">
+                            <h2>⭐ Caracteristici Principale</h2>
+                            <div class="features-list">
+                                <div class="feature-item">
+                                    <div class="feature-icon">🔍</div>
+                                    <div class="feature-info">
+                                        <h4>Windows Search</h4>
+                                        <p>Indexare și căutare instantanee în tot sistemul de fișiere.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">🛡️</div>
+                                    <div class="feature-info">
+                                        <h4>Windows Defender</h4>
+                                        <p>Anti-spyware integrat pentru protecție în timp real.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">🔒</div>
+                                    <div class="feature-info">
+                                        <h4>BitLocker</h4>
+                                        <p>Criptare completă a discului pentru securitate maximă.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">👪</div>
+                                    <div class="feature-info">
+                                        <h4>Parental Controls</h4>
+                                        <p>Control parental complet integrat în sistem.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">💾</div>
+                                    <div class="feature-info">
+                                        <h4>ReadyBoost</h4>
+                                        <p>Folosește stick USB pentru a accelera sistemul.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">😴</div>
+                                    <div class="feature-info">
+                                        <h4>Sleep Mode</h4>
+                                        <p>Mod sleep îmbunătățit cu trezire rapidă.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="editions">
+                            <h2>📦 Ediții Windows Vista</h2>
+                            <div class="editions-grid">
+                                <div class="edition starter">
+                                    <div class="edition-name">Starter</div>
+                                    <p>Piețe emergente, funcții limitate</p>
+                                </div>
+                                <div class="edition home-basic">
+                                    <div class="edition-name">Home Basic</div>
+                                    <p>Fără Aero, funcții de bază</p>
+                                </div>
+                                <div class="edition home-premium">
+                                    <div class="edition-name">Home Premium</div>
+                                    <p>Aero Glass, Media Center, DVD</p>
+                                </div>
+                                <div class="edition business">
+                                    <div class="edition-name">Business</div>
+                                    <p>Domeniu, backup, fără Media Center</p>
+                                </div>
+                                <div class="edition enterprise">
+                                    <div class="edition-name">Enterprise</div>
+                                    <p>BitLocker, UNIX apps, Volume Licensing</p>
+                                </div>
+                                <div class="edition ultimate">
+                                    <div class="edition-name">Ultimate</div>
+                                    <p>Toate funcțiile, pentru entuziaști</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="legacy">
+                            <h2>📜 Moștenirea Windows Vista</h2>
+                            <div class="legacy-content">
+                                <div class="legacy-good">
+                                    <h3>✅ Contribuții Pozitive</h3>
+                                    <ul>
+                                        <li>A forțat industria hardware să evolueze</li>
+                                        <li>WDDM - model modern pentru drivere grafice</li>
+                                        <li>UAC - concept de securitate adoptat universal</li>
+                                        <li>Baza codului pentru Windows 7</li>
+                                        <li>SuperFetch și ReadyBoost</li>
+                                    </ul>
+                                </div>
+                                <div class="legacy-challenges">
+                                    <h3>⚠️ Provocări</h3>
+                                    <ul>
+                                        <li>Cerințe hardware foarte ridicate la lansare</li>
+                                        <li>Probleme de compatibilitate cu drivere</li>
+                                        <li>UAC considerat prea intruziv</li>
+                                        <li>Performanță slabă pe hardware vechi</li>
+                                        <li>Adopție lentă, multe companii au rămas la XP</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-note">
+                                <p><strong>Suport:</strong> Extins până pe 11 Aprilie 2017 | <strong>Durata:</strong> ~10 ani</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Menu - Vista Aero Style -->
+        <div class="start-menu hidden" id="startMenu">
+            <div class="start-menu-content">
+                <div class="start-menu-left">
+                    <div class="pinned-list">
+                        <div class="menu-item" data-action="internet">
+                            <span class="menu-icon">🌐</span>
+                            <span class="menu-text">Internet Explorer</span>
+                        </div>
+                        <div class="menu-item" data-action="email">
+                            <span class="menu-icon">📧</span>
+                            <span class="menu-text">Windows Mail</span>
+                        </div>
+                        <div class="menu-item" data-action="media">
+                            <span class="menu-icon">🎵</span>
+                            <span class="menu-text">Windows Media Center</span>
+                        </div>
+                        <div class="menu-item" data-action="photo">
+                            <span class="menu-icon">📷</span>
+                            <span class="menu-text">Windows Photo Gallery</span>
+                        </div>
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="recent-programs">
+                        <div class="menu-item" data-action="notepad">
+                            <span class="menu-icon">📝</span>
+                            <span class="menu-text">Notepad</span>
+                        </div>
+                        <div class="menu-item" data-action="paint">
+                            <span class="menu-icon">🎨</span>
+                            <span class="menu-text">Paint</span>
+                        </div>
+                        <div class="menu-item" data-action="calc">
+                            <span class="menu-icon">🔢</span>
+                            <span class="menu-text">Calculator</span>
+                        </div>
+                    </div>
+                    <div class="all-programs-btn" data-action="programs">
+                        <span>All Programs</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                </div>
+                <div class="start-menu-right">
+                    <div class="user-section">
+                        <div class="user-avatar">👤</div>
+                        <span class="user-name">User</span>
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="menu-item" data-action="documents">
+                        <span class="menu-icon">📄</span>
+                        <span class="menu-text">Documents</span>
+                    </div>
+                    <div class="menu-item" data-action="pictures">
+                        <span class="menu-icon">🖼️</span>
+                        <span class="menu-text">Pictures</span>
+                    </div>
+                    <div class="menu-item" data-action="music">
+                        <span class="menu-icon">🎵</span>
+                        <span class="menu-text">Music</span>
+                    </div>
+                    <div class="menu-item" data-action="games">
+                        <span class="menu-icon">🎮</span>
+                        <span class="menu-text">Games</span>
+                    </div>
+                    <div class="menu-item" data-action="computer">
+                        <span class="menu-icon">💻</span>
+                        <span class="menu-text">Computer</span>
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="menu-item" data-action="control">
+                        <span class="menu-icon">⚙️</span>
+                        <span class="menu-text">Control Panel</span>
+                    </div>
+                    <div class="menu-item" data-action="help">
+                        <span class="menu-icon">❓</span>
+                        <span class="menu-text">Help and Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="start-menu-footer">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Start Search" id="startSearch">
+                </div>
+                <div class="power-buttons">
+                    <button class="power-btn" data-action="lock" title="Lock">🔒</button>
+                    <button class="power-btn shutdown" data-action="shutdown" title="Shut Down">⏻</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <button class="start-orb" id="startButton">
+                <svg viewBox="0 0 50 50">
+                    <defs>
+                        <radialGradient id="startGrad" cx="30%" cy="30%">
+                            <stop offset="0%" style="stop-color:#7ec8f0"/>
+                            <stop offset="100%" style="stop-color:#0066cc"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="25" cy="25" r="23" fill="url(#startGrad)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                    <polygon points="18,12 38,25 18,38" fill="rgba(255,255,255,0.9)" transform="scale(0.6) translate(15,17)"/>
+                </svg>
+            </button>
+            <div class="quick-launch">
+                <span class="ql-btn">🌐</span>
+                <span class="ql-btn">📁</span>
+                <span class="ql-btn">📧</span>
+            </div>
+            <div class="taskbar-center">
+                <div class="task-button active">
+                    <span class="task-icon">🪟</span>
+                    <span class="task-text">Windows Vista</span>
+                </div>
+            </div>
+            <div class="system-tray">
+                <div class="tray-icons">
+                    <span>🔊</span>
+                    <span>📶</span>
+                    <span>🔋</span>
+                </div>
+                <div class="clock-area">
+                    <span class="time" id="taskbar-time">12:00</span>
+                    <span class="date">30/01/2007</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/os-detect.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/windows-ui.js"></script>
+    <script src="script.js"></script>
+    <script src="../windows-common.js"></script>
+</body>
+</html>
+>>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768

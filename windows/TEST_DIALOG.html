@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -245,3 +246,252 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dialog Modal - Toate Versiunile Windows</title>
+    <link rel="stylesheet" href="windows-common.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .test-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .test-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 24px;
+        }
+        
+        .test-card button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .test-card button:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+        
+        .test-card button:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-close {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+        }
+        
+        .btn-shutdown {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
+        }
+        
+        .info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid #fff;
+        }
+        
+        .info h2 {
+            margin-top: 0;
+        }
+        
+        .info ul {
+            text-align: left;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body data-windows="win10">
+    <h1>🎨 Test Dialog Modal Windows</h1>
+    
+    <div class="info">
+        <h2>📋 Instrucțiuni de Testare</h2>
+        <ul>
+            <li>✅ Apasă butoanele de mai jos pentru a testa fiecare stil de dialog</li>
+            <li>✅ Verifică animațiile (fade-in + scale bounce)</li>
+            <li>✅ Testează hover effects pe butoane</li>
+            <li>✅ Apasă ESC pentru a închide dialogul</li>
+            <li>✅ Observă stilurile specifice fiecărei versiuni</li>
+        </ul>
+    </div>
+    
+    <div class="test-grid">
+        <!-- Windows 95 -->
+        <div class="test-card">
+            <h3>🖥️ Windows 95</h3>
+            <button class="btn-close" onclick="testDialog('win95', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('win95', 'shutdown')">Test Shutdown</button>
+        </div>
+        
+        <!-- Windows 98 -->
+        <div class="test-card">
+            <h3>🖥️ Windows 98</h3>
+            <button class="btn-close" onclick="testDialog('win98', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('win98', 'shutdown')">Test Shutdown</button>
+        </div>
+        
+        <!-- Windows XP -->
+        <div class="test-card">
+            <h3>🌄 Windows XP</h3>
+            <button class="btn-close" onclick="testDialog('winxp', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('winxp', 'shutdown')">Test Shutdown</button>
+        </div>
+        
+        <!-- Windows Vista -->
+        <div class="test-card">
+            <h3>✨ Windows Vista</h3>
+            <button class="btn-close" onclick="testDialog('vista', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('vista', 'shutdown')">Test Shutdown</button>
+        </div>
+        
+        <!-- Windows 7 -->
+        <div class="test-card">
+            <h3>🎯 Windows 7</h3>
+            <button class="btn-close" onclick="testDialog('win7', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('win7', 'shutdown')">Test Shutdown</button>
+        </div>
+        
+        <!-- Windows 8 -->
+        <div class="test-card">
+            <h3>📱 Windows 8</h3>
+            <button class="btn-close" onclick="testDialog('win8', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('win8', 'shutdown')">Test Shutdown</button>
+        </div>
+        
+        <!-- Windows 10 -->
+        <div class="test-card">
+            <h3>💼 Windows 10</h3>
+            <button class="btn-close" onclick="testDialog('win10', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('win10', 'shutdown')">Test Shutdown</button>
+        </div>
+        
+        <!-- Windows 11 -->
+        <div class="test-card">
+            <h3>🚀 Windows 11</h3>
+            <button class="btn-close" onclick="testDialog('win11', 'close')">Test Close Dialog</button>
+            <button class="btn-shutdown" onclick="testDialog('win11', 'shutdown')">Test Shutdown</button>
+        </div>
+    </div>
+    
+    <script src="windows-common.js"></script>
+    <script>
+        function testDialog(version, type) {
+            // Schimbă versiunea curentă pentru testare
+            document.body.setAttribute('data-windows', version);
+            
+            // Redetectează versiunea în windows-common.js
+            const bodyDataAttr = document.body.getAttribute('data-windows');
+            window.currentVersion = bodyDataAttr;
+            
+            if (type === 'close') {
+                showWindowsDialog({
+                    title: getVersionName(version),
+                    message: 'Dorești să te întorci la galeria Windows?',
+                    icon: '❓',
+                    confirmText: 'Da',
+                    cancelText: 'Nu',
+                    onConfirm: () => {
+                        console.log(`✅ Confirmat pentru ${version}`);
+                        alert(`Redirecționare simulată pentru ${version}`);
+                    },
+                    onCancel: () => {
+                        console.log(`❌ Anulat pentru ${version}`);
+                    }
+                });
+            } else {
+                showWindowsDialog({
+                    title: 'Shut Down',
+                    message: getShutdownMessage(version),
+                    icon: '⏻',
+                    confirmText: 'Închide',
+                    cancelText: 'Anulează',
+                    onConfirm: () => {
+                        console.log(`💤 Shutdown confirmat pentru ${version}`);
+                        alert(`Shutdown simulat pentru ${version}`);
+                    }
+                });
+            }
+        }
+        
+        function getVersionName(version) {
+            const names = {
+                'win95': 'Windows 95',
+                'win98': 'Windows 98',
+                'winxp': 'Windows XP',
+                'vista': 'Windows Vista',
+                'win7': 'Windows 7',
+                'win8': 'Windows 8',
+                'win10': 'Windows 10',
+                'win11': 'Windows 11'
+            };
+            return names[version] || 'Windows';
+        }
+        
+        function getShutdownMessage(version) {
+            const messages = {
+                'win95': 'Ești sigur că dorești să închizi computerul?\n\n(Aceasta este o simulare)',
+                'win98': 'Ce dorești să facă computerul?\n\n• Închidere (Shut down)\n• Repornire (Restart)',
+                'winxp': 'Ce dorești să faci?\n\n• Stand By (Așteptare)\n• Turn Off (Închidere)\n• Restart (Repornire)',
+                'vista': 'Ce dorești să faci?\n\n• Sleep (Repaus)\n• Shut Down (Închidere)\n• Restart (Repornire)',
+                'win7': 'Ești sigur că dorești să închizi computerul?',
+                'win8': 'Dorești să închizi sau să te deconectezi?',
+                'win10': 'Ce dorești să faci?\n\n• Sleep (Repaus)\n• Shut down (Închidere)\n• Restart (Repornire)',
+                'win11': 'Ce dorești să faci?\n\n• Sleep (Repaus)\n• Shut down (Închidere)\n• Restart (Repornire)'
+            };
+            return messages[version] || 'Shut down computer?';
+        }
+        
+        console.log('%c🎨 Dialog Modal Test Page Loaded! ', 'background: #667eea; color: #fff; padding: 10px; font-size: 16px; font-weight: bold;');
+        console.log('%cTestează toate stilurile de dialog pentru fiecare versiune Windows!', 'color: #667eea; font-size: 14px;');
+    </script>
+</body>
+</html>
+>>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768

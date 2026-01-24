@@ -7,6 +7,9 @@
 
 (function () {
     'use strict';
+    // Prevent double initialization when this file is included more than once
+    if (window.__sistemOS_windowsUI_initialized) { console.warn('[windows-ui] already initialized'); return; }
+    window.__sistemOS_windowsUI_initialized = true;
 
     // ---------------------------------------------------------------------
     // VERSION CONFIG (from windows-common)
@@ -130,7 +133,10 @@
             clockElement.textContent = `${hours}:${minutes}`;
         }
         updateClock();
-        setInterval(updateClock, 60000);
+    // Ensure we don't create duplicate intervals across multiple initializations
+    window.__sistemOS_intervals = window.__sistemOS_intervals || {};
+    if (window.__sistemOS_intervals.taskbarClock) clearInterval(window.__sistemOS_intervals.taskbarClock);
+    window.__sistemOS_intervals.taskbarClock = setInterval(updateClock, 60000);
     }
 
     // ---------------------------------------------------------------------
@@ -215,8 +221,10 @@
     }
 
     function initSounds() {
-        const startButton = document.querySelector('.start-button, #startButton, .start-btn'); if (startButton) startButton.addEventListener('click', () => playWindowsSound('start'));
-        const shutdownItems = document.querySelectorAll('[data-action="shutdown"], .shutdown-btn, .menu-item:last-child'); shutdownItems.forEach(item => { if (item.textContent.toLowerCase().includes('shut') || item.dataset.action === 'shutdown') item.addEventListener('click', () => playWindowsSound('shutdown')); });
+        const startButton = document.querySelector('.start-button, #startButton, .start-btn');
+        if (startButton && !startButton.dataset.sistemSoundHandler) { startButton.addEventListener('click', () => playWindowsSound('start')); startButton.dataset.sistemSoundHandler = '1'; }
+        const shutdownItems = document.querySelectorAll('[data-action="shutdown"], .shutdown-btn, .menu-item:last-child');
+        shutdownItems.forEach(item => { if ((item.textContent || '').toLowerCase().includes('shut') || item.dataset.action === 'shutdown') { if (!item.dataset.sistemShutdownHandler) { item.addEventListener('click', () => playWindowsSound('shutdown')); item.dataset.sistemShutdownHandler = '1'; } } });
     }
 
     // ---------------------------------------------------------------------

@@ -9,6 +9,10 @@
 (function () {
     'use strict';
 
+    // Prevent double initialization when legacy file is accidentally loaded multiple times
+    if (window.__sistemOS_windowsCommon_initialized) { console.warn('[windows-common] already initialized'); return; }
+    window.__sistemOS_windowsCommon_initialized = true;
+
     // If the unified file already loaded exports, reuse them.
     if (window.WindowsCommon) return;
 

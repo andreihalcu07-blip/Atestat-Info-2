@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             sections.forEach(s => s.classList.remove('active'));
             
             item.classList.add('active');
-            document.getElementById(sectionId).classList.add('active');
+            const secEl = document.getElementById(sectionId);
+            if (secEl) secEl.classList.add('active');
         });
     });
 
@@ -29,7 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateTime();
-    setInterval(updateTime, 1000);
+    window.__sistemOS_intervals = window.__sistemOS_intervals || {};
+    if (window.__sistemOS_intervals.win98_clock) clearInterval(window.__sistemOS_intervals.win98_clock);
+    window.__sistemOS_intervals.win98_clock = setInterval(updateTime, 1000);
 
     // Window dragging
     const titleBar = document.querySelector('.title-bar');
@@ -102,11 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const startMenu = document.getElementById('startMenu');
     
     if (startButton && startMenu) {
-        startButton.addEventListener('click', (e) => {
+        if (!startButton.dataset.sistemHandler) {
+            startButton.addEventListener('click', (e) => {
             e.stopPropagation();
             startMenu.classList.toggle('hidden');
             startButton.classList.toggle('active');
-        });
+            });
+            startButton.dataset.sistemHandler = '1';
+        }
         
         document.addEventListener('click', (e) => {
             if (!startMenu.contains(e.target) && e.target !== startButton) {

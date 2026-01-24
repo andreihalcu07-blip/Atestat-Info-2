@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const startButton = document.getElementById('startButton');
     const winxMenu = document.getElementById('winxMenu');
 
-    // Start in desktop mode
-    desktopMode.classList.remove('hidden');
-    startScreen.classList.remove('active');
+    // Start in desktop mode (guard elements)
+    if (desktopMode) desktopMode.classList.remove('hidden');
+    if (startScreen) startScreen.classList.remove('active');
 
     // Toggle between Start Screen and Desktop
     function toggleStartScreen() {
@@ -27,25 +27,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Left click on Start button - toggle Start Screen
     if (startButton) {
-        startButton.addEventListener('click', (e) => {
-            if (winxMenu.classList.contains('hidden')) {
-                toggleStartScreen();
-            } else {
-                winxMenu.classList.add('hidden');
-            }
-        });
+        // Prevent double-binding of start button handlers
+        if (!startButton.dataset.sistemHandler) {
+            startButton.addEventListener('click', (e) => {
+                if (winxMenu.classList.contains('hidden')) {
+                    toggleStartScreen();
+                } else {
+                    winxMenu.classList.add('hidden');
+                }
+            });
 
-        // Right click on Start button - show Win+X menu
-        startButton.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            winxMenu.classList.toggle('hidden');
-            startButton.classList.toggle('active', !winxMenu.classList.contains('hidden'));
-            // Make sure we're in desktop mode
-            if (!winxMenu.classList.contains('hidden')) {
-                startScreen.classList.remove('active');
-                desktopMode.classList.remove('hidden');
-            }
-        });
+            // Right click on Start button - show Win+X menu
+            startButton.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                winxMenu.classList.toggle('hidden');
+                startButton.classList.toggle('active', !winxMenu.classList.contains('hidden'));
+                // Make sure we're in desktop mode
+                if (!winxMenu.classList.contains('hidden')) {
+                    if (startScreen) startScreen.classList.remove('active');
+                    if (desktopMode) desktopMode.classList.remove('hidden');
+                }
+            });
+            startButton.dataset.sistemHandler = '1';
+        }
     }
 
     // Win+X menu items
@@ -142,7 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateClock();
-    setInterval(updateClock, 1000);
+    window.__sistemOS_intervals = window.__sistemOS_intervals || {};
+    if (window.__sistemOS_intervals.win8_clock) clearInterval(window.__sistemOS_intervals.win8_clock);
+    window.__sistemOS_intervals.win8_clock = setInterval(updateClock, 1000);
 
     // Window controls
     const closeBtn = document.querySelector('.win-btn.close');
@@ -236,5 +242,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    liveInterval = setInterval(animateLiveTiles, 3000);
+    // ensure only one live tiles interval exists
+    window.__sistemOS_intervals = window.__sistemOS_intervals || {};
+    if (window.__sistemOS_intervals.win8_liveInterval) clearInterval(window.__sistemOS_intervals.win8_liveInterval);
+    window.__sistemOS_intervals.win8_liveInterval = setInterval(animateLiveTiles, 3000);
+    liveInterval = window.__sistemOS_intervals.win8_liveInterval;
 });

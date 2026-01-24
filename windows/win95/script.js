@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add active class to clicked tab and corresponding content
             tab.classList.add('active');
             const tabId = tab.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
+            const tabEl = document.getElementById(tabId);
+            if (tabEl) tabEl.classList.add('active');
         });
     });
 
@@ -30,7 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateTime();
-    setInterval(updateTime, 1000);
+    window.__sistemOS_intervals = window.__sistemOS_intervals || {};
+    if (window.__sistemOS_intervals.win95_clock) clearInterval(window.__sistemOS_intervals.win95_clock);
+    window.__sistemOS_intervals.win95_clock = setInterval(updateTime, 1000);
 
     // Window dragging functionality
     const titleBar = document.querySelector('.title-bar');
@@ -109,12 +112,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const startMenu = document.getElementById('startMenu');
     
     if (startButton && startMenu) {
-        // Toggle Start Menu
-        startButton.addEventListener('click', (e) => {
+        // Toggle Start Menu (avoid double-bind)
+        if (!startButton.dataset.sistemHandler) {
+            startButton.addEventListener('click', (e) => {
             e.stopPropagation();
             startMenu.classList.toggle('hidden');
             startButton.classList.toggle('active');
-        });
+            });
+            startButton.dataset.sistemHandler = '1';
+        }
         
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {

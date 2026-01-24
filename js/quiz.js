@@ -310,7 +310,10 @@ function startTimer() {
     timeLeft = 15;
     updateTimerDisplay();
     clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
+    // prevent duplicate quiz timers
+    window.__sistemOS_intervals = window.__sistemOS_intervals || {};
+    if (window.__sistemOS_intervals.quiz_timer) clearInterval(window.__sistemOS_intervals.quiz_timer);
+    window.__sistemOS_intervals.quiz_timer = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
         if (timeLeft <= 5) {

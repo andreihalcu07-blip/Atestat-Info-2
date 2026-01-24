@@ -1,129 +1,21 @@
-
-/**
- * Windows Common JS - Funcționalități comune pentru toate versiunile Windows
- * Proiect Atestat - Evoluția Sistemelor de Operare
+/*
+ * windows-common.js shim
+ * NOTE: The original common logic was merged into `js/windows-ui.js`.
+ * This small shim remains to avoid breaking pages that still include
+ * `windows/windows-common.js`. It forwards API stubs to the unified
+ * implementation when available.
  */
 
-(function() {
+(function () {
     'use strict';
 
-    // =========================================================================
-    // CONFIGURARE PER VERSIUNE WINDOWS
-    // =========================================================================
-    
-    const windowsConfig = {
-        win95: {
-            name: 'Windows 95',
-            bootText: 'Starting Windows 95...',
-            bootDuration: 2500,
-            cursorClass: 'cursor-classic',
-            clockStyle: 'classic',
-            soundType: 'classic',
-            didYouKnowFacts: [
-                'Windows 95 a fost primul sistem de operare Microsoft cu butonul Start și taskbar. A fost lansat pe 24 august 1995 și s-a vândut în 7 milioane de copii în primele 5 săptămâni!',
-                'Pentru lansarea Windows 95, Microsoft a licențiat cântecul "Start Me Up" de la Rolling Stones pentru 14 milioane de dolari!',
-                'Windows 95 a fost primul sistem de operare cu nume de cod "Chicago" și a necesitat minim 4 MB de RAM pentru a funcționa.',
-                'Peste 1 milion de copii ale Windows 95 au fost vândute în primele 4 zile de la lansare!'
-            ]
-        },
-        win98: {
-            name: 'Windows 98',
-            bootText: 'Starting Windows 98...',
-            bootDuration: 2500,
-            cursorClass: 'cursor-classic',
-            clockStyle: 'classic',
-            soundType: 'classic',
-            didYouKnowFacts: [
-                'Windows 98 a fost primul Windows cu suport nativ pentru USB și DVD! De asemenea, a introdus Windows Update pentru actualizări automate prin internet.',
-                'Internet Explorer 4.0 a fost integrat direct în Windows 98, marcând începutul erei "browser wars".',
-                'Windows 98 SE (Second Edition) a adăugat suportul pentru Internet Connection Sharing, permițând mai multor PC-uri să împartă o conexiune la internet.',
-                'Celebra "demonstrație eșuată" a lui Bill Gates la COMDEX 1998, când Windows 98 a avut blue screen, a devenit un moment iconic în istorie!'
-            ]
-        },
-        winxp: {
-            name: 'Windows XP',
-            bootText: 'Starting Windows XP...',
-            bootDuration: 3000,
-            cursorClass: 'cursor-xp',
-            clockStyle: 'xp',
-            soundType: 'xp',
-            didYouKnowFacts: [
-                'Windows XP a fost cel mai longeviv Windows, fiind suportat oficial 13 ani (2001-2014). Imaginea de fundal "Bliss" este cea mai vizualizată fotografie din istorie!',
-                'XP vine de la "eXPerience" și a fost primul sistem Windows construit pe kernel-ul NT, combinând stabilitatea Windows 2000 cu interfața prietenoasă.',
-                'Sunetul de pornire al Windows XP a fost compus de Brian Eno și durează exact 6 secunde.',
-                'La sfârșitul suportului în 2014, Windows XP încă rula pe aproximativ 30% din computerele din lume!'
-            ]
-        },
-        vista: {
-            name: 'Windows Vista',
-            bootText: 'Starting Windows Vista...',
-            bootDuration: 3000,
-            cursorClass: 'cursor-aero',
-            clockStyle: 'aero',
-            soundType: 'modern',
-            didYouKnowFacts: [
-                'Windows Vista a introdus interfața Aero Glass cu efecte de transparență și a fost primul Windows cu User Account Control (UAC) pentru securitate îmbunătățită.',
-                'Vista necesita minimum 1 GB RAM, ceea ce era mult pentru 2007. Multe PC-uri au fost vândute ca "Vista Capable" dar nu puteau rula Aero Glass.',
-                'Windows Vista a avut peste 50 de ediții diferite în întreaga lume, incluzând versiuni pentru diverse piețe internaționale!',
-                'Interfața Aero Glass consuma atât de multe resurse încât mulți utilizatori au dezactivat-o pentru performanță mai bună.'
-            ]
-        },
-        win7: {
-            name: 'Windows 7',
-            bootText: 'Starting Windows 7...',
-            bootDuration: 2500,
-            cursorClass: 'cursor-aero',
-            clockStyle: 'aero',
-            soundType: 'modern',
-            didYouKnowFacts: [
-                'Windows 7 este considerat de mulți cel mai bun Windows ever. A introdus Snap pentru aranjarea ferestrelor și a vândut 100 milioane de licențe în primele 6 luni!',
-                'Tastatura Windows + Săgeată pentru snap a fost introdusă în Windows 7 și a devenit una dintre cele mai folosite funcții!',
-                'Windows 7 a fost atât de popular încât mulți utilizatori au refuzat să facă upgrade la Windows 8, ducând la suport extins până în 2020.',
-                'Biblioteca (Libraries) pentru Documents, Music, Pictures a fost o inovație majoră care organiza fișierele din locații diferite.'
-            ]
-        },
-        win8: {
-            name: 'Windows 8',
-            bootText: 'Starting Windows 8...',
-            bootDuration: 2000,
-            cursorClass: 'cursor-modern',
-            clockStyle: 'modern',
-            soundType: 'modern',
-            didYouKnowFacts: [
-                'Windows 8 a introdus interfața Metro (Modern UI) optimizată pentru touch și a eliminat butonul Start clasic, ceea ce a provocat controverse majore.',
-                'Windows 8 se pornește semnificativ mai rapid decât Windows 7 datorită funcției "Hybrid Boot" care salvează kernel-ul în hibernare.',
-                'Microsoft a oferit upgrade de la Windows 8 la 8.1 gratuit, recunoscând feedback-ul negativ al utilizatorilor despre lipsa meniului Start.',
-                'Windows 8 a fost primul Windows care funcționa pe arhitectura ARM, deschizând drumul pentru tablete Windows!'
-            ]
-        },
-        win10: {
-            name: 'Windows 10',
-            bootText: 'Starting Windows 10...',
-            bootDuration: 2000,
-            cursorClass: 'cursor-modern',
-            clockStyle: 'modern',
-            soundType: 'modern',
-            didYouKnowFacts: [
-                'Windows 10 a fost oferit gratuit primul an! Este primul Windows „as a Service" cu actualizări continue. Cortana, asistentul vocal, a debutat aici.',
-                'Microsoft a sărit de la Windows 8.1 direct la Windows 10, nu a existat niciodată "Windows 9"! Motivul oficial: probleme de compatibilitate cu cod care verifica "Windows 9x".',
-                'Windows 10 primește actualizări majore bi-anuale numite după anul și luna (ex: 1909, 2004), fiecare cu nume de cod intern.',
-                'Peste 1 miliard de dispozitive active rulează Windows 10, făcându-l cea mai răspândită versiune de Windows vreodată!'
-            ]
-        },
-        win11: {
-            name: 'Windows 11',
-            bootText: 'Starting Windows 11...',
-            bootDuration: 2000,
-            cursorClass: 'cursor-modern',
-            clockStyle: 'modern',
-            soundType: 'modern',
-            didYouKnowFacts: [
-                'Windows 11 a adus un design complet nou cu colțuri rotunjite și taskbar centrat. Este primul Windows care suportă aplicații Android nativ prin Amazon Appstore!',
-                'Windows 11 necesită TPM 2.0 (Trusted Platform Module) pentru securitate îmbunătățită, ceea ce a făcut multe PC-uri vechi incompatibile.',
-                'Snap Layouts și Snap Groups permit organizarea avansată a ferestrelor în configurații predefinite, îmbunătățind productivitatea.',
-                'Sunetul de pornire a revenit în Windows 11 după ce a lipsit din Windows 8! Toate sunetele de sistem au fost reproiectate să fie mai calme și relaxante.'
-            ]
-        }
+    // If the unified file already loaded exports, reuse them.
+    if (window.WindowsCommon) return;
+
+    window.WindowsCommon = {
+        version: null,
+        config: null,
+        playSound: function () { console.warn('playSound: unified js/windows-ui.js should provide this.'); }
     };
 
     // =========================================================================

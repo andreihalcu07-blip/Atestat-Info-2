@@ -329,13 +329,24 @@ let fastAnswer = false;
 function toggleAchievements() {
     const panel = document.getElementById('achievementsPanel');
     if (!panel) return;
-    const isShown = panel.classList.toggle('show');
-    panel.setAttribute('aria-hidden', String(!isShown));
-    renderAchievements();
-    // focus management: focus close button when opened
-    if (isShown) {
-        const closeBtn = panel.querySelector('.achievements-close');
-        if (closeBtn) closeBtn.focus();
+    const chip = document.getElementById('achievementChip');
+    const closeBtn = panel.querySelector('.achievements-close');
+
+    // Explicit open/close to control focus order: move focus away BEFORE hiding
+    const isCurrentlyShown = panel.classList.contains('show');
+    if (isCurrentlyShown) {
+        // panel is open -> close it. Move focus to a safe element first.
+        try {
+            if (chip) chip.focus(); else (document.activeElement || document.body).blur();
+        } catch (e) { /* ignore focus errors */ }
+        panel.classList.remove('show');
+        panel.setAttribute('aria-hidden', 'true');
+    } else {
+        // panel is closed -> open it and focus close button inside
+        panel.classList.add('show');
+        panel.setAttribute('aria-hidden', 'false');
+        renderAchievements();
+        try { if (closeBtn) closeBtn.focus(); } catch (e) { /* ignore */ }
     }
 }
 
@@ -358,12 +369,21 @@ function renderAchievements() {
 function toggleLeaderboard() {
     const panel = document.getElementById('leaderboardPanel');
     if (!panel) return;
-    const isShown = panel.classList.toggle('show');
-    panel.setAttribute('aria-hidden', String(!isShown));
-    renderLeaderboard();
-    if (isShown) {
-        const closeBtn = panel.querySelector('.achievements-close');
-        if (closeBtn) closeBtn.focus();
+    const chip = document.getElementById('leaderboardChip');
+    const closeBtn = panel.querySelector('.achievements-close');
+
+    const isCurrentlyShown = panel.classList.contains('show');
+    if (isCurrentlyShown) {
+        try {
+            if (chip) chip.focus(); else (document.activeElement || document.body).blur();
+        } catch (e) {}
+        panel.classList.remove('show');
+        panel.setAttribute('aria-hidden', 'true');
+    } else {
+        panel.classList.add('show');
+        panel.setAttribute('aria-hidden', 'false');
+        renderLeaderboard();
+        try { if (closeBtn) closeBtn.focus(); } catch (e) {}
     }
 }
 

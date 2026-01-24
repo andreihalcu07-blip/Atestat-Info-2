@@ -1027,25 +1027,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Funcție pentru re-renderizarea achievment-urilor
-function renderAchievements() {
-    const list = document.getElementById('achievementsList');
-    if (!list) return;
-    
-    const isEN = getCurrentLang() === 'en';
-    const allAchievements = getAchievements();
-    
-    list.innerHTML = allAchievements.map(a => `
-        <div class="achievement-item ${a.check() ? 'unlocked' : 'locked'}">
-            <span class="achievement-icon">${a.icon}</span>
-            <div class="achievement-info">
-                <div class="achievement-name">${a.name}</div>
-                <div class="achievement-desc">${a.desc}</div>
-            </div>
-            ${a.check() ? '<span class="achievement-check">✓</span>' : '<span class="achievement-lock">🔒</span>'}
-        </div>
-    `).join('');
-}
 
 // Render the small contextual achievement chip (shows X / Y) under the page title
 function renderAchievementChip() {

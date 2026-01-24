@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Mesaje</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect x='10' y='15' width='80' height='55' fill='none' stroke='%232563eb' stroke-width='3' rx='5'/>
+        <rect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='3'/>
+        <rect x='20' y='25' width='20' height='15' fill='%232563eb' opacity='0.7' rx='2'/>
+        <rect x='45' y='25' width='20' height='8' fill='%23f59e0b' opacity='0.7' rx='2'/>
+        <rect x='20' y='45' width='45' height='12' fill='%2310b981' opacity='0.7' rx='2'/>
+        <path d='M 35 70 L 30 80 L 70 80 L 65 70' fill='none' stroke='%232563eb' stroke-width='2.5'/>
+        <circle cx='50' cy='80' r='3' fill='%232563eb'/>
+    </svg>"
+    >
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2563eb;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .messages-container {
+            display: grid;
+            gap: 20px;
+        }
+
+        .message-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #2563eb;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .message-meta {
+            flex: 1;
+        }
+
+        .message-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .message-email {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .message-date {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .delete-btn {
+            padding: 8px 15px;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .delete-btn:hover {
+            background-color: #dc2626;
+        }
+
+        .message-content {
+            background-color: #f9fafb;
+            padding: 15px;
+            border-radius: 5px;
+            line-height: 1.6;
+            color: #374151;
+            word-wrap: break-word;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            margin-top: 10px;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #0f172a;
+            color: #e5e7eb;
+        }
+
+        body.dark-mode h1 {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .back-link {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .message-card {
+            background: #1e293b;
+            border-left-color: #3b82f6;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .message-name {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .message-email,
+        body.dark-mode .message-date {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .message-content {
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .stat-card {
+            background: #1e293b;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .stat-number {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .stat-label {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .empty-state {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+    </style>
+</head>
+<body>
+    <button class="btn btn--utility btn--icon dark-mode-toggle" aria-label="Toggle dark mode" id="darkModeToggle">🌙</button>
+    
+    <div class="container">
+        <a href="/" class="back-link">← Înapoi la site</a>
+        
+        <h1>📧 Mesaje din Formular</h1>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="messageCount">0</div>
+                <div class="stat-label">Mesaje Total</div>
+            </div>
+        </div>
+
+        <div class="messages-container" id="messagesContainer">
+            <div class="empty-state">
+                <div class="empty-state-icon">📭</div>
+                <p>Se încarcă mesajele...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Încarcă mesajele din server
+        async function loadMessages() {
+            try {
+                const response = await fetch('/api/messages');
+                const messages = await response.json();
+
+                const container = document.getElementById('messagesContainer');
+                const countElement = document.getElementById('messageCount');
+
+                countElement.textContent = messages.length;
+
+                if (messages.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📭</div>
+                            <p>Nici un mesaj nu a fost primit încă.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = messages.map(msg => `
+                    <div class="message-card">
+                        <div class="message-header">
+                            <div class="message-meta">
+                                <div class="message-name">${escapeHtml(msg.name)}</div>
+                                <div class="message-email">📧 ${escapeHtml(msg.email)}</div>
+                                <div class="message-date">📅 ${formatDate(msg.created_at)}</div>
+                            </div>
+                            <button class="delete-btn" onclick="deleteMessage(${msg.id})">Șterge</button>
+                        </div>
+                        <div class="message-content">
+                            ${escapeHtml(msg.message).replace(/\n/g, '<br>')}
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Eroare la încărcare:', error);
+                document.getElementById('messagesContainer').innerHTML = `
+                    <div class="empty-state">
+                        <p>❌ Eroare la încărcare mesajele. Asigură-te că serverul rulează.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Șterge un mesaj
+        async function deleteMessage(id) {
+            if (confirm('Ești sigur că vrei să ștergi acest mesaj?')) {
+                try {
+                    const response = await fetch(`/api/messages/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        loadMessages();
+                    } else {
+                        alert('Eroare la ștergere');
+                    }
+                } catch (error) {
+                    console.error('Eroare:', error);
+                }
+            }
+        }
+
+        // Formatare dată
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('ro-RO');
+        }
+
+        // Escape HTML pentru siguranță
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Încarcă mesajele la deschidere
+        loadMessages();
+
+        // Reîncarcă mesajele la fiecare 5 secunde
+        setInterval(loadMessages, 5000);
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (darkModeToggle) {
+            // Verifică preferința salvată
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (savedDarkMode) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.textContent = '☀️';
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                localStorage.setItem('darkMode', isDarkMode);
+                darkModeToggle.textContent = isDarkMode ? '☀️' : '🌙';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 8 - Evoluția Windows</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../windows-common.css">
+    <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="../../css/windows-ui.css">
+</head>
+<body data-windows="win8">
+    <div class="metro-interface windows-desktop-simulation">
+        <!-- Start Screen -->
+        <div class="start-screen" id="startScreen">
+            <div class="start-header">
+                <h1>Start</h1>
+                <div class="user-area">
+                    <span class="user-name">User</span>
+                    <div class="user-avatar">👤</div>
+                </div>
+            </div>
+            
+            <div class="tiles-container">
+                <div class="tiles-group">
+                    <div class="group-title">Windows 8 Info</div>
+                    <div class="tiles-grid">
+                        <div class="tile large accent-blue" data-section="overview">
+                            <div class="tile-icon">🪟</div>
+                            <div class="tile-title">Windows 8</div>
+                            <div class="tile-subtitle">Overview</div>
+                        </div>
+                        <div class="tile wide accent-green" data-section="metro">
+                            <div class="tile-icon">◼️</div>
+                            <div class="tile-title">Metro UI</div>
+                        </div>
+                        <div class="tile medium accent-purple" data-section="features">
+                            <div class="tile-icon">⭐</div>
+                            <div class="tile-title">Features</div>
+                        </div>
+                        <div class="tile medium accent-orange" data-section="changes">
+                            <div class="tile-icon">🔄</div>
+                            <div class="tile-title">Changes</div>
+                        </div>
+                        <div class="tile wide accent-dark" data-section="editions">
+                            <div class="tile-icon">📦</div>
+                            <div class="tile-title">Editions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tiles-group">
+                    <div class="group-title">Navigate</div>
+                    <div class="tiles-grid">
+                        <a href="../index.html" class="tile medium accent-teal">
+                            <div class="tile-icon">🏠</div>
+                            <div class="tile-title">Gallery</div>
+                        </a>
+                        <a href="../win7/index.html" class="tile medium accent-gray">
+                            <div class="tile-icon">7️⃣</div>
+                            <div class="tile-title">Windows 7</div>
+                        </a>
+                        <a href="../win10/index.html" class="tile medium accent-blue-light">
+                            <div class="tile-icon">🔟</div>
+                            <div class="tile-title">Windows 10</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Mode -->
+        <div class="desktop-mode" id="desktopMode">
+            <div class="window">
+                <div class="window-header">
+                    <span class="window-title">📁 Windows 8 - System Info</span>
+                    <div class="window-controls">
+                        <button class="win-btn minimize">─</button>
+                        <button class="win-btn maximize">□</button>
+                        <button class="win-btn close">✕</button>
+                    </div>
+                </div>
+                
+                <div class="window-ribbon">
+                    <div class="ribbon-tabs">
+                        <button class="ribbon-tab active">Home</button>
+                        <button class="ribbon-tab">Share</button>
+                        <button class="ribbon-tab">View</button>
+                    </div>
+                </div>
+
+                <div class="window-body">
+                    <div class="section active" id="overview">
+                        <div class="hero-banner">
+                            <div class="win8-logo">
+                                <svg viewBox="0 0 100 100">
+                                    <rect x="5" y="5" width="42" height="42" fill="#00a4ef"/>
+                                    <rect x="53" y="5" width="42" height="42" fill="#7fba00"/>
+                                    <rect x="5" y="53" width="42" height="42" fill="#f25022"/>
+                                    <rect x="53" y="53" width="42" height="42" fill="#ffb900"/>
+                                </svg>
+                            </div>
+                            <div class="hero-text">
+                                <h1>Windows 8</h1>
+                                <p class="tagline">A new era of Windows</p>
+                                <p class="release-date">📅 26 Octombrie 2012</p>
+                            </div>
+                        </div>
+
+                        <div class="info-block">
+                            <h2>Despre Windows 8</h2>
+                            <p>Windows 8 a reprezentat cea mai mare schimbare vizuală în istoria Windows. A introdus interfața <strong>Metro</strong> (Modern UI) cu tile-uri colorate și a fost optimizat pentru dispozitive touch.</p>
+                            <p>Eliminarea butonului Start a fost controversată, dar Windows 8 a pus bazele pentru convergența PC-tabletă.</p>
+                        </div>
+
+                        <div class="stats-row">
+                            <div class="stat-tile">
+                                <div class="stat-value">2012</div>
+                                <div class="stat-label">Anul lansării</div>
+                            </div>
+                            <div class="stat-tile">
+                                <div class="stat-value">Touch</div>
+                                <div class="stat-label">First Priority</div>
+                            </div>
+                            <div class="stat-tile">
+                                <div class="stat-value">ARM</div>
+                                <div class="stat-label">Suport Nou</div>
+                            </div>
+                            <div class="stat-tile">
+                                <div class="stat-value">Store</div>
+                                <div class="stat-label">Windows Store</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="metro">
+                        <h2>◼️ Metro / Modern UI</h2>
+                        <div class="metro-info">
+                            <div class="metro-card">
+                                <h3>🎨 Design Language</h3>
+                                <p>Inspirat de semnalistică și tipografie. Culori vibrante, forme simple, fără decorații 3D.</p>
+                                <ul>
+                                    <li>Flat design - fără umbre sau gradienți</li>
+                                    <li>Typography-based - text clar, font Segoe UI</li>
+                                    <li>Motion - animații fluide</li>
+                                    <li>Content over chrome - conținut în prim-plan</li>
+                                </ul>
+                            </div>
+                            <div class="metro-card">
+                                <h3>◼️ Live Tiles</h3>
+                                <p>Tile-urile afișează informații în timp real fără a deschide aplicația.</p>
+                                <div class="tile-demo">
+                                    <div class="demo-tile">
+                                        <span>📧</span>
+                                        <span class="badge">5</span>
+                                    </div>
+                                    <div class="demo-tile">
+                                        <span>📰</span>
+                                        <span class="badge">New</span>
+                                    </div>
+                                    <div class="demo-tile">
+                                        <span>🌤️</span>
+                                        <span class="badge">22°</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gesture-section">
+                            <h3>👆 Gesturi Touch</h3>
+                            <div class="gestures-grid">
+                                <div class="gesture">
+                                    <div class="gesture-icon">👈</div>
+                                    <div class="gesture-name">Swipe from right</div>
+                                    <div class="gesture-action">Charms bar</div>
+                                </div>
+                                <div class="gesture">
+                                    <div class="gesture-icon">👉</div>
+                                    <div class="gesture-name">Swipe from left</div>
+                                    <div class="gesture-action">Switch apps</div>
+                                </div>
+                                <div class="gesture">
+                                    <div class="gesture-icon">👆</div>
+                                    <div class="gesture-name">Swipe from bottom</div>
+                                    <div class="gesture-action">App commands</div>
+                                </div>
+                                <div class="gesture">
+                                    <div class="gesture-icon">👇</div>
+                                    <div class="gesture-name">Swipe from top</div>
+                                    <div class="gesture-action">Close app</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="features">
+                        <h2>⭐ Caracteristici Noi</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">🏪</span>
+                                    <h4>Windows Store</h4>
+                                </div>
+                                <p>Magazin de aplicații integrat pentru aplicații Modern UI.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">☁️</span>
+                                    <h4>SkyDrive Integration</h4>
+                                </div>
+                                <p>Sincronizare cloud nativă pentru fișiere și setări.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">🖥️</span>
+                                    <h4>Multiple Monitors</h4>
+                                </div>
+                                <p>Suport îmbunătățit pentru monitoare multiple cu taskbar extins.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">📁</span>
+                                    <h4>File History</h4>
+                                </div>
+                                <p>Backup automat continuu pentru fișiere personale.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">🔄</span>
+                                    <h4>Reset & Refresh</h4>
+                                </div>
+                                <p>Reinstalare simplă păstrând sau ștergând datele.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">🔒</span>
+                                    <h4>Secure Boot</h4>
+                                </div>
+                                <p>Protecție împotriva rootkit-urilor la boot.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">📊</span>
+                                    <h4>Task Manager</h4>
+                                </div>
+                                <p>Task Manager complet redesenat cu mai multe detalii.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <span class="feature-icon">🖼️</span>
+                                    <h4>Picture Password</h4>
+                                </div>
+                                <p>Autentificare cu gesturi pe o imagine.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="changes">
+                        <h2>🔄 Schimbări Controversate</h2>
+                        <div class="changes-list">
+                            <div class="change-item removed">
+                                <div class="change-icon">❌</div>
+                                <div class="change-content">
+                                    <h4>Butonul Start Eliminat</h4>
+                                    <p>Cea mai controversată decizie. Restaurat în Windows 8.1.</p>
+                                </div>
+                            </div>
+                            <div class="change-item removed">
+                                <div class="change-icon">❌</div>
+                                <div class="change-content">
+                                    <h4>Aero Glass Eliminat</h4>
+                                    <p>Înlocuit cu design flat. Multe efecte vizuale au dispărut.</p>
+                                </div>
+                            </div>
+                            <div class="change-item changed">
+                                <div class="change-icon">⚠️</div>
+                                <div class="change-content">
+                                    <h4>Două Interfețe</h4>
+                                    <p>Modern UI și Desktop clasic - experiență fragmentată.</p>
+                                </div>
+                            </div>
+                            <div class="change-item changed">
+                                <div class="change-icon">⚠️</div>
+                                <div class="change-content">
+                                    <h4>Learning Curve</h4>
+                                    <p>Gesturi și shortcuts noi greu de învățat fără touch.</p>
+                                </div>
+                            </div>
+                            <div class="change-item added">
+                                <div class="change-icon">✅</div>
+                                <div class="change-content">
+                                    <h4>Boot Rapid</h4>
+                                    <p>Pornire dramatical mai rapidă datorită Hybrid Boot.</p>
+                                </div>
+                            </div>
+                            <div class="change-item added">
+                                <div class="change-icon">✅</div>
+                                <div class="change-content">
+                                    <h4>Windows 8.1 Update</h4>
+                                    <p>A adresat multe plângeri: buton Start, boot to desktop.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="editions">
+                        <h2>📦 Ediții Windows 8</h2>
+                        <div class="editions-container">
+                            <div class="edition-card win8">
+                                <div class="edition-badge">Standard</div>
+                                <h3>Windows 8</h3>
+                                <p>Pentru consumatori. Include Windows Store, Modern UI apps.</p>
+                            </div>
+                            <div class="edition-card win8-pro">
+                                <div class="edition-badge">Pro</div>
+                                <h3>Windows 8 Pro</h3>
+                                <p>BitLocker, Hyper-V, Remote Desktop, Group Policy.</p>
+                            </div>
+                            <div class="edition-card win8-ent">
+                                <div class="edition-badge">Enterprise</div>
+                                <h3>Windows 8 Enterprise</h3>
+                                <p>Windows To Go, DirectAccess. Volume licensing.</p>
+                            </div>
+                            <div class="edition-card win8-rt">
+                                <div class="edition-badge">RT</div>
+                                <h3>Windows RT</h3>
+                                <p>Pentru dispozitive ARM. Doar apps din Store.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirements-panel">
+                            <h3>💻 Cerințe de Sistem</h3>
+                            <div class="req-list">
+                                <div class="req">Procesor: 1 GHz cu suport PAE, NX, SSE2</div>
+                                <div class="req">RAM: 1 GB (32-bit) / 2 GB (64-bit)</div>
+                                <div class="req">HDD: 16 GB (32-bit) / 20 GB (64-bit)</div>
+                                <div class="req">Graphics: DirectX 9 cu WDDM driver</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Win+X Power User Menu (Right-click on Start) -->
+        <div class="winx-menu hidden" id="winxMenu">
+            <div class="winx-item" data-action="programs">Programs and Features</div>
+            <div class="winx-item" data-action="power">Power Options</div>
+            <div class="winx-item" data-action="event">Event Viewer</div>
+            <div class="winx-item" data-action="system">System</div>
+            <div class="winx-item" data-action="device">Device Manager</div>
+            <div class="winx-divider"></div>
+            <div class="winx-item" data-action="disk">Disk Management</div>
+            <div class="winx-item" data-action="computer">Computer Management</div>
+            <div class="winx-divider"></div>
+            <div class="winx-item" data-action="cmd">Command Prompt</div>
+            <div class="winx-item" data-action="cmdadmin">Command Prompt (Admin)</div>
+            <div class="winx-item" data-action="task">Task Manager</div>
+            <div class="winx-item" data-action="control">Control Panel</div>
+            <div class="winx-item" data-action="explorer">File Explorer</div>
+            <div class="winx-item" data-action="search">Search</div>
+            <div class="winx-item" data-action="run">Run</div>
+            <div class="winx-divider"></div>
+            <div class="winx-item" data-action="shutdown">Shut down or sign out →</div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="bottom-bar">
+            <button class="corner-button start" id="startButton" title="Start">
+                <svg viewBox="0 0 30 30">
+                    <rect x="2" y="2" width="12" height="12" fill="white"/>
+                    <rect x="16" y="2" width="12" height="12" fill="white"/>
+                    <rect x="2" y="16" width="12" height="12" fill="white"/>
+                    <rect x="16" y="16" width="12" height="12" fill="white"/>
+                </svg>
+            </button>
+            <div class="taskbar-apps">
+                <div class="taskbar-app active">
+                    <span>📁</span>
+                </div>
+            </div>
+            <div class="system-tray">
+                <span class="tray-icon">🔊</span>
+                <span class="tray-icon">📶</span>
+                <div class="clock-area">
+                    <span class="time" id="clock">12:00</span>
+                    <span class="date">26/10/2012</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charms Bar -->
+        <div class="charms-bar" id="charmsBar">
+            <div class="charm">
+                <div class="charm-icon">🔍</div>
+                <span>Search</span>
+            </div>
+            <div class="charm">
+                <div class="charm-icon">📤</div>
+                <span>Share</span>
+            </div>
+            <div class="charm" id="startCharm">
+                <div class="charm-icon">🪟</div>
+                <span>Start</span>
+            </div>
+            <div class="charm">
+                <div class="charm-icon">📱</div>
+                <span>Devices</span>
+            </div>
+            <div class="charm">
+                <div class="charm-icon">⚙️</div>
+                <span>Settings</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/os-detect.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/windows-ui.js"></script>
+    <script src="script.js"></script>
+    <script src="../windows-common.js"></script>
+</body>
+</html>

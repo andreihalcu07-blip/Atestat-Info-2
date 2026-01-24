@@ -1,0 +1,681 @@
+/* =====================================================
+   MOBILE.CSS - Stiluri Mobile-First
+   Proiect Atestat - Evoluția Sistemelor de Operare
+   ===================================================== */
+
+/* =====================================================
+   BAZĂ MOBILE-FIRST (până la 768px)
+   ===================================================== */
+
+/* Reset și bază pentru touch */
+* {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Asigură că nu există scroll orizontal */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* Container responsive */
+.container {
+    width: 100%;
+    padding: 0 15px;
+    max-width: 100%;
+}
+
+/* =====================================================
+   NAVBAR MOBILE
+   ===================================================== */
+/* Ensure hamburger is hidden by default on desktop; shown only in the mobile media query below */
+.menu-toggle {
+    display: none;
+}
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar .container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 10px;
+    }
+    
+    /* Logo-ul pe prima linie */
+    .navbar-left {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+    
+    .logo-text {
+        font-size: 1.3rem;
+    }
+    
+    .logo-svg {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Meniu navigare pe a doua linie */
+    .navbar-center {
+        width: 100%;
+        order: 3;
+    }
+    
+    .nav-links {
+        /* mobile menu: wrap items and collapse by default so we can animate open/close */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px; /* tight gap so pills are close like the screenshot */
+        justify-content: center;
+        padding: 0; /* padding will be applied when opened */
+        max-height: 0; /* collapsed by default */
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: max-height 360ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease, transform 240ms ease;
+    }
+
+    /* Make navigation pills match the language toggle pill style */
+    .nav-links a {
+        font-size: 0.96rem;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-dark, #0b1220);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 25px;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.12s ease;
+    }
+
+    /* Active/selected and hover states */
+    .nav-links a.active,
+    .nav-links a[aria-current="page"] {
+        background: rgba(255,255,255,0.98);
+        color: #1e56d6; /* vivid blue for active */
+        box-shadow: 0 8px 20px rgba(30,86,214,0.08);
+        transform: translateY(-2px);
+    }
+
+    .nav-links a:hover {
+        background: rgba(255,255,255,0.95);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+    }
+
+    /* Dark mode adjustments so pills remain readable */
+    body.dark-mode .nav-links a {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        border: 1px solid rgba(255,255,255,0.15);
+        box-shadow: none;
+    }
+
+    body.dark-mode .nav-links a.active,
+    body.dark-mode .nav-links a[aria-current="page"] {
+        background: rgba(255,255,255,0.22);
+        color: #ffffff;
+        box-shadow: 0 6px 14px rgba(2,6,23,0.12);
+    }
+
+    /* Remove extra margins from list wrappers so flex gap controls spacing */
+    .nav-links li {
+        margin: 0;
+        list-style: none;
+    }
+
+    /* If there's only one menu item, make it centered and limited width */
+    .nav-links a:only-child {
+        justify-self: center;
+        max-width: 180px;
+        margin: 0 auto;
+    }
+
+    .nav-links a::after { display: none; }
+
+    /* When nav is opened on mobile, expand and reveal buttons */
+    .navbar.nav-open .nav-links {
+        max-height: 1000px; /* large enough to show all items */
+        opacity: 1;
+        transform: none;
+        padding: 12px 8px 18px 8px;
+    }
+    
+    /* Toggle-uri container: keep it static so individual toggles can be positioned
+       relative to the .navbar (which is positioned). This allows the dark-mode
+       toggle to sit next to the hamburger even though it's in the DOM inside
+       .navbar-right. The language toggle will be absolutely positioned to the right. */
+    .navbar-right {
+        position: static;
+        top: auto;
+        right: auto;
+        margin-right: 0;
+        gap: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Mobile hamburger - left aligned. Keep size consistent with utility buttons. */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 12px; /* place hamburger on the left */
+        top: 10px;
+        z-index: 1200;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: none;
+        background: rgba(255, 255, 255, 0.06);
+        color: #0b1220;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+        cursor: pointer;
+    }
+
+    /* Dark mode toggle should sit immediately to the right of the hamburger on the same row */
+    .dark-mode-toggle {
+        position: absolute;
+        left: 64px; /* spaced to the right of hamburger */
+        top: 10px;
+        z-index: 1200;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Position the language toggle at the right edge of the navbar */
+    .lang-toggle {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1200;
+    }
+
+    /* Keep logo centered at the top */
+    .navbar-left {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        position: relative; /* allow centered absolute children if needed */
+        padding-top: 6px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Dark mode: increase contrast of hamburger (background + icon color only) */
+    body.dark-mode .menu-toggle {
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+    }
+    
+    .dark-mode-toggle,
+    .lang-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .lang-toggle {
+        font-size: 0.75rem;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ensure nav link buttons (mobile menu items) have equal height and width within their grid cells */
+    .navbar.nav-open .nav-links a {
+        width: 100%;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    /* Keep the logo centered and visually separate from controls */
+    .navbar-left {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        position: relative;
+        padding-top: 6px;
+        z-index: 1000; /* below the absolute controls but above page content */
+    }
+}
+
+/* =====================================================
+   HERO SECTION MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 80px 20px;
+        min-height: auto;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+    
+    .hero::before,
+    .hero::after {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+        min-height: 48px;
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* =====================================================
+   LEARNING OBJECTIVES MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+    .learning-objectives {
+        padding: 50px 15px;
+    }
+    
+    .learning-objectives h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-intro {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    
+    .objectives-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .objective-card {
+        padding: 25px 20px;
+    }
+    
+    .objective-icon {
+        font-size: 2rem;
+    }
+    
+    .objective-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .objective-card .btn {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
+
+/* =====================================================
+   TIMELINE MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+    .timeline {
+        padding: 50px 15px;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline h2 {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+    
+    .timeline-item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-left: 30px;
+        padding: 20px;
+    }
+    
+    .timeline-date {
+        font-size: 1rem;
+        text-align: left;
+        padding: 8px 12px;
+        align-self: flex-start;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+/* =====================================================
+   OS TYPES / GRID CARDS MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+    .os-types {
+        padding: 50px 15px;
+    }
+    
+    .os-types h2 {
+        font-size: 1.8rem;
+    }
+    
+    .os-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .os-card {
+        padding: 25px 20px;
+    }
+    
+    .os-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .os-card p,
+    .os-card li {
+        font-size: 0.95rem;
+    }
+}
+
+/* =====================================================
+   CONTACT FORM MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+    .contact {
+        padding: 50px 15px;
+    }
+    
+    .contact h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-form {
+        padding: 0 10px;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px; /* Previne zoom pe iOS */
+        padding: 15px;
+        min-height: 48px;
+        width: 100%;
+    }
+    
+    .contact-form textarea {
+        min-height: 120px;
+    }
+    
+    .contact-form button {
+        width: 100%;
+        min-height: 48px;
+        font-size: 1rem;
+    }
+}
+
+/* =====================================================
+   FOOTER MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 15px;
+    }
+    
+    footer p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+/* =====================================================
+   PAGES SPECIFICE - MOBILE
+   ===================================================== */
+
+/* About Page */
+@media (max-width: 768px) {
+    .about-content {
+        padding: 30px 15px;
+    }
+    
+    .about-section {
+        padding: 25px 20px;
+        margin: 20px 0;
+    }
+    
+    .about-section h2 {
+        font-size: 1.4rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .about-section .features {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-section .feature-card {
+        padding: 20px;
+    }
+}
+
+/* FAQ Page */
+@media (max-width: 768px) {
+    .faq-content {
+        padding: 30px 15px;
+    }
+    
+    .faq-question {
+        padding: 15px;
+        font-size: 0.95rem;
+        min-height: 48px;
+    }
+    
+    .faq-answer {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Resources Page */
+@media (max-width: 768px) {
+    .resources-content {
+        padding: 30px 15px;
+    }
+    
+    .resource-category {
+        padding: 20px 15px;
+        margin: 20px 0;
+    }
+    
+    .resource-category h2 {
+        font-size: 1.4rem;
+    }
+    
+    .resource-list li {
+        padding: 12px;
+    }
+}
+
+/* Comparison Page */
+@media (max-width: 768px) {
+    .comparison-table {
+        padding: 20px 10px;
+    }
+    
+    .comparison-table table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+        min-width: 100px;
+    }
+    
+    .charts-section {
+        padding: 30px 15px;
+    }
+}
+
+/* History Page */
+@media (max-width: 768px) {
+    .history-content {
+        padding: 30px 15px;
+    }
+}
+
+/* Quiz Page */
+@media (max-width: 768px) {
+    .quiz-container {
+        padding: 30px 15px;
+    }
+    
+    .quiz-option {
+        padding: 15px;
+        min-height: 48px;
+        font-size: 1rem;
+    }
+    
+    .quiz-btn {
+        min-height: 48px;
+        width: 100%;
+    }
+}
+
+/* Glossary Page */
+@media (max-width: 768px) {
+    .glossary-content {
+        padding: 30px 15px;
+    }
+    
+    .glossary-item {
+        padding: 15px;
+    }
+    
+    .glossary-term {
+        font-size: 1.1rem;
+    }
+}
+
+/* =====================================================
+   TABLET (769px - 1024px)
+   ===================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .navbar .container {
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .objectives-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .os-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .timeline-item {
+        grid-template-columns: 150px 1fr;
+        gap: 25px;
+    }
+}
+
+/* =====================================================
+   BUTOANE ȘI ELEMENTE INTERACTIVE - TOUCH FRIENDLY
+   ===================================================== */
+@media (max-width: 768px) {
+    /* Toate butoanele trebuie să fie ușor de apăsat */
+    button,
+    .btn,
+    a.btn,
+    .nav-links a,
+    .faq-question,
+    .quiz-option,
+    .windows-card,
+    .objective-card,
+    .os-card {
+        min-height: 44px;
+    }
+    
+    /* Spațiere mai mică între elemente interactive (controlată de grid gap) */
+    .nav-links li {
+        margin: 0;
+    }
+    
+    /* Disable hover effects on touch */
+    @media (hover: none) {
+        .objective-card:hover,
+        .os-card:hover,
+        .timeline-item:hover,
+        .windows-card:hover {
+            transform: none;
+        }
+    }
+}
+
+/* =====================================================
+   PRINT OVERRIDE - ASCUNDE PE PRINT
+   ===================================================== */
+@media print {
+    .navbar,
+    .dark-mode-toggle,
+    .lang-toggle,
+    .btn {
+        display: none !important;
+    }
+}

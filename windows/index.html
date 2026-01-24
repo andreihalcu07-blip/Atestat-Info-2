@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evoluția Windows - De la 95 la 11</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/windows-ui.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='5' y='5' width='40' height='40' fill='%230078d4'/%3E%3Crect x='55' y='5' width='40' height='40' fill='%230078d4'/%3E%3Crect x='5' y='55' width='40' height='40' fill='%230078d4'/%3E%3Crect x='55' y='55' width='40' height='40' fill='%230078d4'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-nav">
+            <a href="../index.html" class="home-button" data-i18n="windows_home">🏠 Pagina Principală</a>
+            <div class="header-nav-right">
+                <button class="btn btn--utility btn--icon dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+                <button class="btn btn--utility lang-toggle" id="langToggle" onclick="toggleLanguage()" aria-label="Change language">🇬🇧 EN</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" class="windows-logo">
+                    <rect x="5" y="5" width="42" height="42" fill="#f25022"/>
+                    <rect x="53" y="5" width="42" height="42" fill="#7fba00"/>
+                    <rect x="5" y="53" width="42" height="42" fill="#00a4ef"/>
+                    <rect x="53" y="53" width="42" height="42" fill="#ffb900"/>
+                </svg>
+                <h1 data-i18n="windows_evolution">Evoluția Windows</h1>
+            </div>
+            <p class="subtitle" data-i18n="windows_subtitle">Explorează istoria sistemului de operare care a schimbat lumea</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2 data-i18n="windows_intro_title">De la Windows 95 la Windows 11</h2>
+            <p data-i18n="windows_intro_desc">Descoperiți evoluția vizuală și funcțională a celui mai popular sistem de operare pentru desktop. Fiecare versiune a adus inovații care au definit modul în care interacționăm cu tehnologia.</p>
+        </section>
+
+        <section class="windows-grid">
+            <!-- Windows 95 -->
+            <a href="win95/index.html" class="windows-card win95">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="5,10 45,5 45,45 5,45" fill="#000080"/>
+                        <polygon points="55,4 95,0 95,44 55,44" fill="#000080"/>
+                        <polygon points="5,55 45,55 45,95 5,90" fill="#000080"/>
+                        <polygon points="55,56 95,56 95,100 55,96" fill="#000080"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows 95</h3>
+                    <span class="year">1995</span>
+                    <p data-i18n="win95_desc">Revoluția desktop-ului personal</p>
+                </div>
+            </a>
+
+            <!-- Windows 98 -->
+            <a href="win98/index.html" class="windows-card win98">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="5,10 45,5 45,45 5,45" fill="#000080"/>
+                        <polygon points="55,4 95,0 95,44 55,44" fill="#008000"/>
+                        <polygon points="5,55 45,55 45,95 5,90" fill="#800000"/>
+                        <polygon points="55,56 95,56 95,100 55,96" fill="#808000"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows 98</h3>
+                    <span class="year">1998</span>
+                    <p data-i18n="win98_desc">Internet și multimedia integrate</p>
+                </div>
+            </a>
+
+            <!-- Windows XP -->
+            <a href="winxp/index.html" class="windows-card winxp">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="5,12 45,5 45,45 5,45" fill="#ff6b35"/>
+                        <polygon points="55,4 95,0 95,44 55,44" fill="#7fba00"/>
+                        <polygon points="5,55 45,55 45,95 5,88" fill="#00a4ef"/>
+                        <polygon points="55,56 95,56 95,100 55,94" fill="#ffb900"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows XP</h3>
+                    <span class="year">2001</span>
+                    <p data-i18n="winxp_desc">Tema Luna și stabilitate</p>
+                </div>
+            </a>
+
+            <!-- Windows Vista -->
+            <a href="vista/index.html" class="windows-card vista">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="vistaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00bcf2"/>
+                                <stop offset="100%" style="stop-color:#003087"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill="url(#vistaGrad)" opacity="0.9"/>
+                        <polygon points="25,25 45,20 45,45 25,45" fill="white" opacity="0.9"/>
+                        <polygon points="55,19 75,15 75,44 55,44" fill="white" opacity="0.9"/>
+                        <polygon points="25,55 45,55 45,80 25,75" fill="white" opacity="0.9"/>
+                        <polygon points="55,56 75,56 75,85 55,81" fill="white" opacity="0.9"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows Vista</h3>
+                    <span class="year">2006</span>
+                    <p data-i18n="vista_desc">Interfața Aero Glass</p>
+                </div>
+            </a>
+
+            <!-- Windows 7 -->
+            <a href="win7/index.html" class="windows-card win7">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="win7Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00d4ff"/>
+                                <stop offset="100%" style="stop-color:#0078d4"/>
+                            </linearGradient>
+                        </defs>
+                        <polygon points="5,12 45,5 45,45 5,45" fill="#f25022"/>
+                        <polygon points="55,4 95,0 95,44 55,44" fill="#7fba00"/>
+                        <polygon points="5,55 45,55 45,95 5,88" fill="#00a4ef"/>
+                        <polygon points="55,56 95,56 95,100 55,94" fill="#ffb900"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows 7</h3>
+                    <span class="year">2009</span>
+                    <p data-i18n="win7_desc">Perfecțiunea Windows</p>
+                </div>
+            </a>
+
+            <!-- Windows 8 -->
+            <a href="win8/index.html" class="windows-card win8">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <rect x="5" y="5" width="42" height="42" fill="#00bcf2"/>
+                        <rect x="53" y="5" width="42" height="42" fill="#00bcf2"/>
+                        <rect x="5" y="53" width="42" height="42" fill="#00bcf2"/>
+                        <rect x="53" y="53" width="42" height="42" fill="#00bcf2"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows 8</h3>
+                    <span class="year">2012</span>
+                    <p data-i18n="win8_desc">Interfața Metro modernă</p>
+                </div>
+            </a>
+
+            <!-- Windows 10 -->
+            <a href="win10/index.html" class="windows-card win10">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="2,12 47,5 47,47 2,47" fill="#0078d4"/>
+                        <polygon points="53,4 98,0 98,47 53,47" fill="#0078d4"/>
+                        <polygon points="2,53 47,53 47,95 2,88" fill="#0078d4"/>
+                        <polygon points="53,53 98,53 98,100 53,95" fill="#0078d4"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows 10</h3>
+                    <span class="year">2015</span>
+                    <p data-i18n="win10_desc">Windows as a Service</p>
+                </div>
+            </a>
+
+            <!-- Windows 11 -->
+            <a href="win11/index.html" class="windows-card win11">
+                <div class="card-icon">
+                    <svg viewBox="0 0 100 100">
+                        <rect x="5" y="5" width="42" height="42" rx="5" fill="#0078d4"/>
+                        <rect x="53" y="5" width="42" height="42" rx="5" fill="#0078d4"/>
+                        <rect x="5" y="53" width="42" height="42" rx="5" fill="#0078d4"/>
+                        <rect x="53" y="53" width="42" height="42" rx="5" fill="#0078d4"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Windows 11</h3>
+                    <span class="year">2021</span>
+                    <p data-i18n="win11_desc">Design modern și fluent</p>
+                </div>
+            </a>
+        </section>
+
+        <section class="timeline-summary">
+            <h2>Cronologia Evoluției</h2>
+            <div class="timeline">
+                <div class="timeline-item" style="--color: #008080;">
+                    <span class="year">1995</span>
+                    <span class="name">95</span>
+                </div>
+                <div class="timeline-item" style="--color: #000080;">
+                    <span class="year">1998</span>
+                    <span class="name">98</span>
+                </div>
+                <div class="timeline-item" style="--color: #3a6ea5;">
+                    <span class="year">2001</span>
+                    <span class="name">XP</span>
+                </div>
+                <div class="timeline-item" style="--color: #1a1a2e;">
+                    <span class="year">2006</span>
+                    <span class="name">Vista</span>
+                </div>
+                <div class="timeline-item" style="--color: #2980b9;">
+                    <span class="year">2009</span>
+                    <span class="name">7</span>
+                </div>
+                <div class="timeline-item" style="--color: #00bcf2;">
+                    <span class="year">2012</span>
+                    <span class="name">8</span>
+                </div>
+                <div class="timeline-item" style="--color: #0078d4;">
+                    <span class="year">2015</span>
+                    <span class="name">10</span>
+                </div>
+                <div class="timeline-item" style="--color: #0067c0;">
+                    <span class="year">2021</span>
+                    <span class="name">11</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Evoluția Sistemelor de Operare - Proiect Atestat</p>
+        </div>
+    </footer>
+    <script src="../js/os-detect.js"></script>
+    <script src="../js/windows-ui.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        // Default to dark mode, check for saved preference
+        if (localStorage.getItem('darkMode') !== 'disabled') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.textContent = '☀️';
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkModeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkModeToggle.textContent = '🌙';
+            }
+        });
+    </script>
+</body>
+</html>

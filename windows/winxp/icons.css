@@ -1,0 +1,53 @@
+/* Windows XP Desktop Icons - Luna Theme Style */
+
+.desktop-icon .icon-svg {
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: 0 auto 4px;
+}
+
+/* My Computer Icon - WinXP Luna Style */
+.icon-mycomputer {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="monitor" x1="0" y1="0" x2="0" y2="1"><stop offset="0%25" stop-color="%23e8f4fc"/><stop offset="50%25" stop-color="%239ac8e8"/><stop offset="100%25" stop-color="%236fa8d8"/></linearGradient><radialGradient id="screen"><stop offset="0%25" stop-color="%2390d0ff"/><stop offset="100%25" stop-color="%230078d4"/></radialGradient></defs><rect x="6" y="10" width="36" height="24" rx="2" fill="url(%23monitor)" stroke="%233a7bd5" stroke-width="1.5"/><rect x="9" y="13" width="30" height="16" fill="url(%23screen)"/><rect x="15" y="34" width="18" height="3" rx="1" fill="%239ac8e8"/><rect x="12" y="37" width="24" height="3" rx="1" fill="%236fa8d8"/><ellipse cx="24" cy="19" rx="4" ry="3" fill="%23fff" opacity="0.4"/></svg>');
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Recycle Bin Icon - WinXP Style */
+.icon-recyclebin {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="bin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%25" stop-color="%23f0f0f0"/><stop offset="50%25" stop-color="%23d0d8e0"/><stop offset="100%25" stop-color="%23b0c0d0"/></linearGradient></defs><path d="M12 14h24v28H12z" fill="url(%23bin)" stroke="%23607080" stroke-width="1.5"/><rect x="9" y="11" width="30" height="3" rx="1" fill="%23a0b0c0" stroke="%23607080"/><rect x="18" y="8" width="12" height="3" rx="1" fill="%23909090"/><path d="M16 20v18M24 20v18M32 20v18" stroke="%23607080" stroke-width="2" stroke-linecap="round" opacity="0.4"/><circle cx="24" cy="24" r="8" fill="%234a90d9" opacity="0.2"/></svg>');
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* My Documents Icon - WinXP Style */
+.icon-documents {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="folder" x1="0" y1="0" x2="0" y2="1"><stop offset="0%25" stop-color="%23ffd54f"/><stop offset="100%25" stop-color="%23ffb300"/></linearGradient></defs><path d="M6 12h36v28H6z" fill="url(%23folder)" stroke="%23f57c00" stroke-width="1.5"/><path d="M6 12h16l4-4h16v4" fill="%23ffe082" stroke="%23f57c00" stroke-width="1.5"/><rect x="12" y="20" width="8" height="10" fill="%23fff" opacity="0.6" rx="1"/><rect x="22" y="20" width="14" height="2" fill="%23f57c00" opacity="0.4" rx="0.5"/><rect x="22" y="24" width="14" height="2" fill="%23f57c00" opacity="0.4" rx="0.5"/><rect x="22" y="28" width="10" height="2" fill="%23f57c00" opacity="0.4" rx="0.5"/></svg>');
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Internet Explorer Icon - WinXP Style */
+.icon-ie {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><radialGradient id="ie"><stop offset="0%25" stop-color="%234db8ff"/><stop offset="70%25" stop-color="%230078d4"/><stop offset="100%25" stop-color="%23005a9e"/></radialGradient></defs><circle cx="24" cy="24" r="20" fill="url(%23ie)" stroke="%23003d66" stroke-width="2"/><path d="M10 24c0-6 4-12 12-12M38 24c0 6-4 12-12 12" stroke="%23fff" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="24" cy="24" rx="8" ry="18" fill="none" stroke="%23fff" stroke-width="2.5"/><line x1="6" y1="24" x2="42" y2="24" stroke="%23fff" stroke-width="3" stroke-linecap="round"/><path d="M34 14c-3-3-6-4-10-4" stroke="%23ffeb3b" stroke-width="3" fill="none" stroke-linecap="round"/></svg>');
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Network Places Icon - WinXP Style */
+.icon-network {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="pc" x1="0" y1="0" x2="0" y2="1"><stop offset="0%25" stop-color="%23e8f4fc"/><stop offset="100%25" stop-color="%239ac8e8"/></linearGradient></defs><rect x="4" y="8" width="14" height="12" rx="1" fill="url(%23pc)" stroke="%233a7bd5" stroke-width="1.5"/><rect x="30" y="8" width="14" height="12" rx="1" fill="url(%23pc)" stroke="%233a7bd5" stroke-width="1.5"/><rect x="17" y="28" width="14" height="12" rx="1" fill="url(%23pc)" stroke="%233a7bd5" stroke-width="1.5"/><line x1="11" y1="20" x2="11" y2="30" stroke="%234a90d9" stroke-width="2"/><line x1="37" y1="20" x2="37" y2="30" stroke="%234a90d9" stroke-width="2"/><line x1="11" y1="30" x2="37" y2="30" stroke="%234a90d9" stroke-width="2"/><line x1="24" y1="30" x2="24" y2="28" stroke="%234a90d9" stroke-width="2"/><circle cx="24" cy="30" r="2" fill="%234a90d9"/></svg>');
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

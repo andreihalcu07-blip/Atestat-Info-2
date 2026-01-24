@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 95 - Evoluția Windows</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../windows-common.css">
+    <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="../../css/windows-ui.css">
+</head>
+<body data-windows="win95">
+    <!-- Conținut Windows - vizibil doar pe Windows Desktop -->
+    <div class="desktop windows-desktop-simulation">
+        <!-- Start Menu -->
+        <div class="start-menu hidden" id="startMenu">
+            <div class="start-menu-banner">
+                <span class="banner-text">Windows<strong>95</strong></span>
+            </div>
+            <div class="start-menu-items">
+                <div class="menu-item" data-action="programs">
+                    <span class="menu-icon">📁</span>
+                    <span class="menu-text">Programs</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="documents">
+                    <span class="menu-icon">📄</span>
+                    <span class="menu-text">Documents</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="settings">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">Settings</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="find">
+                    <span class="menu-icon">🔍</span>
+                    <span class="menu-text">Find</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="help">
+                    <span class="menu-icon">❓</span>
+                    <span class="menu-text">Help</span>
+                </div>
+                <div class="menu-item" data-action="run">
+                    <span class="menu-icon">▶️</span>
+                    <span class="menu-text">Run...</span>
+                </div>
+                <div class="menu-divider"></div>
+                <div class="menu-item" data-action="shutdown">
+                    <span class="menu-icon">🔌</span>
+                    <span class="menu-text">Shut Down...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <button class="start-button" id="startButton">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='5,10 45,5 45,45 5,45' fill='%23ff0000'/%3E%3Cpolygon points='55,4 95,0 95,44 55,44' fill='%2300ff00'/%3E%3Cpolygon points='5,55 45,55 45,95 5,90' fill='%230000ff'/%3E%3Cpolygon points='55,56 95,56 95,100 55,96' fill='%23ffff00'/%3E%3C/svg%3E" alt="Windows">
+                <span>Start</span>
+            </button>
+            <div class="taskbar-programs">
+                <div class="program-button active">📁 Windows 95</div>
+            </div>
+            <div class="system-tray">
+                <span class="time">12:00</span>
+            </div>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <a href="../index.html" class="desktop-icon">
+                <div class="icon">🏠</div>
+                <span>Înapoi</span>
+            </a>
+            <div class="desktop-icon">
+                <div class="icon icon-mycomputer"></div>
+                <span>My Computer</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-recyclebin"></div>
+                <span>Recycle Bin</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-documents"></div>
+                <span>My Documents</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-ie"></div>
+                <span>Internet Explorer</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-network"></div>
+                <span>Network Neighborhood</span>
+            </div>
+        </div>
+
+        <!-- Window -->
+        <div class="window" id="mainWindow">
+            <div class="title-bar">
+                <div class="title-bar-text">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect fill='%23008080' width='16' height='16'/%3E%3Ctext x='3' y='12' fill='white' font-size='10' font-weight='bold'%3E95%3C/text%3E%3C/svg%3E" alt="" class="title-icon">
+                    Windows 95 - Despre
+                </div>
+                <div class="title-bar-controls">
+                    <button class="title-btn minimize">_</button>
+                    <button class="title-btn maximize">□</button>
+                    <button class="title-btn close">×</button>
+                </div>
+            </div>
+            <div class="menu-bar">
+                <span class="menu-item">File</span>
+                <span class="menu-item">Edit</span>
+                <span class="menu-item">View</span>
+                <span class="menu-item">Help</span>
+            </div>
+            <div class="window-content">
+                <div class="tabs">
+                    <button class="tab active" data-tab="info">ℹ️ Informații</button>
+                    <button class="tab" data-tab="features">⭐ Noutăți</button>
+                    <button class="tab" data-tab="requirements">💾 Cerințe</button>
+                    <button class="tab" data-tab="importance">🏆 Importanță</button>
+                </div>
+
+                <div class="tab-content active" id="info">
+                    <div class="info-header">
+                        <div class="windows-logo-large">
+                            <svg viewBox="0 0 100 100">
+                                <polygon points="5,10 45,5 45,45 5,45" fill="#ff0000"/>
+                                <polygon points="55,4 95,0 95,44 55,44" fill="#00ff00"/>
+                                <polygon points="5,55 45,55 45,95 5,90" fill="#0000ff"/>
+                                <polygon points="55,56 95,56 95,100 55,96" fill="#ffff00"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h1>Microsoft Windows 95</h1>
+                            <p class="version">Versiune 4.0 | 24 August 1995</p>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <p>Windows 95 a fost un sistem de operare revoluționar lansat de Microsoft, care a schimbat fundamental modul în care oamenii interacționează cu calculatoarele personale.</p>
+                        <p>A introdus pentru prima dată <strong>butonul Start</strong>, <strong>taskbar-ul</strong> și <strong>Windows Explorer</strong> - elemente care sunt prezente și astăzi în Windows modern.</p>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="features">
+                    <h2>Noutăți în Windows 95</h2>
+                    <ul class="feature-list">
+                        <li>🚀 <strong>Meniul Start</strong> - Acces rapid la programe și setări</li>
+                        <li>📊 <strong>Taskbar</strong> - Bara de activități pentru multitasking</li>
+                        <li>📁 <strong>Windows Explorer</strong> - Manager de fișiere modern</li>
+                        <li>🖱️ <strong>Click dreapta</strong> - Meniuri contextuale</li>
+                        <li>📛 <strong>Nume lungi de fișiere</strong> - Până la 255 caractere</li>
+                        <li>🔌 <strong>Plug and Play</strong> - Instalare automată hardware</li>
+                        <li>🌐 <strong>TCP/IP integrat</strong> - Suport nativ pentru Internet</li>
+                        <li>🎮 <strong>DirectX</strong> - Platformă pentru jocuri</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="requirements">
+                    <h2>Cerințe de Sistem</h2>
+                    <table class="requirements-table">
+                        <tr>
+                            <th>Component</th>
+                            <th>Minim</th>
+                            <th>Recomandat</th>
+                        </tr>
+                        <tr>
+                            <td>Procesor</td>
+                            <td>386DX 25MHz</td>
+                            <td>486DX 66MHz</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>4 MB</td>
+                            <td>8 MB</td>
+                        </tr>
+                        <tr>
+                            <td>Spațiu HDD</td>
+                            <td>50 MB</td>
+                            <td>100 MB</td>
+                        </tr>
+                        <tr>
+                            <td>Display</td>
+                            <td>VGA (640x480)</td>
+                            <td>SVGA (800x600)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="tab-content" id="importance">
+                    <h2>Importanța Istorică</h2>
+                    <div class="importance-grid">
+                        <div class="importance-item">
+                            <div class="importance-icon">🌍</div>
+                            <h3>Adoptare Masivă</h3>
+                            <p>A vândut 7 milioane de copii în primele 5 săptămâni, făcând PC-ul accesibil pentru toată lumea.</p>
+                        </div>
+                        <div class="importance-item">
+                            <div class="importance-icon">💡</div>
+                            <h3>Interfață Revoluționară</h3>
+                            <p>A definit conceptul modern de desktop GUI care este folosit și astăzi.</p>
+                        </div>
+                        <div class="importance-item">
+                            <div class="importance-icon">🎵</div>
+                            <h3>Marketing Iconic</h3>
+                            <p>Lansare cu piesa "Start Me Up" de la Rolling Stones - primul SO cu campanie de marketing major.</p>
+                        </div>
+                        <div class="importance-item">
+                            <div class="importance-icon">🔧</div>
+                            <h3>Standard Industrial</h3>
+                            <p>A stabilit standardele pentru dezvoltarea software pe care le urmăm și astăzi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="status-bar">
+                <span>Ready</span>
+                <span>Windows 95 Build 950</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/os-detect.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/windows-ui.js"></script>
+    <script src="script.js"></script>
+    <script src="../windows-common.js"></script>
+</body>
+</html>

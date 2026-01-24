@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosar Complet - Evoluția Sistemelor de Operare</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/advanced.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/desktop.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='10' y='15' width='80' height='55' fill='none' stroke='%232563eb' stroke-width='3' rx='5'/%3E%3Crect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='3'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+                <!-- STÂNGA: Logo -->
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="15" width="80" height="55" fill="none" stroke="#2563eb" stroke-width="3" rx="5"/>
+                            <rect x="15" y="20" width="70" height="45" fill="#e0e7ff" rx="3"/>
+                            <rect x="20" y="25" width="20" height="15" fill="#2563eb" opacity="0.7" rx="2"/>
+                            <rect x="45" y="25" width="20" height="8" fill="#f59e0b" opacity="0.7" rx="2"/>
+                            <rect x="20" y="45" width="45" height="12" fill="#10b981" opacity="0.7" rx="2"/>
+                            <path d="M 35 70 L 30 80 L 70 80 L 65 70" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                            <circle cx="50" cy="80" r="3" fill="#2563eb"/>
+                        </svg>
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                
+                <!-- MIJLOC: Meniu navigare -->
+                <div class="navbar-center">
+                    <ul id="main-nav" class="nav-links">
+                        <li><a href="../index.html" data-i18n="nav_home">Acasă</a></li>
+                        <li><a href="about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="../windows/index.html">Windows</a></li>
+                        <li><a href="glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- DREAPTA: Toggle-uri -->
+                <div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" aria-label="Toggle dark mode" id="darkModeToggle">🌙</button>
+                    <button class="btn btn--utility lang-toggle" aria-label="Change language" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="glossary_title">📚 Glosar Complet al Sistemelor de Operare</h2>
+                <p data-i18n="glossary_subtitle">Peste 50 de termeni tehnici explicați detaliat cu exemple practice</p>
+            </div>
+        </section>
+
+        <div class="glossary-content">
+            <div class="glossary-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalTerms">37</span>
+                    <span class="stat-label" data-i18n="glossary_stat_terms">Termeni</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label" data-i18n="glossary_stat_categories">Categorii</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label" data-i18n="glossary_stat_examples">Exemple Cod</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label" data-i18n="glossary_stat_interactive">Interactiv</span>
+                </div>
+            </div>
+
+            <div class="glossary-grid-root">
+            <div class="search-filter-container">
+                <div class="search-glossary">
+                    <input type="text" id="glossarySearch" placeholder="🔎 Caută termeni, definiții sau exemple..." data-i18n="glossary_search">
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all" data-i18n="glossary_filter_all">🔁 Toate</button>
+                    <button class="filter-btn" data-filter="basic" data-i18n="glossary_filter_basic">📘 De bază</button>
+                    <button class="filter-btn" data-filter="advanced" data-i18n="glossary_filter_advanced">📗 Avansat</button>
+                    <button class="filter-btn" data-filter="kernel" data-i18n="glossary_filter_kernel">🧩 Kernel</button>
+                    <button class="filter-btn" data-filter="memory" data-i18n="glossary_filter_memory">🧠 Memorie</button>
+                    <button class="filter-btn" data-filter="process" data-i18n="glossary_filter_process">⚙️ Procese</button>
+                    <button class="filter-btn" data-filter="filesystem" data-i18n="glossary_filter_filesystem">🗂️ Fișiere</button>
+                    <button class="filter-btn" data-filter="security" data-i18n="glossary_filter_security">🔒 Securitate</button>
+                </div>
+            </div>
+
+            <div id="glossaryList">
+                <!-- CATEGORIA: KERNEL & CORE -->
+                <div class="category-section" data-category="kernel">
+                    <div class="category-header">
+                        <span class="category-icon">🧩</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_kernel">Kernel și Componente Core</h3>
+                            <span data-i18n="gl_category_kernel_sub">Nucleul sistemului de operare și componentele fundamentale</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="K">
+                            <div class="term-header">
+                                <dt data-i18n="gl_kernel_title">🧠 Kernel (Nucleu)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_kernel_desc">Componența centrală și cea mai importantă a unui sistem de operare. Kernel-ul acționează ca un pod între aplicații și hardware, gestionând resursele sistemului și oferind servicii esențiale tuturor programelor.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_term_functions">🔧 Funcții principale:</h4>
+                                    <ul>
+                                        <li><strong>Gestionarea proceselor</strong> - crearea, planificarea ?i terminarea proceselor</li>
+                                        <li><strong>Gestionarea memoriei</strong> - alocarea ?i eliberarea memoriei RAM</li>
+                                        <li><strong>Gestionarea dispozitivelor</strong> - comunicarea cu hardware prin drivere</li>
+                                        <li><strong>Gestionarea fi?ierelor</strong> - opera?ii de citire/scriere pe disc</li>
+                                        <li><strong>Apeluri de sistem</strong> - interfa?a dintre user space ?i kernel space</li>
+                                    </ul>
+                                </div>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_kernel_types">🧩 Tipuri de kernel:</h4>
+                                    <ul>
+                                        <li><strong>Monolitic</strong> - tot codul în kernel space (Linux, Windows NT)</li>
+                                        <li><strong>Microkernel</strong> - minimal, servicii în user space (Minix, QNX)</li>
+                                        <li><strong>Hibrid</strong> - combina?ie (macOS XNU, Windows modern)</li>
+                                        <li><strong>Exokernel</strong> - acces direct la hardware (experimental)</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Linux - vizualizare informații kernel
+$ uname -r
+5.15.0-generic
+
+# Windows - versiune kernel
+> ver
+Microsoft Windows [Version 10.0.22621]</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Driver</span>
+                                    <span class="related-tag">Proces</span>
+                                    <span class="related-tag">System Call</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="S">
+                            <div class="term-header">
+                                <dt data-i18n="gl_syscall_title">🛰️ System Call (Apel de sistem)</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_syscall_desc">Mecanismul prin care un program din user space solicita un serviciu de la kernel. System calls sunt poarta de acces controlata catre resursele hardware ?i func?iile privilegiate ale SO.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_how_it_works">⚙️ Cum funcționează:</h4>
+                                    <ol>
+                                        <li>Programul apeleaza o func?ie wrapper (ex: open())</li>
+                                        <li>Se executa instruc?iunea syscall sau int 0x80</li>
+                                        <li>CPU comută în kernel mode</li>
+                                        <li>Kernel-ul executa opera?ia ceruta</li>
+                                        <li>Rezultatul este returnat programului</li>
+                                    </ol>
+                                </div>
+                                <div class="term-example">// C - exemplu system call pentru citire fi?ier
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+
+int fd = open("file.txt", O_RDONLY);  // syscall: open
+char buffer[100];
+read(fd, buffer, 100);                 // syscall: read
+close(fd);                             // syscall: close</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Kernel</span>
+                                    <span class="related-tag">Privilegii</span>
+                                    <span class="related-tag">API</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="basic" data-letter="D">
+                            <div class="term-header">
+                                <dt data-i18n="gl_driver_title">🔌 Driver (Șofer de dispozitiv)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_driver_desc">Software specializat care permite sistemului de operare să comunice cu un dispozitiv hardware specific. Driverele traduc comenzile generice ale SO în instrucțiuni specifice dispozitivului.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_driver_types">🔌 Tipuri de drivere:</h4>
+                                    <ul>
+                                        <li><strong>Character device</strong> - flux de date secven?ial (tastatura, mouse)</li>
+                                        <li><strong>Block device</strong> - acces în blocuri (hard disk, SSD)</li>
+                                        <li><strong>Network device</strong> - interfe?e de re?ea</li>
+                                        <li><strong>Virtual device</strong> - dispozitive software (null, random)</li>
+                                    </ul>
+                                </div>
+#                                <div class="term-example"># Linux - listare drivere încărcate
+$ lsmod
+Module                  Size  Used by
+nvidia               51445760  0
+snd_hda_intel          57344  0
+
+# Windows PowerShell
+> Get-WmiObject Win32_PnPSignedDriver | Select DeviceName, DriverVersion</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Kernel</span>
+                                    <span class="related-tag">Interrupt</span>
+                                    <span class="related-tag">I/O</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="B">
+                            <div class="term-header">
+                                <dt data-i18n="gl_bootloader_title">🚀 Bootloader</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_bootloader_desc">Primul program care rulează la pornirea calculatorului. Bootloader-ul inițializează hardware-ul, încarcă kernelul în memorie și îi transferă controlul.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_boot_process">🚀 Procesul de boot:</h4>
+                                    <ol>
+                                        <li><strong>POST</strong> - Power-On Self Test (BIOS/UEFI)</li>
+                                        <li><strong>MBR/GPT</strong> - citire tabel partiții</li>
+                                        <li><strong>Stage 1</strong> - bootloader primar (mic, în MBR)</li>
+                                        <li><strong>Stage 2</strong> - bootloader complet (GRUB, Windows Boot Manager)</li>
+                                        <li><strong>Kernel</strong> - încărcare și execuție</li>
+                                        <li><strong>Init</strong> - primul proces user space</li>
+                                    </ol>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">BIOS</span>
+                                    <span class="related-tag">UEFI</span>
+                                    <span class="related-tag">Kernel</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="basic" data-letter="B">
+                            <div class="term-header">
+                                <dt data-i18n="gl_bios_title">💾 BIOS (Basic Input/Output System)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_bios_desc">Firmware tradițional stocat pe un cip de pe placa de bază, care inițializează hardware-ul și pornește procesul de boot. A fost înlocuit treptat de UEFI.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_bios_limits">❗ Limitări BIOS:</h4>
+                                    <ul>
+                                        <li>Mod real 16-bit</li>
+                                        <li>Max 2TB per disc (MBR)</li>
+                                        <li>Max 4 partiții primare</li>
+                                        <li>Interfață text simplă</li>
+                                        <li>Fără suport rețea nativ</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">UEFI</span>
+                                    <span class="related-tag">Bootloader</span>
+                                    <span class="related-tag">ROM</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="U">
+                            <div class="term-header">
+                                <dt data-i18n="gl_uefi_title">🔐 UEFI (Unified Extensible Firmware Interface)</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_uefi_desc">Succesorul modern al BIOS-ului, oferind o interfață grafică, boot mai rapid, suport pentru discuri mari și caracteristici de securitate precum Secure Boot.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_uefi_advantages">🔒 Avantaje UEFI:</h4>
+                                    <ul>
+                                        <li>Mod protejat 32/64-bit</li>
+                                        <li>Suport GPT - discuri > 2TB</li>
+                                        <li>128 partiții per disc</li>
+                                        <li>Interfață grafică cu mouse</li>
+                                        <li>Secure Boot - protecție malware</li>
+                                        <li>Boot de pe rețea (PXE îmbunătățit)</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">BIOS</span>
+                                    <span class="related-tag">Bootloader</span>
+                                    <span class="related-tag">Secure Boot</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA: PROCESE & THREAD-URI -->
+                <div class="category-section" data-category="process">
+                    <div class="category-header">
+                        <span class="category-icon">⚙️</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_process">Procese și Thread-uri</h3>
+                            <span data-i18n="gl_category_process_sub">Execuția programelor și managementul sarcinilor</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="P">
+                            <div class="term-header">
+                                <dt data-i18n="gl_process_title">⚙️ Proces</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_process_desc">O instanță a unui program în execuție. Fiecare proces are propriul spațiu de adrese, resurse alocate și cel puțin un thread de execuție. Procesele sunt izolate între ele pentru securitate și stabilitate.</p>
+                                <div class="term-details">
+                                    <h4>⚙️ Stările unui proces:</h4>
+                                    <ul>
+                                        <li><strong>New (Nou)</strong> - procesul este creat</li>
+                                        <li><strong>Ready (Pregătit)</strong> - așteaptă să fie executat</li>
+                                        <li><strong>Running (Rulează)</strong> - instrucțiunile sunt executate</li>
+                                        <li><strong>Waiting (Așteaptă)</strong> - așteaptă un eveniment I/O</li>
+                                        <li><strong>Terminated (Terminat)</strong> - execuția s-a încheiat</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Linux - vizualizare procese
+$ ps aux
+USER  PID %CPU %MEM   VSZ   RSS TTY  STAT START   TIME COMMAND
+root    1  0.0  0.1 168936 11520 ?   Ss   10:00   0:02 /sbin/init
+
+# Windows - procese
+> Get-Process | Sort-Object CPU -Descending | Select -First 10</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Thread</span>
+                                    <span class="related-tag">Scheduler</span>
+                                    <span class="related-tag">Context Switching</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="basic" data-letter="T">
+                            <div class="term-header">
+                                <dt data-i18n="gl_thread_title">🧵 Thread (Fir de execuție)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_thread_desc">Cea mai mică unitate de execuție care poate fi planificată de SO. Thread-urile din același proces împart același spațiu de adrese și resurse, dar au propria stivă și registre.</p>
+                                <div class="term-details">
+                                    <h4>🔁 Proces vs Thread:</h4>
+                                    <ul>
+                                        <li><strong>Memorie:</strong> Proces = separata, Thread = partajata</li>
+                                        <li><strong>Creare:</strong> Proces = lenta, Thread = rapida</li>
+                                        <li><strong>Comunicare:</strong> Proces = IPC complex, Thread = directa</li>
+                                        <li><strong>Izolare:</strong> Proces = completă, Thread = parțială</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Python - exemplu thread-uri
+import threading
+
+def task(name):
+    print(f"Thread {name} ruleaza")
+
+t1 = threading.Thread(target=task, args=("A",))
+t2 = threading.Thread(target=task, args=("B",))
+t1.start()
+t2.start()</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Proces</span>
+                                    <span class="related-tag">Mutex</span>
+                                    <span class="related-tag">Deadlock</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="S">
+                            <div class="term-header">
+                                <dt data-i18n="gl_scheduler_title">🗓️ Scheduler (Planificator)</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_scheduler_desc">Componentele kernel-ului care decid ce proces/thread primește timp de CPU și pentru cât timp. Obiectivul este maximizarea utilizării CPU și minimizarea timpului de așteptare.</p>
+                                <div class="term-details">
+                                    <h4>🗓️ Algoritmi de planificare:</h4>
+                                    <ul>
+                                        <li><strong>FCFS</strong> (First Come First Served) - simplu, dar poate cauza "convoy effect"</li>
+                                        <li><strong>SJF</strong> (Shortest Job First) - optimal, dar dificil de prezis</li>
+                                        <li><strong>Round Robin</strong> - time slices egale, echitabil</li>
+                                        <li><strong>Priority Scheduling</strong> - bazat pe priorități</li>
+                                        <li><strong>CFS</strong> (Completely Fair Scheduler) - Linux modern</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">Proces</span>
+                                    <span class="related-tag">Context Switching</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="D">
+                            <div class="term-header">
+                                <dt data-i18n="gl_deadlock_title">⛔ Deadlock (Blocare reciprocă)</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_deadlock_desc">Situație în care două sau mai multe procese se blochează permanent, fiecare așteptând resurse deținute de celelalte. Niciun proces nu poate continua.</p>
+                                <div class="term-details">
+                                    <h4>⛔ Cele 4 condiții necesare (Coffman):</h4>
+                                    <ul>
+                                        <li><strong>Mutual Exclusion</strong> - resursa poate fi folosita de un singur proces</li>
+                                        <li><strong>Hold and Wait</strong> - procesul ține resurse și așteaptă altele</li>
+                                        <li><strong>No Preemption</strong> - resursele nu pot fi forțat eliberate</li>
+                                        <li><strong>Circular Wait</strong> - lanț circular de așteptare</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">Mutex</span>
+                                    <span class="related-tag">Semaphor</span>
+                                    <span class="related-tag">Race Condition</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA: MEMORIE -->
+                <div class="category-section" data-category="memory">
+                    <div class="category-header">
+                        <span class="category-icon">🧠</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_memory">Gestionarea Memoriei</h3>
+                            <span data-i18n="gl_category_memory_sub">RAM, memorie virtuală și tehnici de alocare</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="R">
+                            <div class="term-header">
+                                <dt data-i18n="gl_ram_title">🧠 RAM (Random Access Memory)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_ram_desc">Memoria volatilă principală a calculatorului, unde sunt încărcate programele și datele în timpul execuției. Accesul este rapid, dar conținutul se pierde la oprirea alimentării.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_ram_types">🧠 Tipuri de RAM:</h4>
+                                    <ul>
+                                        <li><strong>DRAM</strong> - Dynamic RAM, necesită refresh periodic</li>
+                                        <li><strong>SRAM</strong> - Static RAM, rapidă, folosită în cache</li>
+                                        <li><strong>DDR4</strong> - 2133-3200 MHz, standard actual</li>
+                                        <li><strong>DDR5</strong> - 4800-8400+ MHz, ultima generație</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Linux - informații RAM
+$ free -h
+              total   used   free   shared  buff/cache  available
+Mem:           16Gi   8.2Gi  2.1Gi    512Mi       5.7Gi      7.1Gi
+
+# Windows
+&gt; Get-WmiObject Win32_PhysicalMemory | Select Capacity, Speed</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Virtual Memory</span>
+                                    <span class="related-tag">Cache</span>
+                                    <span class="related-tag">ROM</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="V">
+                            <div class="term-header">
+                                <dt data-i18n="gl_vmem_title">🧠 Virtual Memory (Memorie Virtuală)</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_vmem_desc">Tehnica de gestionare a memoriei care creează iluzia unei memorii RAM mult mai mari decât cea fizică disponibilă, folosind spațiu pe disc ca extensie.</p>
+                                <div class="term-details">
+                                    <h4>⚙️ Cum funcționează:</h4>
+                                    <ul>
+                                        <li><strong>Paginare</strong> - memoria e împărțită în pagini (tipic 4KB)</li>
+                                        <li><strong>Page Table</strong> - mapează adrese virtuale la fizice</li>
+                                        <li><strong>MMU</strong> - hardware care face traducerea</li>
+                                        <li><strong>Swap/Page File</strong> - paginile inactive sunt mutate pe disc</li>
+                                        <li><strong>Page Fault</strong> - când se accesează o pagină lipsă din RAM</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">RAM</span>
+                                    <span class="related-tag">Page Fault</span>
+                                    <span class="related-tag">MMU</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="C">
+                            <div class="term-header">
+                                <dt data-i18n="gl_cache_title">📦 Cache (Memorie Cache)</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_cache_desc">Memorie extrem de rapidă situată între CPU și RAM, care stochează copii ale datelor frecvent accesate pentru a reduce latența accesului la memorie.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_cache_levels">📦 Niveluri de cache:</h4>
+                                    <ul>
+                                        <li><strong>L1</strong> - ~32-64KB, cel mai rapid (~1-4 cicluri), per core</li>
+                                        <li><strong>L2</strong> - ~256KB-1MB, rapid (~10-20 cicluri), per core</li>
+                                        <li><strong>L3</strong> - ~8-64MB, moderat (~40-75 cicluri), partajat</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">RAM</span>
+                                    <span class="related-tag">CPU</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA: SISTEM DE FI?IERE -->
+                <div class="category-section" data-category="filesystem">
+                    <div class="category-header">
+                        <span class="category-icon">🗂️</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_filesystem">Sisteme de Fișiere</h3>
+                            <span data-i18n="gl_category_filesystem_sub">Organizarea și stocarea datelor pe disc</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="S">
+                            <div class="term-header">
+                                <dt data-i18n="gl_filesystem_title">🗂️ Sistem de Fișiere (File System)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_filesystem_desc">Metoda ?i structura de date folosita pentru a organiza, stoca, gasi ?i accesa fi?ierele pe un dispozitiv de stocare.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_filesystem_popular">🗂️ Sisteme de fișiere populare:</h4>
+                                    <ul>
+                                        <li><strong>NTFS</strong> - Windows, jurnalizare, ACL</li>
+                                        <li><strong>ext4</strong> - Linux, jurnalizare, extents</li>
+                                        <li><strong>APFS</strong> - macOS, criptare, snapshots</li>
+                                        <li><strong>Btrfs</strong> - Linux, COW, snapshots, RAID</li>
+                                        <li><strong>ZFS</strong> - BSD/Linux, RAID-Z, dedup</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Linux - vizualizare sisteme de fi?iere montate
+$ df -Th
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/sda1      ext4      500G  120G  380G  24% /
+
+# Windows
+> Get-Volume</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Inode</span>
+                                    <span class="related-tag">Parti?ie</span>
+                                    <span class="related-tag">Mount</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="I">
+                            <div class="term-header">
+                                <dt data-i18n="gl_inode_title">📌 Inode</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_inode_desc">Structura de date �n sistemele de fi?iere Unix/Linux care stocheaza metadatele unui fi?ier (permisiuni, proprietar, timestamps, loca?ie pe disc) - totul �n afara de nume.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_inode_contains">📌 Ce conține un inode:</h4>
+                                    <ul>
+                                        <li>Tip fi?ier (regular, director, link)</li>
+                                        <li>Permisiuni (rwx pentru user, group, others)</li>
+                                        <li>UID ?i GID (proprietar)</li>
+                                        <li>Dimensiune fi?ier</li>
+                                        <li>Timestamps (access, modify, change)</li>
+                                        <li>Pointeri catre blocurile de date</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Vizualizare inode
+$ ls -li file.txt
+123456 -rw-r--r-- 1 user group 1024 Jan 15 10:00 file.txt
+
+# Detalii inode
+$ stat file.txt</div>
+                                <div class="term-related">
+                                    <span class="related-tag">File System</span>
+                                    <span class="related-tag">Hard Link</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="basic" data-letter="P">
+                            <div class="term-header">
+                                <dt data-i18n="gl_partition_title">📁 Partiție</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_partition_desc">Sec?iune logica a unui disc care poate fi formatata cu un sistem de fi?iere propriu. Permite organizarea ?i izolarea datelor.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_partition_schemes">📑 Scheme de partiționare:</h4>
+                                    <ul>
+                                        <li><strong>MBR</strong> - max 4 parti?ii primare, 2TB/disc</li>
+                                        <li><strong>GPT</strong> - 128 parti?ii, 18 EB/disc, modern</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">File System</span>
+                                    <span class="related-tag">Mount</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA: SECURITATE -->
+                <div class="category-section" data-category="security">
+                    <div class="category-header">
+                        <span class="category-icon">🔒</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_security">Securitate și Permisiuni</h3>
+                            <span data-i18n="gl_category_security_sub">Protecția sistemului și controlul accesului</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="P">
+                            <div class="term-header">
+                                <dt data-i18n="gl_permissions_title">🔒 Permisiuni</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_permissions_desc">Reguli care definesc ce opera?ii pot fi efectuate asupra unui fi?ier sau resursa ?i de catre cine. Fundamentale pentru securitatea sistemului.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_unix_permissions">🔐 Sistemul Unix (chmod):</h4>
+                                    <ul>
+                                        <li><strong>r (4)</strong> - Read - citire con?inut</li>
+                                        <li><strong>w (2)</strong> - Write - modificare con?inut</li>
+                                        <li><strong>x (1)</strong> - Execute - rulare ca program</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Linux - vizualizare permisiuni
+$ ls -l file.txt
+-rw-r--r-- 1 user group 1024 Jan 15 file.txt
+
+# Setare permisiuni
+$ chmod 755 script.sh   # rwxr-xr-x
+$ chmod u+x script.sh   # adauga execute pentru user</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Inode</span>
+                                    <span class="related-tag">Root</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="M">
+                            <div class="term-header">
+                                <dt data-i18n="gl_mutex_title">🔐 Mutex (Mutual Exclusion)</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_mutex_desc">Obiect de sincronizare care permite doar unui singur thread sa acceseze o resursa partajata la un moment dat, prevenind race conditions.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_mutex_ops">⚙️ Operații:</h4>
+                                    <ul>
+                                        <li><strong>lock()</strong> - achizi?ioneaza mutex-ul (sau a?teapta)</li>
+                                        <li><strong>unlock()</strong> - elibereaza mutex-ul</li>
+                                        <li><strong>try_lock()</strong> - �ncearca fara blocare</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Python - exemplu mutex
+import threading
+
+counter = 0
+mutex = threading.Lock()
+
+def increment():
+    global counter
+    with mutex:  # lock() automat
+        counter += 1
+    # unlock() automat la ie?ire</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Semaphor</span>
+                                    <span class="related-tag">Deadlock</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="R">
+                            <div class="term-header">
+                                <dt data-i18n="gl_race_title">? Race Condition</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_race_desc">Situa?ie �n care comportamentul programului depinde de ordinea relativa sau timing-ul evenimentelor necontrolate, duc�nd la rezultate imprevizibile.</p>
+                                <div class="term-example"># Exemplu race condition
+counter = 0
+
+# Thread 1          # Thread 2
+read counter (0)    
+                    read counter (0)
+increment (1)       
+                    increment (1)
+write counter (1)   
+                    write counter (1)
+
+# Rezultat: counter = 1 (ar trebui 2!)
+# Solu?ie: folose?te mutex</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Mutex</span>
+                                    <span class="related-tag">Thread</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA: INTERFE?E -->
+                <div class="category-section" data-category="interface">
+                    <div class="category-header">
+                        <span class="category-icon">🖥️</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_interface">Interfețe Utilizator</h3>
+                            <span data-i18n="gl_category_interface_sub">GUI, CLI și moduri de interacțiune</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="G">
+                            <div class="term-header">
+                                <dt data-i18n="gl_gui_title">🖥️ GUI (Graphical User Interface)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_gui_desc">Interfa?a grafica ce permite utilizatorilor sa interac?ioneze cu sistemul prin elemente vizuale precum ferestre, butoane, meniuri ?i iconi?e, folosind mouse-ul ?i tastatura.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_gui_components">🧩 Componente GUI:</h4>
+                                    <ul>
+                                        <li><strong>Window Manager</strong> - gestioneaza ferestrele</li>
+                                        <li><strong>Desktop Environment</strong> - experien?a completa (GNOME, KDE)</li>
+                                        <li><strong>Widgets</strong> - elemente UI (butoane, textbox)</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">CLI</span>
+                                    <span class="related-tag">Shell</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="basic" data-letter="C">
+                            <div class="term-header">
+                                <dt data-i18n="gl_cli_title">⌨️ CLI (Command Line Interface)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_cli_desc">Interfa?a text unde utilizatorul introduce comenzi pentru a interac?iona cu sistemul. Ofera control precis ?i posibilitatea de automatizare prin scripturi.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_shells_popular">🐚 Shell-uri populare:</h4>
+                                    <ul>
+                                        <li><strong>Bash</strong> - Bourne Again Shell (Linux default)</li>
+                                        <li><strong>Zsh</strong> - Z Shell (macOS default)</li>
+                                        <li><strong>PowerShell</strong> - Windows, object-oriented</li>
+                                        <li><strong>CMD</strong> - Windows Command Prompt (legacy)</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Comenzi de baza Linux/macOS
+$ ls -la          # listare fi?iere
+$ cd /home        # schimba director
+$ grep "text" *   # cauta �n fi?iere
+
+# PowerShell Windows
+> Get-ChildItem   # listare
+> Set-Location    # schimba director</div>
+                                <div class="term-related">
+                                    <span class="related-tag">GUI</span>
+                                    <span class="related-tag">Shell</span>
+                                    <span class="related-tag">Terminal</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="basic" data-letter="S">
+                            <div class="term-header">
+                                <dt data-i18n="gl_shell_title">🐚 Shell</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_shell_desc">Program care interpreteaza comenzile utilizatorului ?i le transmite kernel-ului pentru execu?ie. Poate fi grafic (Explorer, Finder) sau text (Bash, PowerShell).</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_shell_features">⚙️ Funcționalități shell:</h4>
+                                    <ul>
+                                        <li>Interpretare ?i execu?ie comenzi</li>
+                                        <li>Variabile de mediu</li>
+                                        <li>Redirec?ionare I/O (&gt;, &gt;&gt;, &lt;)</li>
+                                        <li>Pipe-uri (|)</li>
+                                        <li>Scripting (automatizare)</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">CLI</span>
+                                    <span class="related-tag">Terminal</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA: I/O & �NTRERUPERI -->
+                <div class="category-section" data-category="io">
+                    <div class="category-header">
+                        <span class="category-icon">🔌</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_io">I/O și Întreruperi</h3>
+                            <span data-i18n="gl_category_io_sub">Comunicarea cu dispozitivele și gestionarea evenimentelor</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="I">
+                            <div class="term-header">
+                                <dt data-i18n="gl_interrupt_title">🔔 Interrupt (Întrerupere)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_interrupt_desc">Semnal hardware sau software care �ntrerupe execu?ia normala a CPU-ului pentru a trata un eveniment urgent (ex: apasare tasta, date de la re?ea).</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_interrupt_types">🔔 Tipuri de întreruperi:</h4>
+                                    <ul>
+                                        <li><strong>Hardware (IRQ)</strong> - de la dispozitive externe</li>
+                                        <li><strong>Software (Trap)</strong> - generate de program (ex: syscall)</li>
+                                        <li><strong>Exception</strong> - erori (division by zero, page fault)</li>
+                                        <li><strong>NMI</strong> - Non-Maskable, critice</li>
+                                    </ul>
+                                </div>
+                                <div class="term-example"># Linux - vizualizare �ntreruperi
+$ cat /proc/interrupts
+           CPU0       CPU1
+  0:         45          0   IO-APIC   2-edge      timer
+  1:        523          0   IO-APIC   1-edge      i8042</div>
+                                <div class="term-related">
+                                    <span class="related-tag">Driver</span>
+                                    <span class="related-tag">Kernel</span>
+                                    <span class="related-tag">DMA</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="basic" data-letter="I">
+                            <div class="term-header">
+                                <dt data-i18n="gl_io_title">🔌 I/O (Input/Output)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_io_desc">Comunicarea �ntre sistem ?i dispozitivele externe. Input = date primite (tastatura, mouse), Output = date trimise (monitor, imprimanta).</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_io_methods">🔌 Metode I/O:</h4>
+                                    <ul>
+                                        <li><strong>Polling</strong> - CPU verifica repetat starea dispozitivului</li>
+                                        <li><strong>Interrupt-driven</strong> - dispozitivul anun?a c�nd e gata</li>
+                                        <li><strong>DMA</strong> - transfer direct �n memorie</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">Driver</span>
+                                    <span class="related-tag">Interrupt</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA: API & PROGRAMMING -->
+                <div class="category-section" data-category="api">
+                    <div class="category-header">
+                        <span class="category-icon">🔗</span>
+                        <div class="category-title">
+                            <h3 data-i18n="gl_category_api">API și Programare</h3>
+                            <span data-i18n="gl_category_api_sub">Interfețe de programare și dezvoltare</span>
+                        </div>
+                        <span class="category-toggle">▾</span>
+                    </div>
+                    <div class="category-items">
+                        <div class="glossary-item" data-level="basic" data-letter="A">
+                            <div class="term-header">
+                                <dt data-i18n="gl_api_title">🔗 API (Application Programming Interface)</dt>
+                                <span class="term-badge basic" data-i18n="glossary_filter_basic"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_api_desc">Set de func?ii, protocoale ?i unelte care permit aplica?iilor sa comunice �ntre ele sau cu sistemul de operare �ntr-un mod standardizat.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_api_types">🔗 Tipuri de API:</h4>
+                                    <ul>
+                                        <li><strong>OS API</strong> - Win32, POSIX, Cocoa</li>
+                                        <li><strong>Library API</strong> - stdio.h, STL</li>
+                                        <li><strong>Web API</strong> - REST, GraphQL</li>
+                                        <li><strong>Hardware API</strong> - DirectX, OpenGL, Vulkan</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">System Call</span>
+                                    <span class="related-tag">POSIX</span>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="glossary-item" data-level="advanced" data-letter="P">
+                            <div class="term-header">
+                                <dt data-i18n="gl_posix_title">📜 POSIX</dt>
+                                <span class="term-badge advanced" data-i18n="glossary_filter_advanced"></span>
+                            </div>
+                            <dd>
+                                <p class="term-definition" data-i18n="gl_posix_desc">Portable Operating System Interface - familie de standarde IEEE care definesc API-ul pentru compatibilitate �ntre sisteme de operare Unix-like.</p>
+                                <div class="term-details">
+                                    <h4 data-i18n="gl_posix_standardizes">📜 Ce standardizează POSIX:</h4>
+                                    <ul>
+                                        <li>Apeluri de sistem (open, read, write, fork)</li>
+                                        <li>Comenzi shell (ls, grep, awk)</li>
+                                        <li>Threads (pthreads)</li>
+                                        <li>Expresii regulate</li>
+                                    </ul>
+                                </div>
+                                <div class="term-related">
+                                    <span class="related-tag">API</span>
+                                    <span class="related-tag">Unix</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-i18n="footer_site">Evolu?ia Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category Headers - toggle visibility
+            var categoryHeaders = document.querySelectorAll('.category-header');
+            categoryHeaders.forEach(function(header) {
+                header.addEventListener('click', function() {
+                    var items = this.nextElementSibling;
+                    var toggle = this.querySelector('.category-toggle');
+                    if (items.style.display === 'none' || items.style.display === '') {
+                        items.style.display = 'grid';
+                        toggle.textContent = '▾';
+                    } else {
+                        items.style.display = 'none';
+                        toggle.textContent = '▸';
+                    }
+                });
+            });
+
+            // Search functionality
+            var searchInput = document.getElementById('glossarySearch');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    var searchTerm = this.value.toLowerCase().trim();
+                    var items = document.querySelectorAll('.glossary-item');
+                    var sections = document.querySelectorAll('.category-section');
+                    
+                    items.forEach(function(item) {
+                        var text = item.textContent.toLowerCase();
+                        item.style.display = (searchTerm === '' || text.includes(searchTerm)) ? 'block' : 'none';
+                    });
+
+                    // Show all category items when searching
+                    if (searchTerm !== '') {
+                        sections.forEach(function(section) {
+                            section.querySelector('.category-items').style.display = 'grid';
+                        });
+                    }
+                });
+            }
+
+            // Filter buttons
+            var filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var filter = this.getAttribute('data-filter');
+                    
+                    filterButtons.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                    
+                    var items = document.querySelectorAll('.glossary-item');
+                    var sections = document.querySelectorAll('.category-section');
+                    
+                    if (filter === 'all') {
+                        items.forEach(function(item) { item.style.display = 'block'; });
+                        sections.forEach(function(section) { section.style.display = 'block'; });
+                    } else if (filter === 'basic' || filter === 'advanced') {
+                        sections.forEach(function(section) { section.style.display = 'block'; });
+                        items.forEach(function(item) {
+                            item.style.display = (item.getAttribute('data-level') === filter) ? 'block' : 'none';
+                        });
+                    } else {
+                        // Category filter
+                        sections.forEach(function(section) {
+                            section.style.display = (section.getAttribute('data-category') === filter) ? 'block' : 'none';
+                        });
+                        items.forEach(function(item) { item.style.display = 'block'; });
+                    }
+                });
+            });
+
+            // Alphabet navigation
+            var alphabetNav = document.getElementById('alphabetNav');
+            if (alphabetNav) {
+                'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(function(letter) {
+                    var btn = document.createElement('button');
+                    btn.className = 'alpha-btn';
+                    btn.textContent = letter;
+                    btn.addEventListener('click', function() {
+                        var items = document.querySelectorAll('.glossary-item');
+                        var found = false;
+                        items.forEach(function(item) {
+                            var itemLetter = item.getAttribute('data-letter');
+                            if (itemLetter && itemLetter.toUpperCase() === letter) {
+                                item.style.display = 'block';
+                                if (!found) {
+                                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    found = true;
+                                }
+                            }
+                        });
+                    });
+                    alphabetNav.appendChild(btn);
+                });
+            }
+
+            // Related tags click
+            var relatedTags = document.querySelectorAll('.related-tag');
+            relatedTags.forEach(function(tag) {
+                tag.addEventListener('click', function() {
+                    var termName = this.textContent.toLowerCase();
+                    var searchInput = document.getElementById('glossarySearch');
+                    if (searchInput) {
+                        searchInput.value = termName;
+                        searchInput.dispatchEvent(new Event('input'));
+                    }
+                });
+            });
+
+            // Update total terms count
+            var totalEl = document.getElementById('totalTerms');
+            if (totalEl) {
+                totalEl.textContent = document.querySelectorAll('.glossary-item').length;
+            }
+
+            // Small runtime fixes for Romanian display (non-destructive)
+            // - normalize badge text (many badges were written without diacritics)
+            document.querySelectorAll('.term-badge').forEach(function(b) {
+                if (b.textContent.trim() === 'De baza') b.textContent = 'De bază';
+            });
+        });
+    </script>
+    <script src="../js/os-detect.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/enhancements.js"></script>
+</body>
+</html>
+
+
+
+

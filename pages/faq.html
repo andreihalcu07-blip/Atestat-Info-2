@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Evoluția Sistemelor de Operare</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/advanced.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/desktop.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect x='10' y='15' width='80' height='55' fill='none' stroke='%232563eb' stroke-width='3' rx='5'/>
+        <rect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='3'/>
+    </svg>">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+                <!-- STÂNGA: Logo -->
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="15" width="80" height="55" fill="none" stroke="#2563eb" stroke-width="3" rx="5"/>
+                            <rect x="15" y="20" width="70" height="45" fill="#e0e7ff" rx="3"/>
+                            <rect x="20" y="25" width="20" height="15" fill="#2563eb" opacity="0.7" rx="2"/>
+                            <rect x="45" y="25" width="20" height="8" fill="#f59e0b" opacity="0.7" rx="2"/>
+                            <rect x="20" y="45" width="45" height="12" fill="#10b981" opacity="0.7" rx="2"/>
+                            <path d="M 35 70 L 30 80 L 70 80 L 65 70" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                            <circle cx="50" cy="80" r="3" fill="#2563eb"/>
+                        </svg>
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                <!-- MIJLOC: Meniu navigare -->
+                <div class="navbar-center">
+                    <ul id="main-nav" class="nav-links">
+                        <li><a href="../index.html" data-i18n="nav_home">Acasă</a></li>
+                        <li><a href="about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="../windows/index.html">Windows</a></li>
+                        <li><a href="glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- DREAPTA: Toggle-uri -->
+                <div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" aria-label="Toggle dark mode" id="darkModeToggle">🌙</button>
+                    <button class="btn btn--utility lang-toggle" aria-label="Change language" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="faq_title">❓ Întrebări Frecvente</h2>
+                <p data-i18n="faq_subtitle">Răspunsuri la întrebările populare</p>
+            </div>
+        </section>
+
+        <div class="faq-content">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q1">Care este diferența dintre kernel și SO?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a1">
+                    Kernelul este nucleul SO-ului, componenta principală care gestionează resursele. 
+                    Sistemul de operare include kernelul plus alte componente: driveri, utilitare, aplicații, interfață grafică, etc.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q2">De ce Windows este cel mai popular SO?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a2">
+                    Windows domină piața datorită combinației dintre compatibilitate hardware, familiaritate utilizatorilor, 
+                    și suportul pentru o gamă vastă de software și jocuri. Microsoft a investit masiv în marketing și dezvoltare.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q3">Linux este cu adevărat gratuit?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a3">
+                    Da! Linux este gratuit și open-source. Poți descărca, modifica și redistribui codul sursă liber. 
+                    Unele distribuții oferă și suport comercial plătit, dar kernelul și majoritatea tool-urilor sunt complet gratuite.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q4">Ce este multitasking-ul?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a4">
+                    Multitasking-ul permite SO-ului să ruleze mai multe programe "simultan". În realitate, procesele sunt executate 
+                    foarte rapid pe rând, dar calculatorul este atât de rapid încât pare că lucrez în paralel.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q5">Care SO este cel mai sigur?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a5">
+                    iOS și macOS sunt considerate cele mai sigure pentru utilizatorii obișnuiți datorită design-ului închis. 
+                    Linux este foarte sigur pentru servere datorită naturii open-source. Windows necesită mai multă atenție la securitate.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q6">Pot rula Windows pe Mac?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a6">
+                    Dacă Mac-ul tău are Intel processor, poți folosi software de virtualizare cum ar fi Parallels sau VMware. 
+                    Mac-urile cu Apple Silicon (M1/M2) nu suportă Windows nativ.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q7">De ce Android domină piața mobile?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a7">
+                    Android este gratuit, open-source, și poate fi adaptat de diverși producători (Samsung, Xiaomi, etc.). 
+                    iOS este disponibil doar pe iPhone-uri, ceea ce limitează piața. Android controlează ~70% din piața de smartphone-uri.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q8">Ce este cloud computing?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a8">
+                    Cloud computing înseamnă accesarea resurselor informatice (servere, stocare, software) prin internet, 
+                    în loc să le ai local pe calculator. Exemple: Google Drive, OneDrive, AWS.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q9">Care este viitorul sistemelor de operare?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a9">
+                    Viitorul aparține SO-urilor cu AI integrat, sisteme hibride (cloud + local), și dispozitive IoT. 
+                    Open-source va crește, și securitatea/privacy vor fi prioritare. Voice control și gesture recognition vor fi mai importante.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q10">Pot face propriul meu SO?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a10">
+                    Teoretic da, dar e o sarcină enormă. Ai nevoie de cunoștințe profunde de programare, hardware, și design de sisteme. 
+                    Un proiect educativ mai mic (bootloader + kernel simplu) e fezabil în quelques luni.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+        </div>
+    </footer>
+
+    <script src="../js/os-detect.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/enhancements.js"></script>
+    <script src="../js/faq.js"></script>
+</body>
+</html>

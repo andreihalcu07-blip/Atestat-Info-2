@@ -26,6 +26,19 @@
         </div>
     </div>
 
+    <!-- Leaderboard Panel (reuses achievements modal styles) -->
+    <div class="achievements-panel leaderboard-panel" id="leaderboardPanel" aria-hidden="true">
+        <div class="achievements-modal" role="dialog" aria-modal="true" aria-labelledby="leaderboardTitle">
+            <button class="achievements-close" onclick="toggleLeaderboard()" aria-label="Close leaderboard">✕</button>
+            <h3 id="leaderboardTitle" style="margin-top:0;" data-i18n="quiz_leaderboard">🏅 Top 10 Jucători</h3>
+            <div id="leaderboardList"></div>
+            <div class="leaderboard-actions" style="margin-top:12px; display:flex; gap:10px; justify-content:flex-end;">
+                <!-- Add current quiz result to leaderboard (uses customPrompt) -->
+                <button class="btn btn--secondary" onclick="addCurrentToLeaderboard()" id="addCurrentBtn" data-i18n="quiz_add_current">Add current result</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Achievement Popup (small unlocked notification) -->
     <div class="achievement-popup" id="achievementPopup" aria-hidden="true">
         <div class="icon" id="popupIcon">🏆</div>
@@ -89,6 +102,11 @@
                         <span class="achievement-icon">🏆</span>
                         <span class="achievement-label">Achievements</span>
                         <span id="achievementCount" class="achievement-count">0 / 0</span>
+                    </button>
+                    <!-- Leaderboard chip: visual-only button matching Achievements (placed to the right) -->
+                    <button id="leaderboardChip" class="achievement-chip leaderboard-chip" aria-label="Open leaderboard" onclick="toggleLeaderboard()" aria-controls="leaderboardPanel">
+                        <span class="achievement-icon">📈</span>
+                        <span class="achievement-label">Leaderboard</span>
                     </button>
                 </div>
             </div>

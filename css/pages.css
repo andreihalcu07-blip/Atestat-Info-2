@@ -831,6 +831,40 @@ body.dark-mode .timeline-3d::-webkit-scrollbar-track {
     border-color: var(--primary-color);
 }
 
+/* Make sure options are large, tappable and full-width on small screens */
+@media (max-width: 720px) {
+    .quiz-content { padding: 28px 14px; }
+    .quiz-container { padding: 18px; }
+    .question-text { font-size: 1rem; }
+    .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .option {
+        width: 100%;
+        padding: 18px 16px;
+        font-size: 1.05rem;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(0,0,0,0.06);
+    }
+    .option input[type="radio"] { margin-right: 12px; }
+    .option:active, .option:focus {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        outline: none;
+    }
+    /* Ensure question images fit viewport */
+    .question-image { max-width: 100%; height: auto; display:block; margin: 10px 0; }
+    /* Timer smaller and readable */
+    .timer-container { padding: 10px; gap: 6px; }
+    .timer-icon { font-size: 1.2rem; }
+    .timer-value { font-size: 1.2rem; }
+    /* Achievements modal tweaks for small screens */
+    .achievements-modal { width: 96%; padding: 12px; max-height: 88vh; }
+}
+
 .option input[type="radio"] {
     margin-right: 15px;
     cursor: pointer;
@@ -1042,6 +1076,34 @@ body.dark-mode .timeline-3d::-webkit-scrollbar-track {
     font-weight: 600;
 }
 
+/* Hero actions: group Achievements + Leaderboard chips */
+.hero-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px; /* consistent spacing between buttons */
+    margin-top: 8px;
+}
+
+/* Ensure leaderboard chip matches achievement chip visually (inherits .achievement-chip) */
+/* .leaderboard-chip intentionally omitted - inherits .achievement-chip styles */
+
+/* Mobile: stack or expand buttons for touch targets */
+@media (max-width: 720px) {
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .achievement-chip {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 1.02rem;
+    }
+    .achievement-chip .achievement-count { margin-left: 8px; }
+}
+
 .achievement-item {
     display: flex;
     align-items: center;
@@ -1054,8 +1116,9 @@ body.dark-mode .timeline-3d::-webkit-scrollbar-track {
 }
 
 .achievement-item.unlocked {
-    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-    border: 2px solid #10b981;
+    /* Subtle unlocked style: darkened background with green accent border */
+    background: linear-gradient(180deg, rgba(16,185,129,0.06), rgba(16,185,129,0.03));
+    border-left: 4px solid #10b981;
 }
 
 .achievement-item.locked {

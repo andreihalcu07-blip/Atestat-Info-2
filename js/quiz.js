@@ -127,72 +127,148 @@ const quizDataEN = [
 
 // Get current quiz data based on language
 function getQuizData() {
+    // If a quiz was selected for this session, use the runtime quizData array.
+    if (Array.isArray(quizData) && quizData.length) return quizData;
+    // Fallback to the default language-specific dataset (first set)
     return getCurrentLang() === 'en' ? quizDataEN : quizDataRO;
 }
 
-// ===== QUIZ DATA (legacy support) =====
-let quizData = [
+// ===== MULTI-QUIZ DATA =====
+// We provide multiple quiz sets (each quiz has exactly 10 questions). Each set
+// contains language variations so we can pick based on current language.
+const quizSets = [
     {
-        question: "În ce an a fost creat Unix?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%232563eb' width='200' height='150'/%3E%3Crect x='40' y='30' width='120' height='80' fill='%231e40af' rx='5' stroke='%233b82f6' stroke-width='2'/%3E%3Crect x='50' y='40' width='100' height='60' fill='%23111827'/%3E%3Ctext x='60' y='60' font-size='10' fill='%2322c55e' font-family='monospace'%3E$ __%3C/text%3E%3Ctext x='60' y='75' font-size='10' fill='%2322c55e' font-family='monospace'%3E%3E login:%3C/text%3E%3Crect x='70' y='115' width='60' height='8' fill='%23374151' rx='2'/%3E%3C/svg%3E",
-        options: ["1969", "1981", "1995", "2001"],
-        correct: 0
+        id: 'os_basics',
+        name: { en: 'OS Basics', ro: 'Bazele SO' },
+        questions: {
+            ro: quizDataRO,
+            en: quizDataEN
+        }
     },
     {
-        question: "Care din următoarele e nucleul SO?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%238b5cf6' width='200' height='150'/%3E%3Cellipse cx='100' cy='75' rx='70' ry='50' fill='%23c4b5fd' opacity='0.4'/%3E%3Cellipse cx='100' cy='75' rx='50' ry='35' fill='%23a78bfa' opacity='0.6'/%3E%3Cellipse cx='100' cy='75' rx='30' ry='20' fill='%238b5cf6'/%3E%3Ctext x='100' y='80' font-size='14' fill='white' text-anchor='middle'%3E?%3C/text%3E%3C/svg%3E",
-        options: ["BIOS", "Kernel", "Driver", "Shell"],
-        correct: 1
+        id: 'history_windows',
+        name: { en: 'Windows History', ro: 'Istoria Windows' },
+        questions: {
+            ro: [
+                { question: 'Când a fost lansat MS-DOS?', options: ['1981','1980','1979','1985'], correct: 0 },
+                { question: 'Cine a fondat Microsoft?', options: ['Steve Jobs','Bill Gates','Linus Torvalds','Mark Zuckerberg'], correct: 1 },
+                { question: 'Ce interfaţă a făcut Windows popular?', options: ['CLI','GUI','Batch','BIOS'], correct: 1 },
+                { question: 'Care a fost sistemul înainte de Windows?', options: ['macOS','MS-DOS','Linux','OS/2'], correct: 1 },
+                { question: 'Windows 95 a introdus:', options: ['Start Menu','Dock','App Store','Terminal'], correct: 0 },
+                { question: 'Cine a creat Windows NT?', options: ['Microsoft','Apple','IBM','Sun'], correct: 0 },
+                { question: 'Lansarea Windows XP a fost în?', options: ['2001','1999','2003','1997'], correct: 0 },
+                { question: 'Windows 7 a venit după?', options: ['Vista','XP','8','95'], correct: 0 },
+                { question: 'Care este managerul de fișiere din Windows?', options: ['Finder','Explorer','Nautilus','Dolphin'], correct: 1 },
+                { question: 'Caracteristica UAC protejează împotriva:', options: ['Rularea neautorizata','Design','Sunet','Grafică'], correct: 0 }
+            ],
+            en: [
+                { question: 'When was MS-DOS released?', options: ['1981','1980','1979','1985'], correct: 0 },
+                { question: 'Who founded Microsoft?', options: ['Steve Jobs','Bill Gates','Linus Torvalds','Mark Zuckerberg'], correct: 1 },
+                { question: 'Which UI made Windows popular?', options: ['CLI','GUI','Batch','BIOS'], correct: 1 },
+                { question: 'What preceded Windows?', options: ['macOS','MS-DOS','Linux','OS/2'], correct: 1 },
+                { question: 'Windows 95 introduced:', options: ['Start Menu','Dock','App Store','Terminal'], correct: 0 },
+                { question: 'Who created Windows NT?', options: ['Microsoft','Apple','IBM','Sun'], correct: 0 },
+                { question: 'Windows XP was released in?', options: ['2001','1999','2003','1997'], correct: 0 },
+                { question: 'Windows 7 followed which release?', options: ['Vista','XP','8','95'], correct: 0 },
+                { question: 'Windows file manager is called?', options: ['Finder','Explorer','Nautilus','Dolphin'], correct: 1 },
+                { question: 'UAC protects against:', options: ['Unauthorized actions','Design','Sound','Graphics'], correct: 0 }
+            ]
+        }
     },
     {
-        question: "Care SO domină serverele web?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23059669' width='200' height='150'/%3E%3Crect x='30' y='25' width='50' height='100' fill='%23064e3b' rx='3'/%3E%3Crect x='75' y='25' width='50' height='100' fill='%23064e3b' rx='3'/%3E%3Crect x='120' y='25' width='50' height='100' fill='%23064e3b' rx='3'/%3E%3Ccircle cx='55' cy='40' r='5' fill='%2322c55e'/%3E%3Ccircle cx='55' cy='55' r='5' fill='%2322c55e'/%3E%3Ccircle cx='100' cy='40' r='5' fill='%2322c55e'/%3E%3Ccircle cx='100' cy='55' r='5' fill='%2322c55e'/%3E%3Ccircle cx='145' cy='40' r='5' fill='%2322c55e'/%3E%3Ccircle cx='145' cy='55' r='5' fill='%2322c55e'/%3E%3Ctext x='100' y='145' font-size='12' fill='white' text-anchor='middle'%3EServere Web%3C/text%3E%3C/svg%3E",
-        options: ["Windows", "macOS", "Linux", "ChromeOS"],
-        correct: 2
+        id: 'linux_and_servers',
+        name: { en: 'Linux & Servers', ro: 'Linux & Servere' },
+        questions: {
+            ro: [
+                { question: 'Cine a creat Linux?', options: ['Bill Gates','Steve Jobs','Linus Torvalds','Richard Stallman'], correct: 2 },
+                { question: 'Ce este un kernel?', options: ['UI','Nucleu','Aplicație','Driver'], correct: 1 },
+                { question: 'Un server web popular este:', options: ['IIS','Apache','Finder','Explorer'], correct: 1 },
+                { question: 'SSH folosește portul implicit:', options: ['22','80','443','21'], correct: 0 },
+                { question: 'Sistemul de fișiere tipic Linux este:', options: ['NTFS','ext4','HFS+','FAT32'], correct: 1 },
+                { question: 'Distribuție Linux populară:', options: ['Windows','Ubuntu','macOS','DOS'], correct: 1 },
+                { question: 'Comanda pentru listare fișiere:', options: ['ls','dir','show','list'], correct: 0 },
+                { question: 'Daemon în Linux este:', options: ['Proces background','Aplicație GUI','Driver','BIOS'], correct: 0 },
+                { question: 'Sudo oferă:', options: ['Privilegii elevate','Design','Sunet','Email'], correct: 0 },
+                { question: 'Init system modern:', options: ['systemd','init','launchd','upstart'], correct: 0 }
+            ],
+            en: [
+                { question: 'Who created Linux?', options: ['Bill Gates','Steve Jobs','Linus Torvalds','Richard Stallman'], correct: 2 },
+                { question: 'What is a kernel?', options: ['UI','Core','Application','Driver'], correct: 1 },
+                { question: 'A popular web server is:', options: ['IIS','Apache','Finder','Explorer'], correct: 1 },
+                { question: 'SSH default port is:', options: ['22','80','443','21'], correct: 0 },
+                { question: 'Typical Linux filesystem is:', options: ['NTFS','ext4','HFS+','FAT32'], correct: 1 },
+                { question: 'A popular Linux distro:', options: ['Windows','Ubuntu','macOS','DOS'], correct: 1 },
+                { question: 'Command to list files:', options: ['ls','dir','show','list'], correct: 0 },
+                { question: 'A daemon is a:', options: ['Background process','GUI app','Driver','BIOS'], correct: 0 },
+                { question: 'Sudo provides:', options: ['Elevated privileges','Design','Sound','Email'], correct: 0 },
+                { question: 'A modern init system:', options: ['systemd','init','launchd','upstart'], correct: 0 }
+            ]
+        }
     },
     {
-        question: "Cine a creat Linux?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23fbbf24' width='200' height='150'/%3E%3Cellipse cx='100' cy='85' rx='35' ry='45' fill='%23000'/%3E%3Cellipse cx='100' cy='50' r='25' fill='%23000'/%3E%3Cellipse cx='100' cy='90' rx='25' ry='30' fill='white'/%3E%3Ccircle cx='90' cy='45' r='5' fill='white'/%3E%3Ccircle cx='110' cy='45' r='5' fill='white'/%3E%3Ccircle cx='90' cy='45' r='2' fill='%23000'/%3E%3Ccircle cx='110' cy='45' r='2' fill='%23000'/%3E%3Cellipse cx='100' cy='58' rx='5' ry='3' fill='%23f97316'/%3E%3Ctext x='100' y='140' font-size='12' fill='%23000' text-anchor='middle'%3ECine e creatorul?%3C/text%3E%3C/svg%3E",
-        options: ["Bill Gates", "Steve Jobs", "Linus Torvalds", "Mark Zuckerberg"],
-        correct: 2
+        id: 'mobile_os',
+        name: { en: 'Mobile OS', ro: 'SO Mobile' },
+        questions: {
+            ro: [
+                { question: 'Care SO domină smartphone-urile?', options: ['iOS','Android','Symbian','Windows Mobile'], correct: 1 },
+                { question: 'App store popular iOS:', options: ['App Store','Play Store','Store','Market'], correct: 0 },
+                { question: 'Android este bazat pe:', options: ['Linux','Windows','macOS','Unix'], correct: 0 },
+                { question: 'Comenzi prin gesturi apar în:', options: ['Mobile','Server','Desktop','BIOS'], correct: 0 },
+                { question: 'APK este formatul pentru:', options: ['Android apps','iOS apps','macOS apps','Windows apps'], correct: 0 },
+                { question: 'Firma care produce iPhone:', options: ['Samsung','Apple','Nokia','Microsoft'], correct: 1 },
+                { question: 'Android are kernel:', options: ['NT','Linux','XNU','BSD'], correct: 1 },
+                { question: 'Widgets sunt caracteristici ale:', options: ['Home screen','BIOS','Terminal','Explorer'], correct: 0 },
+                { question: 'Push notifications sunt trimise de:', options: ['Server','BIOS','Client','Driver'], correct: 0 },
+                { question: 'Aplicatii native sunt scrise în:', options: ['Kotlin/Swift','HTML','CSS','Shell'], correct: 0 }
+            ],
+            en: [
+                { question: 'Which OS dominates smartphones?', options: ['iOS','Android','Symbian','Windows Mobile'], correct: 1 },
+                { question: 'The iOS app store is called:', options: ['App Store','Play Store','Store','Market'], correct: 0 },
+                { question: 'Android is based on:', options: ['Linux','Windows','macOS','Unix'], correct: 0 },
+                { question: 'Gesture navigation is common on:', options: ['Mobile','Server','Desktop','BIOS'], correct: 0 },
+                { question: 'APK is used for:', options: ['Android apps','iOS apps','macOS apps','Windows apps'], correct: 0 },
+                { question: 'Company behind iPhone:', options: ['Samsung','Apple','Nokia','Microsoft'], correct: 1 },
+                { question: 'Android kernel is:', options: ['NT','Linux','XNU','BSD'], correct: 1 },
+                { question: 'Widgets typically live on the:', options: ['Home screen','BIOS','Terminal','Explorer'], correct: 0 },
+                { question: 'Push notifications are sent by:', options: ['Server','BIOS','Client','Driver'], correct: 0 },
+                { question: 'Native apps commonly use:', options: ['Kotlin/Swift','HTML','CSS','Shell'], correct: 0 }
+            ]
+        }
     },
     {
-        question: "Ce înseamnă GUI?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%236366f1' width='200' height='150'/%3E%3Crect x='25' y='20' width='150' height='100' fill='%23e0e7ff' rx='5' stroke='%234f46e5' stroke-width='2'/%3E%3Crect x='30' y='25' width='140' height='15' fill='%234f46e5'/%3E%3Ccircle cx='40' cy='32' r='4' fill='%23ef4444'/%3E%3Ccircle cx='52' cy='32' r='4' fill='%23fbbf24'/%3E%3Ccircle cx='64' cy='32' r='4' fill='%2322c55e'/%3E%3Crect x='35' y='50' width='60' height='25' fill='%23c7d2fe' rx='3'/%3E%3Crect x='100' y='50' width='65' height='25' fill='%23c7d2fe' rx='3'/%3E%3Crect x='35' y='85' width='130' height='25' fill='%23c7d2fe' rx='3'/%3E%3Cpath d='M 100 125 L 90 140 L 110 140 Z' fill='%234f46e5'/%3E%3C/svg%3E",
-        options: ["Graphical Unit Interface", "Graphical User Interface", "Global User Input", "Graphic Universal Item"],
-        correct: 1
-    },
-    {
-        question: "Care SO are piața de ~75% din desktop-uri?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%230ea5e9' width='200' height='150'/%3E%3Ccircle cx='100' cy='75' r='50' fill='%23bae6fd'/%3E%3Cpath d='M 100 75 L 100 25 A 50 50 0 1 1 35 100 Z' fill='%230284c7'/%3E%3Ctext x='100' y='80' font-size='20' fill='white' text-anchor='middle' font-weight='bold'%3E75%25%3C/text%3E%3Ctext x='100' y='140' font-size='12' fill='white' text-anchor='middle'%3ECota de piață desktop%3C/text%3E%3C/svg%3E",
-        options: ["macOS", "Linux", "Windows", "ChromeOS"],
-        correct: 2
-    },
-    {
-        question: "Care SO e cel mai popular pe smartphone-uri?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%2310b981' width='200' height='150'/%3E%3Crect x='70' y='15' width='60' height='110' fill='%23064e3b' rx='8'/%3E%3Crect x='75' y='25' width='50' height='85' fill='%23d1fae5'/%3E%3Ccircle cx='100' cy='120' r='5' fill='%23047857'/%3E%3Crect x='90' y='18' width='20' height='3' fill='%23047857' rx='1'/%3E%3Ctext x='100' y='75' font-size='30' fill='%23059669' text-anchor='middle'%3E?%3C/text%3E%3Ctext x='100' y='145' font-size='10' fill='white' text-anchor='middle'%3ECel mai popular SO mobil%3C/text%3E%3C/svg%3E",
-        options: ["iOS", "Android", "Windows Mobile", "Symbian"],
-        correct: 1
-    },
-    {
-        question: "Care din acestea e mecanismul de synchronizare?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%238b5cf6' width='200' height='150'/%3E%3Crect x='20' y='40' width='60' height='40' fill='%23c4b5fd' rx='5'/%3E%3Crect x='120' y='40' width='60' height='40' fill='%23c4b5fd' rx='5'/%3E%3Ctext x='50' y='65' font-size='12' fill='%235b21b6' text-anchor='middle'%3EProces A%3C/text%3E%3Ctext x='150' y='65' font-size='12' fill='%235b21b6' text-anchor='middle'%3EProces B%3C/text%3E%3Cpath d='M 85 60 L 115 60' stroke='%23fbbf24' stroke-width='4'/%3E%3Crect x='85' y='50' width='30' height='20' fill='%23fbbf24' rx='3'/%3E%3Ctext x='100' y='64' font-size='12' fill='%23000' text-anchor='middle'%3E🔒%3C/text%3E%3Ctext x='100' y='120' font-size='12' fill='white' text-anchor='middle'%3ESincronizare între procese%3C/text%3E%3C/svg%3E",
-        options: ["Driver", "Mutex", "Bootloader", "Interrupt"],
-        correct: 1
-    },
-    {
-        question: "Când s-a lansat Windows 95?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%230284c7' width='200' height='150'/%3E%3Crect x='35' y='25' width='130' height='85' fill='%23bfdbfe' rx='5' stroke='%231e40af' stroke-width='3'/%3E%3Crect x='45' y='35' width='110' height='55' fill='%23008080'/%3E%3Crect x='50' y='40' width='100' height='12' fill='%23000080'/%3E%3Ctext x='55' y='50' font-size='10' fill='white'%3EMy Computer%3C/text%3E%3Crect x='50' y='55' width='30' height='30' fill='%23c0c0c0' stroke='%23808080'/%3E%3Crect x='85' y='55' width='30' height='30' fill='%23c0c0c0' stroke='%23808080'/%3E%3Crect x='55' y='115' width='90' height='15' fill='%23c0c0c0'/%3E%3Ctext x='65' y='126' font-size='10' fill='%23000'%3EStart%3C/text%3E%3C/svg%3E",
-        options: ["1991", "1995", "1998", "2001"],
-        correct: 1
-    },
-    {
-        question: "Care SO a introdus GUI pentru masele?",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23555' width='200' height='150'/%3E%3Crect x='40' y='20' width='120' height='85' fill='%23d4d4d8' rx='8'/%3E%3Crect x='50' y='30' width='100' height='60' fill='%23000'/%3E%3Crect x='55' y='35' width='90' height='50' fill='white'/%3E%3Crect x='60' y='40' width='35' height='10' fill='%23e5e5e5' stroke='%23000'/%3E%3Crect x='60' y='52' width='80' height='8' fill='%23e5e5e5'/%3E%3Crect x='60' y='62' width='80' height='20' fill='%23f5f5f5'/%3E%3Cpath d='M 85 105 L 75 130 L 125 130 L 115 105' fill='%23a1a1aa'/%3E%3Crect x='70' y='130' width='60' height='5' fill='%23a1a1aa' rx='2'/%3E%3Ctext x='100' y='145' font-size='10' fill='white' text-anchor='middle'%3ERevoluția anilor '80%3C/text%3E%3C/svg%3E",
-        options: ["IBM System/360", "Apple Macintosh", "MS-DOS", "Unix"],
-        correct: 1
+        id: 'computer_science',
+        name: { en: 'Computer Science', ro: 'Informatică' },
+        questions: {
+            ro: [
+                { question: 'Ce este un mutex?', options: ['Lock','UI','Driver','File'], correct: 0 },
+                { question: 'Interrupt este folosit pentru:', options: ['Atenționări hardware','Design','Sunet','Grafică'], correct: 0 },
+                { question: 'Algoritm Big-O pentru binsearch?', options: ['O(log n)','O(n)','O(n^2)','O(1)'], correct: 0 },
+                { question: 'Structură FIFO este:', options: ['Queue','Stack','Tree','Graph'], correct: 0 },
+                { question: 'HTML este limbaj de:', options: ['Markup','Programming','Binary','Database'], correct: 0 },
+                { question: 'CSS se ocupă de:', options: ['Styling','Logic','Database','Compilation'], correct: 0 },
+                { question: 'JavaScript rulează în:', options: ['Browser','BIOS','Kernel','DB'], correct: 0 },
+                { question: 'Compilarea produce:', options: ['Binary','Markup','CSS','HTML'], correct: 0 },
+                { question: 'Cloud oferă:', options: ['On-demand resources','Printer','Keyboard','Monitor'], correct: 0 },
+                { question: 'Cache îmbunătățește:', options: ['Performanța','Design','Sunet','Grafică'], correct: 0 }
+            ],
+            en: [
+                { question: 'What is a mutex?', options: ['Lock','UI','Driver','File'], correct: 0 },
+                { question: 'An interrupt is used for:', options: ['Hardware signals','Design','Sound','Graphics'], correct: 0 },
+                { question: 'Big-O for binary search?', options: ['O(log n)','O(n)','O(n^2)','O(1)'], correct: 0 },
+                { question: 'FIFO structure is:', options: ['Queue','Stack','Tree','Graph'], correct: 0 },
+                { question: 'HTML is a:', options: ['Markup','Programming','Binary','Database'], correct: 0 },
+                { question: 'CSS handles:', options: ['Styling','Logic','Database','Compilation'], correct: 0 },
+                { question: 'JavaScript runs in the:', options: ['Browser','BIOS','Kernel','DB'], correct: 0 },
+                { question: 'Compilation produces:', options: ['Binary','Markup','CSS','HTML'], correct: 0 },
+                { question: 'Cloud provides:', options: ['On-demand resources','Printer','Keyboard','Monitor'], correct: 0 },
+                { question: 'Cache improves:', options: ['Performance','Design','Sound','Graphics'], correct: 0 }
+            ]
+        }
     }
 ];
+
+// runtime holds the currently selected quiz's question array (filled at start)
+let quizData = [];
 
 // ===== QUIZ STATE =====
 let currentQuestion = 0;
@@ -224,7 +300,29 @@ function getAchievements() {
 
 let allAchievements = getAchievements();
 
-let unlockedAchievements = JSON.parse(localStorage.getItem('achievements')) || [];
+// Load and normalize unlocked achievements from localStorage.
+// Older versions may have stored objects or mixed values — coerce to an array of id strings
+let _rawUnlocked = JSON.parse(localStorage.getItem('achievements')) || [];
+let unlockedAchievements = [];
+if (Array.isArray(_rawUnlocked)) {
+    unlockedAchievements = _rawUnlocked.map(x => {
+        if (typeof x === 'string') return x;
+        if (x && typeof x === 'object' && x.id) return String(x.id);
+        // fallback to stringifying primitive values
+        return String(x);
+    }).filter(Boolean);
+    // dedupe just in case
+    unlockedAchievements = Array.from(new Set(unlockedAchievements));
+    // Filter out any ids that do not exist in the current achievements list
+    try {
+        const validIds = new Set(getAchievements().map(a => a.id));
+        unlockedAchievements = unlockedAchievements.filter(id => validIds.has(id));
+    } catch (e) {
+        // if getAchievements fails for any reason, keep the normalized list as-is
+    }
+    // persist normalized and validated shape back to storage
+    try { localStorage.setItem('achievements', JSON.stringify(unlockedAchievements)); } catch (e) { /* ignore storage errors */ }
+}
 let correctStreak = 0;
 let fastAnswer = false;
 
@@ -256,6 +354,71 @@ function renderAchievements() {
     `).join('');
 }
 
+/* ===== LEADERBOARD PANEL (UI) ===== */
+function toggleLeaderboard() {
+    const panel = document.getElementById('leaderboardPanel');
+    if (!panel) return;
+    const isShown = panel.classList.toggle('show');
+    panel.setAttribute('aria-hidden', String(!isShown));
+    renderLeaderboard();
+    if (isShown) {
+        const closeBtn = panel.querySelector('.achievements-close');
+        if (closeBtn) closeBtn.focus();
+    }
+}
+
+function renderLeaderboard() {
+    const list = document.getElementById('leaderboardList');
+    if (!list) return;
+    const isEN = getCurrentLang() === 'en';
+    if (!leaderboard || !leaderboard.length) {
+        list.innerHTML = `<div class="leaderboard-empty">${isEN ? 'No entries yet.' : 'Nicio înregistrare încă.'}</div>`;
+        return;
+    }
+    list.innerHTML = leaderboard.map((entry, idx) => `
+        <div class="leaderboard-entry">
+            <span>${idx + 1}. ${entry.name}</span>
+            <span>${entry.totalScore || entry.score * 10} pts (${entry.percentage}%)</span>
+        </div>
+    `).join('');
+}
+
+/**
+ * Add the current quiz result to the leaderboard using the customPrompt UI.
+ * This mirrors the saveScore flow but allows adding the current in-memory result
+ * from the leaderboard panel.
+ */
+function addCurrentToLeaderboard() {
+    const isEN = getCurrentLang() === 'en';
+    // compute percentage and totalScore from current quiz state
+    const questions = getQuizData().length;
+    const percentage = Math.round((score / questions) * 100);
+    const totalScore = (score * 10) + (typeof bonusPoints === 'number' ? bonusPoints : 0);
+
+    const promptMsg = isEN ? 'Enter your name for the leaderboard:' : 'Introduceți-vă nume pentru leaderboard:';
+
+    if (window.customPrompt) {
+        window.customPrompt(promptMsg, '')
+            .then((name) => {
+                if (!name) return;
+                leaderboard.push({ name, score, percentage, totalScore, date: new Date().toLocaleDateString() });
+                leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
+                leaderboard = leaderboard.slice(0, 10);
+                localStorage.setItem('quizLeaderboard', JSON.stringify(leaderboard));
+                renderLeaderboard();
+            })
+            .catch(() => {});
+    } else {
+        const name = prompt(promptMsg, '');
+        if (!name) return;
+        leaderboard.push({ name, score, percentage, totalScore, date: new Date().toLocaleDateString() });
+        leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
+        leaderboard = leaderboard.slice(0, 10);
+        localStorage.setItem('quizLeaderboard', JSON.stringify(leaderboard));
+        renderLeaderboard();
+    }
+}
+
 function unlockAchievement(id) {
     if (unlockedAchievements.includes(id)) return;
     const achievement = allAchievements.find(a => a.id === id);
@@ -273,6 +436,10 @@ function unlockAchievement(id) {
     
     setTimeout(() => popup.classList.remove('show'), 3000);
     // update chip and panel render
+    try { 
+        // Ensure both the achievements panel and the chip reflect the new state immediately
+        renderAchievements(); 
+    } catch(e) { /* ignore */ }
     try { renderAchievementChip(); } catch(e) { /* ignore */ }
 }
 
@@ -324,7 +491,7 @@ function startTimer() {
             playSound('wrong');
             correctStreak = 0;
             currentQuestion++;
-            if (currentQuestion < quizData.length) {
+            if (currentQuestion < getQuizData().length) {
                 loadQuestion();
             } else {
                 showResults();
@@ -472,8 +639,9 @@ function loadQuestion() {
     `;
     
     quiz.options.forEach((option, index) => {
+        // add touch-friendly triggers (ontouchstart / onpointerenter) so mobile plays hover sound
         html += `
-            <label class="option" onmouseenter="playSound('hover')">
+            <label class="option" onmouseenter="playSound('hover')" onpointerenter="playSound('hover')" ontouchstart="playSound('hover')">
                 <input type="radio" name="answer" value="${index}" onchange="selectOption(${index})">
                 ${option}
             </label>
@@ -518,7 +686,7 @@ function nextQuestion() {
     
     currentQuestion++;
     
-    if (currentQuestion < quizData.length) {
+    if (currentQuestion < getQuizData().length) {
         setTimeout(() => {
             playSound('next');
             loadQuestion();
@@ -532,7 +700,7 @@ function nextQuestion() {
 }
 
 function updateProgress() {
-    const progress = ((currentQuestion) / quizData.length) * 100;
+    const progress = ((currentQuestion) / getQuizData().length) * 100;
     const progressFill = document.getElementById('progressFill');
     const currentQuestionEl = document.getElementById('currentQuestion');
     
@@ -607,6 +775,10 @@ function showResults() {
     // Adauga la leaderboard
     saveScore(percentage, totalScore);
     displayLeaderboard();
+    // Quiz completed — clear the selected quiz so next Start picks a new one
+    try { sessionStorage.removeItem('selectedQuizId'); } catch(e) {}
+    window.selectedQuizId = null;
+    quizData = [];
 }
 
 function saveScore(percentage, totalScore) {
@@ -620,6 +792,8 @@ function saveScore(percentage, totalScore) {
                     leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
                     leaderboard = leaderboard.slice(0, 10); // Top 10
                     localStorage.setItem('quizLeaderboard', JSON.stringify(leaderboard));
+                    // Update visible leaderboard after entry saved
+                    try { displayLeaderboard(); } catch (e) { /* ignore */ }
                 }
             });
     } else {
@@ -629,6 +803,8 @@ function saveScore(percentage, totalScore) {
             leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
             leaderboard = leaderboard.slice(0, 10); // Top 10
             localStorage.setItem('quizLeaderboard', JSON.stringify(leaderboard));
+            // Update visible leaderboard after entry saved
+            try { displayLeaderboard(); } catch (e) { /* ignore */ }
         }
     }
 }
@@ -648,11 +824,26 @@ function displayLeaderboard() {
     
     const resultDiv = document.getElementById('resultsContainer');
     if (resultDiv) {
-        resultDiv.innerHTML = resultDiv.innerHTML.replace('</div>', leaderboardHTML + '</div>');
-        
-        // Buton share
+        // Use a dedicated embed container to avoid mutating unrelated HTML repeatedly
+        let embed = resultDiv.querySelector('.leaderboard-embed');
+        if (!embed) {
+            embed = document.createElement('div');
+            embed.className = 'leaderboard-embed';
+            // insert before any existing interactive controls at the end
+            resultDiv.appendChild(embed);
+        }
+        embed.innerHTML = leaderboardHTML;
+
+        // Defensive: remove any existing share buttons (handles edge cases where
+        // the results container was replaced or multiple renders occurred).
+        const existingShares = resultDiv.querySelectorAll('.quiz-button.share-result');
+        existingShares.forEach(el => el.remove());
+
+        // Create a single share button and append it to the results container.
         const shareBtn = document.createElement('button');
-        shareBtn.className = 'quiz-button';
+        shareBtn.className = 'quiz-button share-result';
+        shareBtn.type = 'button';
+        shareBtn.setAttribute('aria-label', isEN ? 'Share result' : 'Distribuie rezultatul');
         shareBtn.textContent = isEN ? '📤 Share result' : '📤 Distribuie rezultatul';
         shareBtn.onclick = shareResult;
         resultDiv.appendChild(shareBtn);
@@ -709,6 +900,35 @@ function startQuizFromOverlay() {
     const resultsContainer = document.getElementById('resultsContainer');
     const overlay = document.getElementById('quizOverlay');
     if (!quizStage || !quizContainerEl) return;
+    // Select a random quiz for this session if none is selected yet.
+    try {
+        const existing = sessionStorage.getItem('selectedQuizId');
+        if (existing) {
+            window.selectedQuizId = existing;
+            const set = quizSets.find(s => s.id === existing);
+            if (set) {
+                quizData = (getCurrentLang() === 'en') ? set.questions.en.slice() : set.questions.ro.slice();
+            }
+        } else {
+            const idx = Math.floor(Math.random() * quizSets.length);
+            const set = quizSets[idx];
+            if (set) {
+                sessionStorage.setItem('selectedQuizId', set.id);
+                window.selectedQuizId = set.id;
+                quizData = (getCurrentLang() === 'en') ? set.questions.en.slice() : set.questions.ro.slice();
+            }
+        }
+        // ensure selected quiz has exactly 10 questions; if not, fall back to first set
+        if (!Array.isArray(quizData) || quizData.length !== 10) {
+            const fallback = quizSets[0];
+            quizData = (getCurrentLang() === 'en') ? fallback.questions.en.slice() : fallback.questions.ro.slice();
+            sessionStorage.setItem('selectedQuizId', fallback.id);
+            window.selectedQuizId = fallback.id;
+        }
+    } catch (e) {
+        // sessionStorage may be unavailable in some contexts; fall back silently
+        quizData = (getCurrentLang() === 'en') ? quizDataEN.slice() : quizDataRO.slice();
+    }
     // Reset state
     currentQuestion = 0;
     score = 0;
@@ -764,6 +984,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Re-initialize quiz when language changes (event is dispatched on window)
     window.addEventListener('languageChanged', function() {
         if (document.getElementById('quizContainer')) {
+            // If a quiz was selected for this session, update its language variant
+            try {
+                const sel = sessionStorage.getItem('selectedQuizId');
+                if (sel) {
+                    const set = quizSets.find(s => s.id === sel);
+                    if (set) quizData = (getCurrentLang() === 'en') ? set.questions.en.slice() : set.questions.ro.slice();
+                }
+            } catch (e) {
+                // ignore sessionStorage issues
+            }
             // If quiz already started, re-initialize it with the new language
             if (quizStarted) {
                 // Reset quiz state
@@ -823,7 +1053,8 @@ function renderAchievementChip() {
     if (!countEl || !chip) return;
     allAchievements = getAchievements();
     const total = allAchievements.length || 0;
-    const unlocked = (unlockedAchievements && unlockedAchievements.length) || 0;
+    // Count actual unlocked achievements by matching ids against the defined achievements
+    const unlocked = allAchievements.filter(a => unlockedAchievements.includes(a.id)).length || 0;
     countEl.textContent = `${unlocked} / ${total}`;
     chip.setAttribute('aria-label', `${unlocked} of ${total} achievements`);
     // ensure chip is visible
@@ -838,3 +1069,6 @@ window.restartQuiz = restartQuiz;
 window.shareResult = shareResult;
 window.playSound = playSound;
 window.renderAchievements = renderAchievements;
+window.toggleLeaderboard = toggleLeaderboard;
+window.renderLeaderboard = renderLeaderboard;
+window.addCurrentToLeaderboard = addCurrentToLeaderboard;

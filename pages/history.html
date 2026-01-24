@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Istoria Sistemelor de Operare - Evoluția SO</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/advanced.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/desktop.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect x='10' y='15' width='80' height='55' fill='none' stroke='%232563eb' stroke-width='3' rx='5'/>
+        <rect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='3'/>
+        <rect x='20' y='25' width='20' height='15' fill='%232563eb' opacity='0.7' rx='2'/>
+        <rect x='45' y='25' width='20' height='8' fill='%23f59e0b' opacity='0.7' rx='2'/>
+        <rect x='20' y='45' width='45' height='12' fill='%2310b981' opacity='0.7' rx='2'/>
+        <path d='M 35 70 L 30 80 L 70 80 L 65 70' fill='none' stroke='%232563eb' stroke-width='2.5'/>
+        <circle cx='50' cy='80' r='3' fill='%232563eb'/>
+    </svg>"
+    >
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <!-- STÂNGA: Logo -->
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="15" width="80" height="55" fill="none" stroke="#3b82f6" stroke-width="3" rx="5"/>
+                            <rect x="15" y="20" width="70" height="45" fill="#dbeafe" rx="3"/>
+                            <rect x="20" y="25" width="20" height="15" fill="#3b82f6" opacity="0.7" rx="2"/>
+                            <rect x="45" y="25" width="20" height="8" fill="#3b82f6" opacity="0.7" rx="2"/>
+                            <rect x="20" y="45" width="45" height="12" fill="#3b82f6" opacity="0.7" rx="2"/>
+                            <path d="M 35 70 L 30 80 L 70 80 L 65 70" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+                            <circle cx="50" cy="80" r="3" fill="#3b82f6"/>
+                        </svg>
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                
+                <!-- MIJLOC: Meniu navigare -->
+                <div class="navbar-center">
+                    <ul class="nav-links">
+                        <li><a href="../index.html" data-i18n="nav_home">Acasă</a></li>
+                        <li><a href="about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="../windows/index.html">Windows</a></li>
+                        <li><a href="glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- DREAPTA: Toggle-uri -->
+                <div class="navbar-right">
+                    <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                    <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="history_title">Istoria Completă a SO-urilor</h2>
+                <p data-i18n="history_subtitle">Explorează evoluția completă</p>
+            </div>
+        </section>
+
+        <!-- 3D Interactive Timeline -->
+        <section class="timeline-3d-container">
+            <h2 style="text-align: center; margin-bottom: 10px;" data-i18n="timeline_3d_title">🗺️ Timeline Interactiv 3D</h2>
+            <p style="text-align: center; color: #64748b; margin-bottom: 20px;" data-i18n="timeline_3d_hint">Trage pentru a naviga • Click pentru detalii • Scroll pentru zoom</p>
+            
+            <div class="timeline-3d" id="timeline3d">
+                <div class="timeline-3d-card" style="--card-color: #6b7280; --card-color-end: #374151;">
+                    <div class="card-year">1950</div>
+                    <div class="card-icon">🖥️</div>
+                    <div class="card-title" data-i18n="card_1950_title">Era Mainframe</div>
+                    <div class="card-desc" data-i18n="card_1950_desc">Primele SO pentru calculatoare uriașe. Batch processing, carduri perforate, camere întregi.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #0ea5e9; --card-color-end: #0284c7;">
+                    <div class="card-year">1964</div>
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title" data-i18n="card_1964_title">IBM System/360</div>
+                    <div class="card-desc" data-i18n="card_1964_desc">Primul SO cu multiprogramming. Mai multe job-uri rulau simultan. O revoluție!</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #8b5cf6; --card-color-end: #6d28d9;">
+                    <div class="card-year">1969</div>
+                    <div class="card-icon">🔓</div>
+                    <div class="card-title" data-i18n="card_1969_title">Nașterea Unix</div>
+                    <div class="card-desc" data-i18n="card_1969_desc">Bell Labs creează Unix. Design modular, portabil. Baza pentru toate SO-urile moderne.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #0078D4; --card-color-end: #0063B1;">
+                    <div class="card-year">1981</div>
+                    <div class="card-icon">💻</div>
+                    <div class="card-title" data-i18n="card_1981_title">MS-DOS</div>
+                    <div class="card-desc" data-i18n="card_1981_desc">Microsoft DOS pe IBM PC. Calculatoarele personale intră în case și birouri.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #A2AAAD; --card-color-end: #86868b;">
+                    <div class="card-year">1984</div>
+                    <div class="card-icon">🎨</div>
+                    <div class="card-title" data-i18n="card_1984_title">Apple Macintosh</div>
+                    <div class="card-desc" data-i18n="card_1984_desc">Primul GUI pentru mase. Click în loc de comenzi. Revoluția interfeței utilizator.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #00a4ef; --card-color-end: #0078d4;">
+                    <div class="card-year">1985</div>
+                    <div class="card-icon">🪟</div>
+                    <div class="card-title" data-i18n="card_1985_title">Windows 1.0</div>
+                    <div class="card-desc" data-i18n="card_1985_desc">Prima încercare Microsoft de GUI. Modest început pentru ce urma să domine.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #FCC624; --card-color-end: #f59e0b;">
+                    <div class="card-year">1991</div>
+                    <div class="card-icon">🐧</div>
+                    <div class="card-title" data-i18n="card_1991_title">Nașterea Linux</div>
+                    <div class="card-desc" data-i18n="card_1991_desc">Linus Torvalds creează Linux. Open source, gratuit, puternic. Viitorul serverelor.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #00a4ef; --card-color-end: #0078d4;">
+                    <div class="card-year">1995</div>
+                    <div class="card-icon">⭐</div>
+                    <div class="card-title" data-i18n="card_1995_title">Windows 95</div>
+                    <div class="card-desc" data-i18n="card_1995_desc">Punctul de cotitură. Start button, taskbar. Vândut în milioane. Dominația începe.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #00a4ef; --card-color-end: #86868b;">
+                    <div class="card-year">2001</div>
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title" data-i18n="card_2001_title">XP & OS X</div>
+                    <div class="card-desc" data-i18n="card_2001_desc">Windows XP stabil și popular. Mac OS X unește frumusețea cu puterea Unix.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #3ddc84; --card-color-end: #007AFF;">
+                    <div class="card-year">2007</div>
+                    <div class="card-icon">📱</div>
+                    <div class="card-title" data-i18n="card_2007_title">Revoluția Mobilă</div>
+                    <div class="card-desc" data-i18n="card_2007_desc">iPhone lansează iOS. Android urmează. Miliarde au acum SO în buzunar.</div>
+                </div>
+                <div class="timeline-3d-card" style="--card-color: #2563eb; --card-color-end: #8b5cf6;">
+                    <div class="card-year">2015+</div>
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title" data-i18n="card_2015_title">Era Modernă</div>
+                    <div class="card-desc" data-i18n="card_2015_desc">Windows 10/11, Cloud, IoT, AI. SO-urile sunt peste tot. Viitorul e aici.</div>
+                </div>
+            </div>
+
+            <div class="timeline-controls">
+                <button class="timeline-btn" onclick="scrollTimeline(-1)" data-i18n="timeline_btn_back">⬅️ Înapoi</button>
+                <button class="timeline-btn" onclick="scrollTimeline(1)" data-i18n="timeline_btn_forward">Înainte ➡️</button>
+            </div>
+
+            <div class="timeline-indicator" id="timelineIndicator"></div>
+        </section>
+
+        <!-- Zoom Controls -->
+        <div class="zoom-controls">
+            <button class="zoom-btn" onclick="zoomTimeline(1.1)" title="Zoom In">➕</button>
+            <button class="zoom-btn" onclick="zoomTimeline(0.9)" title="Zoom Out">➖</button>
+            <button class="zoom-btn" onclick="resetZoom()" title="Reset">🔄</button>
+        </div>
+
+        <section class="timeline">
+            <div class="container">
+                <h2 data-i18n="timeline_detailed_title">O Cronologie Detaliată</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1950</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1950_title">🖥️ Primii Pași - Era Mainframe</h3>
+                        <p data-i18n="detail_1950_desc">
+                            Primele sisteme de operare au fost dezvoltate pentru calculatoarele mainframe uriaşe. 
+                            UNIVAC Operating System a fost unul din primele. Executau o singură sarcină la un moment dat 
+                            (batch processing). Ocupau camere întregi și costau milioane de dolari.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1964</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1964_title">🎯 IBM System/360 OS</h3>
+                        <p data-i18n="detail_1964_desc">
+                            IBM System/360 a revoluționat industria cu sistemul său de operare care suporta multiprogramming. 
+                            Aceasta a permis mai multor job-uri să ruleze "simultan" (în realitate, se alternau rapid). 
+                            A fost un salt uriaș în eficiență.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1969</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1969_title">🔓 Unix - O Revoluție</h3>
+                        <p data-i18n="detail_1969_desc">
+                            Unix a fost creat la Bell Labs. A adus o abordare inovatoare: "Fă o singură lucru și fă-o bine." 
+                            Cu design-ul modular și portabil, Unix a deveni baza pentru o mulțime de SO-uri moderne. 
+                            Scrierea în C a făcut-o ușor de portat.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1981</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1981_title">💻 MS-DOS și Calculatoare Personale</h3>
+                        <p data-i18n="detail_1981_desc">
+                            Microsoft DOS a lansat calculatoarele în birou și în casă. IBM PC cu MS-DOS a fost accesibil 
+                            și ușor de folosit. A marcat începutul erei calculatoarelor personale. DOS a dominat piața 
+                            pentru decenii.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1984</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1984_title">🎨 Mac OS și GUI</h3>
+                        <p data-i18n="detail_1984_desc">
+                            Apple Macintosh a introduit interfața grafică cu utilizatorul (GUI) pentru masele. 
+                            Utilizatorii nu mai trebuiau să tasteze comenzi complexe. Au putut pur și simplu să dea click pe icoane. 
+                            Aceasta a schimbat complet modul de utilizare a calculatoarelor.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1985</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1985_title">🪟 Windows 1.0</h3>
+                        <p data-i18n="detail_1985_desc">
+                            Microsoft Windows 1.0 a fost o încercare de a aduce GUI la calculatoarele DOS. 
+                            Inițial lent și nepopular, Windows a evoluat și a devenit dominant pe piață. 
+                            O bază pentru ce urma.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1991</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1991_title">🐧 Nașterea Linux</h3>
+                        <p data-i18n="detail_1991_desc">
+                            Linus Torvalds a creat Linux, un kernel inspirat de Unix. Cu ajutorul comunității open-source, 
+                            Linux a crescut și a devenit un SO puternic și gratuit. Astazi domină serverele web.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1995</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_1995_title">⭐ Windows 95 - Punctul de Cotitură</h3>
+                        <p data-i18n="detail_1995_desc">
+                            Windows 95 a marcat o schimbare majoră. A fost prieto cu utilizatorul, stabil, și a dominat piața. 
+                            Butonul Start, taskbar, și design-ul intuitiv au devenit standard de facto. 
+                            S-a vândut în milioane de copii.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2001</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_2001_title">🎯 Windows XP și Mac OS X</h3>
+                        <p data-i18n="detail_2001_desc">
+                            Windows XP a fost stabil, rapid și ușor de folosit. A dominat piața pentru ani de zile. 
+                            Apple a lansat Mac OS X, o combinație dintre frumusețea Mac și puterea Unix. 
+                            Ambele au setat standarde noi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2007-2008</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_2007_title">📱 Revoluția Mobile</h3>
+                        <p data-i18n="detail_2007_desc">
+                            iPhone (iOS) și primele telefoane Android au schimbat totul. Mobile computing a devenit mainstream. 
+                            Miliarde de oameni aveau acum SO-uri în buzunar. Era cloud computing a început.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2015+</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="detail_2015_title">🚀 Era Modernă</h3>
+                        <p data-i18n="detail_2015_desc">
+                            Windows 10/11, macOS modernă, Linux peste tot (cloud, servere, IoT). 
+                            Sisteme de operare cu AI, securitate avansată, și virtualizare. 
+                            Calculatoarele hibrid și IoT au apărut. Viitorul SO-urilor este aici.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+        </div>
+    </footer>
+
+    <script src="../js/os-detect.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/enhancements.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/history.js"></script>
+</body>
+</html>

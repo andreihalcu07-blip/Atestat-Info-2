@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 98 - Evoluția Windows</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../windows-common.css">
+    <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="../../css/windows-ui.css">
+</head>
+<body data-windows="win98">
+    <!-- Mesaj pentru utilizatorii non-Windows / mobil -->
+    <div class="simulation-not-available">
+        <div class="icon">🖥️</div>
+        <h2>Simulare Windows 98</h2>
+        <p>Această simulare interactivă a Windows 98 este optimizată pentru vizualizare pe un calculator cu Windows.</p>
+        <div class="requirements">
+            <h3>Cerințe pentru experiența completă:</h3>
+            <ul>
+                <li>Sistem de operare Windows</li>
+                <li>Ecran cu lățime minimă de 1024px</li>
+                <li>Browser modern (Chrome, Firefox, Edge)</li>
+            </ul>
+        </div>
+        <a href="../index.html" class="btn-back">← Înapoi la Galeria Windows</a>
+    </div>
+    
+    <div class="desktop windows-desktop-simulation">
+        <!-- Start Menu -->
+        <div class="start-menu hidden" id="startMenu">
+            <div class="start-menu-banner">
+                <span class="banner-text">Windows<strong>98</strong></span>
+            </div>
+            <div class="start-menu-items">
+                <div class="menu-item" data-action="programs">
+                    <span class="menu-icon">📁</span>
+                    <span class="menu-text">Programs</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="favorites">
+                    <span class="menu-icon">⭐</span>
+                    <span class="menu-text">Favorites</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="documents">
+                    <span class="menu-icon">📄</span>
+                    <span class="menu-text">Documents</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="settings">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">Settings</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="find">
+                    <span class="menu-icon">🔍</span>
+                    <span class="menu-text">Find</span>
+                    <span class="menu-arrow">▶</span>
+                </div>
+                <div class="menu-item" data-action="help">
+                    <span class="menu-icon">❓</span>
+                    <span class="menu-text">Help</span>
+                </div>
+                <div class="menu-item" data-action="run">
+                    <span class="menu-icon">▶️</span>
+                    <span class="menu-text">Run...</span>
+                </div>
+                <div class="menu-item" data-action="logoff">
+                    <span class="menu-icon">👤</span>
+                    <span class="menu-text">Log Off...</span>
+                </div>
+                <div class="menu-divider"></div>
+                <div class="menu-item" data-action="shutdown">
+                    <span class="menu-icon">🔌</span>
+                    <span class="menu-text">Shut Down...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <button class="start-button" id="startButton">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='5,10 45,5 45,45 5,45' fill='%23ff0000'/%3E%3Cpolygon points='55,4 95,0 95,44 55,44' fill='%2300ff00'/%3E%3Cpolygon points='5,55 45,55 45,95 5,90' fill='%230000ff'/%3E%3Cpolygon points='55,56 95,56 95,100 55,96' fill='%23ffff00'/%3E%3C/svg%3E" alt="Windows">
+                <span>Start</span>
+            </button>
+            <div class="quick-launch">
+                <span class="ql-icon" title="Internet Explorer">🌐</span>
+                <span class="ql-icon" title="Desktop">🖥️</span>
+            </div>
+            <div class="taskbar-programs">
+                <div class="program-button active">📁 Windows 98</div>
+            </div>
+            <div class="system-tray">
+                <span class="tray-icon">🔊</span>
+                <span class="time">12:00</span>
+            </div>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <a href="../index.html" class="desktop-icon">
+                <div class="icon">🏠</div>
+                <span>Înapoi la Galerie</span>
+            </a>
+            <div class="desktop-icon">
+                <div class="icon icon-mycomputer"></div>
+                <span>My Computer</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-ie"></div>
+                <span>Internet Explorer</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-documents"></div>
+                <span>My Documents</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-recyclebin"></div>
+                <span>Recycle Bin</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-outlook"></div>
+                <span>Outlook Express</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon icon-network"></div>
+                <span>Network Neighborhood</span>
+            </div>
+        </div>
+
+        <!-- Window -->
+        <div class="window" id="mainWindow">
+            <div class="title-bar">
+                <div class="title-bar-text">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect fill='%23000080' width='16' height='16'/%3E%3Ctext x='2' y='12' fill='white' font-size='9' font-weight='bold'%3E98%3C/text%3E%3C/svg%3E" alt="" class="title-icon">
+                    Windows 98 - Despre Sistem
+                </div>
+                <div class="title-bar-controls">
+                    <button class="title-btn minimize">_</button>
+                    <button class="title-btn maximize">□</button>
+                    <button class="title-btn close">×</button>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button class="toolbar-btn">◀ Back</button>
+                <button class="toolbar-btn">▶ Forward</button>
+                <button class="toolbar-btn">🏠 Home</button>
+                <button class="toolbar-btn">🔍 Search</button>
+            </div>
+            <div class="address-bar">
+                <span>Address:</span>
+                <div class="address-input">C:\Windows98\System</div>
+            </div>
+            <div class="window-body">
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3>📂 Explorer</h3>
+                        <ul>
+                            <li class="nav-item active" data-section="overview">ℹ️ Overview</li>
+                            <li class="nav-item" data-section="internet">🌐 Internet</li>
+                            <li class="nav-item" data-section="features">⭐ Features</li>
+                            <li class="nav-item" data-section="requirements">💾 System</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="section active" id="overview">
+                        <div class="welcome-banner">
+                            <div class="win98-logo">
+                                <svg viewBox="0 0 100 100">
+                                    <polygon points="5,10 45,5 45,45 5,45" fill="#ff0000"/>
+                                    <polygon points="55,4 95,0 95,44 55,44" fill="#00ff00"/>
+                                    <polygon points="5,55 45,55 45,95 5,90" fill="#0000ff"/>
+                                    <polygon points="55,56 95,56 95,100 55,96" fill="#ffff00"/>
+                                </svg>
+                            </div>
+                            <div class="welcome-text">
+                                <h1>Microsoft® Windows® 98</h1>
+                                <p class="subtitle">25 Iunie 1998 | Versiune 4.10</p>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <h2>🖥️ Despre Windows 98</h2>
+                            <p>Windows 98 a fost succesorul natural al Windows 95, aducând integrarea profundă a Internet Explorer și suport îmbunătățit pentru hardware modern.</p>
+                            <p>A introdus <strong>Windows Driver Model (WDM)</strong>, <strong>USB nativ</strong> și <strong>Active Desktop</strong> - transformând desktop-ul într-o experiență web.</p>
+                        </div>
+                        <div class="quick-facts">
+                            <div class="fact">
+                                <span class="fact-icon">📅</span>
+                                <span class="fact-text">Lansat: 25 Iunie 1998</span>
+                            </div>
+                            <div class="fact">
+                                <span class="fact-icon">🔧</span>
+                                <span class="fact-text">Kernel: MS-DOS 7.1</span>
+                            </div>
+                            <div class="fact">
+                                <span class="fact-icon">💿</span>
+                                <span class="fact-text">Suport DVD integrat</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="internet">
+                        <h2>🌐 Integrarea Internet</h2>
+                        <p class="intro">Windows 98 a fost "sistemul de operare pentru era Internet".</p>
+                        <div class="feature-cards">
+                            <div class="feature-card">
+                                <div class="card-icon">🌐</div>
+                                <h3>Internet Explorer 4.0</h3>
+                                <p>Browser integrat în sistemul de operare, parte din shell.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="card-icon">🖼️</div>
+                                <h3>Active Desktop</h3>
+                                <p>Conținut web direct pe desktop, widget-uri și canale.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="card-icon">📺</div>
+                                <h3>Channels</h3>
+                                <p>Abonamente la conținut web, predecesor RSS.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="card-icon">📧</div>
+                                <h3>Outlook Express</h3>
+                                <p>Client de email și news integrat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="features">
+                        <h2>⭐ Caracteristici Noi</h2>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">🔌</div>
+                                <div class="feature-content">
+                                    <h4>USB Nativ</h4>
+                                    <p>Suport complet pentru dispozitive USB fără drivere adiționale.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">💿</div>
+                                <div class="feature-content">
+                                    <h4>Suport DVD</h4>
+                                    <p>Redare DVD și suport pentru unitați DVD-ROM.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🖨️</div>
+                                <div class="feature-content">
+                                    <h4>Windows Driver Model</h4>
+                                    <p>Model unificat de drivere, compatibil și cu Windows NT.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📊</div>
+                                <div class="feature-content">
+                                    <h4>FAT32</h4>
+                                    <p>Sistem de fișiere cu suport pentru partiții mari.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🔧</div>
+                                <div class="feature-content">
+                                    <h4>System File Checker</h4>
+                                    <p>Utilitar pentru verificarea și restaurarea fișierelor de sistem.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🎮</div>
+                                <div class="feature-content">
+                                    <h4>DirectX 5.2</h4>
+                                    <p>Performanță îmbunătățită pentru jocuri și multimedia.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="requirements">
+                        <h2>💾 Cerințe de Sistem</h2>
+                        <table class="system-table">
+                            <thead>
+                                <tr>
+                                    <th>Componentă</th>
+                                    <th>Minim</th>
+                                    <th>Recomandat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Procesor</td>
+                                    <td>486DX 66MHz</td>
+                                    <td>Pentium 200MHz</td>
+                                </tr>
+                                <tr>
+                                    <td>RAM</td>
+                                    <td>16 MB</td>
+                                    <td>32 MB</td>
+                                </tr>
+                                <tr>
+                                    <td>Spațiu HDD</td>
+                                    <td>195 MB</td>
+                                    <td>300 MB</td>
+                                </tr>
+                                <tr>
+                                    <td>Display</td>
+                                    <td>VGA</td>
+                                    <td>SVGA 800x600</td>
+                                </tr>
+                                <tr>
+                                    <td>CD-ROM</td>
+                                    <td>Necesar</td>
+                                    <td>24x sau mai rapid</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="edition-box">
+                            <h3>📦 Ediții Disponibile</h3>
+                            <div class="editions">
+                                <div class="edition">
+                                    <strong>Windows 98</strong>
+                                    <span>Ediție standard (1998)</span>
+                                </div>
+                                <div class="edition">
+                                    <strong>Windows 98 SE</strong>
+                                    <span>Second Edition cu IE5, ICS (1999)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="status-bar">
+                <div class="status-section">🖥️ Ready</div>
+                <div class="status-section">4 objects</div>
+                <div class="status-section">Windows 98 Build 1998</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/os-detect.js"></script>
+    <script src="../../js/windows-ui.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script src="script.js"></script>
+    <script src="../windows-common.js"></script>
+</body>
+</html>

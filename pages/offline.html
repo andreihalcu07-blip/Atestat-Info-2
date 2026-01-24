@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - SistemOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+        }
+        .icon {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #1e40af;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .features {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .features h3 {
+            margin-bottom: 15px;
+        }
+        .features ul {
+            list-style: none;
+            text-align: left;
+        }
+        .features li {
+            padding: 8px 0;
+            opacity: 0.9;
+        }
+        .features li::before {
+            content: '✓ ';
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📡</div>
+        <h1>Ești Offline</h1>
+        <p>
+            Nu există conexiune la internet. 
+            Dar nu-ți face griji - poți încerca din nou când ești conectat!
+        </p>
+        <button class="btn" onclick="location.reload()">🔄 Încearcă din nou</button>
+        
+        <div class="features">
+            <h3>💡 Știai că?</h3>
+            <ul>
+                <li>Primul SO a fost creat în 1950</li>
+                <li>Linux domină 96% din servere</li>
+                <li>Windows are 75% din desktop-uri</li>
+                <li>Unix a inspirat toate SO-urile moderne</li>
+                <li>Android e cel mai popular SO mobil</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Check for connection
+        window.addEventListener('online', () => {
+            location.reload();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "sistem-operare-website",
+  "version": "1.0.0",
+  "description": "Website despre evoluția sistemelor de operare cu contact form și bază de date",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "keywords": [
+    "website",
+    "contact-form",
+    "database"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.7",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

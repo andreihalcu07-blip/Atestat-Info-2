@@ -1,0 +1,16 @@
+/* theme-neutral.css
+   Neutral/academic palette (safest, teacher-friendly): restrained, high legibility, minimal color emphasis
+   Only defines CSS variables (tokens). No layout or typography changes.
+*/
+:root{
+    --bg-gradient: linear-gradient(180deg, #ffffff 0%, #fbfbfc 50%, #f7f7f9 100%);
+    --bg-surface: #ffffff;
+    --bg-muted: #fbfbfd;
+    --glass: rgba(255,255,255,0.85);
+    --glass-strong: rgba(255,255,255,0.93);
+    --text-main: #0a0f14; /* near-black for maximum readability */
+    --text-muted: #6b7280; /* neutral gray */
+    --accent: #2b6cb0; /* calm academic blue */
+    --accent-2: #5b21b6; /* reserved purple for mild highlights */
+    --shadow-1: 0 8px 28px rgba(10,14,20,0.06);
+}

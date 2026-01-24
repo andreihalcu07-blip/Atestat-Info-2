@@ -1,0 +1,27 @@
+/* animations.css - smooth, gentle transitions and micro-interactions */
+
+:root{--motion-fast:180ms;--motion-default:300ms;--motion-slow:420ms}
+
+/* Fade utilities */
+.fade-in{animation:fadeIn var(--motion-default) ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.fade-up{animation:fadeUp var(--motion-default) cubic-bezier(.2,.8,.2,1) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* Soft scale on hover for interactive elements */
+.hover-scale{transition:transform var(--motion-default), box-shadow var(--motion-default)}
+.hover-scale:hover{transform:translateY(-6px) scale(1.01)}
+
+/* Focus ring - soft */
+.soft-focus:focus{outline:3px solid rgba(59,130,246,0.12);outline-offset:6px}
+
+/* Button sheen - subtle */
+.btn-sheen::before{content:"";position:absolute;top:0;left:-120%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transform:skewX(-20deg);transition:all 700ms ease}
+.btn-sheen:hover::before{left:120%}
+
+/* Soft reveal for gallery cards (stagger can be applied via JS if needed) */
+.card-reveal{opacity:0;transform:translateY(12px);transition:opacity var(--motion-default),transform var(--motion-default)}
+.card-reveal.visible{opacity:1;transform:none}
+
+/* End animations.css */

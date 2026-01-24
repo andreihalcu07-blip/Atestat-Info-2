@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+/* App-wide Apple-like design layers (added) */
+@import url('theme-neutral.css');
+@import url('global.css');
+@import url('layout.css');
+@import url('animations.css');
+@import url('mobile.css');
+
+
 :root {
     --primary-color: #2563eb;
     --secondary-color: #1e40af;

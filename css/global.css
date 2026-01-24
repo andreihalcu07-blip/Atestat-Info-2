@@ -1,0 +1,88 @@
+/* global.css
+   Apple-inspired base variables and typography
+   Applied site-wide. Keep minimal and overrideable.
+*/
+:root{
+    /* Calm, soft gradient palette inspired by Apple */
+    --bg-gradient: linear-gradient(180deg, #f7fafc 0%, #eef2ff 50%, #eef1ff 100%);
+    --bg-surface: #ffffff;
+    --bg-muted: #f5f7fb;
+    --glass: rgba(255,255,255,0.6);
+    --glass-strong: rgba(255,255,255,0.75);
+    --text-main: #0f172a; /* deep slate */
+    --text-muted: #6b7280; /* cool gray */
+    --accent: #3b82f6; /* soft blue */
+    --accent-2: #7c3aed; /* soft purple */
+    --shadow-1: 0 6px 24px rgba(16,24,40,0.06);
+    --radius-lg: 14px;
+    --radius-md: 10px;
+    --radius-sm: 8px;
+    --glass-blur: 10px;
+    --site-max-width: 1280px;
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 28px;
+    --space-lg: 48px;
+    --transition-default: 300ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Typography - large, airy */
+html{font-size:16px;}
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:var(--text-main);
+    background:var(--bg-gradient);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+}
+
+h1,h2,h3,h4{font-weight:700;color:var(--text-main);margin:0 0 var(--space-sm) 0}
+h1{font-size:clamp(1.8rem, 2.6vw, 3rem)}
+h2{font-size:clamp(1.4rem, 2.2vw, 2rem)}
+h3{font-size:1.1rem}
+
+p,li,span{color:var(--text-muted);font-size:1rem}
+
+/* Containers */
+.site-container{max-width:var(--site-max-width);margin:0 auto;padding:0 20px}
+.section{padding:var(--space-lg) 0}
+.section--compact{padding:var(--space-md) 0}
+
+/* Utility helpers */
+.row{display:flex;flex-wrap:wrap;gap:var(--space-md)}
+.column{display:flex;flex-direction:column;gap:var(--space-sm)}
+.center{display:flex;align-items:center;justify-content:center}
+
+/* Card surface */
+.surface{
+    background:linear-gradient(180deg, var(--bg-surface), var(--bg-muted));
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-1);
+    padding:20px;
+    transition:transform var(--transition-default), box-shadow var(--transition-default), background var(--transition-default);
+}
+.surface--elevated{box-shadow:0 12px 40px rgba(16,24,40,0.08)}
+
+/* Ensure images are fluid */
+img{max-width:100%;height:auto;display:block}
+
+/* Make sure sections flow without harsh cuts */
+.section + .section{margin-top:0}
+
+/* Utility spacing for consistent gaps */
+.gap-sm{gap:var(--space-sm)}
+.gap-md{gap:var(--space-md)}
+.gap-lg{gap:var(--space-lg)}
+
+/* Accessibility tweaks */
+a{color:var(--accent);text-decoration:none}
+a:focus{outline:3px solid rgba(59,130,246,0.14);outline-offset:3px}
+
+/* small helpers to keep consistent look across pages */
+.lead{font-size:1.125rem;color:var(--text-main);line-height:1.6}
+.muted{color:var(--text-muted)}
+
+/* Avoid inline-style usage in JS by preferring classes */
+
+/* End global.css */

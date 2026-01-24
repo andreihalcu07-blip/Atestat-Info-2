@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🎨 Dialog Modal Windows - Documentație Implementare
 
 ## ✅ **Implementare Completă**
@@ -302,7 +302,7 @@ if (result) {
 - Mobile-friendly (responsive design)
 
 **Implementare completă și funcțională pe toate cele 8 versiuni de Windows!** ✅
-=======
+
 # 🎨 Dialog Modal Windows - Documentație Implementare
 
 ## ✅ **Implementare Completă**
@@ -606,4 +606,4 @@ if (result) {
 - Mobile-friendly (responsive design)
 
 **Implementare completă și funcțională pe toate cele 8 versiuni de Windows!** ✅
->>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768
+

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Windows XP Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
         box.style.cursor = 'pointer';
     });
 });
-=======
+
 // Windows XP Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -394,4 +394,4 @@ document.addEventListener('DOMContentLoaded', function() {
         box.style.cursor = 'pointer';
     });
 });
->>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768
+

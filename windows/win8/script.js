@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Windows 8 Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     liveInterval = setInterval(animateLiveTiles, 3000);
 });
-=======
+
 // Windows 8 Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -480,4 +480,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     liveInterval = setInterval(animateLiveTiles, 3000);
 });
->>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768
+

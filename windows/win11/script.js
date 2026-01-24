@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Windows 11 Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
-=======
+
 // Windows 11 Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -710,4 +710,4 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
->>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768
+

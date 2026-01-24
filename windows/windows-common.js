@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /**
  * Windows Common JS - Funcționalități comune pentru toate versiunile Windows
  * Proiect Atestat - Evoluția Sistemelor de Operare
@@ -1051,7 +1051,7 @@
     };
     
 })();
-=======
+
 /**
  * Windows Common JS - Funcționalități comune pentru toate versiunile Windows
  * Proiect Atestat - Evoluția Sistemelor de Operare
@@ -2104,4 +2104,4 @@
     };
     
 })();
->>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768
+

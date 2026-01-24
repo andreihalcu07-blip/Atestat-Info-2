@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Windows 95 Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-=======
+
 // Windows 95 Interactive Script
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -350,4 +350,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
->>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768
+

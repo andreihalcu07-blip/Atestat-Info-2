@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Test "Știai că...?" Component
 
 ## ✅ Implementare Completă
@@ -79,7 +79,7 @@ Fiecare versiune are 4 facts interesante:
 - ✅ Event listeners proper (nu inline onclick)
 - ✅ Defensive programming (verificări null)
 - ✅ IIFE pentru izolare scope
-=======
+
 # Test "Știai că...?" Component
 
 ## ✅ Implementare Completă
@@ -160,4 +160,4 @@ Fiecare versiune are 4 facts interesante:
 - ✅ Event listeners proper (nu inline onclick)
 - ✅ Defensive programming (verificări null)
 - ✅ IIFE pentru izolare scope
->>>>>>> abcbb6b6a5fde656692021ce6d66fcfecfde8768
+

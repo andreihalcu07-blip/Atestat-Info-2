@@ -282,6 +282,7 @@ let totalQuizzes = parseInt(localStorage.getItem('totalQuizzes')) || 0;
 let consecutiveQuizzes = parseInt(localStorage.getItem('consecutiveQuizzes')) || 0;
 // track whether the quiz has been started by the user
 let quizStarted = false;
+let resultProcessed = false;
 
 // ===== ACHIEVEMENTS SYSTEM =====
 function getAchievements() {
@@ -734,6 +735,9 @@ function updateProgress() {
 }
 
 function showResults() {
+    if (resultProcessed) return;
+    resultProcessed = true;
+
     clearInterval(timerInterval);
     const isEN = getCurrentLang() === 'en';
     const currentQuizData = getQuizData();
@@ -795,7 +799,6 @@ function showResults() {
     
     // Adauga la leaderboard
     saveScore(percentage, totalScore);
-    displayLeaderboard();
     // Quiz completed — clear the selected quiz so next Start picks a new one
     try { sessionStorage.removeItem('selectedQuizId'); } catch(e) {}
     window.selectedQuizId = null;
@@ -890,6 +893,7 @@ function shareResult() {
 }
 
 function restartQuiz() {
+    resultProcessed = false;
     currentQuestion = 0;
     score = 0;
     bonusPoints = 0;

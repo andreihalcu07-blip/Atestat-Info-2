@@ -497,21 +497,35 @@ function createConfetti() {
 function startTimer() {
     timeLeft = 15;
     updateTimerDisplay();
-    clearInterval(timerInterval);
-    // prevent duplicate quiz timers
+
+    // clear existing quiz timer
     window.__sistemOS_intervals = window.__sistemOS_intervals || {};
-    if (window.__sistemOS_intervals.quiz_timer) clearInterval(window.__sistemOS_intervals.quiz_timer);
+    if (window.__sistemOS_intervals.quiz_timer) {
+        clearInterval(window.__sistemOS_intervals.quiz_timer);
+        window.__sistemOS_intervals.quiz_timer = null;
+    }
+
     window.__sistemOS_intervals.quiz_timer = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
+
         if (timeLeft <= 5) {
-            document.getElementById('timerDisplay').classList.add('warning');
+            document.getElementById('timerDisplay')?.classList.add('warning');
         }
+
         if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            playSound('wrong');
+            // 🔒 STOP TIMER FIRST
+            clearInterval(window.__sistemOS_intervals.quiz_timer);
+            window.__sistemOS_intervals.quiz_timer = null;
+
+            if (!wrongSoundPlayed) {
+                wrongSoundPlayed = true;
+                playSound('wrong');
+            }
+
             correctStreak = 0;
             currentQuestion++;
+
             if (currentQuestion < getQuizData().length) {
                 loadQuestion();
             } else {
@@ -520,6 +534,7 @@ function startTimer() {
         }
     }, 1000);
 }
+
 
 function updateTimerDisplay() {
     const timerDisplay = document.getElementById('timerDisplay');
@@ -536,6 +551,7 @@ function updateTimerDisplay() {
 
 // ===== AUDIO SYSTEM =====
 let audioCtx = null;
+let wrongSoundPlayed = false;
 
 function initAudio() {
     if (!audioCtx) {
@@ -644,6 +660,7 @@ function loadQuestion() {
     const quiz = currentQuizData[currentQuestion];
     const quizBody = document.getElementById('quizBody');
     const isEN = getCurrentLang() === 'en';
+    wrongSoundPlayed = false;
     
     if (!quizBody) return;
     
@@ -735,6 +752,11 @@ function updateProgress() {
 }
 
 function showResults() {
+    if (window.__sistemOS_intervals?.quiz_timer) {
+    clearInterval(window.__sistemOS_intervals.quiz_timer);
+    window.__sistemOS_intervals.quiz_timer = null;
+    }
+    
     if (resultProcessed) return;
     resultProcessed = true;
 
@@ -904,6 +926,11 @@ function restartQuiz() {
     const quizContainer = document.getElementById('quizContainer');
     const resultsContainer = document.getElementById('resultsContainer');
     
+    if (window.__sistemOS_intervals?.quiz_timer) {
+    clearInterval(window.__sistemOS_intervals.quiz_timer);
+    window.__sistemOS_intervals.quiz_timer = null;
+    }
+
     if (quizContainer) quizContainer.style.display = 'block';
     if (resultsContainer) {
         resultsContainer.classList.remove('show');

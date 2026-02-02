@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Era Mainframe</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/advanced.css">
+    <link rel="stylesheet" href="../../css/pages.css">
+    <link rel="stylesheet" href="../../css/mobile.css">
+    <link rel="stylesheet" href="../../css/history.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect x='10' y='15' width='80' height='55' fill='none' stroke='%232563eb' stroke-width='3' rx='5'/>
+        <rect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='3'/>
+        <rect x='20' y='25' width='20' height='15' fill='%232563eb' opacity='0.7' rx='2'/>
+        <rect x='45' y='25' width='20' height='8' fill='%23f59e0b' opacity='0.7' rx='2'/>
+        <rect x='20' y='45' width='45' height='12' fill='%2310b981' opacity='0.7' rx='2'/>
+        <path d='M 35 70 L 30 80 L 70 80 L 65 70' fill='none' stroke='%232563eb' stroke-width='2.5'/>
+        <circle cx='50' cy='80' r='3' fill='%232563eb'/>
+    </svg>"
+    >
+    <!-- Chapter 2 - Industrial Mainframe Styles -->
+    <style>
+        /* ============================================
+           CHAPTER 2 - INDUSTRIAL MAINFRAME THEME
+           Technical, powerful, industrial aesthetic
+           ============================================ */
+        
+        /* Industrial Color Scheme */
+        :root {
+            --mainframe-primary: #0ea5e9;
+            --mainframe-secondary: #06b6d4;
+            --mainframe-accent: #f97316;
+            --mainframe-dark: #0c4a6e;
+            --mainframe-glow: rgba(14, 165, 233, 0.3);
+            --terminal-green: #22c55e;
+        }
+
+        /* Technical Section Separators */
+        .tech-separator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 36px 0 28px 0;
+            position: relative;
+        }
+        .tech-separator::before,
+        .tech-separator::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--mainframe-primary), transparent);
+        }
+        .tech-separator-core {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 20px;
+        }
+        .tech-separator-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--mainframe-primary);
+        }
+        .tech-separator-text {
+            color: var(--mainframe-primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Industrial Section Headers */
+        .industrial-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .industrial-header h2 {
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, var(--mainframe-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 36px;
+            height: 36px;
+            padding: 0 10px;
+            background: linear-gradient(135deg, var(--mainframe-dark) 0%, #164e63 100%);
+            border: 2px solid var(--mainframe-primary);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--mainframe-primary);
+            box-shadow: 
+                0 0 15px var(--mainframe-glow),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            text-shadow: 0 0 10px var(--mainframe-glow);
+        }
+
+        /* Industrial Content Cards */
+        .industrial-card {
+            background: linear-gradient(160deg, rgba(12, 74, 110, 0.4) 0%, rgba(30, 41, 59, 0.95) 30%, rgba(51, 65, 85, 0.9) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .industrial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--mainframe-primary), var(--mainframe-secondary), var(--mainframe-primary));
+        }
+        .industrial-card::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+        }
+        .industrial-card:hover {
+            border-color: rgba(14, 165, 233, 0.35);
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.3),
+                0 0 30px var(--mainframe-glow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        /* Terminal-style Quote Box */
+        .terminal-box {
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-left: 4px solid var(--terminal-green);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            position: relative;
+        }
+        .terminal-box::before {
+            content: '>';
+            position: absolute;
+            left: 12px;
+            top: 20px;
+            color: var(--terminal-green);
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .terminal-box p {
+            color: var(--terminal-green);
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Technical Definition List */
+        .tech-definitions {
+            display: grid;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .tech-def-item {
+            display: flex;
+            gap: 16px;
+            padding: 18px;
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .tech-def-item:hover {
+            background: rgba(14, 165, 233, 0.1);
+            border-color: rgba(14, 165, 233, 0.3);
+            transform: translateX(6px);
+        }
+        .tech-def-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--mainframe-dark) 0%, #164e63 100%);
+            border: 1px solid var(--mainframe-primary);
+            border-radius: 10px;
+            color: var(--mainframe-primary);
+        }
+        .tech-def-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        .tech-def-content h4 {
+            color: var(--mainframe-primary);
+            margin: 0 0 6px 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .tech-def-content p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* Key Term Tags */
+        .key-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 4px;
+            color: var(--mainframe-secondary);
+            font-family: 'Consolas', monospace;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        /* Industrial List */
+        .industrial-list {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0;
+        }
+        .industrial-list li {
+            position: relative;
+            padding: 14px 14px 14px 44px;
+            margin: 10px 0;
+            background: linear-gradient(90deg, rgba(14, 165, 233, 0.08) 0%, transparent 100%);
+            border-left: 3px solid var(--mainframe-primary);
+            border-radius: 0 10px 10px 0;
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .industrial-list li::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--mainframe-primary);
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--mainframe-glow);
+        }
+        .industrial-list li:hover {
+            background: linear-gradient(90deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.02) 100%);
+            padding-left: 50px;
+        }
+
+        /* Batch Processing Pipeline - Interactive Visual */
+        .pipeline-container {
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 24px 0;
+            overflow-x: auto;
+        }
+        .pipeline-title {
+            color: var(--mainframe-primary);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .pipeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            min-width: fit-content;
+        }
+        .pipeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 20px;
+            background: linear-gradient(180deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border: 2px solid rgba(14, 165, 233, 0.3);
+            border-radius: 12px;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .pipeline-step:hover {
+            transform: translateY(-5px);
+            border-color: var(--mainframe-primary);
+            box-shadow: 0 8px 25px var(--mainframe-glow);
+        }
+        .pipeline-step-number {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--mainframe-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .pipeline-step-icon {
+            width: 36px;
+            height: 36px;
+            color: var(--mainframe-primary);
+            margin-bottom: 10px;
+        }
+        .pipeline-step-label {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .pipeline-step-desc {
+            color: #64748b;
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 4px;
+        }
+        .pipeline-arrow {
+            color: var(--mainframe-accent);
+            font-size: 1.5rem;
+            padding: 0 8px;
+            animation: pulse-arrow 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-arrow {
+            0%, 100% { opacity: 0.5; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(4px); }
+        }
+
+        /* Technology Cards Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .tech-card {
+            background: linear-gradient(145deg, rgba(12, 74, 110, 0.3) 0%, rgba(30, 41, 59, 0.9) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--mainframe-primary), var(--mainframe-secondary));
+        }
+        .tech-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(14, 165, 233, 0.15);
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+        .tech-card-year {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 20px;
+            color: var(--mainframe-accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .tech-card h4 {
+            color: #fff;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        .tech-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Impact Meters */
+        .impact-meters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .impact-meter {
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .impact-meter-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .impact-meter-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--mainframe-primary);
+        }
+        .impact-meter-label {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .impact-meter-bar {
+            height: 8px;
+            background: rgba(14, 165, 233, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        .impact-meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--mainframe-primary), var(--mainframe-secondary));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        .impact-meter-desc {
+            color: #64748b;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        /* Media Section */
+        .media-section {
+            margin-top: 36px;
+        }
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .media-figure {
+            position: relative;
+            margin: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(12, 74, 110, 0.3);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            transition: all 0.4s ease;
+        }
+        .media-figure:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3), 0 0 30px var(--mainframe-glow);
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+        .media-figure img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .media-figure:hover img {
+            transform: scale(1.08);
+        }
+        .media-figure figcaption {
+            padding: 16px;
+            background: linear-gradient(180deg, rgba(12, 74, 110, 0.9) 0%, rgba(15, 23, 42, 0.98) 100%);
+            color: #94a3b8;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+        .media-figure figcaption strong {
+            color: var(--mainframe-primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        /* Video Container */
+        .video-container {
+            background: linear-gradient(145deg, rgba(12, 74, 110, 0.4) 0%, rgba(30, 41, 59, 0.95) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--mainframe-accent), #ef4444, var(--mainframe-accent));
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-description {
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(249, 115, 22, 0.08);
+            border-radius: 10px;
+            border-left: 3px solid var(--mainframe-accent);
+        }
+        .video-description h4 {
+            color: var(--mainframe-accent);
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .video-description p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Audio Section */
+        .audio-section {
+            background: linear-gradient(145deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.05) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .audio-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .audio-header h4 {
+            color: var(--terminal-green);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .audio-icon {
+            width: 28px;
+            height: 28px;
+            color: var(--terminal-green);
+            filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+        }
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        .audio-play-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--terminal-green) 0%, #16a34a 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+            flex-shrink: 0;
+        }
+        .audio-play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(34, 197, 94, 0.4);
+        }
+        .audio-play-btn svg {
+            width: 24px;
+            height: 24px;
+            color: #0f172a;
+            margin-left: 3px;
+        }
+        .audio-info {
+            flex: 1;
+            min-width: 200px;
+        }
+        .audio-info h5 {
+            color: #e2e8f0;
+            margin: 0 0 4px 0;
+            font-size: 0.95rem;
+        }
+        .audio-info p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+        .audio-description {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 2px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* Enhanced Navigation */
+        .chapter-nav-enhanced {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(14, 165, 233, 0.2);
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--mainframe-dark) 0%, #164e63 100%);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            border-color: var(--mainframe-primary);
+            box-shadow: 0 8px 25px var(--mainframe-glow);
+            transform: translateY(-2px);
+        }
+        .nav-btn svg {
+            width: 18px;
+            height: 18px;
+            color: var(--mainframe-primary);
+        }
+        .nav-btn-next {
+            background: linear-gradient(135deg, var(--mainframe-primary) 0%, var(--mainframe-secondary) 100%);
+            border-color: transparent;
+        }
+        .nav-btn-next:hover {
+            box-shadow: 0 8px 30px var(--mainframe-glow);
+        }
+        .nav-btn-next svg {
+            color: #fff;
+        }
+
+        /* Intro paragraph */
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 24px;
+        }
+        .intro-text .highlight {
+            background: linear-gradient(90deg, rgba(14, 165, 233, 0.25), rgba(6, 182, 212, 0.15));
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .industrial-card {
+                padding: 20px;
+            }
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+            .pipeline {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .pipeline-arrow {
+                transform: rotate(90deg);
+                padding: 4px 0;
+            }
+            .chapter-nav-enhanced {
+                flex-direction: column;
+            }
+            .nav-btn {
+                justify-content: center;
+            }
+            .audio-player {
+                flex-direction: column;
+                text-align: center;
+            }
+            .industrial-header h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                <div class="navbar-center">
+                    <ul class="nav-links">
+                        <li><a href="../../index.html" data-i18n="nav_home">Acasă</a></li>
+                        <li><a href="../about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="../history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="../comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="../../windows/index.html">Windows</a></li>
+                        <li><a href="../glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="../faq.html">FAQ</a></li>
+                        <li><a href="../quiz.html">Quiz</a></li>
+                        <li><a href="../resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="../../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" aria-label="Toggle dark mode" id="darkModeToggle">🌙</button>
+                    <button class="btn btn--utility lang-toggle" aria-label="Change language" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="history_title">Istoria Completă a SO-urilor</h2>
+                <p data-i18n="ch2_subtitle">Capitolul 2: Era Mainframe</p>
+            </div>
+        </section>
+
+        <div class="container chapter-article">
+            <a class="chapter-back" href="../history.html" data-i18n="ch2_back">&larr; Înapoi la Istorie</a>
+            
+            <div class="chapter-hero">
+                <h1>
+                    <svg class="chapter-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <rect x="2" y="3" width="20" height="18" rx="2" fill="none" stroke="var(--primary-color)" stroke-width="2"/>
+                        <rect x="5" y="7" width="4" height="3" fill="var(--primary-color)"/>
+                        <rect x="10" y="7" width="4" height="3" fill="var(--primary-color)"/>
+                        <rect x="15" y="7" width="4" height="3" fill="var(--primary-color)"/>
+                        <rect x="5" y="12" width="14" height="2" fill="var(--primary-color)" opacity="0.6"/>
+                        <rect x="5" y="16" width="8" height="2" fill="var(--primary-color)" opacity="0.4"/>
+                    </svg>
+                    <span data-i18n="ch2_title">Capitolul 2: Era Mainframe</span>
+                </h1>
+                <p class="chapter-lead" data-i18n="ch2_lead">Puterea industrială a calculatoarelor — batch processing, benzi magnetice și nașterea centrelor de date</p>
+            </div>
+
+            <section class="chapter-content">
+                
+                <!-- INTRO -->
+                <p class="intro-text" data-i18n="ch2_intro">
+                    Imaginează-ți o sală gigantică, plină de dulapuri metalice care horcăie ritmic, bobine de bandă 
+                    magnetică ce se rotesc neîncetat și operatori în halate albe care introduc teancuri de 
+                    <span class="highlight">carduri perforate</span>. Aceasta era realitatea anilor <strong>1950–1960</strong> — 
+                    era <span class="key-tag">mainframe</span>, când calculatoarele au devenit instrumentele puterii industriale.
+                </p>
+
+                <!-- Technical Separator -->
+                <div class="tech-separator">
+                    <div class="tech-separator-core">
+                        <svg class="tech-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8m-4-4v4"/>
+                        </svg>
+                        <span class="tech-separator-text">System Overview</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 1: Context -->
+                <div class="industrial-card">
+                    <div class="industrial-header">
+                        <span class="section-badge">01</span>
+                        <h2 data-i18n="ch2_s1_title">Context: Nașterea Gigantilor</h2>
+                    </div>
+
+                    <p data-i18n="ch2_s1_p1">
+                        <strong>Mainframe-urile</strong> nu erau simple calculatoare — erau adevărate 
+                        <em>centrale de procesare</em>, capabile să gestioneze volume uriașe de date pentru 
+                        bănci, guverne și corporații. Aceste mașini costau milioane de dolari și necesitau 
+                        echipe întregi de operatori, programatori și ingineri pentru a funcționa.
+                    </p>
+
+                    <div class="terminal-box">
+                        <p data-i18n="ch2_s1_quote">Un singur mainframe putea procesa mai multe tranzacții bancare într-o oră decât 
+                        o armată de contabili într-o lună. Aceasta era revoluția.</p>
+                    </div>
+
+                    <p data-i18n="ch2_s1_p2">
+                        Accesul la aceste sisteme era strict controlat. Utilizatorii nu interacționau direct 
+                        cu mașina — ei pregăteau <span class="key-tag">job-uri</span> pe carduri perforate, 
+                        le predau operatorilor, apoi așteptau ore sau chiar zile pentru rezultate.
+                    </p>
+                </div>
+
+                <!-- Technical Separator -->
+                <div class="tech-separator">
+                    <div class="tech-separator-core">
+                        <svg class="tech-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                        <span class="tech-separator-text">Significance</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: De ce a contat -->
+                <div class="industrial-card">
+                    <div class="industrial-header">
+                        <span class="section-badge">02</span>
+                        <h2 data-i18n="ch2_s2_title">De Ce a Contat Această Eră?</h2>
+                    </div>
+
+                    <p data-i18n="ch2_s2_p1">
+                        Era mainframe a transformat modul în care societatea gestionează informația. 
+                        Pentru prima dată, organizațiile puteau procesa date la scară <strong>industrială</strong>:
+                    </p>
+
+                    <div class="impact-meters">
+                        <div class="impact-meter">
+                            <div class="impact-meter-header">
+                                <svg class="impact-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M2 12h20"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                </svg>
+                                <span class="impact-meter-label" data-i18n="ch2_s2_meter1_label">Centralizare</span>
+                            </div>
+                            <div class="impact-meter-bar">
+                                <div class="impact-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <p class="impact-meter-desc" data-i18n="ch2_s2_meter1_desc">Toate datele și procesarea într-un singur loc controlat și securizat</p>
+                        </div>
+                        <div class="impact-meter">
+                            <div class="impact-meter-header">
+                                <svg class="impact-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                                <span class="impact-meter-label" data-i18n="ch2_s2_meter2_label">Eficiență</span>
+                            </div>
+                            <div class="impact-meter-bar">
+                                <div class="impact-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <p class="impact-meter-desc" data-i18n="ch2_s2_meter2_desc">Procesare automată 24/7, fără pauze sau erori umane</p>
+                        </div>
+                        <div class="impact-meter">
+                            <div class="impact-meter-header">
+                                <svg class="impact-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                                <span class="impact-meter-label" data-i18n="ch2_s2_meter3_label">Securitate</span>
+                            </div>
+                            <div class="impact-meter-bar">
+                                <div class="impact-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <p class="impact-meter-desc" data-i18n="ch2_s2_meter3_desc">Acces fizic controlat, proceduri stricte de operare</p>
+                        </div>
+                    </div>
+
+                    <ul class="industrial-list">
+                        <li data-i18n="ch2_s2_li1"><strong>Bănci și finanțe</strong> — procesarea milioanelor de tranzacții zilnice</li>
+                        <li data-i18n="ch2_s2_li2"><strong>Guverne</strong> — gestionarea înregistrărilor de recensământ și fiscale</li>
+                        <li data-i18n="ch2_s2_li3"><strong>Cercetare științifică</strong> — calcule complexe pentru fizică și meteorologie</li>
+                        <li data-i18n="ch2_s2_li4"><strong>Industria aeriană</strong> — sistemele de rezervări (ex: SABRE)</li>
+                    </ul>
+                </div>
+
+                <!-- Technical Separator -->
+                <div class="tech-separator">
+                    <div class="tech-separator-core">
+                        <svg class="tech-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        <span class="tech-separator-text">Batch Processing</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Batch Processing -->
+                <div class="industrial-card">
+                    <div class="industrial-header">
+                        <span class="section-badge">03</span>
+                        <h2 data-i18n="ch2_s3_title">Batch Processing — Procesarea pe Loturi</h2>
+                    </div>
+
+                    <p data-i18n="ch2_s3_p1">
+                        <span class="key-tag">Batch processing</span> a fost inovația care a făcut mainframe-urile viabile economic. 
+                        În loc ca fiecare utilizator să ruleze programul său individual (ceea ce ar fi irosit timp prețios), 
+                        job-urile erau <strong>grupate în loturi</strong> și procesate secvențial.
+                    </p>
+
+                    <div class="tech-definitions">
+                        <div class="tech-def-item">
+                            <div class="tech-def-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="4" rx="1"/>
+                                    <rect x="3" y="10" width="18" height="4" rx="1"/>
+                                    <rect x="3" y="16" width="18" height="4" rx="1"/>
+                                </svg>
+                            </div>
+                            <div class="tech-def-content">
+                                <h4 data-i18n="ch2_s3_def1_title">Job Queue (Coada de Job-uri)</h4>
+                                <p data-i18n="ch2_s3_def1_desc">Programele așteptau într-o coadă ordonată. Sistemul le prelua și le executa în ordine, fără intervenție umană.</p>
+                            </div>
+                        </div>
+                        <div class="tech-def-item">
+                            <div class="tech-def-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                    <path d="M6 10h.01M10 10h.01M6 14h.01M10 14h.01"/>
+                                </svg>
+                            </div>
+                            <div class="tech-def-content">
+                                <h4 data-i18n="ch2_s3_def2_title">Carduri Perforate</h4>
+                                <p data-i18n="ch2_s3_def2_desc">Fiecare program era codificat pe zeci sau sute de carduri. Un card căzut sau amestecat putea distruge întreaga execuție.</p>
+                            </div>
+                        </div>
+                        <div class="tech-def-item">
+                            <div class="tech-def-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <path d="M14 2v6h6"/>
+                                    <path d="M12 18v-6"/>
+                                    <path d="M9 15l3 3 3-3"/>
+                                </svg>
+                            </div>
+                            <div class="tech-def-content">
+                                <h4 data-i18n="ch2_s3_def3_title">JCL — Job Control Language</h4>
+                                <p data-i18n="ch2_s3_def3_desc">Un limbaj special pentru descrierea job-urilor: ce resurse necesită, ce fișiere folosesc, în ce ordine se execută pașii.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Pipeline -->
+                    <div class="pipeline-container">
+                        <div class="pipeline-title" data-i18n="ch2_s3_pipeline_title">🔄 Fluxul Procesării Batch</div>
+                        <div class="pipeline">
+                            <div class="pipeline-step">
+                                <span class="pipeline-step-number">1</span>
+                                <svg class="pipeline-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                    <path d="M6 10h.01M10 10h.01"/>
+                                </svg>
+                                <span class="pipeline-step-label" data-i18n="ch2_s3_step1">Pregătire</span>
+                                <span class="pipeline-step-desc" data-i18n="ch2_s3_step1_desc">Carduri perforate</span>
+                            </div>
+                            <span class="pipeline-arrow">→</span>
+                            <div class="pipeline-step">
+                                <span class="pipeline-step-number">2</span>
+                                <svg class="pipeline-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18M9 21V9"/>
+                                </svg>
+                                <span class="pipeline-step-label" data-i18n="ch2_s3_step2">Coadă</span>
+                                <span class="pipeline-step-desc" data-i18n="ch2_s3_step2_desc">Job queue</span>
+                            </div>
+                            <span class="pipeline-arrow">→</span>
+                            <div class="pipeline-step">
+                                <span class="pipeline-step-number">3</span>
+                                <svg class="pipeline-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                                    <rect x="9" y="9" width="6" height="6"/>
+                                </svg>
+                                <span class="pipeline-step-label" data-i18n="ch2_s3_step3">Execuție</span>
+                                <span class="pipeline-step-desc" data-i18n="ch2_s3_step3_desc">CPU processing</span>
+                            </div>
+                            <span class="pipeline-arrow">→</span>
+                            <div class="pipeline-step">
+                                <span class="pipeline-step-number">4</span>
+                                <svg class="pipeline-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                <span class="pipeline-step-label" data-i18n="ch2_s3_step4">Stocare</span>
+                                <span class="pipeline-step-desc" data-i18n="ch2_s3_step4_desc">Bandă magnetică</span>
+                            </div>
+                            <span class="pipeline-arrow">→</span>
+                            <div class="pipeline-step">
+                                <span class="pipeline-step-number">5</span>
+                                <svg class="pipeline-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <path d="M14 2v6h6"/>
+                                </svg>
+                                <span class="pipeline-step-label" data-i18n="ch2_s3_step5">Output</span>
+                                <span class="pipeline-step-desc" data-i18n="ch2_s3_step5_desc">Rapoarte printate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Separator -->
+                <div class="tech-separator">
+                    <div class="tech-separator-core">
+                        <svg class="tech-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <span class="tech-separator-text">Multiprogramming</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Multiprogramare -->
+                <div class="industrial-card">
+                    <div class="industrial-header">
+                        <span class="section-badge">04</span>
+                        <h2 data-i18n="ch2_s4_title">Multiprogramare — Mai Multe Programe Simultan</h2>
+                    </div>
+
+                    <p data-i18n="ch2_s4_p1">
+                        Problemă: când un program aștepta date de pe bandă magnetică (o operație lentă), 
+                        procesorul stătea <strong>inactiv</strong>. Soluția? <span class="key-tag">Multiprogramarea</span>.
+                    </p>
+
+                    <div class="terminal-box">
+                        <p data-i18n="ch2_s4_quote">Ideea revoluționară: încarcă mai multe programe în memorie simultan. Când unul 
+                        așteaptă I/O, procesorul trece la altul. Utilizarea CPU crește de la ~30% la peste 90%.</p>
+                    </div>
+
+                    <p data-i18n="ch2_s4_p2">
+                        Multiprogramarea a necesitat inovații fundamentale în design-ul sistemelor de operare:
+                    </p>
+
+                    <ul class="industrial-list">
+                        <li data-i18n="ch2_s4_li1"><strong>Protecția memoriei</strong> — fiecare program își avea zona sa, izolată de celelalte</li>
+                        <li data-i18n="ch2_s4_li2"><strong>Scheduling</strong> — algoritmi pentru a decide care program rulează când</li>
+                        <li data-i18n="ch2_s4_li3"><strong>Interrupt handling</strong> — mecanisme pentru a întrerupe și relua programe</li>
+                        <li data-i18n="ch2_s4_li4"><strong>Spooling</strong> — buffering pentru dispozitive lente (imprimante, cititor carduri)</li>
+                    </ul>
+
+                    <p data-i18n="ch2_s4_p3">
+                        Aceste concepte stau la baza <strong>tuturor</strong> sistemelor de operare moderne — 
+                        de la Windows și Linux până la iOS și Android.
+                    </p>
+                </div>
+
+                <!-- Technical Separator -->
+                <div class="tech-separator">
+                    <div class="tech-separator-core">
+                        <svg class="tech-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                        <span class="tech-separator-text">Technologies</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: Exemple și Tehnologii -->
+                <div class="industrial-card">
+                    <div class="industrial-header">
+                        <span class="section-badge">05</span>
+                        <h2 data-i18n="ch2_s5_title">Exemple și Tehnologii Reprezentative</h2>
+                    </div>
+
+                    <p data-i18n="ch2_s5_p1">
+                        Iată tehnologiile definitorii ale erei mainframe, care au modelat industria pentru decenii:
+                    </p>
+
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch2_s5_card1_year">1964</span>
+                            <h4 data-i18n="ch2_s5_card1_title">IBM System/360</h4>
+                            <p data-i18n="ch2_s5_card1_desc">
+                                Revoluția arhitecturii: o <strong>familie</strong> de calculatoare compatibile. 
+                                Programele scrise pentru modelul mic rulau pe modelul mare. Prima platformă 
+                                cu adevărat scalabilă din istorie.
+                            </p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch2_s5_card2_year">1961</span>
+                            <h4 data-i18n="ch2_s5_card2_title">CTSS — Compatible Time-Sharing System</h4>
+                            <p data-i18n="ch2_s5_card2_desc">
+                                Primul sistem de <strong>time-sharing</strong> funcțional. Permitea mai multor 
+                                utilizatori să interacționeze simultan cu același computer prin terminale.
+                            </p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch2_s5_card3_year">1966</span>
+                            <h4 data-i18n="ch2_s5_card3_title">OS/360</h4>
+                            <p data-i18n="ch2_s5_card3_desc">
+                                Sistemul de operare pentru System/360. Unul dintre cele mai complexe proiecte 
+                                software din istorie — a necesitat mii de programatori și ani de dezvoltare.
+                            </p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch2_s5_card4_year">1950s</span>
+                            <h4 data-i18n="ch2_s5_card4_title">Benzi Magnetice</h4>
+                            <p data-i18n="ch2_s5_card4_desc">
+                                Suport de stocare secvențială de mare capacitate. Bobinele de bandă erau 
+                                simbolul vizual al centrelor de date. Unele sisteme bancare le folosesc și azi pentru backup.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Separator -->
+                <div class="tech-separator">
+                    <div class="tech-separator-core">
+                        <svg class="tech-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="tech-separator-text">Legacy</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 6: Impact și Moștenire -->
+                <div class="industrial-card">
+                    <div class="industrial-header">
+                        <span class="section-badge">06</span>
+                        <h2 data-i18n="ch2_s6_title">Impact și Moștenire</h2>
+                    </div>
+
+                    <p data-i18n="ch2_s6_p1">
+                        Era mainframe a lăsat o moștenire profundă care influențează informatica și astăzi:
+                    </p>
+
+                    <ul class="industrial-list">
+                        <li data-i18n="ch2_s6_li1">
+                            <strong>Administrare centralizată</strong> — conceptul de data center, cu politici 
+                            stricte de acces și proceduri de backup
+                        </li>
+                        <li data-i18n="ch2_s6_li2">
+                            <strong>Planificare și scheduling</strong> — algoritmi de prioritizare care stau 
+                            la baza task scheduler-elor moderne
+                        </li>
+                        <li data-i18n="ch2_s6_li3">
+                            <strong>Logging și audit</strong> — înregistrarea sistematică a operațiunilor 
+                            pentru conformitate și debugging
+                        </li>
+                        <li data-i18n="ch2_s6_li4">
+                            <strong>Virtualizare</strong> — IBM VM/370 (1972) a introdus conceptul de 
+                            mașini virtuale, precursor al cloud computing
+                        </li>
+                        <li data-i18n="ch2_s6_li5">
+                            <strong>Reliability</strong> — standarde de uptime de 99.999% ("five nines") 
+                            provin din cerințele bancare ale erei mainframe
+                        </li>
+                    </ul>
+
+                    <div class="terminal-box">
+                        <p data-i18n="ch2_s6_quote">Surprinzător: multe bănci și companii aeriene rulează încă software COBOL pe mainframe-uri moderne. 
+                        IBM produce și vinde mainframe-uri în 2026.</p>
+                    </div>
+                </div>
+
+                <!-- Technical Separator -->
+                <div class="tech-separator">
+                    <div class="tech-separator-core">
+                        <svg class="tech-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="23 7 16 12 23 17 23 7"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2"/>
+                        </svg>
+                        <span class="tech-separator-text">Interactive Media</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 7: Media Interactivă -->
+                <div class="media-section">
+                    <div class="industrial-card">
+                        <div class="industrial-header">
+                            <span class="section-badge">07</span>
+                            <h2 data-i18n="ch2_s7_title">Experiență Mainframe — Media Interactivă</h2>
+                        </div>
+
+                        <p data-i18n="ch2_s7_p1">
+                            Explorează vizual lumea mainframe-urilor prin imagini de arhivă, video educațional 
+                            și atmosferă sonoră autentică. Aceste resurse te vor transporta în centrele de date ale anilor '60.
+                        </p>
+
+                        <!-- Image Gallery -->
+                        <h3 style="color: var(--mainframe-primary); margin: 28px 0 16px 0; font-size: 1.1rem;" data-i18n="ch2_s7_gallery">
+                            📷 Galerie Foto: Centre de Date Istorice
+                        </h3>
+
+                        <div class="media-grid">
+                            <figure class="media-figure">
+                                <img src="media/IBM_System_360_model_30_profile.jpg" alt="IBM System/360 Model 30" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch2_s7_img1_title">IBM System/360 Model 30</strong>
+                                    <span data-i18n="ch2_s7_img1_desc">Consola de operare a unui System/360. Observă panoul de control cu LED-uri 
+                                    și comutatoare — interfața principală a operatorului cu mașina.</span>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="media-figure">
+                                <img src="media/IBM_System_360_Model_40.jpg" alt="IBM System/360 Model 40" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch2_s7_img2_title">IBM System/360 Model 40</strong>
+                                    <span data-i18n="ch2_s7_img2_desc">Vedere de ansamblu a unui centru de date. Remarcă unitățile de bandă magnetică 
+                                    în fundal și dimensiunea impresionantă a echipamentelor.</span>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="media-figure">
+                                <img src="media/IBM_System_360_4358133497.jpg" alt="Instalație IBM System/360" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch2_s7_img3_title">Instalație Completă System/360</strong>
+                                    <span data-i18n="ch2_s7_img3_desc">Un centru de date tipic al anilor '60. Podelele false ascundeau kilometri de cabluri, 
+                                    iar aerul condiționat era esențial pentru răcirea componentelor.</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                        <!-- Video Section -->
+                        <h3 style="color: var(--mainframe-accent); margin: 32px 0 16px 0; font-size: 1.1rem;" data-i18n="ch2_s7_video">
+                            🎬 Video Educativ: Cum Funcționa un Mainframe
+                        </h3>
+
+                        <div class="video-container">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://archive.org/embed/XD1721_92ComputerlandTheVisionaries" 
+                                    title="1992 Computerland - The Visionaries" 
+                                    webkitallowfullscreen="true" 
+                                    mozallowfullscreen="true" 
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-description">
+                                <h4>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 16v-4M12 8h.01"/>
+                                    </svg>
+                                    <span data-i18n="ch2_s7_video_title">Ce să observi în acest video</span>
+                                </h4>
+                                <p data-i18n="ch2_s7_video_desc">
+                                    Acest documentar include segmente despre evoluția calculatoarelor de la ENIAC la 
+                                    era mainframe. Urmărește interviurile cu pionierii industriei și imaginile autentice 
+                                    din centrele de date ale anilor '60-'70. Observă dimensiunea echipamentelor și 
+                                    complexitatea operării lor.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Audio Section -->
+                        <h3 style="color: var(--terminal-green); margin: 32px 0 16px 0; font-size: 1.1rem;" data-i18n="ch2_s7_audio">
+                            🎧 Atmosferă Sonoră: Data Center Vintage (Opțional)
+                        </h3>
+
+                        <div class="audio-section">
+                            <div class="audio-header">
+                                <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 2v2m0 16v2M2 12h2m16 0h2"/>
+                                </svg>
+                                <h4 data-i18n="ch2_s7_audio_title">Sunetele unui Centru de Date (anii '60)</h4>
+                            </div>
+
+                            <div class="audio-player">
+                                <button class="audio-play-btn" id="audioPlayBtn" aria-label="Redă sunetul">
+                                    <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </button>
+                                <div class="audio-info">
+                                    <h5 data-i18n="ch2_s7_audio_subtitle">Mainframe Room Ambience — Simulare</h5>
+                                    <p id="audioStatus" data-i18n="ch2_s7_audio_status">Click pentru a genera și reda sunetul</p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                    </svg>
+                                    <input type="range" id="volumeSlider" min="0" max="100" value="30" 
+                                           style="width: 80px; accent-color: #22c55e;">
+                                </div>
+                            </div>
+
+                            <p class="audio-description" data-i18n="ch2_s7_audio_desc">
+                                <strong>Scop:</strong> Acest generator audio recreează atmosfera unui centru de date 
+                                din era mainframe — ritmul constant al unităților de bandă, hum-ul transformatoarelor 
+                                și click-urile periodice ale echipamentelor. Sunetul este generat în browser pentru 
+                                o experiență de imersiune autentică.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Enhanced Navigation -->
+            <nav class="chapter-nav-enhanced">
+                <a href="capitol-1-inceputuri.html" class="nav-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span data-i18n="ch2_nav_prev">Capitolul 1: Începuturile</span>
+                </a>
+                <a href="capitol-3-unix.html" class="nav-btn nav-btn-next">
+                    <span data-i18n="ch2_nav_next">Capitolul 3: Nașterea Unix</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+        </div>
+    </footer>
+
+    <script src="../../js/os-detect.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/enhancements.js"></script>
+    <script src="../../js/history.js"></script>
+
+    <!-- Audio Control Script with Web Audio API -->
+    <script>
+        // =====================================================
+        // WEB AUDIO API - Mainframe Data Center Ambience
+        // Generates realistic mainframe room sounds
+        // =====================================================
+        
+        let audioContext = null;
+        let masterGain = null;
+        let isPlaying = false;
+        let audioNodes = [];
+
+        const playIcon = document.getElementById('playIcon');
+        const audioPlayBtn = document.getElementById('audioPlayBtn');
+        const audioStatus = document.getElementById('audioStatus');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        function initAudioContext() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                masterGain = audioContext.createGain();
+                masterGain.gain.value = volumeSlider.value / 100 * 0.5;
+                masterGain.connect(audioContext.destination);
+            }
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+        }
+
+        // Create low frequency hum (60Hz power + harmonics)
+        function createHum() {
+            [60, 120, 180].forEach((freq, i) => {
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.value = 0.12 / (i + 1);
+                osc.connect(gain);
+                gain.connect(masterGain);
+                osc.start();
+                audioNodes.push({ osc, gain });
+            });
+        }
+
+        // Create cooling fan noise
+        function createFanNoise() {
+            const bufferSize = 2 * audioContext.sampleRate;
+            const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            
+            const whiteNoise = audioContext.createBufferSource();
+            whiteNoise.buffer = noiseBuffer;
+            whiteNoise.loop = true;
+            
+            const lowPass = audioContext.createBiquadFilter();
+            lowPass.type = 'lowpass';
+            lowPass.frequency.value = 300;
+            
+            const gain = audioContext.createGain();
+            gain.gain.value = 0.06;
+            
+            whiteNoise.connect(lowPass);
+            lowPass.connect(gain);
+            gain.connect(masterGain);
+            whiteNoise.start();
+            audioNodes.push({ osc: whiteNoise, gain });
+        }
+
+        // Create tape drive motor rhythm
+        function createTapeDrive() {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const lfo = audioContext.createOscillator();
+            const lfoGain = audioContext.createGain();
+            
+            osc.type = 'triangle';
+            osc.frequency.value = 35;
+            lfo.type = 'sine';
+            lfo.frequency.value = 0.5;
+            lfoGain.gain.value = 10;
+            
+            lfo.connect(lfoGain);
+            lfoGain.connect(osc.frequency);
+            gain.gain.value = 0.04;
+            
+            osc.connect(gain);
+            gain.connect(masterGain);
+            osc.start();
+            lfo.start();
+            audioNodes.push({ osc, gain }, { osc: lfo, gain: lfoGain });
+        }
+
+        // Create occasional mechanical clicks
+        function createMechanicalClicks() {
+            function scheduleClick() {
+                if (!isPlaying) return;
+                
+                const clickOsc = audioContext.createOscillator();
+                const clickGain = audioContext.createGain();
+                
+                clickOsc.type = 'square';
+                clickOsc.frequency.value = 600 + Math.random() * 600;
+                
+                clickGain.gain.setValueAtTime(0, audioContext.currentTime);
+                clickGain.gain.linearRampToValueAtTime(0.08, audioContext.currentTime + 0.003);
+                clickGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.06);
+                
+                clickOsc.connect(clickGain);
+                clickGain.connect(masterGain);
+                clickOsc.start(audioContext.currentTime);
+                clickOsc.stop(audioContext.currentTime + 0.06);
+                
+                setTimeout(scheduleClick, 200 + Math.random() * 1500);
+            }
+            scheduleClick();
+        }
+
+        function startAmbience() {
+            initAudioContext();
+            createHum();
+            createFanNoise();
+            createTapeDrive();
+            createMechanicalClicks();
+        }
+
+        function stopAmbience() {
+            audioNodes.forEach(node => {
+                try { if (node.osc) node.osc.stop(); } catch(e) {}
+            });
+            audioNodes = [];
+        }
+
+        function toggleAudio() {
+            if (isPlaying) {
+                stopAmbience();
+                playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+                audioStatus.textContent = 'Click pentru a genera și reda sunetul';
+                isPlaying = false;
+            } else {
+                startAmbience();
+                playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+                audioStatus.textContent = '▶ Redare în curs... Click pentru a opri';
+                isPlaying = true;
+            }
+        }
+
+        audioPlayBtn.addEventListener('click', toggleAudio);
+        volumeSlider.addEventListener('input', () => {
+            if (masterGain) masterGain.gain.value = volumeSlider.value / 100 * 0.5;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.industrial-card, .media-figure, .video-container, .audio-section, .pipeline-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Animate impact meter bars on scroll
+        const meterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target.querySelector('.impact-meter-fill');
+                    if (fill) {
+                        const width = fill.style.width;
+                        fill.style.width = '0%';
+                        setTimeout(() => { fill.style.width = width; }, 100);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.impact-meter').forEach(el => meterObserver.observe(el));
+    </script>
+</body>
+</html>

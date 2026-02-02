@@ -2,8 +2,13 @@
    QUIZ.JS - Sistem complet de quiz interactiv
    ===================================================== */
 
-// Helper function for translations
+// Helper function for translations - uses global i18n system
 function getTranslation(key) {
+    // Use window.t directly (exposed by i18n.js)
+    if (typeof window.t === 'function') {
+        return window.t(key);
+    }
+    // Fallback to i18n object
     if (window.i18n && typeof window.i18n.t === 'function') {
         return window.i18n.t(key);
     }
@@ -11,10 +16,14 @@ function getTranslation(key) {
 }
 
 function getCurrentLang() {
-    if (window.i18n && typeof window.i18n.currentLang === 'function') {
-        return window.i18n.currentLang();
+    // Use global getCurrentLang from i18n.js
+    if (typeof window.getCurrentLang === 'function') {
+        return window.getCurrentLang();
     }
-    return localStorage.getItem('language') || 'ro';
+    if (window.i18n && typeof window.i18n.getCurrentLang === 'function') {
+        return window.i18n.getCurrentLang();
+    }
+    return localStorage.getItem('site_language') || localStorage.getItem('language') || 'ro';
 }
 
 // ===== QUIZ DATA - ROMANIAN =====
@@ -410,13 +419,12 @@ function renderLeaderboard() {
  * from the leaderboard panel.
  */
 function addCurrentToLeaderboard() {
-    const isEN = getCurrentLang() === 'en';
     // compute percentage and totalScore from current quiz state
     const questions = getQuizData().length;
     const percentage = Math.round((score / questions) * 100);
     const totalScore = (score * 10) + (typeof bonusPoints === 'number' ? bonusPoints : 0);
 
-    const promptMsg = isEN ? 'Enter your name for the leaderboard:' : 'Introduceți-vă nume pentru leaderboard:';
+    const promptMsg = getTranslation('quiz_leaderboard_prompt');
 
     if (window.customPrompt) {
         window.customPrompt(promptMsg, '')
@@ -545,7 +553,7 @@ function updateTimerDisplay() {
     }
     if (bonusDisplay) {
         const bonus = Math.max(0, timeLeft - 5);
-        bonusDisplay.textContent = `+${bonus} bonus`;
+        bonusDisplay.textContent = `+${bonus} ${getTranslation('quiz_bonus')}`;
     }
 }
 
@@ -659,19 +667,19 @@ function loadQuestion() {
     const currentQuizData = getQuizData();
     const quiz = currentQuizData[currentQuestion];
     const quizBody = document.getElementById('quizBody');
-    const isEN = getCurrentLang() === 'en';
     wrongSoundPlayed = false;
     
     if (!quizBody) return;
     
     startTimer();
     
-    const questionLabel = isEN ? 'Question' : 'Întrebarea';
+    const questionLabel = getTranslation('quiz_question');
+    const questionImageAlt = getTranslation('quiz_question_image_alt');
     
     let html = `
         <div class="quiz-question">
             <div class="question-number">${questionLabel} ${currentQuestion + 1}</div>
-            ${quiz.image ? `<img src="${quiz.image}" class="question-image" alt="${isEN ? 'Question image' : 'Imagine întrebare'}">` : ''}
+            ${quiz.image ? `<img src="${quiz.image}" class="question-image" alt="${questionImageAlt}">` : ''}
             <div class="question-text">${quiz.question}</div>
             <div class="quiz-options">
     `;
@@ -700,12 +708,11 @@ function selectOption(index) {
 }
 
 function nextQuestion() {
-    const isEN = getCurrentLang() === 'en';
     const currentQuizData = getQuizData();
     
     if (selectedAnswer === null) {
         playSound('wrong');
-        alert(isEN ? 'Please select an answer!' : 'Te rog selectează un răspuns!');
+        alert(getTranslation('quiz_select_answer'));
         return;
     }
     
@@ -761,7 +768,6 @@ function showResults() {
     resultProcessed = true;
 
     clearInterval(timerInterval);
-    const isEN = getCurrentLang() === 'en';
     const currentQuizData = getQuizData();
     
     const quizContainer = document.getElementById('quizContainer');
@@ -791,9 +797,9 @@ function showResults() {
     
     const finalScore = document.getElementById('finalScore');
     if (finalScore) {
-        const bonusText = isEN ? 'Time bonus' : 'Bonus timp';
-        const totalText = isEN ? 'Total' : 'Total';
-        const pointsText = isEN ? 'points' : 'puncte';
+        const bonusText = getTranslation('quiz_time_bonus');
+        const totalText = getTranslation('quiz_total');
+        const pointsText = getTranslation('quiz_points');
         finalScore.innerHTML = `
             ${score} / ${currentQuizData.length} (${percentage}%)<br>
             <span style="font-size: 1rem; color: #10b981;">⚡ ${bonusText}: +${bonusPoints} ${pointsText}</span><br>
@@ -803,15 +809,15 @@ function showResults() {
     
     let message = '';
     if (percentage === 100) {
-        message = isEN ? '🏆 Perfect! You are an OS expert!' : '🏆 Perfect! Ești expert în sistemele de operare!';
+        message = getTranslation('quiz_msg_perfect');
     } else if (percentage >= 80) {
-        message = isEN ? '🎉 Excellent! You know OS very well!' : '🎉 Excelent! Cunoști foarte bine SO-urile!';
+        message = getTranslation('quiz_msg_excellent');
     } else if (percentage >= 60) {
-        message = isEN ? '👍 Good! You know the main concepts.' : '👍 Bun! Cunoști conceptele principale.';
+        message = getTranslation('quiz_msg_good');
     } else if (percentage >= 40) {
-        message = isEN ? '📚 You need to study more!' : '📚 Trebuie să studiezi mai mult!';
+        message = getTranslation('quiz_msg_study');
     } else {
-        message = isEN ? '💪 Come back and try again after studying!' : '💪 Revino și reîncearcă după ce studiezi!';
+        message = getTranslation('quiz_msg_retry');
     }
     
     const scoreMessage = document.getElementById('scoreMessage');
@@ -828,10 +834,10 @@ function showResults() {
 }
 
 function saveScore(percentage, totalScore) {
-    const isEN = getCurrentLang() === 'en';
+    const promptMsg = getTranslation('quiz_leaderboard_prompt');
     // Use customPrompt which returns a Promise
     if (window.customPrompt) {
-        window.customPrompt(isEN ? 'Enter your name for the leaderboard:' : 'Introduceți-vă nume pentru leaderboard:', '')
+        window.customPrompt(promptMsg, '')
             .then((name) => {
                 if (name) {
                     leaderboard.push({ name, score, percentage, totalScore: totalScore || score * 10, date: new Date().toLocaleDateString() });
@@ -843,7 +849,7 @@ function saveScore(percentage, totalScore) {
                 }
             });
     } else {
-        const name = prompt(isEN ? 'Enter your name for the leaderboard:' : 'Introduceți-vă nume pentru leaderboard:');
+        const name = prompt(promptMsg);
         if (name) {
             leaderboard.push({ name, score, percentage, totalScore: totalScore || score * 10, date: new Date().toLocaleDateString() });
             leaderboard.sort((a, b) => (b.totalScore || b.percentage) - (a.totalScore || a.percentage));
@@ -856,8 +862,8 @@ function saveScore(percentage, totalScore) {
 }
 
 function displayLeaderboard() {
-    const isEN = getCurrentLang() === 'en';
-    let leaderboardHTML = `<h3>🏅 ${isEN ? 'Top 10 Players:' : 'Top 10 Jucători:'}</h3><div class="leaderboard">`;
+    const leaderboardTitle = getTranslation('quiz_leaderboard');
+    let leaderboardHTML = `<h3>${leaderboardTitle}</h3><div class="leaderboard">`;
     leaderboard.forEach((entry, index) => {
         leaderboardHTML += `
             <div class="leaderboard-entry">
@@ -889,21 +895,21 @@ function displayLeaderboard() {
         const shareBtn = document.createElement('button');
         shareBtn.className = 'quiz-button share-result';
         shareBtn.type = 'button';
-        shareBtn.setAttribute('aria-label', isEN ? 'Share result' : 'Distribuie rezultatul');
-        shareBtn.textContent = isEN ? '📤 Share result' : '📤 Distribuie rezultatul';
+        const shareLabel = getTranslation('quiz_share_result');
+        shareBtn.setAttribute('aria-label', shareLabel);
+        shareBtn.textContent = shareLabel;
         shareBtn.onclick = shareResult;
         resultDiv.appendChild(shareBtn);
     }
 }
 
 function shareResult() {
-    const isEN = getCurrentLang() === 'en';
     const currentQuizData = getQuizData();
     const percentage = Math.round((score / currentQuizData.length) * 100);
     const totalScore = score * 10 + bonusPoints;
-    const text = isEN 
-        ? `I got ${totalScore} points (${percentage}%) on the Evolution of Operating Systems quiz! 🎯⚡`
-        : `Am obținut ${totalScore} puncte (${percentage}%) la quiz-ul Evoluția Sistemelor de Operare! 🎯⚡`;
+    // Get translated share text and replace placeholders
+    let text = getTranslation('quiz_share_text');
+    text = text.replace('{score}', totalScore).replace('{percent}', percentage);
     const url = window.location.href;
     
     if (navigator.share) {
@@ -934,12 +940,11 @@ function restartQuiz() {
     if (quizContainer) quizContainer.style.display = 'block';
     if (resultsContainer) {
         resultsContainer.classList.remove('show');
-        const isEN = getCurrentLang() === 'en';
         resultsContainer.innerHTML = `
-            <h2>${isEN ? 'Your Results' : 'Rezultatele Tale'}</h2>
+            <h2>${getTranslation('quiz_results')}</h2>
             <div class="score" id="finalScore"></div>
             <p class="score-message" id="scoreMessage"></p>
-            <button class="restart-btn" onclick="restartQuiz()">${isEN ? 'Restart Quiz' : 'Reia Quiz-ul'}</button>
+            <button class="restart-btn" onclick="restartQuiz()">${getTranslation('quiz_restart')}</button>
         `;
     }
     loadQuestion();

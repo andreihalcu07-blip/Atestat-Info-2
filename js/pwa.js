@@ -3,7 +3,8 @@
    ===================================================== */
 
 // Register Service Worker for PWA
-if ('serviceWorker' in navigator) {
+// Skip service worker and install prompts when running from file:// where SW and PWA features are unsupported.
+if (location.protocol !== 'file:' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
             .then((registration) => {
@@ -35,9 +36,10 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// PWA Install Prompt
+// PWA Install Prompt (only when served via http/https)
 let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
+if (location.protocol !== 'file:') {
+    window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     
@@ -71,7 +73,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
         deferredPrompt = null;
     };
     document.body.appendChild(installBtn);
-});
+    });
+}
 
 // Hide install button if already installed
 window.addEventListener('appinstalled', () => {

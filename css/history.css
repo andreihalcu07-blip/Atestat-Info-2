@@ -1,0 +1,80 @@
+/* Styles for history chapter pages - matches project look */
+:root{
+  --bg-card: linear-gradient(90deg,#1e293b 60%, #334155 100%);
+  --accent: #2563eb;
+  --muted: #94a3b8;
+}
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding-left:18px;
+  padding-right:18px;
+}
+.chapter-article{
+  background: rgba(15,23,42,0.84);
+  border-radius: 12px;
+  padding: 22px;
+  margin-top: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.22);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.chapter-back{
+  display:inline-block;
+  margin-bottom: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight:600;
+}
+.chapter-back:hover{ text-decoration:underline; }
+.chapter-hero{
+  margin-bottom: 10px;
+}
+.chapter-hero h1{
+  font-size:1.9rem;
+  margin:0 0 6px 0;
+}
+.chapter-hero p{ color: var(--muted); margin:0 0 10px 0; }
+.chapter-content h2{ color:#fff; margin-top:18px; }
+.chapter-content p, .chapter-content ul{
+  color: #e6eef8;
+  line-height:1.6;
+}
+.chapter-nav{ margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; }
+.chapter-nav a{ color:#cfe6ff; text-decoration:none; padding:8px 12px; border-radius:8px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02); }
+.chapter-nav a:hover{ background: linear-gradient(90deg, rgba(37,99,235,0.12), rgba(51,65,85,0.12)); border-color: rgba(37,99,235,0.18); }
+@media (max-width:700px){
+  .chapter-hero h1{ font-size:1.4rem; }
+  .chapter-article{ padding:18px; }
+}
+
+/* Ensure footer sits just after content and reduce large empty space */
+footer{
+  position: relative;
+  margin-top: 12px;
+  background: transparent;
+}
+footer .container{ padding-top:14px; padding-bottom:14px; }
+
+.chapter-lead{ color: var(--muted); margin: 6px 0 12px 0; }
+.chapter-content h2{ color: #ffffff; margin-top:16px; font-size:1.15rem; }
+.chapter-content h3{ color: #e6eef8; margin-top:12px; font-size:1.03rem; }
+.chapter-content p{ color:#dfeafe; margin:8px 0; }
+.chapter-content ul{ margin:8px 0 12px 1.05rem; color:#dfeafe; }
+.chapter-content strong{ color:#fff; font-weight:700; }
+.chapter-article{ margin-bottom: 6px; }
+
+/* Chapter title icons (minimal, monochrome, aligned) */
+.chapter-hero h1 .chapter-icon{ width:20px; height:20px; vertical-align:middle; margin-right:10px; color: var(--accent); fill: currentColor; display:inline-block; }
+@media (max-width:600px){
+  .chapter-hero h1 .chapter-icon{ width:18px; height:18px; margin-right:8px; }
+}
+
+/* Media responsiveness for images and embedded video */
+.chapter-media img{ max-width:90%; max-height:360px; width:auto; height:auto; display:block; margin:10px auto; border-radius:6px; object-fit:cover; }
+.chapter-media figure{ margin:12px 0; text-align:center; }
+.chapter-media figcaption{ color:var(--muted); font-size:0.92rem; margin-top:6px; }
+.chapter-video iframe{ width:100%; max-width:900px; height:calc(100vw * 9 / 16); max-height:420px; display:block; margin:14px auto; border:0; }
+
+@media (max-width:700px){
+  .chapter-media img{ max-width:96%; max-height:260px; }
+}

@@ -1,3 +1,15 @@
+.chapter-content > h2,
+.chapter-content > h3,
+.chapter-content > ul,
+.chapter-content > p {
+    margin-top: 22px;
+}
+.chapter-content > *:first-child {
+    margin-top: 0;
+}
+.chapter-content > *:last-child {
+    margin-bottom: 0;
+}
 /* =====================================================
    PAGES.CSS - Stiluri specifice pentru fiecare pagină
    ===================================================== */
@@ -58,6 +70,150 @@
 
 /* Small helper to visually match old proportions on narrow viewports */
 @media (max-width: 700px) {
+/* =============================
+     Capitole Istorie - Stilizare
+     ============================= */
+
+.chapter-article {
+    background: rgba(30,40,60,0.03);
+    border-radius: 18px;
+    box-shadow: 0 4px 32px 0 rgba(37,99,235,0.07);
+    margin: 36px auto 36px auto;
+    padding: 32px 24px 32px 24px;
+    max-width: 900px;
+    transition: background 0.3s;
+}
+
+.chapter-hero {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.chapter-hero .chapter-icon {
+    width: 38px;
+    height: 38px;
+    fill: var(--primary-color);
+}
+.chapter-lead {
+    color: var(--text-light);
+    font-size: 1.15rem;
+    margin-bottom: 0;
+}
+
+.chapter-content {
+    margin-bottom: 32px;
+}
+.chapter-content h2 {
+    font-size: 1.35rem;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.chapter-content h3 {
+    font-size: 1.08rem;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+.chapter-content ul {
+    margin-left: 24px;
+    margin-bottom: 12px;
+}
+.chapter-content li {
+    margin-bottom: 5px;
+}
+.chapter-content p {
+    margin-bottom: 10px;
+}
+
+.chapter-media {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.chapter-media figure {
+    background: rgba(37,99,235,0.04);
+    border-radius: 14px;
+    box-shadow: 0 2px 16px 0 rgba(37,99,235,0.08);
+    padding: 12px 12px 8px 12px;
+    margin: 0;
+    text-align: center;
+}
+.chapter-media img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 rgba(37,99,235,0.10);
+    margin-bottom: 6px;
+}
+.chapter-media figcaption {
+    color: #64748b;
+    font-size: 0.98em;
+    margin-top: 2px;
+}
+.chapter-media iframe {
+    border-radius: 12px;
+    box-shadow: 0 2px 16px 0 rgba(37,99,235,0.10);
+}
+
+.chapter-back {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.chapter-back:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.chapter-nav {
+    margin-top: 32px;
+    text-align: right;
+}
+.chapter-nav a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.08rem;
+    transition: color 0.2s;
+}
+.chapter-nav a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .chapter-article {
+        padding: 18px 4vw 18px 4vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .chapter-article {
+        padding: 8px 2vw 8px 2vw;
+    }
+    .chapter-hero h1 {
+        font-size: 1.25rem;
+        gap: 6px;
+    }
+    .chapter-content h2 {
+        font-size: 1.08rem;
+    }
+}
     .boot-screen .windows-flag { width: 260px; }
     .boot-screen .windows-version { font-size: 34px; }
 }

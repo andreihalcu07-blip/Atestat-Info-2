@@ -158,148 +158,50 @@
             <div class="timeline-indicator" id="timelineIndicator"></div>
         </section>
 
-        <!-- Zoom Controls -->
-        <div class="zoom-controls">
-            <button class="zoom-btn" onclick="zoomTimeline(1.1)" title="Zoom In">➕</button>
-            <button class="zoom-btn" onclick="zoomTimeline(0.9)" title="Zoom Out">➖</button>
-            <button class="zoom-btn" onclick="resetZoom()" title="Reset">🔄</button>
-        </div>
-
-        <section class="timeline">
-            <div class="container">
-                <h2 data-i18n="timeline_detailed_title">O Cronologie Detaliată</h2>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">1950</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1950_title">🖥️ Primii Pași - Era Mainframe</h3>
-                        <p data-i18n="detail_1950_desc">
-                            Primele sisteme de operare au fost dezvoltate pentru calculatoarele mainframe uriaşe. 
-                            UNIVAC Operating System a fost unul din primele. Executau o singură sarcină la un moment dat 
-                            (batch processing). Ocupau camere întregi și costau milioane de dolari.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">1964</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1964_title">🎯 IBM System/360 OS</h3>
-                        <p data-i18n="detail_1964_desc">
-                            IBM System/360 a revoluționat industria cu sistemul său de operare care suporta multiprogramming. 
-                            Aceasta a permis mai multor job-uri să ruleze "simultan" (în realitate, se alternau rapid). 
-                            A fost un salt uriaș în eficiență.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">1969</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1969_title">🔓 Unix - O Revoluție</h3>
-                        <p data-i18n="detail_1969_desc">
-                            Unix a fost creat la Bell Labs. A adus o abordare inovatoare: "Fă o singură lucru și fă-o bine." 
-                            Cu design-ul modular și portabil, Unix a deveni baza pentru o mulțime de SO-uri moderne. 
-                            Scrierea în C a făcut-o ușor de portat.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">1981</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1981_title">💻 MS-DOS și Calculatoare Personale</h3>
-                        <p data-i18n="detail_1981_desc">
-                            Microsoft DOS a lansat calculatoarele în birou și în casă. IBM PC cu MS-DOS a fost accesibil 
-                            și ușor de folosit. A marcat începutul erei calculatoarelor personale. DOS a dominat piața 
-                            pentru decenii.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">1984</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1984_title">🎨 Mac OS și GUI</h3>
-                        <p data-i18n="detail_1984_desc">
-                            Apple Macintosh a introduit interfața grafică cu utilizatorul (GUI) pentru masele. 
-                            Utilizatorii nu mai trebuiau să tasteze comenzi complexe. Au putut pur și simplu să dea click pe icoane. 
-                            Aceasta a schimbat complet modul de utilizare a calculatoarelor.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">1985</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1985_title">🪟 Windows 1.0</h3>
-                        <p data-i18n="detail_1985_desc">
-                            Microsoft Windows 1.0 a fost o încercare de a aduce GUI la calculatoarele DOS. 
-                            Inițial lent și nepopular, Windows a evoluat și a devenit dominant pe piață. 
-                            O bază pentru ce urma.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">1991</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1991_title">🐧 Nașterea Linux</h3>
-                        <p data-i18n="detail_1991_desc">
-                            Linus Torvalds a creat Linux, un kernel inspirat de Unix. Cu ajutorul comunității open-source, 
-                            Linux a crescut și a devenit un SO puternic și gratuit. Astazi domină serverele web.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">1995</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_1995_title">⭐ Windows 95 - Punctul de Cotitură</h3>
-                        <p data-i18n="detail_1995_desc">
-                            Windows 95 a marcat o schimbare majoră. A fost prieto cu utilizatorul, stabil, și a dominat piața. 
-                            Butonul Start, taskbar, și design-ul intuitiv au devenit standard de facto. 
-                            S-a vândut în milioane de copii.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2001</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_2001_title">🎯 Windows XP și Mac OS X</h3>
-                        <p data-i18n="detail_2001_desc">
-                            Windows XP a fost stabil, rapid și ușor de folosit. A dominat piața pentru ani de zile. 
-                            Apple a lansat Mac OS X, o combinație dintre frumusețea Mac și puterea Unix. 
-                            Ambele au setat standarde noi.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2007-2008</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_2007_title">📱 Revoluția Mobile</h3>
-                        <p data-i18n="detail_2007_desc">
-                            iPhone (iOS) și primele telefoane Android au schimbat totul. Mobile computing a devenit mainstream. 
-                            Miliarde de oameni aveau acum SO-uri în buzunar. Era cloud computing a început.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2015+</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="detail_2015_title">🚀 Era Modernă</h3>
-                        <p data-i18n="detail_2015_desc">
-                            Windows 10/11, macOS modernă, Linux peste tot (cloud, servere, IoT). 
-                            Sisteme de operare cu AI, securitate avansată, și virtualizare. 
-                            Calculatoarele hibrid și IoT au apărut. Viitorul SO-urilor este aici.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <!-- Sumar capitole istorie SO -->
+            <section class="history-chapters">
+                <h2 class="chapter-title" data-i18n="history_chapters_title">Capitolele Istoriei Sistemelor de Operare</h2>
+                <ul class="chapter-list">
+                    <li>
+                        <a href="history/capitol-1-inceputuri.html" class="chapter-link">
+                            <span class="chapter-index" data-i18n="history_ch1_index">Capitolul 1:</span> <span data-i18n="history_ch1_title">Începuturile sistemelor de operare</span>
+                            <span class="chapter-desc" data-i18n="history_ch1_desc">Primele calculatoare, primele interfețe, GM-NAA I/O</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="history/capitol-2-mainframe.html" class="chapter-link">
+                            <span class="chapter-index" data-i18n="history_ch2_index">Capitolul 2:</span> <span data-i18n="history_ch2_title">Era Mainframe</span>
+                            <span class="chapter-desc" data-i18n="history_ch2_desc">Batch processing, carduri perforate, multiprogramare</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="history/capitol-3-unix.html" class="chapter-link">
+                            <span class="chapter-index" data-i18n="history_ch3_index">Capitolul 3:</span> <span data-i18n="history_ch3_title">Nașterea Unix</span>
+                            <span class="chapter-desc" data-i18n="history_ch3_desc">Bell Labs, portabilitate, influența asupra SO moderne</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="history/capitol-4-pc.html" class="chapter-link">
+                            <span class="chapter-index" data-i18n="history_ch4_index">Capitolul 4:</span> <span data-i18n="history_ch4_title">Era PC și GUI</span>
+                            <span class="chapter-desc" data-i18n="history_ch4_desc">MS-DOS, Macintosh, Windows, interfața grafică</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="history/capitol-5-linux.html" class="chapter-link">
+                            <span class="chapter-index" data-i18n="history_ch5_index">Capitolul 5:</span> <span data-i18n="history_ch5_title">Linux și Open Source</span>
+                            <span class="chapter-desc" data-i18n="history_ch5_desc">Linus Torvalds, mișcarea open source, servere</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="history/capitol-6-modern.html" class="chapter-link">
+                            <span class="chapter-index" data-i18n="history_ch6_index">Capitolul 6:</span> <span data-i18n="history_ch6_title">Era Modernă</span>
+                            <span class="chapter-desc" data-i18n="history_ch6_desc">Windows, macOS, Linux, mobil, cloud, AI</span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="chapter-hint" data-i18n="history_chapters_hint">Apasă pe un capitol pentru a explora detaliat fiecare perioadă din istoria sistemelor de operare!</p>
+            </section>
+        
     </main>
 
     <footer>
@@ -307,6 +209,91 @@
             <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
         </div>
     </footer>
+
+    <style>
+    .history-chapters {
+        max-width: 900px;
+        margin: 40px auto 0 auto;
+        background: var(--chapter-bg, rgba(30,41,59,0.7));
+        border-radius: 18px;
+        box-shadow: 0 4px 24px 0 rgba(30,41,59,0.10);
+        padding: 32px 18px 24px 18px;
+    }
+    .chapter-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: var(--chapter-title, #fff);
+        letter-spacing: 0.01em;
+    }
+    .chapter-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+    .chapter-list li {
+        margin: 0 0 18px 0;
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .chapter-link {
+        display: block;
+        background: linear-gradient(90deg, #1e293b 60%, #334155 100%);
+        border-radius: 12px;
+        padding: 18px 22px 12px 22px;
+        color: #e0e7ef;
+        text-decoration: none;
+        font-size: 1.13rem;
+        font-weight: 500;
+        box-shadow: 0 2px 10px 0 rgba(30,41,59,0.08);
+        border: 1.5px solid #334155;
+        position: relative;
+        transition: box-shadow 0.18s, border 0.18s, background 0.18s, color 0.18s, transform 0.18s;
+    }
+    .chapter-link:hover, .chapter-link:focus {
+        background: linear-gradient(90deg, #2563eb 60%, #334155 100%);
+        color: #fff;
+        border: 1.5px solid #2563eb;
+        box-shadow: 0 4px 24px 0 rgba(37,99,235,0.13);
+        transform: translateY(-2px) scale(1.025);
+        text-decoration: none;
+    }
+    .chapter-index {
+        font-weight: 700;
+        color: #60a5fa;
+        margin-right: 8px;
+        font-size: 1.08em;
+        letter-spacing: 0.01em;
+        display: inline-block;
+    }
+    .chapter-desc {
+        display: block;
+        color: #94a3b8;
+        font-size: 0.98em;
+        margin-top: 2px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+    }
+    .chapter-hint {
+        text-align: center;
+        color: #64748b;
+        margin-top: 30px;
+        font-size: 0.98em;
+    }
+    @media (max-width: 600px) {
+        .history-chapters {
+            padding: 16px 2vw 12px 2vw;
+        }
+        .chapter-title {
+            font-size: 1.25rem;
+        }
+        .chapter-link {
+            font-size: 1rem;
+            padding: 12px 10px 8px 10px;
+        }
+    }
+    </style>
 
     <script src="../js/os-detect.js"></script>
     <script src="../js/i18n.js"></script>

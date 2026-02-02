@@ -100,13 +100,13 @@
                 <div class="hero-actions">
                     <button id="achievementChip" class="achievement-chip" onclick="toggleAchievements()" aria-haspopup="dialog" aria-controls="achievementsPanel" aria-label="Open achievements">
                         <span class="achievement-icon">🏆</span>
-                        <span class="achievement-label">Achievements</span>
+                        <span class="achievement-label" data-i18n="quiz_achievements_label">Achievements</span>
                         <span id="achievementCount" class="achievement-count">0 / 0</span>
                     </button>
                     <!-- Leaderboard chip: visual-only button matching Achievements (placed to the right) -->
                     <button id="leaderboardChip" class="achievement-chip leaderboard-chip" aria-label="Open leaderboard" onclick="toggleLeaderboard()" aria-controls="leaderboardPanel">
                         <span class="achievement-icon">📈</span>
-                        <span class="achievement-label">Leaderboard</span>
+                        <span class="achievement-label" data-i18n="quiz_leaderboard_label">Leaderboard</span>
                     </button>
                 </div>
             </div>
@@ -139,7 +139,7 @@
                         <div class="quiz-overlay-card">
                             <h3 data-i18n="quiz_start_title">Ready to test your knowledge?</h3>
                             <p data-i18n="quiz_start_sub">Click below to begin the quiz. Good luck!</p>
-                            <button id="startQuizBtn" class="btn btn--primary">Start Quiz</button>
+                            <button id="startQuizBtn" class="btn btn--primary" data-i18n="quiz_start">Start Quiz</button>
                         </div>
                     </div>
 

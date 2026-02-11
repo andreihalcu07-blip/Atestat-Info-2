@@ -286,6 +286,7 @@
     margin: 35px 0;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -465,6 +466,7 @@ body.dark-mode .about-section .feature-card p {
     background: var(--primary-color);
     color: white;
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
     display: flex;
     justify-content: space-between;
@@ -1186,6 +1188,10 @@ body.dark-mode .timeline-3d::-webkit-scrollbar-track {
 }
 
 /* Achievements Styles (contextual) */
+/* ===== Quiz helper classes (replace inline styles) ===== */
+.achievements-modal-title { margin-top: 0; }
+.leaderboard-actions { margin-top: 12px; display: flex; gap: 10px; justify-content: flex-end; }
+
 .achievements-panel {
     position: fixed;
     inset: 0;
@@ -1367,6 +1373,7 @@ body.dark-mode .timeline-3d::-webkit-scrollbar-track {
     /* Blur only the inner quiz content so overlay (sibling) is not blurred */
     filter: blur(6px);
     pointer-events: none;
+    -webkit-user-select: none;
     user-select: none;
     opacity: 0.98;
 }
@@ -1413,7 +1420,7 @@ body.dark-mode .timeline-3d::-webkit-scrollbar-track {
 
 /* When quiz unlocked, remove overlay and restore normal state */
 .quiz-stage:not(.quiz-locked) .quiz-overlay { display: none; }
-.quiz-stage:not(.quiz-locked) .quiz-container { filter: none; pointer-events: auto; user-select: auto; }
+.quiz-stage:not(.quiz-locked) .quiz-container { filter: none; pointer-events: auto; -webkit-user-select: auto; user-select: auto; }
 
 /* Dark Mode - Quiz */
 body.dark-mode .quiz-container {
@@ -1476,8 +1483,8 @@ body.dark-mode .achievement-item {
 .navbar {
     padding: 1rem 0;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
@@ -1502,8 +1509,8 @@ body.dark-mode .navbar {
    ------------------------------------------------------------------ */
 .quiz-stage,
 .quiz-stage .quiz-container {
-    isolation: isolate;
     -webkit-isolation: isolate;
+    isolation: isolate;
 }
 
 

@@ -174,7 +174,7 @@ Raport detaliat reparații cu:
 - Teste de verificare
 - Impact asupra altor componente
 
-### 3. `test-dark-mode-toggle.html`
+### 3. `docs/tests/test-dark-mode-toggle.html`
 Pagină de test interactivă cu:
 - Toggle funcțional pentru test
 - Teste automate dimensiuni
@@ -278,7 +278,7 @@ grep -r "dark-mode-toggle" --include="*.html" . | wc -l
 ## 📝 Instrucțiuni Utilizare
 
 ### Pentru Dezvoltare
-1. **Testează toggle-ul:** Deschide `test-dark-mode-toggle.html` în browser
+1. **Testează toggle-ul:** Deschide `docs/tests/test-dark-mode-toggle.html` în browser
 2. **Verifică responsive:** Redimensionează fereastra sau folosește DevTools
 3. **Citește documentația:** `docs/DARK_MODE_IMPLEMENTATION.md`
 
@@ -326,7 +326,7 @@ grep -r "dark-mode-toggle" --include="*.html" .
 ### Documentație (3 fișiere noi)
 - `docs/DARK_MODE_IMPLEMENTATION.md`
 - `docs/DARK_MODE_TOGGLE_FIX.md`
-- `test-dark-mode-toggle.html`
+- `docs/tests/test-dark-mode-toggle.html`
 
 ---
 

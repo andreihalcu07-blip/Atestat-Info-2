@@ -16,12 +16,14 @@ function getTranslation(key) {
 }
 
 function getCurrentLang() {
-    // Use global getCurrentLang from i18n.js
-    if (typeof window.getCurrentLang === 'function') {
-        return window.getCurrentLang();
-    }
+    // Prefer the i18n module if available (avoids recursion when both define a
+    // function named `getCurrentLang`). Check window.i18n first, then a global
+    // `window.getCurrentLang` only if it is NOT this same function.
     if (window.i18n && typeof window.i18n.getCurrentLang === 'function') {
         return window.i18n.getCurrentLang();
+    }
+    if (typeof window.getCurrentLang === 'function' && window.getCurrentLang !== getCurrentLang) {
+        return window.getCurrentLang();
     }
     return localStorage.getItem('site_language') || localStorage.getItem('language') || 'ro';
 }
@@ -283,7 +285,8 @@ let quizData = [];
 let currentQuestion = 0;
 let score = 0;
 let selectedAnswer = null;
-let leaderboard = JSON.parse(localStorage.getItem('quizLeaderboard')) || [];
+let leaderboard;
+try { leaderboard = JSON.parse(localStorage.getItem('quizLeaderboard')) || []; } catch(e) { leaderboard = []; }
 let bonusPoints = 0;
 let timeLeft = 15;
 let timerInterval = null;
@@ -312,7 +315,8 @@ let allAchievements = getAchievements();
 
 // Load and normalize unlocked achievements from localStorage.
 // Older versions may have stored objects or mixed values — coerce to an array of id strings
-let _rawUnlocked = JSON.parse(localStorage.getItem('achievements')) || [];
+let _rawUnlocked;
+try { _rawUnlocked = JSON.parse(localStorage.getItem('achievements')) || []; } catch(e) { _rawUnlocked = []; }
 let unlockedAchievements = [];
 if (Array.isArray(_rawUnlocked)) {
     unlockedAchievements = _rawUnlocked.map(x => {
@@ -511,9 +515,15 @@ function startTimer() {
     if (window.__sistemOS_intervals.quiz_timer) {
         clearInterval(window.__sistemOS_intervals.quiz_timer);
         window.__sistemOS_intervals.quiz_timer = null;
+        // also clear local reference
+        if (typeof timerInterval !== 'undefined' && timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
     }
 
-    window.__sistemOS_intervals.quiz_timer = setInterval(() => {
+    // create a single interval id and keep it in both the local and global refs
+    timerInterval = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
 
@@ -523,8 +533,14 @@ function startTimer() {
 
         if (timeLeft <= 0) {
             // 🔒 STOP TIMER FIRST
-            clearInterval(window.__sistemOS_intervals.quiz_timer);
-            window.__sistemOS_intervals.quiz_timer = null;
+            if (window.__sistemOS_intervals?.quiz_timer) {
+                clearInterval(window.__sistemOS_intervals.quiz_timer);
+                window.__sistemOS_intervals.quiz_timer = null;
+            }
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
 
             if (!wrongSoundPlayed) {
                 wrongSoundPlayed = true;
@@ -541,6 +557,9 @@ function startTimer() {
             }
         }
     }, 1000);
+
+    // mirror the interval id into the global store for external access
+    try { window.__sistemOS_intervals.quiz_timer = timerInterval; } catch (e) { /* ignore */ }
 }
 
 
@@ -1028,14 +1047,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // ensure locked state (HTML is pre-marked with quiz-locked)
         quizStage.classList.add('quiz-locked');
         // render achievements and chip but don't load questions or start timer
-        renderAchievements();
-        try { renderAchievementChip(); } catch(e) {}
+        try { renderAchievements(); } catch(e) { console.warn('[Quiz] renderAchievements error:', e); }
+        try { renderAchievementChip(); } catch(e) { console.warn('[Quiz] renderAchievementChip error:', e); }
         // set start button handler
         if (startBtn) {
             startBtn.addEventListener('click', function() {
-                startQuizFromOverlay();
+                try {
+                    startQuizFromOverlay();
+                } catch(e) {
+                    console.error('[Quiz] startQuizFromOverlay error:', e);
+                }
             });
+        } else {
+            console.warn('[Quiz] startQuizBtn not found in DOM');
         }
+    } else {
+        console.warn('[Quiz] quizContainer or quizStage not found in DOM');
     }
     
     // Re-initialize quiz when language changes (event is dispatched on window)
@@ -1110,3 +1137,4 @@ window.renderAchievements = renderAchievements;
 window.toggleLeaderboard = toggleLeaderboard;
 window.renderLeaderboard = renderLeaderboard;
 window.addCurrentToLeaderboard = addCurrentToLeaderboard;
+window.startQuizFromOverlay = startQuizFromOverlay;

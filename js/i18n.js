@@ -194,6 +194,8 @@
             // Pagina History
             history_title: "Istoria Completă a SO-urilor",
             history_subtitle: "Explorează evoluția completă",
+            history_intro_title: "Istoria Sistemelor de Operare",
+            history_intro_subtitle: "De la cartele perforate la cloud și inteligență artificială",
             history_chapters_title: "Capitolele Istoriei Sistemelor de Operare",
             history_chapters_hint: "Apasă pe un capitol pentru a explora detaliat fiecare perioadă din istoria sistemelor de operare!",
             history_ch1_index: "Capitolul 1:",
@@ -517,6 +519,20 @@
             win10_desc: "Unificare și actualizări continue",
             win11_desc: "Design fluid și productivitate",
             
+            // OS cards (homepage)
+            os_windows_title: "Windows",
+            os_windows_desc: "Cel mai utilizat SO pe desktop-uri. Dezvoltat de Microsoft.",
+            os_macos_title: "macOS",
+            os_macos_desc: "Sistemul de operare al calculatoarelor Apple, cunoscut pentru stabilitate și design.",
+            os_linux_title: "Linux",
+            os_linux_desc: "Sistem open-source folosit pe scară largă pe servere și desktop-uri.",
+            os_android_title: "Android",
+            os_android_desc: "Sistem de operare mobil dezvoltat de Google, foarte răspândit.",
+            os_ios_title: "iOS",
+            os_ios_desc: "Sistemul de operare pentru iPhone și iPad, cunoscut pentru securitate și integrare.",
+            os_chrome_title: "ChromeOS",
+            os_chrome_desc: "Sistem de operare pentru Chromebook-uri, optimizat pentru aplicații web și cloud.",
+            
             // Știai că
             dyk_title: "Știai că...?",
             
@@ -724,7 +740,235 @@
             
             // Navigation
             ch2_nav_prev: "Capitolul 1: Începuturile",
-            ch2_nav_next: "Capitolul 3: Nașterea Unix"
+            ch2_nav_next: "Capitolul 3: Nașterea Unix",
+
+            // =====================================================================
+            // CAPITOLUL 3: Nașterea Unix
+            // =====================================================================
+            ch3_title: "Capitolul 3: Nașterea Unix",
+            ch3_subtitle: "Capitolul 3: Nașterea Unix",
+            ch3_lead: "Bell Labs, limbajul C și filosofia care a făcut Unix portabil și elegant",
+            ch3_back: "← Înapoi la Istorie",
+            ch3_intro: "Imaginează-ți un laborator modest din Murray Hill, New Jersey — câțiva cercetători, un calculator <span class='highlight'>PDP-7</span> considerat deja depășit, și o idee simplă: un sistem de operare care face <strong>puțin, dar face bine</strong>. Acesta este momentul nașterii lui Unix — proiectul care a redefinit pentru totdeauna modul în care gândim software-ul.",
+
+            // Section 1: Context
+            ch3_s1_title: "Context: De la Multics la Unix",
+            ch3_s1_p1: "La sfârșitul anilor <strong>1960</strong>, <span class='key-tag'>Bell Labs</span> (parte din AT&T) era unul dintre cele mai prestigioase laboratoare de cercetare din lume. Informatica, telecomunicațiile și matematica se intersectau aici, iar echipele mici de cercetători aveau libertatea de a explora idei ambițioase.",
+            ch3_s1_quote: "Multics a fost un vis grandios. Unix a fost reacția practică — demonstrația că simplitatea poate fi mai puternică decât complexitatea.",
+            ch3_s1_quote_cite: "— Reflecție despre filosofia Bell Labs",
+            ch3_s1_p2: "Bell Labs participase la proiectul <span class='key-tag'>Multics</span> (Multiplexed Information and Computing Service) — un sistem ambițios de time-sharing dezvoltat alături de MIT și GE. Deși inovator, Multics devenise prea complex și costisitor. Când Bell Labs s-a retras din proiect în 1969, doi cercetători au decis să înceapă de la zero:",
+            ch3_s1_li1: "<strong>Ken Thompson</strong> — a scris prima versiune de Unix pe un PDP-7, în doar câteva săptămâni, parțial motivat de dorința de a juca un joc (Space Travel)",
+            ch3_s1_li2: "<strong>Dennis Ritchie</strong> — a creat limbajul C specific pentru a putea rescrie Unix portabil, eliminând dependența de limbaj de asamblare",
+            ch3_s1_li3: "<strong>Brian Kernighan</strong> — a dat numele „Unix” (un joc de cuvinte pe Multics: „uni” vs. „multi”) și a contribuit la documentația clasică",
+            ch3_s1_li4: "<strong>PDP-7, apoi PDP-11</strong> — hardware-ul modest pe care Unix a fost rafinat, demonstrând că un SO puternic nu necesită mașini scumpe",
+
+            // Section 2: De ce a apărut
+            ch3_s2_title: "De Ce a Apărut Unix?",
+            ch3_s2_p1: "Unix nu a fost un proiect planificat de o corporație. A fost creat de programatori <strong>pentru programatori</strong>, ca răspuns la frustrări reale cu sistemele existente:",
+            ch3_s2_meter1_label: "Simplitate",
+            ch3_s2_meter1_desc: "Reacție la complexitatea Multics — fiecare componentă trebuia să fie minimală și clară",
+            ch3_s2_meter2_label: "Portabilitate",
+            ch3_s2_meter2_desc: "Scris în C, nu în asamblare — putea fi mutat pe orice arhitectură hardware",
+            ch3_s2_meter3_label: "Colaborare",
+            ch3_s2_meter3_desc: "Distribuit gratuit universităților, creând prima comunitate open-source",
+            ch3_s2_p2: "Time-sharing-ul eficient, uneltele reutilizabile și suportul multi-user au făcut Unix perfect pentru mediul academic. AT&T nu putea vinde software (din cauza unui acord antitrust), așa că Unix a fost distribuit universităților aproape gratuit — o decizie care i-a accelerat enorm adoptarea.",
+
+            // Section 3: Filosofia Unix
+            ch3_s3_title: "Filosofia Unix — „Do One Thing Well”",
+            ch3_s3_p1: "Unix nu era doar un sistem de operare — era o <strong>filosofie de design</strong>. În loc de programe monolitice care fac totul, Unix promova componente mici, specializate, care se combină elegant:",
+            ch3_s3_c1_title: "Fă Un Singur Lucru Bine",
+            ch3_s3_c1_desc: "Fiecare program trebuie să facă o singură sarcină, dar să o facă perfect. grep caută text. sort sortează. wc numără.",
+            ch3_s3_c2_title: "Compune prin Pipe-uri",
+            ch3_s3_c2_desc: "Ieșirea unui program devine intrarea altuia prin operatorul |. Combinații infinite din piese simple.",
+            ch3_s3_c3_title: "Totul Este un Fișier",
+            ch3_s3_c3_desc: "Dispozitive, procese, socket-uri — toate sunt accesate ca fișiere. O singură interfață uniformă pentru tot.",
+            ch3_s3_c4_title: "Text ca Format Universal",
+            ch3_s3_c4_desc: "Datele circulă ca text simplu între programe. Oricine poate inspecta, filtra și transforma fluxul de date.",
+            ch3_s3_c5_title: "Scriptare și Automatizare",
+            ch3_s3_c5_desc: "Shell-ul nu este doar o interfață — este un limbaj de programare. Orice secvență de comenzi devine un script reutilizabil.",
+            ch3_s3_pipe_title: "$ cat /var/log/access.log | grep \"ERROR\" | sort | uniq -c | head -10",
+            ch3_s3_step1: "cat",
+            ch3_s3_step1_desc: "Citește fișierul",
+            ch3_s3_step2: "grep",
+            ch3_s3_step2_desc: "Filtrează linii",
+            ch3_s3_step3: "sort",
+            ch3_s3_step3_desc: "Sortează",
+            ch3_s3_step4: "uniq -c",
+            ch3_s3_step4_desc: "Numără unice",
+            ch3_s3_step5: "head",
+            ch3_s3_step5_desc: "Top 10 rezultate",
+
+            // Section 4: Caracteristici Tehnice
+            ch3_s4_title: "Arhitectură și Caracteristici Tehnice",
+            ch3_s4_p1: "Scrierea nucleului în <span class='key-tag'>limbajul C</span> (dezvoltat de Ritchie special pentru acest scop) a fost decizia care a schimbat totul. Pentru prima dată, un sistem de operare putea fi <strong>portat</strong> pe hardware diferit prin simplă recompilare.",
+            ch3_s4_def1_title: "Multi-User & Time-Sharing",
+            ch3_s4_def1_desc: "Mai mulți utilizatori conectați simultan prin terminale, fiecare cu propriile permisiuni și sesiune izolată.",
+            ch3_s4_def2_title: "Multitasking Preemptiv",
+            ch3_s4_def2_desc: "Nucleul decide când să comute între procese. Niciun program nu poate monopoliza procesorul — echitate garantată.",
+            ch3_s4_def3_title: "Sistem de Fișiere Ierarhic",
+            ch3_s4_def3_desc: "Structura de directoare arborescentă (/, /usr, /etc, /home) — modelul copiat de toate SO-urile moderne.",
+            ch3_s4_def4_title: "Procese și Semnale",
+            ch3_s4_def4_desc: "Fiecare program rulează ca un proces cu PID unic. Semnalele (SIGTERM, SIGKILL) permit controlul fin al execuției.",
+            ch3_s4_quote: "Unix a demonstrat că un sistem de operare nu trebuie să fie mare pentru a fi puternic. Nucleul original avea sub 10.000 de linii de cod.",
+            ch3_s4_quote_cite: "— Despre eleganta simplitate a Unix-ului",
+
+            // Section 5: Exemple și Tehnologii
+            ch3_s5_title: "Exemple și Tehnologii Reprezentative",
+            ch3_s5_p1: "Din ecosistemul Unix au apărut tehnologii și instrumente care formează baza informaticii moderne. Iată cele mai importante:",
+            ch3_s5_card1_year: "1969",
+            ch3_s5_card1_title: "PDP-7 → PDP-11",
+            ch3_s5_card1_desc: "Ken Thompson a scris prima versiune Unix pe un <strong>PDP-7</strong> în limbaj de asamblare. Migrarea pe PDP-11 (1970) și rescrierea în C (1973) au stabilit modelul: un SO portabil, compact și puternic.",
+            ch3_s5_card2_year: "1972",
+            ch3_s5_card2_title: "Limbajul C",
+            ch3_s5_card2_desc: "Dennis Ritchie a creat C evoluând din B (Thompson). Combina <strong>controlul low-level</strong> al asamblării cu productivitatea unui limbaj de nivel înalt. Nucleul Unix rescris în C a avut ~95% cod portabil.",
+            ch3_s5_card3_year: "1970s",
+            ch3_s5_card3_title: "grep, sed, awk & Tools",
+            ch3_s5_card3_desc: "Suite-ul de utilitare text Unix: <strong>grep</strong> (căutare pattern), <strong>sed</strong> (editare stream), <strong>awk</strong> (procesare tabulară). Aceste instrumente sunt folosite zilnic de milioane de dezvoltatori și în 2026.",
+            ch3_s5_card4_year: "1977–1983",
+            ch3_s5_card4_title: "BSD & System V",
+            ch3_s5_card4_desc: "Unix s-a ramificat: <strong>BSD</strong> (Berkeley Software Distribution) a adăugat TCP/IP networking, iar <strong>System V</strong> (AT&T) a definit standardele comerciale. Ambele ramuri au influențat toate SO-urile ulterioare.",
+
+            // Section 6: Impact
+            ch3_s6_title: "Impact și Moștenire",
+            ch3_s6_p1: "Unix a redefinit modul în care gândim software-ul. Moștenirea sa este prezentă în fiecare colț al lumii digitale moderne:",
+            ch3_s6_li1: "<strong>Linux</strong> — Linus Torvalds a creat Linux (1991) inspirat direct de Unix. Astăzi, Linux rulează pe ~96% din serverele web, în telefoanele Android și în supercomputerele top 500.",
+            ch3_s6_li2: "<strong>macOS & iOS</strong> — Apple a construit macOS pe bază de BSD/NeXTSTEP, făcând fiecare Mac și iPhone un descendent direct al Unix.",
+            ch3_s6_li3: "<strong>POSIX & Standarde</strong> — Standardul POSIX asigură compatibilitatea între implementările Unix-like, de la AIX la FreeBSD.",
+            ch3_s6_li4: "<strong>DevOps & Cloud</strong> — Containerele Docker, Kubernetes, CI/CD pipelines — toate se bazează pe principii Unix: modularitate, compunere, automatizare.",
+            ch3_s6_li5: "<strong>Cultura Open Source</strong> — Distribuirea Unix în universități a creat primul model de software colaborativ, precursor al mișcării open-source moderne.",
+            ch3_s6_quote: "Fiecare terminal pe care îl deschizi, fiecare comandă pe care o scrii în Linux sau macOS — ești la un keystroke distanță de spiritul lui Thompson și Ritchie din 1969.",
+
+            // Section 7: Media
+            ch3_s7_title: "Experiență Unix — Media Interactivă",
+            ch3_s7_p1: "Explorează vizual lumea Unix prin fotografii de arhivă din Bell Labs, video educațional, un terminal interactiv demonstrativ și atmosferă sonoră de epocă.",
+            ch3_s7_gallery: "📷 Galerie Foto: Bell Labs și Pionierii Unix",
+            ch3_s7_img1_title: "Thompson & Ritchie (1973)",
+            ch3_s7_img1_desc: "Ken Thompson (stânga) și Dennis Ritchie (dreapta) la un terminal PDP-11 în Bell Labs — momentul definitoriu al creației Unix.",
+            ch3_s7_img2_title: "DEC PDP-11/40",
+            ch3_s7_img2_desc: "Minicomputerul pe care Unix a fost rafinat și rescris în C. Cu resurse modeste, a demonstrat că un SO puternic nu necesită hardware scump.",
+            ch3_s7_img3_title: "Rack-uri DEC PDP",
+            ch3_s7_img3_desc: "Rack-uri și console DEC — mediul tipic în care cercetătorii Bell Labs lucrau cu primele versiuni de Unix prin terminale text.",
+            ch3_s7_video: "🎬 Video Educativ: Povestea Unix",
+            ch3_s7_video_title: "De ce acest video?",
+            ch3_s7_video_desc: "„AT&T Archives: The UNIX Operating System” — un film din arhivele AT&T care prezintă Unix direct din perspectiva creatorilor săi. Include demonstrații ale pipe-urilor, shell-ului și filosofiei de design care au revoluționat industria.",
+            ch3_s7_terminal_heading: "💻 Terminal Demonstrativ Unix",
+            ch3_term_comment1: "# Cine suntem și unde ne aflăm?",
+            ch3_term_comment2: "# Listăm structura de directoare",
+            ch3_term_comment3: "# Puterea pipe-urilor: combinăm comenzi",
+            ch3_s7_audio: "🎧 Atmosferă Sonoră: Terminal Room (Opțional)",
+            ch3_s7_audio_title: "Sunetele unui Terminal Room (anii '70)",
+            ch3_s7_audio_subtitle: "Unix Terminal Ambience — Simulare Sintetizată",
+            ch3_s7_audio_status: "Click pentru a genera și reda sunetul",
+            ch3_s7_audio_desc: "<strong>Scop:</strong> Acest generator audio recreează atmosfera unui terminal room din anii '70 — zgomotul ventilatorelor, click-urile ritmice ale tastaturii unui teletype, tonurile caracteristice modemurilor și humul constant al minicomputerelor. Sunetul este generat în timp real folosind Web Audio API.",
+
+            // Navigation
+            ch3_nav_prev: "Capitolul 2: Era Mainframe",
+            ch3_nav_next: "Capitolul 4: Era PC",
+
+            // =====================================================================
+            // CAPITOLUL 4: Era PC și GUI
+            // =====================================================================
+            ch4_title: "Capitolul 4: Era PC și GUI",
+            ch4_subtitle: "Capitolul 4: Era PC și GUI",
+            ch4_lead: "MS-DOS, Macintosh și revoluția care a transformat calculatorul dintr-un instrument profesional într-un partener de zi cu zi",
+            ch4_back: "← Înapoi la Istorie",
+            ch4_intro: "Imaginează-ți un birou din anii <span class='highlight'>1980</span>: un ecran mic, o tastatură voluminoasă și un cursor verde clipind pe fundal negru. Apoi, într-o zi, apare ceva nou — o <strong>fereastră</strong>, o <strong>iconiță</strong>, un <strong>mouse</strong>. Calculatorul nu mai vorbește doar limba programatorilor. Acesta este momentul în care tehnologia a început să fie pentru <em>toată lumea</em>.",
+
+            // Section 1: Context Istoric
+            ch4_s1_title: "Context Istoric",
+            ch4_s1_p1: "La începutul anilor <strong>1980</strong>, calculatoarele erau încă instrumente specializate. Mainframe-urile dominau corporațiile, iar minicomputerele erau în universități. Dar o schimbare tectonică era pe cale să aibă loc: <span class='gui-tag'>calculatorul personal</span> (PC) urma să aducă puterea de calcul pe biroul fiecărui om.",
+            ch4_s1_quote: "Calculatorul personal a fost cea mai democratizatoare invenție din istoria tehnologiei. A luat puterea de calcul de la instituții și a dat-o individului.",
+            ch4_s1_quote_cite: "— Reflecție despre revoluția PC-ului",
+            ch4_s1_p2: "Evenimentele-cheie care au pregătit terenul pentru era PC-ului au fost:",
+            ch4_s1_li1: "<strong>1975 — Altair 8800</strong> — primul microcomputer comercial, vândut ca kit. A inspirat o generație de entuziaști, inclusiv Bill Gates și Paul Allen.",
+            ch4_s1_li2: "<strong>1977 — Apple II, Commodore PET, TRS-80</strong> — &bdquo;trinitatea&rdquo; calculatoarelor personale. Apple II a fost primul cu grafică color și sunet.",
+            ch4_s1_li3: "<strong>1981 — IBM PC</strong> — lansarea care a legitimat piața calculatoarelor personale. Arhitectura deschisă a creat un ecosistem uriaș de clone compatibile.",
+            ch4_s1_li4: "<strong>1984 — Apple Macintosh</strong> — primul calculator comercializat pe scară largă cu interfață grafică integrată, mouse și metafora &bdquo;desktop&rdquo;.",
+
+            // Section 2: De ce a fost importantă apariția PC-ului?
+            ch4_s2_title: "De Ce a Fost Importantă Apariția PC-ului?",
+            ch4_s2_p1: "Până la apariția PC-ului, calculatoarele erau domeniul exclusiv al specialiștilor. PC-ul a schimbat radical această paradigmă, aducând calculatorul în case, școli și birouri mici:",
+            ch4_s2_meter1_label: "Accesibilitate",
+            ch4_s2_meter1_desc: "Prețul unui PC a scăzut de la milioane de dolari (mainframe) la câteva mii de dolari — accesibil pentru familii și afaceri mici",
+            ch4_s2_meter2_label: "Independență",
+            ch4_s2_meter2_desc: "Utilizatorii nu mai depindeau de un departament IT central — aveau propriul calculator, cu propriile programe",
+            ch4_s2_meter3_label: "Productivitate",
+            ch4_s2_meter3_desc: "Procesoare de text, foi de calcul și baze de date au transformat modul în care lumea lucrează",
+            ch4_s2_li1: "<strong>Educație</strong> — copiii au început să învețe programare și să folosească calculatoare în școli",
+            ch4_s2_li2: "<strong>Afaceri mici</strong> — antreprenorii puteau gestiona contabilitatea și corespondența digital",
+            ch4_s2_li3: "<strong>Creativitate</strong> — desktop publishing, muzică digitală și primele jocuri video de acasă",
+            ch4_s2_li4: "<strong>Comunicare</strong> — BBS-uri (Bulletin Board Systems) și primele rețele de comunicare între calculatoare",
+
+            // Section 3: Trecerea de la CLI la GUI
+            ch4_s3_title: "Trecerea de la CLI la GUI — Revoluția Vizuală",
+            ch4_s3_p1: "Sistemele timpurii de PC, precum <span class='gui-tag'>MS-DOS</span>, foloseau o <strong>interfață în linie de comandă</strong> (CLI — Command Line Interface). Utilizatorul trebuia să memoreze comenzi text exacte pentru a executa orice operație, de la copierea unui fișier până la lansarea unui program.",
+            ch4_s3_quote: "CLI: putere enormă, dar barieră de intrare ridicată. GUI: mai puțin control fin, dar accesibil pentru toată lumea. Aceasta a fost dezbaterea definitoraie a anilor '80.",
+            ch4_s3_p2: "Conceptul revoluționar a fost <span class='gui-tag'>WIMP</span> — un acronim care definește paradigma GUI:",
+            ch4_s3_c1_title: "W — Windows (Ferestre)",
+            ch4_s3_c1_desc: "Fiecare program rulează într-o zonă vizuală separată (fereastră) care poate fi mutată, redimensionată, minimizată sau maximizată. Mai multe ferestre pot fi vizibile simultan.",
+            ch4_s3_c2_title: "I — Icons (Iconițe)",
+            ch4_s3_c2_desc: "Reprezentări vizuale ale fișierelor, folderelor și programelor. În loc să tastezi \"del report.txt\", tragi iconița în coșul de gunoi.",
+            ch4_s3_c3_title: "M — Menus (Meniuri)",
+            ch4_s3_c3_desc: "Liste organizate de comenzi disponibile, grupate logic (File, Edit, View). Nu mai trebuie să memorezi — doar alegi dintr-o listă.",
+            ch4_s3_c4_title: "P — Pointer (Indicator/Mouse)",
+            ch4_s3_c4_desc: "Dispozitivul de indicare (mouse) permite interacțiune directă cu elementele de pe ecran — click, drag, drop. Mâna devine extensia minții pe ecran.",
+            ch4_s3_p3: "Această tranziție nu a fost doar cosmetică — a fost o <strong>revoluție cognitivă</strong>. GUI-ul a redus drastic curba de învățare, permițând milioanelor de oameni fără pregătire tehnică să folosească calculatorul productiv.",
+
+            // Section 4: Exemple de Sisteme de Operare
+            ch4_s4_title: "Exemple de Sisteme de Operare",
+            ch4_s4_p1: "Era PC-ului a produs o serie de sisteme de operare care au definit modul în care interacționăm cu calculatoarele:",
+            ch4_s4_card1_year: "1981",
+            ch4_s4_card1_title: "MS-DOS — Microsoft Disk Operating System",
+            ch4_s4_card1_desc: "Interfață CLI pură. Comenzi text pentru toate operațiile. <strong>Rapid și eficient</strong>, dar dificil pentru începători. A dominat piața PC-urilor timp de un deceniu și a pus bazele imperiului Microsoft.",
+            ch4_s4_card2_year: "1984",
+            ch4_s4_card2_title: "Apple Macintosh — System 1",
+            ch4_s4_card2_desc: "Primul calculator comercial cu <strong>GUI integrat</strong> și mouse inclus. Metafora desktop-ului (fișiere, foldere, coș de gunoi) a devenit standard mondial. Inspirat de cercetările Xerox PARC.",
+            ch4_s4_card3_year: "1985–1990",
+            ch4_s4_card3_title: "Windows 1.0 → 3.1",
+            ch4_s4_card3_desc: "Microsoft a adus <strong>GUI pe platforma DOS</strong>. Windows 1.0 era modest, dar Windows 3.1 (1992) a fost un succes masiv — ferestre suprapuse, Program Manager și suport multimedia.",
+            ch4_s4_card4_year: "1995",
+            ch4_s4_card4_title: "Windows 95",
+            ch4_s4_card4_desc: "Punctul de cotitură. <strong>Butonul Start, taskbar, Explorer</strong> — paradigma care definește Windows și astăzi. A vândut 7 milioane de copii în primele 5 săptămâni. A făcut GUI-ul standard pe PC.",
+
+            // Section 5: Impact asupra Utilizatorilor
+            ch4_s5_title: "Impact asupra Utilizatorilor",
+            ch4_s5_p1: "Trecerea la GUI a transformat relația omului cu calculatorul. Nu mai era nevoie de cunoștințe tehnice avansate — interfața vizuală a deschis o lume nouă:",
+            ch4_s5_li1: "<strong>Curba de învățare drastically redusă</strong> — oricine putea învăța să folosească un Mac sau Windows în câteva ore, nu în săptămâni",
+            ch4_s5_li2: "<strong>Metafore familiare</strong> — desktop (birou), folder (dosar), trash (coș de gunoi) — concepte deja conocute din lumea fizică",
+            ch4_s5_li3: "<strong>Multitasking vizual</strong> — utilizatorii puteau vedea și comuta între mai multe programe simultan prin ferestre",
+            ch4_s5_li4: "<strong>Accesibilitate</strong> — persoanele cu dizabilități au beneficiat de interfețe vizuale, zoom, screen readers și input alternativ",
+            ch4_s5_li5: "<strong>Creativitate digitală</strong> — desktop publishing (PageMaker, 1985), editare foto, muzică — GUI a deschis arta digitală",
+            ch4_s5_quote: "GUI-ul nu a făcut calculatorul mai puternic — l-a făcut mai uman. A transformat o mașină de calcul într-un instrument de exprimare.",
+
+            // Section 6: Impact și Moștenire
+            ch4_s6_title: "Impact și Moștenire",
+            ch4_s6_p1: "Revoluția PC-ului și a GUI-ului a lăsat o moștenire care definește lumea digitală de astăzi:",
+            ch4_s6_li1: "<strong>Paradigma WIMP</strong> — Windows, Icons, Menus, Pointer — rămâne fundamentul interacțiunii desktop în 2026, de la Windows 11 la macOS și Linux",
+            ch4_s6_li2: "<strong>Standardizare</strong> — convențiile GUI (dublu-click, drag & drop, Ctrl+C/Ctrl+V) sunt universale și intuitive",
+            ch4_s6_li3: "<strong>Industria software</strong> — PC-ul a creat piața software-ului comercial: procesoare de text, spreadsheets, baze de date, jocuri",
+            ch4_s6_li4: "<strong>Internet și web</strong> — GUI-ul a făcut posibil browserul web vizual (Mosaic, Netscape), deschizând era internetului pentru toți",
+            ch4_s6_li5: "<strong>Mobile și touch</strong> — paradigma GUI a evoluat în interfețe touch (iPhone, 2007), gesture-based și voice UI — dar principiile de bază rămân aceleași",
+            ch4_s6_quote: "Fiecare fereastră pe care o deschizi, fiecare icon pe care dai click, fiecare meniu pe care îl explorezi — ești moștenitorul direct al vizionarilor de la Xerox PARC, Apple și Microsoft din anii '80.",
+
+            // Section 7: Media
+            ch4_s7_title: "Experiență GUI — Media și Vizualizare",
+            ch4_s7_p1: "Explorează vizual revoluția GUI prin imagini istorice, video educațional și un mockup interactiv care demonstrează conceptele unei interfețe grafice.",
+            ch4_s7_gallery: "📷 Galerie Foto: Revoluția GUI",
+            ch4_s7_img1_title: "Apple Macintosh (1984)",
+            ch4_s7_img1_desc: "Interfața originală Macintosh System 1. Observă metafora desktop-ului: iconițe, ferestre, meniuri și coșul de gunoi. Această paradigmă revoluționară definește încă modul în care folosim calculatoarele.",
+            ch4_s7_img2_title: "Windows 3.1 (1992)",
+            ch4_s7_img2_desc: "Program Manager în Windows 3.1 — primul mare succes GUI al Microsoft. Ferestre suprapuse, iconițe de program și suport multimedia au adus GUI-ul la sute de milioane de utilizatori PC.",
+            ch4_s7_img3_title: "Xerox Alto & Mouse (1973)",
+            ch4_s7_img3_desc: "Xerox Alto — stația de lucru experimentală de la Xerox PARC care a inventat conceptul GUI modern. Mouse-ul, ferestrele și meniurile au fost prototipate aici cu un deceniu înaintea Macintosh-ului.",
+            ch4_s7_video: "🎬 Video Educativ: Evoluția GUI",
+            ch4_s7_video_title: "Ce să observi în acest video",
+            ch4_s7_video_desc: "Prezentarea originală a Apple Macintosh din 1984 — momentul istoric în care Steve Jobs a demonstrat public interfața grafică pentru mase. Observă reacția publicului la conceptele de drag & drop, meniuri și ferestre — lucruri banale astăzi, revoluționare atunci.",
+            ch4_s7_mockup_title: "🖥️ Mockup Interactiv: Cum Arăta un GUI Timpuriu",
+            ch4_s7_mockup_desc: "Acest mockup demonstrează vizual elementele fundamentale ale unei interfețe grafice — ferestrele, iconițele, meniurile și butoanele care au definit paradigma GUI.",
+
+            // Navigation
+            ch4_nav_prev: "Capitolul 3: Nașterea Unix",
+            ch4_nav_next: "Capitolul 5: Linux și Open Source"
         },
         
         // =====================================================================
@@ -894,6 +1138,8 @@
             // History page
             history_title: "Complete OS History",
             history_subtitle: "Explore the complete evolution",
+            history_intro_title: "History of Operating Systems",
+            history_intro_subtitle: "From punched cards to cloud and artificial intelligence",
             history_chapters_title: "Chapters of Operating Systems History",
             history_chapters_hint: "Click on a chapter to explore each period of operating systems history in detail!",
             history_ch1_index: "Chapter 1:",
@@ -1217,6 +1463,20 @@
             win10_desc: "Unification and continuous updates",
             win11_desc: "Fluid design and productivity",
             
+            // OS cards (homepage)
+            os_windows_title: "Windows",
+            os_windows_desc: "The most used desktop OS. Developed by Microsoft.",
+            os_macos_title: "macOS",
+            os_macos_desc: "The operating system for Apple computers, known for stability and design.",
+            os_linux_title: "Linux",
+            os_linux_desc: "Open-source system widely used on servers and desktops.",
+            os_android_title: "Android",
+            os_android_desc: "Mobile operating system developed by Google, widely adopted.",
+            os_ios_title: "iOS",
+            os_ios_desc: "Operating system for iPhone and iPad, known for security and integration.",
+            os_chrome_title: "ChromeOS",
+            os_chrome_desc: "Operating system for Chromebooks, optimized for web apps and the cloud.",
+            
             // Did you know
             dyk_title: "Did you know...?",
             
@@ -1424,7 +1684,235 @@
             
             // Navigation
             ch2_nav_prev: "Chapter 1: The Beginnings",
-            ch2_nav_next: "Chapter 3: The Birth of Unix"
+            ch2_nav_next: "Chapter 3: The Birth of Unix",
+
+            // =====================================================================
+            // CHAPTER 3: The Birth of Unix
+            // =====================================================================
+            ch3_title: "Chapter 3: The Birth of Unix",
+            ch3_subtitle: "Chapter 3: The Birth of Unix",
+            ch3_lead: "Bell Labs, the C language, and the philosophy that made Unix portable and elegant",
+            ch3_back: "← Back to History",
+            ch3_intro: "Imagine a modest lab in Murray Hill, New Jersey — a handful of researchers, a <span class='highlight'>PDP-7</span> computer already considered obsolete, and one simple idea: an operating system that does <strong>little, but does it well</strong>. This is the birth of Unix — the project that forever redefined how we think about software.",
+
+            // Section 1: Context
+            ch3_s1_title: "Context: From Multics to Unix",
+            ch3_s1_p1: "By the late <strong>1960s</strong>, <span class='key-tag'>Bell Labs</span> (part of AT&T) was one of the most prestigious research laboratories in the world. Computer science, telecommunications, and mathematics intersected here, and small teams of researchers had the freedom to explore ambitious ideas.",
+            ch3_s1_quote: "Multics was a grand dream. Unix was the practical reaction — proof that simplicity can be more powerful than complexity.",
+            ch3_s1_quote_cite: "— Reflection on Bell Labs philosophy",
+            ch3_s1_p2: "Bell Labs had participated in the <span class='key-tag'>Multics</span> (Multiplexed Information and Computing Service) project — an ambitious time-sharing system developed alongside MIT and GE. Though innovative, Multics had become too complex and expensive. When Bell Labs withdrew from the project in 1969, two researchers decided to start from scratch:",
+            ch3_s1_li1: "<strong>Ken Thompson</strong> — wrote the first version of Unix on a PDP-7 in just a few weeks, partly motivated by wanting to play a game (Space Travel)",
+            ch3_s1_li2: "<strong>Dennis Ritchie</strong> — created the C language specifically to rewrite Unix portably, eliminating dependence on assembly language",
+            ch3_s1_li3: "<strong>Brian Kernighan</strong> — coined the name \"Unix\" (a play on Multics: \"uni\" vs. \"multi\") and contributed to the classic documentation",
+            ch3_s1_li4: "<strong>PDP-7, then PDP-11</strong> — the modest hardware on which Unix was refined, proving that a powerful OS doesn't require expensive machines",
+
+            // Section 2: Why Unix appeared
+            ch3_s2_title: "Why Did Unix Appear?",
+            ch3_s2_p1: "Unix was not a corporate-planned project. It was created by programmers <strong>for programmers</strong>, in response to real frustrations with existing systems:",
+            ch3_s2_meter1_label: "Simplicity",
+            ch3_s2_meter1_desc: "Reaction to Multics complexity — every component had to be minimal and clear",
+            ch3_s2_meter2_label: "Portability",
+            ch3_s2_meter2_desc: "Written in C, not assembly — could be moved to any hardware architecture",
+            ch3_s2_meter3_label: "Collaboration",
+            ch3_s2_meter3_desc: "Distributed free to universities, creating the first open-source community",
+            ch3_s2_p2: "Efficient time-sharing, reusable tools, and multi-user support made Unix perfect for academia. AT&T couldn't sell software (due to an antitrust agreement), so Unix was distributed to universities nearly for free — a decision that enormously accelerated its adoption.",
+
+            // Section 3: Unix Philosophy
+            ch3_s3_title: "The Unix Philosophy — \"Do One Thing Well\"",
+            ch3_s3_p1: "Unix wasn't just an operating system — it was a <strong>design philosophy</strong>. Instead of monolithic programs that do everything, Unix promoted small, specialized components that combine elegantly:",
+            ch3_s3_c1_title: "Do One Thing Well",
+            ch3_s3_c1_desc: "Each program should do one task, but do it perfectly. grep searches text. sort sorts. wc counts.",
+            ch3_s3_c2_title: "Compose with Pipes",
+            ch3_s3_c2_desc: "One program's output becomes another's input via the | operator. Infinite combinations from simple pieces.",
+            ch3_s3_c3_title: "Everything Is a File",
+            ch3_s3_c3_desc: "Devices, processes, sockets — all accessed as files. One uniform interface for everything.",
+            ch3_s3_c4_title: "Text as Universal Format",
+            ch3_s3_c4_desc: "Data flows as plain text between programs. Anyone can inspect, filter, and transform the data stream.",
+            ch3_s3_c5_title: "Scripting & Automation",
+            ch3_s3_c5_desc: "The shell isn't just an interface — it's a programming language. Any sequence of commands becomes a reusable script.",
+            ch3_s3_pipe_title: "$ cat /var/log/access.log | grep \"ERROR\" | sort | uniq -c | head -10",
+            ch3_s3_step1: "cat",
+            ch3_s3_step1_desc: "Reads the file",
+            ch3_s3_step2: "grep",
+            ch3_s3_step2_desc: "Filters lines",
+            ch3_s3_step3: "sort",
+            ch3_s3_step3_desc: "Sorts them",
+            ch3_s3_step4: "uniq -c",
+            ch3_s3_step4_desc: "Counts unique",
+            ch3_s3_step5: "head",
+            ch3_s3_step5_desc: "Top 10 results",
+
+            // Section 4: Technical Characteristics
+            ch3_s4_title: "Architecture & Technical Characteristics",
+            ch3_s4_p1: "Writing the kernel in <span class='key-tag'>the C language</span> (developed by Ritchie specifically for this purpose) was the decision that changed everything. For the first time, an operating system could be <strong>ported</strong> to different hardware by simply recompiling.",
+            ch3_s4_def1_title: "Multi-User & Time-Sharing",
+            ch3_s4_def1_desc: "Multiple users connected simultaneously via terminals, each with their own permissions and isolated session.",
+            ch3_s4_def2_title: "Preemptive Multitasking",
+            ch3_s4_def2_desc: "The kernel decides when to switch between processes. No program can monopolize the CPU — fairness guaranteed.",
+            ch3_s4_def3_title: "Hierarchical File System",
+            ch3_s4_def3_desc: "Tree-like directory structure (/, /usr, /etc, /home) — the model copied by all modern operating systems.",
+            ch3_s4_def4_title: "Processes & Signals",
+            ch3_s4_def4_desc: "Every program runs as a process with a unique PID. Signals (SIGTERM, SIGKILL) allow fine-grained control of execution.",
+            ch3_s4_quote: "Unix proved that an operating system doesn't need to be large to be powerful. The original kernel had fewer than 10,000 lines of code.",
+            ch3_s4_quote_cite: "— On the elegant simplicity of Unix",
+
+            // Section 5: Examples & Technologies
+            ch3_s5_title: "Representative Examples & Technologies",
+            ch3_s5_p1: "From the Unix ecosystem emerged technologies and tools that form the foundation of modern computing. Here are the most important:",
+            ch3_s5_card1_year: "1969",
+            ch3_s5_card1_title: "PDP-7 → PDP-11",
+            ch3_s5_card1_desc: "Ken Thompson wrote the first Unix version on a <strong>PDP-7</strong> in assembly language. Migration to PDP-11 (1970) and rewriting in C (1973) established the model: a portable, compact, and powerful OS.",
+            ch3_s5_card2_year: "1972",
+            ch3_s5_card2_title: "The C Language",
+            ch3_s5_card2_desc: "Dennis Ritchie created C, evolving from B (Thompson). It combined <strong>low-level control</strong> of assembly with the productivity of a high-level language. The Unix kernel rewritten in C was ~95% portable code.",
+            ch3_s5_card3_year: "1970s",
+            ch3_s5_card3_title: "grep, sed, awk & Tools",
+            ch3_s5_card3_desc: "The Unix text utility suite: <strong>grep</strong> (pattern search), <strong>sed</strong> (stream editing), <strong>awk</strong> (tabular processing). These tools are used daily by millions of developers even in 2026.",
+            ch3_s5_card4_year: "1977–1983",
+            ch3_s5_card4_title: "BSD & System V",
+            ch3_s5_card4_desc: "Unix branched: <strong>BSD</strong> (Berkeley Software Distribution) added TCP/IP networking, while <strong>System V</strong> (AT&T) defined commercial standards. Both branches influenced all subsequent operating systems.",
+
+            // Section 6: Impact
+            ch3_s6_title: "Impact & Legacy",
+            ch3_s6_p1: "Unix redefined how we think about software. Its legacy is present in every corner of the modern digital world:",
+            ch3_s6_li1: "<strong>Linux</strong> — Linus Torvalds created Linux (1991) directly inspired by Unix. Today, Linux runs on ~96% of web servers, in Android phones, and on the top 500 supercomputers.",
+            ch3_s6_li2: "<strong>macOS & iOS</strong> — Apple built macOS on a BSD/NeXTSTEP foundation, making every Mac and iPhone a direct descendant of Unix.",
+            ch3_s6_li3: "<strong>POSIX & Standards</strong> — The POSIX standard ensures compatibility between Unix-like implementations, from AIX to FreeBSD.",
+            ch3_s6_li4: "<strong>DevOps & Cloud</strong> — Docker containers, Kubernetes, CI/CD pipelines — all built on Unix principles: modularity, composition, automation.",
+            ch3_s6_li5: "<strong>Open Source Culture</strong> — Distributing Unix to universities created the first model of collaborative software, precursor to the modern open-source movement.",
+            ch3_s6_quote: "Every terminal you open, every command you type in Linux or macOS — you're just one keystroke away from the spirit of Thompson and Ritchie from 1969.",
+
+            // Section 7: Media
+            ch3_s7_title: "Unix Experience — Interactive Media",
+            ch3_s7_p1: "Explore the world of Unix visually through archive photos from Bell Labs, educational video, an interactive demonstration terminal, and period ambient sound.",
+            ch3_s7_gallery: "📷 Photo Gallery: Bell Labs and the Unix Pioneers",
+            ch3_s7_img1_title: "Thompson & Ritchie (1973)",
+            ch3_s7_img1_desc: "Ken Thompson (left) and Dennis Ritchie (right) at a PDP-11 terminal in Bell Labs — the defining moment of Unix creation.",
+            ch3_s7_img2_title: "DEC PDP-11/40",
+            ch3_s7_img2_desc: "The minicomputer on which Unix was refined and rewritten in C. With modest resources, it proved that a powerful OS doesn't require expensive hardware.",
+            ch3_s7_img3_title: "DEC PDP Racks",
+            ch3_s7_img3_desc: "DEC racks and consoles — the typical environment where Bell Labs researchers worked with early Unix versions through text terminals.",
+            ch3_s7_video: "🎬 Educational Video: The Unix Story",
+            ch3_s7_video_title: "Why this video?",
+            ch3_s7_video_desc: "\"AT&T Archives: The UNIX Operating System\" — a film from the AT&T archives presenting Unix directly from its creators' perspective. Includes demonstrations of pipes, the shell, and the design philosophy that revolutionized the industry.",
+            ch3_s7_terminal_heading: "💻 Unix Demonstration Terminal",
+            ch3_term_comment1: "# Who are we and where are we?",
+            ch3_term_comment2: "# List the directory structure",
+            ch3_term_comment3: "# The power of pipes: combining commands",
+            ch3_s7_audio: "🎧 Sound Ambience: Terminal Room (Optional)",
+            ch3_s7_audio_title: "Sounds of a Terminal Room (1970s)",
+            ch3_s7_audio_subtitle: "Unix Terminal Ambience — Synthesized Simulation",
+            ch3_s7_audio_status: "Click to generate and play the sound",
+            ch3_s7_audio_desc: "<strong>Purpose:</strong> This audio generator recreates the atmosphere of a 1970s terminal room — fan noise, rhythmic teletype keyboard clicks, characteristic modem tones, and the constant hum of minicomputers. Sound is generated in real-time using the Web Audio API.",
+
+            // Navigation
+            ch3_nav_prev: "Chapter 2: The Mainframe Era",
+            ch3_nav_next: "Chapter 4: The PC Era",
+
+            // =====================================================================
+            // CHAPTER 4: The PC and GUI Era
+            // =====================================================================
+            ch4_title: "Chapter 4: The PC and GUI Era",
+            ch4_subtitle: "Chapter 4: The PC and GUI Era",
+            ch4_lead: "MS-DOS, Macintosh, and the revolution that turned the computer from a professional tool into an everyday companion",
+            ch4_back: "← Back to History",
+            ch4_intro: "Imagine an office in the <span class='highlight'>1980s</span>: a small screen, a bulky keyboard, and a green cursor blinking on a black background. Then, one day, something new appears — a <strong>window</strong>, an <strong>icon</strong>, a <strong>mouse</strong>. The computer no longer speaks only the language of programmers. This is the moment when technology began to be for <em>everyone</em>.",
+
+            // Section 1: Historical Context
+            ch4_s1_title: "Historical Context",
+            ch4_s1_p1: "In the early <strong>1980s</strong>, computers were still specialized instruments. Mainframes dominated corporations, and minicomputers were in universities. But a tectonic shift was about to occur: the <span class='gui-tag'>personal computer</span> (PC) was going to bring computing power to every person's desk.",
+            ch4_s1_quote: "The personal computer was the most democratizing invention in the history of technology. It took computing power from institutions and gave it to the individual.",
+            ch4_s1_quote_cite: "— Reflection on the PC revolution",
+            ch4_s1_p2: "The key events that paved the way for the PC era were:",
+            ch4_s1_li1: "<strong>1975 — Altair 8800</strong> — the first commercial microcomputer, sold as a kit. It inspired a generation of enthusiasts, including Bill Gates and Paul Allen.",
+            ch4_s1_li2: "<strong>1977 — Apple II, Commodore PET, TRS-80</strong> — the \"trinity\" of personal computers. Apple II was the first with color graphics and sound.",
+            ch4_s1_li3: "<strong>1981 — IBM PC</strong> — the launch that legitimized the personal computer market. Its open architecture created a huge ecosystem of compatible clones.",
+            ch4_s1_li4: "<strong>1984 — Apple Macintosh</strong> — the first mass-marketed computer with an integrated graphical interface, mouse, and the \"desktop\" metaphor.",
+
+            // Section 2: Why Was the PC Important?
+            ch4_s2_title: "Why Was the PC Important?",
+            ch4_s2_p1: "Before the PC, computers were the exclusive domain of specialists. The PC radically changed this paradigm, bringing computers into homes, schools, and small offices:",
+            ch4_s2_meter1_label: "Accessibility",
+            ch4_s2_meter1_desc: "The price of a PC dropped from millions of dollars (mainframe) to a few thousand — affordable for families and small businesses",
+            ch4_s2_meter2_label: "Independence",
+            ch4_s2_meter2_desc: "Users no longer depended on a central IT department — they had their own computer, with their own programs",
+            ch4_s2_meter3_label: "Productivity",
+            ch4_s2_meter3_desc: "Word processors, spreadsheets, and databases transformed the way the world works",
+            ch4_s2_li1: "<strong>Education</strong> — children started learning programming and using computers in schools",
+            ch4_s2_li2: "<strong>Small businesses</strong> — entrepreneurs could manage accounting and correspondence digitally",
+            ch4_s2_li3: "<strong>Creativity</strong> — desktop publishing, digital music, and the first home video games",
+            ch4_s2_li4: "<strong>Communication</strong> — BBSes (Bulletin Board Systems) and the first inter-computer communication networks",
+
+            // Section 3: From CLI to GUI
+            ch4_s3_title: "From CLI to GUI — The Visual Revolution",
+            ch4_s3_p1: "Early PC systems, like <span class='gui-tag'>MS-DOS</span>, used a <strong>command-line interface</strong> (CLI). Users had to memorize exact text commands to perform any operation, from copying a file to launching a program.",
+            ch4_s3_quote: "CLI: enormous power, but a high entry barrier. GUI: less fine control, but accessible to everyone. This was the defining debate of the '80s.",
+            ch4_s3_p2: "The revolutionary concept was <span class='gui-tag'>WIMP</span> — an acronym that defines the GUI paradigm:",
+            ch4_s3_c1_title: "W — Windows",
+            ch4_s3_c1_desc: "Each program runs in a separate visual area (window) that can be moved, resized, minimized, or maximized. Multiple windows can be visible simultaneously.",
+            ch4_s3_c2_title: "I — Icons",
+            ch4_s3_c2_desc: "Visual representations of files, folders, and programs. Instead of typing \"del report.txt\", you drag the icon to the trash can.",
+            ch4_s3_c3_title: "M — Menus",
+            ch4_s3_c3_desc: "Organized lists of available commands, grouped logically (File, Edit, View). No need to memorize — just choose from a list.",
+            ch4_s3_c4_title: "P — Pointer (Mouse)",
+            ch4_s3_c4_desc: "The pointing device (mouse) enables direct interaction with screen elements — click, drag, drop. Your hand becomes an extension of your mind on screen.",
+            ch4_s3_p3: "This transition was not merely cosmetic — it was a <strong>cognitive revolution</strong>. GUI drastically reduced the learning curve, allowing millions of people without technical training to use computers productively.",
+
+            // Section 4: OS Examples
+            ch4_s4_title: "Operating System Examples",
+            ch4_s4_p1: "The PC era produced a series of operating systems that defined how we interact with computers:",
+            ch4_s4_card1_year: "1981",
+            ch4_s4_card1_title: "MS-DOS — Microsoft Disk Operating System",
+            ch4_s4_card1_desc: "Pure CLI interface. Text commands for all operations. <strong>Fast and efficient</strong>, but difficult for beginners. It dominated the PC market for a decade and laid the foundation of the Microsoft empire.",
+            ch4_s4_card2_year: "1984",
+            ch4_s4_card2_title: "Apple Macintosh — System 1",
+            ch4_s4_card2_desc: "The first commercial computer with an <strong>integrated GUI</strong> and included mouse. The desktop metaphor (files, folders, trash) became a worldwide standard. Inspired by Xerox PARC research.",
+            ch4_s4_card3_year: "1985–1990",
+            ch4_s4_card3_title: "Windows 1.0 → 3.1",
+            ch4_s4_card3_desc: "Microsoft brought <strong>GUI to the DOS platform</strong>. Windows 1.0 was modest, but Windows 3.1 (1992) was a massive success — overlapping windows, Program Manager, and multimedia support.",
+            ch4_s4_card4_year: "1995",
+            ch4_s4_card4_title: "Windows 95",
+            ch4_s4_card4_desc: "The turning point. <strong>Start button, taskbar, Explorer</strong> — the paradigm that still defines Windows today. It sold 7 million copies in the first 5 weeks. It made GUI the PC standard.",
+
+            // Section 5: User Impact
+            ch4_s5_title: "Impact on Users",
+            ch4_s5_p1: "The transition to GUI transformed the human-computer relationship. Advanced technical knowledge was no longer necessary — the visual interface opened a new world:",
+            ch4_s5_li1: "<strong>Drastically reduced learning curve</strong> — anyone could learn to use a Mac or Windows in a few hours, not weeks",
+            ch4_s5_li2: "<strong>Familiar metaphors</strong> — desktop, folder, trash — concepts already known from the physical world",
+            ch4_s5_li3: "<strong>Visual multitasking</strong> — users could see and switch between multiple programs simultaneously through windows",
+            ch4_s5_li4: "<strong>Accessibility</strong> — people with disabilities benefited from visual interfaces, zoom, screen readers, and alternative input",
+            ch4_s5_li5: "<strong>Digital creativity</strong> — desktop publishing (PageMaker, 1985), photo editing, music — GUI opened up digital art",
+            ch4_s5_quote: "GUI didn't make the computer more powerful — it made it more human. It transformed a calculating machine into a tool of expression.",
+
+            // Section 6: Legacy
+            ch4_s6_title: "Impact and Legacy",
+            ch4_s6_p1: "The PC and GUI revolution left a legacy that defines today's digital world:",
+            ch4_s6_li1: "<strong>WIMP Paradigm</strong> — Windows, Icons, Menus, Pointer — remains the foundation of desktop interaction in 2026, from Windows 11 to macOS and Linux",
+            ch4_s6_li2: "<strong>Standardization</strong> — GUI conventions (double-click, drag & drop, Ctrl+C/Ctrl+V) are universal and intuitive",
+            ch4_s6_li3: "<strong>Software industry</strong> — the PC created the commercial software market: word processors, spreadsheets, databases, games",
+            ch4_s6_li4: "<strong>Internet and web</strong> — GUI made the visual web browser possible (Mosaic, Netscape), opening the internet era for everyone",
+            ch4_s6_li5: "<strong>Mobile and touch</strong> — the GUI paradigm evolved into touch interfaces (iPhone, 2007), gesture-based and voice UI — but the core principles remain the same",
+            ch4_s6_quote: "Every window you open, every icon you click, every menu you explore — you are the direct heir of the visionaries at Xerox PARC, Apple, and Microsoft in the '80s.",
+
+            // Section 7: Media
+            ch4_s7_title: "GUI Experience — Media and Visualization",
+            ch4_s7_p1: "Visually explore the GUI revolution through historic images, educational video, and an interactive mockup demonstrating graphical interface concepts.",
+            ch4_s7_gallery: "📷 Photo Gallery: The GUI Revolution",
+            ch4_s7_img1_title: "Apple Macintosh (1984)",
+            ch4_s7_img1_desc: "The original Macintosh System 1 interface. Notice the desktop metaphor: icons, windows, menus, and trash. This revolutionary paradigm still defines how we use computers.",
+            ch4_s7_img2_title: "Windows 3.1 (1992)",
+            ch4_s7_img2_desc: "Program Manager in Windows 3.1 — Microsoft's first major GUI success. Overlapping windows, program icons, and multimedia support brought GUI to hundreds of millions of PC users.",
+            ch4_s7_img3_title: "Xerox Alto & Mouse (1973)",
+            ch4_s7_img3_desc: "Xerox Alto — the experimental workstation at Xerox PARC that invented the modern GUI concept. The mouse, windows, and menus were prototyped here a decade before the Macintosh.",
+            ch4_s7_video: "🎬 Educational Video: GUI Evolution",
+            ch4_s7_video_title: "What to observe in this video",
+            ch4_s7_video_desc: "The original Apple Macintosh presentation from 1984 — the historic moment when Steve Jobs publicly demonstrated the graphical interface for the masses. Notice the audience reaction to drag & drop, menus, and windows — trivial today, revolutionary then.",
+            ch4_s7_mockup_title: "🖥️ Interactive Mockup: What an Early GUI Looked Like",
+            ch4_s7_mockup_desc: "This mockup visually demonstrates the fundamental elements of a graphical interface — the windows, icons, menus, and buttons that defined the GUI paradigm.",
+
+            // Navigation
+            ch4_nav_prev: "Chapter 3: The Birth of Unix",
+            ch4_nav_next: "Chapter 5: Linux and Open Source"
         }
     };
 

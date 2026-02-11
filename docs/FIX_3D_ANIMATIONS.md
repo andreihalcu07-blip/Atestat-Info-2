@@ -404,7 +404,7 @@ init3DCardEffect();
 ## 🧪 Testare
 
 ### Pagină de Test
-Fișier: `test-3d-cards.html`
+Fișier: `docs/tests/test-3d-cards.html`
 
 **Scenarii de testare:**
 
@@ -514,6 +514,6 @@ Pagina de test include un panel de debug care arată:
 **Fișiere modificate:**
 - `js/main.js`
 - `css/main.css`
-- `test-3d-cards.html` (nou)
+- `docs/tests/test-3d-cards.html` (nou)
 
 **Status:** ✅ COMPLET - Gata pentru producție

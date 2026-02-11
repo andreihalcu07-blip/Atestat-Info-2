@@ -3,78 +3,1229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capitolul 4: Era PC și GUI</title>
+    <title data-i18n="ch4_title">Capitolul 4: Era PC și GUI</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/advanced.css">
     <link rel="stylesheet" href="../../css/pages.css">
+    <link rel="stylesheet" href="../../css/mobile.css">
     <link rel="stylesheet" href="../../css/history.css">
+    <style>
+        /* ==========================================================
+           CAPITOLUL 4 — ERA PC ȘI GUI
+           Theme: Blue / Purple / Warm — GUI-inspired aesthetic
+           ========================================================== */
+
+        :root {
+            --gui-primary: #3b82f6;
+            --gui-secondary: #8b5cf6;
+            --gui-accent: #f59e0b;
+            --gui-warm: #ec4899;
+            --gui-dark: #0c1526;
+            --gui-darker: #070e1c;
+            --gui-glow: rgba(59, 130, 246, 0.18);
+            --gui-border: rgba(59, 130, 246, 0.2);
+        }
+
+        /* ── GUI Separator ── */
+        .gui-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 36px 0;
+            position: relative;
+        }
+        .gui-separator::before,
+        .gui-separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gui-border), transparent);
+        }
+        .gui-separator-core {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border: 1px solid var(--gui-border);
+            border-radius: 20px;
+        }
+        .gui-separator-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--gui-primary);
+            filter: drop-shadow(0 0 6px var(--gui-glow));
+        }
+        .gui-separator-text {
+            color: var(--gui-primary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* ── GUI Card ── */
+        .gui-card {
+            background: linear-gradient(145deg, rgba(12, 21, 38, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--gui-border);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .gui-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gui-primary) 0%, var(--gui-secondary) 50%, var(--gui-warm) 100%);
+            opacity: 0.8;
+        }
+        .gui-card:hover {
+            border-color: rgba(59, 130, 246, 0.35);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08), 0 0 60px rgba(59, 130, 246, 0.03);
+        }
+
+        /* ── GUI Header ── */
+        .gui-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .gui-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gui-primary) 0%, var(--gui-secondary) 100%);
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px var(--gui-glow);
+        }
+        .gui-header h2 {
+            color: #f1f5f9;
+            font-size: 1.35rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        /* ── GUI Quote Box ── */
+        .gui-quote {
+            background: linear-gradient(180deg, var(--gui-darker) 0%, var(--gui-dark) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-left: 4px solid var(--gui-primary);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .gui-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: 8px;
+            left: 12px;
+            color: var(--gui-primary);
+            font-size: 2rem;
+            font-weight: 700;
+            opacity: 0.3;
+            line-height: 1;
+        }
+        .gui-quote p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+            font-style: italic;
+        }
+        .gui-quote cite {
+            display: block;
+            color: var(--gui-primary);
+            font-size: 0.85rem;
+            margin-top: 10px;
+            font-style: normal;
+            opacity: 0.8;
+        }
+
+        /* ── GUI Tag ── */
+        .gui-tag {
+            display: inline;
+            padding: 2px 10px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 6px;
+            color: var(--gui-primary);
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* ── GUI List ── */
+        .gui-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        .gui-list li {
+            position: relative;
+            padding: 10px 0 10px 32px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.08);
+        }
+        .gui-list li:last-child { border-bottom: none; }
+        .gui-list li::before {
+            content: '\25B8';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: var(--gui-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .gui-list li strong { color: #e2e8f0; }
+
+        /* ── Impact Meters ── */
+        .gui-meters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .gui-meter {
+            background: rgba(59, 130, 246, 0.04);
+            border: 1px solid rgba(59, 130, 246, 0.12);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .gui-meter-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .gui-meter-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--gui-primary);
+        }
+        .gui-meter-label {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .gui-meter-bar {
+            height: 8px;
+            background: rgba(59, 130, 246, 0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        .gui-meter-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        .gui-meter-fill--blue { background: linear-gradient(90deg, var(--gui-primary), var(--gui-secondary)); }
+        .gui-meter-fill--purple { background: linear-gradient(90deg, var(--gui-secondary), var(--gui-warm)); }
+        .gui-meter-fill--amber { background: linear-gradient(90deg, var(--gui-accent), #f97316); }
+        .gui-meter-desc {
+            color: #64748b;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        /* ── WIMP Concept Grid ── */
+        .wimp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .wimp-item {
+            background: linear-gradient(145deg, rgba(59, 130, 246, 0.06) 0%, rgba(12, 21, 38, 0.8) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 14px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .wimp-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gui-primary), var(--gui-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .wimp-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 25px var(--gui-glow);
+        }
+        .wimp-item:hover::after { opacity: 1; }
+        .wimp-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #f1f5f9;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+        .wimp-item h4 .wimp-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--gui-primary), var(--gui-secondary));
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+        .wimp-item p {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Tech Cards Grid ── */
+        .gui-tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .gui-tech-card {
+            background: linear-gradient(145deg, rgba(12, 21, 38, 0.9) 0%, rgba(15, 23, 42, 0.85) 100%);
+            border: 1px solid var(--gui-border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .gui-tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gui-primary), var(--gui-secondary));
+        }
+        .gui-tech-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.35);
+        }
+        .gui-tech-year {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 20px;
+            color: var(--gui-accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .gui-tech-card h4 {
+            color: #fff;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        .gui-tech-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Media Section ── */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .media-figure {
+            position: relative;
+            margin: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(12, 21, 38, 0.8);
+            border: 1px solid var(--gui-border);
+            transition: all 0.4s ease;
+        }
+        .media-figure:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3), 0 0 30px var(--gui-glow);
+            border-color: rgba(59, 130, 246, 0.35);
+        }
+        .media-figure img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .media-figure:hover img {
+            transform: scale(1.08);
+        }
+        .media-figure figcaption {
+            padding: 16px;
+            background: linear-gradient(180deg, rgba(12, 21, 38, 0.9) 0%, rgba(15, 23, 42, 0.98) 100%);
+            color: #94a3b8;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+        .media-figure figcaption strong {
+            color: var(--gui-primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        /* ── Video Container ── */
+        .gui-video-container {
+            background: linear-gradient(145deg, rgba(12, 21, 38, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--gui-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .gui-video-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gui-accent), #ef4444, var(--gui-accent));
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .video-description {
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(245, 158, 11, 0.06);
+            border-radius: 10px;
+            border-left: 3px solid var(--gui-accent);
+        }
+        .video-description h4 {
+            color: var(--gui-accent);
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .video-description p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ── GUI Mockup ── */
+        .gui-mockup-wrapper {
+            background: linear-gradient(145deg, rgba(59, 130, 246, 0.05) 0%, rgba(12, 21, 38, 0.6) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .gui-mockup-desktop {
+            background: linear-gradient(135deg, #1a5276 0%, #2e86c1 40%, #5dade2 100%);
+            border-radius: 12px;
+            min-height: 360px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Desktop icons */
+        .mockup-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px;
+            flex: 1;
+        }
+        .mockup-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: default;
+            width: 70px;
+            transition: all 0.2s ease;
+        }
+        .mockup-icon:hover { transform: scale(1.1); }
+        .mockup-icon-img {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .mockup-icon-label {
+            color: #fff;
+            font-size: 0.65rem;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            font-weight: 500;
+        }
+
+        /* Mockup window */
+        .mockup-window {
+            position: absolute;
+            top: 30px;
+            right: 20px;
+            width: min(340px, 65%);
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #808080;
+            border-bottom-color: #808080;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+        .mockup-titlebar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            padding: 4px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mockup-titlebar-title {
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+        .mockup-titlebar-btns {
+            display: flex;
+            gap: 2px;
+        }
+        .mockup-btn {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px solid #fff;
+            border-right-color: #808080;
+            border-bottom-color: #808080;
+            font-size: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 800;
+        }
+        .mockup-menubar {
+            background: #c0c0c0;
+            padding: 2px 6px;
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid #808080;
+        }
+        .mockup-menu-item {
+            font-size: 0.68rem;
+            color: #000;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            cursor: default;
+        }
+        .mockup-menu-item:first-child { text-decoration: underline; }
+        .mockup-content {
+            background: #fff;
+            padding: 12px;
+            min-height: 100px;
+        }
+        .mockup-content p {
+            font-size: 0.7rem;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Mockup taskbar */
+        .mockup-taskbar {
+            background: linear-gradient(180deg, #c8c8c8, #c0c0c0);
+            border-top: 2px solid #fff;
+            padding: 3px 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .mockup-start-btn {
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #808080;
+            border-bottom-color: #808080;
+            padding: 2px 10px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            cursor: default;
+        }
+        .mockup-start-btn span { font-size: 0.8rem; }
+        .mockup-task {
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            border-top-color: #fff;
+            border-left-color: #fff;
+            padding: 2px 10px;
+            font-size: 0.62rem;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            flex: 1;
+            max-width: 160px;
+        }
+        .mockup-clock {
+            margin-left: auto;
+            font-size: 0.65rem;
+            color: #333;
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            border-top-color: #fff;
+            border-left-color: #fff;
+            padding: 2px 8px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* ── Intro Paragraph ── */
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 24px;
+        }
+        .intro-text .highlight {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.1));
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* ── Navigation ── */
+        .chapter-nav-enhanced {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gui-border);
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--gui-dark) 0%, #0c1a35 100%);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            border-color: var(--gui-primary);
+            box-shadow: 0 8px 25px var(--gui-glow);
+            transform: translateY(-2px);
+        }
+        .nav-btn svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gui-primary);
+        }
+        .nav-btn-next {
+            background: linear-gradient(135deg, var(--gui-primary) 0%, var(--gui-secondary) 100%);
+            border-color: transparent;
+        }
+        .nav-btn-next:hover {
+            box-shadow: 0 8px 30px var(--gui-glow);
+        }
+        .nav-btn-next svg { color: #fff; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .gui-card { padding: 20px; }
+            .wimp-grid { grid-template-columns: 1fr; }
+            .gui-tech-grid { grid-template-columns: 1fr; }
+            .media-grid { grid-template-columns: 1fr; }
+            .gui-meters { grid-template-columns: 1fr; }
+            .chapter-nav-enhanced { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+            .gui-header h2 { font-size: 1.2rem; }
+            .mockup-window { position: relative; top: 0; right: 0; width: 100%; margin-top: 16px; }
+            .gui-mockup-desktop { min-height: 0; }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                <div class="navbar-center">
+                    <ul class="nav-links">
+                        <li><a href="../../index.html" data-i18n="nav_home">Acas&#259;</a></li>
+                        <li><a href="../about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="../history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="../comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="../../windows/index.html">Windows</a></li>
+                        <li><a href="../glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="../faq.html">FAQ</a></li>
+                        <li><a href="../quiz.html">Quiz</a></li>
+                        <li><a href="../resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="../../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" aria-label="Toggle dark mode" id="darkModeToggle">&#127769;</button>
+                    <button class="btn btn--utility lang-toggle" aria-label="Change language" id="langToggle" onclick="toggleLanguage()">&#127468;&#127463; EN</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <main>
+        <section class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="history_title">Istoria Complet&#259; a SO-urilor</h2>
+                <p data-i18n="ch4_subtitle">Capitolul 4: Era PC &#537;i GUI</p>
+            </div>
+        </section>
+
         <div class="container chapter-article">
-            <a class="chapter-back" href="../history.html">&larr; Înapoi la Istorie</a>
+            <a class="chapter-back" href="../history.html" data-i18n="ch4_back">&larr; &#206;napoi la Istorie</a>
+
             <div class="chapter-hero">
                 <h1>
                     <svg class="chapter-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                        <rect x="3" y="4" width="18" height="14" rx="1.5" />
-                        <rect x="5" y="6" width="3" height="3" />
-                        <rect x="9" y="6" width="3" height="3" />
-                        <rect x="13" y="6" width="3" height="3" />
+                        <rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="var(--primary-color)" stroke-width="2"/>
+                        <rect x="5" y="6" width="5" height="4" rx="0.5" fill="none" stroke="var(--primary-color)" stroke-width="1.5"/>
+                        <rect x="12" y="6" width="5" height="4" rx="0.5" fill="none" stroke="var(--primary-color)" stroke-width="1.5"/>
+                        <path d="M8 21h8M12 17v4" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
                     </svg>
-                    Capitolul 4: Era PC și GUI
+                    <span data-i18n="ch4_title">Capitolul 4: Era PC &#537;i GUI</span>
                 </h1>
-                <p class="chapter-lead">MS-DOS, Macintosh și începuturile interfeței grafice</p>
+                <p class="chapter-lead" data-i18n="ch4_lead">MS-DOS, Macintosh &#537;i revolu&#539;ia care a transformat calculatorul dintr-un instrument profesional &#238;ntr-un partener de zi cu zi</p>
             </div>
+
             <section class="chapter-content">
-                <h2>Context</h2>
-                <p>Odată cu apariția <strong>calculatoarelor personale</strong>, sistemele de operare au devenit accesibile publicului larg, determinând schimbări majore în designul interfeței și experiența utilizatorului.</p>
 
-                <h2>Evoluții importante</h2>
-                <h3>MS-DOS</h3>
-                <p><strong>MS-DOS</strong> a oferit o interfață în linie de comandă simplă pentru utilizatorii de PC, fiind foarte popular în mediul business și casnic.</p>
+                <!-- INTRO -->
+                <p class="intro-text" data-i18n="ch4_intro">
+                    Imagineaz&#259;-&#539;i un birou din anii <span class="highlight">1980</span>: un ecran mic, o tastatur&#259; voluminoas&#259; &#537;i un cursor verde clip&#226;nd pe fundal negru. Apoi, &#238;ntr-o zi, apare ceva nou &#8212; o <strong>fereastr&#259;</strong>, o <strong>iconi&#539;&#259;</strong>, un <strong>mouse</strong>. Calculatorul nu mai vorbe&#537;te doar limba programatorilor. Acesta este momentul &#238;n care tehnologia a &#238;nceput s&#259; fie pentru <em>toat&#259; lumea</em>.
+                </p>
 
-                <h3>Macintosh</h3>
-                <p><strong>Apple Macintosh</strong> a popularizat interfața grafică (GUI) pentru utilizatorii obișnuiți, introducând paradigme vizuale care au devenit standard.</p>
+                <!-- SEPARATOR: Context -->
+                <div class="gui-separator">
+                    <div class="gui-separator-core">
+                        <svg class="gui-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8m-4-4v4"/>
+                        </svg>
+                        <span class="gui-separator-text">Context</span>
+                    </div>
+                </div>
 
-                <h3>Windows</h3>
-                <p><strong>Windows</strong> a adus GUI-ul pe scară largă, combinând compatibilitatea cu software-ul existent și un mediu ușor de folosit.</p>
+                <!-- SECTION 1: Context Istoric -->
+                <div class="gui-card">
+                    <div class="gui-header">
+                        <span class="gui-badge">01</span>
+                        <h2 data-i18n="ch4_s1_title">Context Istoric</h2>
+                    </div>
 
-                <h2>Impact</h2>
-                <p>Aceste evoluții au făcut calculatoarele ușor de folosit de către public, tranformând modul în care oamenii interacționează cu tehnologia.</p>
+                    <p data-i18n="ch4_s1_p1">
+                        La &#238;nceputul anilor <strong>1980</strong>, calculatoarele erau &#238;nc&#259; instrumente specializate. Mainframe-urile dominau corpora&#539;iile, iar minicomputerele erau &#238;n universit&#259;&#539;i. Dar o schimbare tectonic&#259; era pe cale s&#259; aib&#259; loc: <span class="gui-tag">calculatorul personal</span> (PC) urma s&#259; aduc&#259; puterea de calcul pe biroul fiec&#259;rui om.
+                    </p>
 
-                <h2>Media și resurse vizuale</h2>
-                <div class="chapter-media">
-                    <figure>
-                        <img src="media/Xerox_Alto.jpg" alt="Xerox Alto - stație de lucru" />
-                        <figcaption>Xerox Alto — una dintre primele stații cu GUI (sursa: Wikimedia Commons)</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="media/Computer_macintosh_128k_highres.jpg" alt="Apple Macintosh 128K" />
-                        <figcaption>Apple Macintosh 128K — popularizarea GUI-ului pentru publicul larg (sursa: Internet Archive)</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="media/IBM_PC_5150_thumb.jpg" alt="IBM PC 5150" />
-                        <figcaption>IBM PC Model 5150 — începutul erei PC (sursa: Internet Archive)</figcaption>
-                    </figure>
+                    <div class="gui-quote">
+                        <p data-i18n="ch4_s1_quote">Calculatorul personal a fost cea mai democratizatoare inven&#539;ie din istoria tehnologiei. A luat puterea de calcul de la institu&#539;ii &#537;i a dat-o individului.</p>
+                        <cite data-i18n="ch4_s1_quote_cite">&#8212; Reflec&#539;ie despre revolu&#539;ia PC-ului</cite>
+                    </div>
 
-                    <div class="chapter-video">
-                        <h3>Documentar / lecție recomandată</h3>
-                        <div style="max-width:560px;margin:0 auto;">
-                            <a href="https://www.youtube.com/results?search_query=history+of+macintosh" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);">
-                                <img src="media/Computer_macintosh_128k_highres.jpg" alt="Macintosh history (YouTube search)" style="max-width:100%;border-radius:8px;">
-                                <div style="color:#cfe6ff;margin-top:8px;">Vezi documentare despre Macintosh pe YouTube (click pentru rezultate)</div>
-                            </a>
+                    <p data-i18n="ch4_s1_p2">Evenimentele-cheie care au preg&#259;tit terenul pentru era PC-ului au fost:</p>
+
+                    <ul class="gui-list">
+                        <li data-i18n="ch4_s1_li1"><strong>1975 &#8212; Altair 8800</strong> &#8212; primul microcomputer comercial, v&#226;ndut ca kit. A inspirat o genera&#539;ie de entuzia&#537;ti, inclusiv Bill Gates &#537;i Paul Allen.</li>
+                        <li data-i18n="ch4_s1_li2"><strong>1977 &#8212; Apple II, Commodore PET, TRS-80</strong> &#8212; &#8222;trinitatea&#8221; calculatoarelor personale. Apple II a fost primul cu grafic&#259; color &#537;i sunet.</li>
+                        <li data-i18n="ch4_s1_li3"><strong>1981 &#8212; IBM PC</strong> &#8212; lansarea care a legitimat pia&#539;a calculatoarelor personale. Arhitectura deschis&#259; a creat un ecosistem uria&#537; de clone compatibile.</li>
+                        <li data-i18n="ch4_s1_li4"><strong>1984 &#8212; Apple Macintosh</strong> &#8212; primul calculator comercializat pe scar&#259; larg&#259; cu interfa&#539;&#259; grafic&#259; integrat&#259;, mouse &#537;i metafora &#8222;desktop&#8221;.</li>
+                    </ul>
+                </div>
+
+                <!-- SEPARATOR: Impact -->
+                <div class="gui-separator">
+                    <div class="gui-separator-core">
+                        <svg class="gui-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span class="gui-separator-text">Impact</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: De ce a fost importanta aparitia PC-ului? -->
+                <div class="gui-card">
+                    <div class="gui-header">
+                        <span class="gui-badge">02</span>
+                        <h2 data-i18n="ch4_s2_title">De Ce a Fost Important&#259; Apari&#539;ia PC-ului?</h2>
+                    </div>
+
+                    <p data-i18n="ch4_s2_p1">
+                        P&#226;n&#259; la apari&#539;ia PC-ului, calculatoarele erau domeniul exclusiv al speciali&#537;tilor. PC-ul a schimbat radical aceast&#259; paradigm&#259;, aduc&#226;nd calculatorul &#238;n case, &#537;coli &#537;i birouri mici:
+                    </p>
+
+                    <div class="gui-meters">
+                        <div class="gui-meter">
+                            <div class="gui-meter-header">
+                                <svg class="gui-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                <span class="gui-meter-label" data-i18n="ch4_s2_meter1_label">Accesibilitate</span>
+                            </div>
+                            <div class="gui-meter-bar">
+                                <div class="gui-meter-fill gui-meter-fill--blue gui-meter-fill--access"></div>
+                            </div>
+                            <p class="gui-meter-desc" data-i18n="ch4_s2_meter1_desc">Pre&#539;ul unui PC a sc&#259;zut de la milioane (mainframe) la c&#226;teva mii de dolari &#8212; accesibil pentru familii &#537;i afaceri mici</p>
+                        </div>
+                        <div class="gui-meter">
+                            <div class="gui-meter-header">
+                                <svg class="gui-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                                <span class="gui-meter-label" data-i18n="ch4_s2_meter2_label">Independen&#539;&#259;</span>
+                            </div>
+                            <div class="gui-meter-bar">
+                                <div class="gui-meter-fill gui-meter-fill--purple gui-meter-fill--indep"></div>
+                            </div>
+                            <p class="gui-meter-desc" data-i18n="ch4_s2_meter2_desc">Utilizatorii nu mai depindeau de un departament IT central &#8212; aveau propriul calculator, cu propriile programe</p>
+                        </div>
+                        <div class="gui-meter">
+                            <div class="gui-meter-header">
+                                <svg class="gui-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                                <span class="gui-meter-label" data-i18n="ch4_s2_meter3_label">Productivitate</span>
+                            </div>
+                            <div class="gui-meter-bar">
+                                <div class="gui-meter-fill gui-meter-fill--amber gui-meter-fill--prod"></div>
+                            </div>
+                            <p class="gui-meter-desc" data-i18n="ch4_s2_meter3_desc">Procesoare de text, foi de calcul &#537;i baze de date au transformat modul &#238;n care lumea lucreaz&#259;</p>
+                        </div>
+                    </div>
+
+                    <ul class="gui-list">
+                        <li data-i18n="ch4_s2_li1"><strong>Educa&#539;ie</strong> &#8212; copiii au &#238;nceput s&#259; &#238;nve&#539;e programare &#537;i s&#259; foloseasc&#259; calculatoare &#238;n &#537;coli</li>
+                        <li data-i18n="ch4_s2_li2"><strong>Afaceri mici</strong> &#8212; antreprenorii puteau gestiona contabilitatea &#537;i coresponden&#539;a digital</li>
+                        <li data-i18n="ch4_s2_li3"><strong>Creativitate</strong> &#8212; desktop publishing, muzic&#259; digital&#259; &#537;i primele jocuri video de acas&#259;</li>
+                        <li data-i18n="ch4_s2_li4"><strong>Comunicare</strong> &#8212; BBS-uri (Bulletin Board Systems) &#537;i primele re&#539;ele de comunicare &#238;ntre calculatoare</li>
+                    </ul>
+                </div>
+
+                <!-- SEPARATOR: CLI -> GUI -->
+                <div class="gui-separator">
+                    <div class="gui-separator-core">
+                        <svg class="gui-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="18" rx="2"/>
+                            <path d="M7 8l3 3-3 3"/>
+                            <line x1="13" y1="14" x2="17" y2="14"/>
+                        </svg>
+                        <span class="gui-separator-text">CLI &#8594; GUI</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Trecerea de la CLI la GUI -->
+                <div class="gui-card">
+                    <div class="gui-header">
+                        <span class="gui-badge">03</span>
+                        <h2 data-i18n="ch4_s3_title">Trecerea de la CLI la GUI &#8212; Revolu&#539;ia Vizual&#259;</h2>
+                    </div>
+
+                    <p data-i18n="ch4_s3_p1">
+                        Sistemele timpurii de PC, precum <span class="gui-tag">MS-DOS</span>, foloseau o <strong>interfa&#539;&#259; &#238;n linie de comand&#259;</strong> (CLI &#8212; Command Line Interface). Utilizatorul trebuia s&#259; memoreze comenzi text exacte pentru a executa orice opera&#539;ie, de la copierea unui fi&#537;ier p&#226;n&#259; la lansarea unui program.
+                    </p>
+
+                    <div class="gui-quote">
+                        <p data-i18n="ch4_s3_quote">CLI: putere enorm&#259;, dar barier&#259; de intrare ridicat&#259;. GUI: mai pu&#539;in control fin, dar accesibil pentru toat&#259; lumea. Aceasta a fost dezbaterea definitorie a anilor &#8217;80.</p>
+                    </div>
+
+                    <p data-i18n="ch4_s3_p2">Conceptul revolu&#539;ionar a fost <span class="gui-tag">WIMP</span> &#8212; un acronim care define&#537;te paradigma GUI:</p>
+
+                    <div class="wimp-grid">
+                        <div class="wimp-item">
+                            <h4>
+                                <span class="wimp-letter">W</span>
+                                <span data-i18n="ch4_s3_c1_title">W &#8212; Windows (Ferestre)</span>
+                            </h4>
+                            <p data-i18n="ch4_s3_c1_desc">Fiecare program ruleaz&#259; &#238;ntr-o zon&#259; vizual&#259; separat&#259; (fereastr&#259;) care poate fi mutat&#259;, redimensionat&#259;, minimizat&#259; sau maximizat&#259;. Mai multe ferestre pot fi vizibile simultan.</p>
+                        </div>
+                        <div class="wimp-item">
+                            <h4>
+                                <span class="wimp-letter">I</span>
+                                <span data-i18n="ch4_s3_c2_title">I &#8212; Icons (Iconi&#539;e)</span>
+                            </h4>
+                            <p data-i18n="ch4_s3_c2_desc">Reprezent&#259;ri vizuale ale fi&#537;ierelor, folderelor &#537;i programelor. &#206;n loc s&#259; tastezi &#8222;del report.txt&#8221;, tragi iconi&#539;a &#238;n co&#537;ul de gunoi.</p>
+                        </div>
+                        <div class="wimp-item">
+                            <h4>
+                                <span class="wimp-letter">M</span>
+                                <span data-i18n="ch4_s3_c3_title">M &#8212; Menus (Meniuri)</span>
+                            </h4>
+                            <p data-i18n="ch4_s3_c3_desc">Liste organizate de comenzi disponibile, grupate logic (File, Edit, View). Nu mai trebuie s&#259; memorezi &#8212; doar alegi dintr-o list&#259;.</p>
+                        </div>
+                        <div class="wimp-item">
+                            <h4>
+                                <span class="wimp-letter">P</span>
+                                <span data-i18n="ch4_s3_c4_title">P &#8212; Pointer (Indicator/Mouse)</span>
+                            </h4>
+                            <p data-i18n="ch4_s3_c4_desc">Dispozitivul de indicare (mouse) permite interac&#539;iune direct&#259; cu elementele de pe ecran &#8212; click, drag, drop. M&#226;na devine extensia min&#539;ii pe ecran.</p>
+                        </div>
+                    </div>
+
+                    <p data-i18n="ch4_s3_p3">
+                        Aceast&#259; tranzi&#539;ie nu a fost doar cosmetic&#259; &#8212; a fost o <strong>revolu&#539;ie cognitiv&#259;</strong>. GUI-ul a redus drastic curba de &#238;nv&#259;&#539;are, permi&#539;&#226;nd milioanelor de oameni f&#259;r&#259; preg&#259;tire tehnic&#259; s&#259; foloseasc&#259; calculatorul productiv.
+                    </p>
+                </div>
+
+                <!-- SEPARATOR: Sisteme -->
+                <div class="gui-separator">
+                    <div class="gui-separator-core">
+                        <svg class="gui-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                            <rect x="9" y="9" width="6" height="6"/>
+                            <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>
+                        </svg>
+                        <span class="gui-separator-text">Sisteme</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Exemple de SO -->
+                <div class="gui-card">
+                    <div class="gui-header">
+                        <span class="gui-badge">04</span>
+                        <h2 data-i18n="ch4_s4_title">Exemple de Sisteme de Operare</h2>
+                    </div>
+
+                    <p data-i18n="ch4_s4_p1">Era PC-ului a produs o serie de sisteme de operare care au definit modul &#238;n care interac&#539;ion&#259;m cu calculatoarele:</p>
+
+                    <div class="gui-tech-grid">
+                        <div class="gui-tech-card">
+                            <span class="gui-tech-year" data-i18n="ch4_s4_card1_year">1981</span>
+                            <h4 data-i18n="ch4_s4_card1_title">MS-DOS &#8212; Microsoft Disk Operating System</h4>
+                            <p data-i18n="ch4_s4_card1_desc">Interfa&#539;&#259; CLI pur&#259;. Comenzi text pentru toate opera&#539;iile. <strong>Rapid &#537;i eficient</strong>, dar dificil pentru &#238;ncep&#259;tori. A dominat pia&#539;a PC-urilor timp de un deceniu &#537;i a pus bazele imperiului Microsoft.</p>
+                        </div>
+                        <div class="gui-tech-card">
+                            <span class="gui-tech-year" data-i18n="ch4_s4_card2_year">1984</span>
+                            <h4 data-i18n="ch4_s4_card2_title">Apple Macintosh &#8212; System 1</h4>
+                            <p data-i18n="ch4_s4_card2_desc">Primul calculator comercial cu <strong>GUI integrat</strong> &#537;i mouse inclus. Metafora desktop-ului (fi&#537;iere, foldere, co&#537; de gunoi) a devenit standard mondial. Inspirat de cercet&#259;rile Xerox PARC.</p>
+                        </div>
+                        <div class="gui-tech-card">
+                            <span class="gui-tech-year" data-i18n="ch4_s4_card3_year">1985&#8211;1990</span>
+                            <h4 data-i18n="ch4_s4_card3_title">Windows 1.0 &#8594; 3.1</h4>
+                            <p data-i18n="ch4_s4_card3_desc">Microsoft a adus <strong>GUI pe platforma DOS</strong>. Windows 1.0 era modest, dar Windows 3.1 (1992) a fost un succes masiv &#8212; ferestre suprapuse, Program Manager &#537;i suport multimedia.</p>
+                        </div>
+                        <div class="gui-tech-card">
+                            <span class="gui-tech-year" data-i18n="ch4_s4_card4_year">1995</span>
+                            <h4 data-i18n="ch4_s4_card4_title">Windows 95</h4>
+                            <p data-i18n="ch4_s4_card4_desc">Punctul de cotitur&#259;. <strong>Butonul Start, taskbar, Explorer</strong> &#8212; paradigma care define&#537;te Windows &#537;i ast&#259;zi. A v&#226;ndut 7 milioane de copii &#238;n primele 5 s&#259;pt&#259;m&#226;ni. A f&#259;cut GUI-ul standard pe PC.</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- SEPARATOR: Utilizatori -->
+                <div class="gui-separator">
+                    <div class="gui-separator-core">
+                        <svg class="gui-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <span class="gui-separator-text">Utilizatori</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: Impact asupra Utilizatorilor -->
+                <div class="gui-card">
+                    <div class="gui-header">
+                        <span class="gui-badge">05</span>
+                        <h2 data-i18n="ch4_s5_title">Impact asupra Utilizatorilor</h2>
+                    </div>
+
+                    <p data-i18n="ch4_s5_p1">
+                        Trecerea la GUI a transformat rela&#539;ia omului cu calculatorul. Nu mai era nevoie de cuno&#537;tin&#539;e tehnice avansate &#8212; interfa&#539;a vizual&#259; a deschis o lume nou&#259;:
+                    </p>
+
+                    <ul class="gui-list">
+                        <li data-i18n="ch4_s5_li1"><strong>Curba de &#238;nv&#259;&#539;are drastic redus&#259;</strong> &#8212; oricine putea &#238;nv&#259;&#539;a s&#259; foloseasc&#259; un Mac sau Windows &#238;n c&#226;teva ore, nu &#238;n s&#259;pt&#259;m&#226;ni</li>
+                        <li data-i18n="ch4_s5_li2"><strong>Metafore familiare</strong> &#8212; desktop (birou), folder (dosar), trash (co&#537; de gunoi) &#8212; concepte deja cunoscute din lumea fizic&#259;</li>
+                        <li data-i18n="ch4_s5_li3"><strong>Multitasking vizual</strong> &#8212; utilizatorii puteau vedea &#537;i comuta &#238;ntre mai multe programe simultan prin ferestre</li>
+                        <li data-i18n="ch4_s5_li4"><strong>Accesibilitate</strong> &#8212; persoanele cu dizabilit&#259;&#539;i au beneficiat de interfe&#539;e vizuale, zoom, screen readers &#537;i input alternativ</li>
+                        <li data-i18n="ch4_s5_li5"><strong>Creativitate digital&#259;</strong> &#8212; desktop publishing (PageMaker, 1985), editare foto, muzic&#259; &#8212; GUI a deschis arta digital&#259;</li>
+                    </ul>
+
+                    <div class="gui-quote">
+                        <p data-i18n="ch4_s5_quote">GUI-ul nu a f&#259;cut calculatorul mai puternic &#8212; l-a f&#259;cut mai uman. A transformat o ma&#537;in&#259; de calcul &#238;ntr-un instrument de exprimare.</p>
+                    </div>
+                </div>
+
+                <!-- SEPARATOR: Mostenire -->
+                <div class="gui-separator">
+                    <div class="gui-separator-core">
+                        <svg class="gui-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                        <span class="gui-separator-text">Mo&#537;tenire</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 6: Impact si Mostenire -->
+                <div class="gui-card">
+                    <div class="gui-header">
+                        <span class="gui-badge">06</span>
+                        <h2 data-i18n="ch4_s6_title">Impact &#537;i Mo&#537;tenire</h2>
+                    </div>
+
+                    <p data-i18n="ch4_s6_p1">
+                        Revolu&#539;ia PC-ului &#537;i a GUI-ului a l&#259;sat o mo&#537;tenire care define&#537;te lumea digital&#259; de ast&#259;zi:
+                    </p>
+
+                    <ul class="gui-list">
+                        <li data-i18n="ch4_s6_li1"><strong>Paradigma WIMP</strong> &#8212; Windows, Icons, Menus, Pointer &#8212; r&#259;m&#226;ne fundamentul interac&#539;iunii desktop &#238;n 2026, de la Windows 11 la macOS &#537;i Linux</li>
+                        <li data-i18n="ch4_s6_li2"><strong>Standardizare</strong> &#8212; conven&#539;iile GUI (dublu-click, drag &amp; drop, Ctrl+C/Ctrl+V) sunt universale &#537;i intuitive</li>
+                        <li data-i18n="ch4_s6_li3"><strong>Industria software</strong> &#8212; PC-ul a creat pia&#539;a software-ului comercial: procesoare de text, spreadsheets, baze de date, jocuri</li>
+                        <li data-i18n="ch4_s6_li4"><strong>Internet &#537;i web</strong> &#8212; GUI-ul a f&#259;cut posibil browserul web vizual (Mosaic, Netscape), deschiz&#226;nd era internetului pentru to&#539;i</li>
+                        <li data-i18n="ch4_s6_li5"><strong>Mobile &#537;i touch</strong> &#8212; paradigma GUI a evoluat &#238;n interfe&#539;e touch (iPhone, 2007), gesture-based &#537;i voice UI &#8212; dar principiile de baz&#259; r&#259;m&#226;n acelea&#537;i</li>
+                    </ul>
+
+                    <div class="gui-quote">
+                        <p data-i18n="ch4_s6_quote">Fiecare fereastr&#259; pe care o deschizi, fiecare icon pe care dai click, fiecare meniu pe care &#238;l explorezi &#8212; e&#537;ti mo&#537;tenitorul direct al vizionarilor de la Xerox PARC, Apple &#537;i Microsoft din anii &#8217;80.</p>
+                    </div>
+                </div>
+
+                <!-- SEPARATOR: Media -->
+                <div class="gui-separator">
+                    <div class="gui-separator-core">
+                        <svg class="gui-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                        <span class="gui-separator-text">Media</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 7: Experienta GUI — Media si Vizualizare -->
+                <div class="gui-card">
+                    <div class="gui-header">
+                        <span class="gui-badge">07</span>
+                        <h2 data-i18n="ch4_s7_title">Experien&#539;&#259; GUI &#8212; Media &#537;i Vizualizare</h2>
+                    </div>
+
+                    <p data-i18n="ch4_s7_p1">
+                        Exploreaz&#259; vizual revolu&#539;ia GUI prin imagini istorice, video educa&#539;ional &#537;i un mockup interactiv care demonstreaz&#259; conceptele unei interfe&#539;e grafice.
+                    </p>
+
+                    <!-- Photo Gallery -->
+                    <h3 data-i18n="ch4_s7_gallery">&#128247; Galerie Foto: Revolu&#539;ia GUI</h3>
+
+                    <div class="media-grid">
+                        <figure class="media-figure">
+                            <img src="media/Computer_macintosh_128k_highres.jpg" alt="Apple Macintosh 128K" loading="lazy" />
+                            <figcaption>
+                                <strong data-i18n="ch4_s7_img1_title">Apple Macintosh (1984)</strong>
+                                <span data-i18n="ch4_s7_img1_desc">Interfa&#539;a original&#259; Macintosh System 1. Observ&#259; metafora desktop-ului: iconi&#539;e, ferestre, meniuri &#537;i co&#537;ul de gunoi. Aceast&#259; paradigm&#259; revolu&#539;ionar&#259; define&#537;te &#238;nc&#259; modul &#238;n care folosim calculatoarele.</span>
+                            </figcaption>
+                        </figure>
+                        <figure class="media-figure">
+                            <img src="media/IBM_PC_5150_thumb.jpg" alt="IBM PC 5150" loading="lazy" />
+                            <figcaption>
+                                <strong data-i18n="ch4_s7_img2_title">IBM PC 5150 (1981)</strong>
+                                <span data-i18n="ch4_s7_img2_desc">IBM PC Model 5150 &#8212; calculatorul care a legitimat pia&#539;a PC. Arhitectura sa deschis&#259; a creat un ecosistem uria&#537; de clone compatibile &#537;i a pus bazele industriei PC-urilor moderne.</span>
+                            </figcaption>
+                        </figure>
+                        <figure class="media-figure">
+                            <img src="media/Xerox_Alto.jpg" alt="Xerox Alto" loading="lazy" />
+                            <figcaption>
+                                <strong data-i18n="ch4_s7_img3_title">Xerox Alto &amp; Mouse (1973)</strong>
+                                <span data-i18n="ch4_s7_img3_desc">Xerox Alto &#8212; sta&#539;ia de lucru experimental&#259; de la Xerox PARC care a inventat conceptul GUI modern. Mouse-ul, ferestrele &#537;i meniurile au fost prototipate aici cu un deceniu &#238;naintea Macintosh-ului.</span>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <!-- Video -->
+                    <h3 data-i18n="ch4_s7_video">&#127916; Video Educativ: Evolu&#539;ia GUI</h3>
+
+                    <div class="gui-video-container">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://archive.org/embed/macintosh-1984-intro"
+                                title="Macintosh 1984 Introduction Video"
+                                webkitallowfullscreen="true"
+                                mozallowfullscreen="true"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="video-description">
+                            <h4 data-i18n="ch4_s7_video_title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                Ce s&#259; observi &#238;n acest video
+                            </h4>
+                            <p data-i18n="ch4_s7_video_desc">
+                                Prezentarea original&#259; a Apple Macintosh din 1984 &#8212; momentul istoric &#238;n care Steve Jobs a demonstrat public interfa&#539;a grafic&#259; pentru mase. Observ&#259; reac&#539;ia publicului la conceptele de drag &amp; drop, meniuri &#537;i ferestre &#8212; lucruri banale ast&#259;zi, revolu&#539;ionare atunci.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- GUI Mockup -->
+                    <h3 data-i18n="ch4_s7_mockup_title">&#128421;&#65039; Mockup Interactiv: Cum Ar&#259;ta un GUI Timpuriu</h3>
+
+                    <p class="gui-meter-desc" data-i18n="ch4_s7_mockup_desc">
+                        Acest mockup demonstreaz&#259; vizual elementele fundamentale ale unei interfe&#539;e grafice &#8212; ferestrele, iconi&#539;ele, meniurile &#537;i butoanele care au definit paradigma GUI.
+                    </p>
+
+                    <div class="gui-mockup-wrapper">
+                        <div class="gui-mockup-desktop">
+                            <!-- Desktop icons -->
+                            <div class="mockup-icons">
+                                <div class="mockup-icon">
+                                    <div class="mockup-icon-img">&#128187;</div>
+                                    <span class="mockup-icon-label">My Computer</span>
+                                </div>
+                                <div class="mockup-icon">
+                                    <div class="mockup-icon-img">&#128193;</div>
+                                    <span class="mockup-icon-label">Documents</span>
+                                </div>
+                                <div class="mockup-icon">
+                                    <div class="mockup-icon-img">&#128465;&#65039;</div>
+                                    <span class="mockup-icon-label">Recycle Bin</span>
+                                </div>
+                                <div class="mockup-icon">
+                                    <div class="mockup-icon-img">&#127760;</div>
+                                    <span class="mockup-icon-label">Internet</span>
+                                </div>
+                                <div class="mockup-icon">
+                                    <div class="mockup-icon-img">&#127912;</div>
+                                    <span class="mockup-icon-label">Paint</span>
+                                </div>
+                            </div>
+
+                            <!-- Window -->
+                            <div class="mockup-window">
+                                <div class="mockup-titlebar">
+                                    <span class="mockup-titlebar-title">&#128193; My Documents</span>
+                                    <div class="mockup-titlebar-btns">
+                                        <div class="mockup-btn">_</div>
+                                        <div class="mockup-btn">&#9633;</div>
+                                        <div class="mockup-btn">&#10005;</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-menubar">
+                                    <span class="mockup-menu-item">File</span>
+                                    <span class="mockup-menu-item">Edit</span>
+                                    <span class="mockup-menu-item">View</span>
+                                    <span class="mockup-menu-item">Help</span>
+                                </div>
+                                <div class="mockup-content">
+                                    <p>&#128196; Report.doc<br>&#128202; Budget.xls<br>&#128444;&#65039; Photo.bmp<br>&#128221; Notes.txt</p>
+                                </div>
+                            </div>
+
+                            <!-- Taskbar -->
+                            <div class="mockup-taskbar">
+                                <div class="mockup-start-btn">
+                                    <span>&#129695;</span> Start
+                                </div>
+                                <div class="mockup-task">&#128193; My Documents</div>
+                                <div class="mockup-clock">12:34</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </section>
-            <nav class="chapter-nav">
-                <a href="capitol-3-unix.html">&larr; Înapoi la Nașterea Unix</a>
-                <a href="capitol-5-linux.html">Capitolul următor: Linux și Open Source &rarr;</a>
-            </nav>
+
+            <!-- NAVIGATION -->
+            <div class="chapter-nav-enhanced">
+                <a href="capitol-3-unix.html" class="nav-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    <span data-i18n="ch4_nav_prev">Capitolul 3: Na&#537;terea Unix</span>
+                </a>
+                <a href="capitol-5-linux.html" class="nav-btn nav-btn-next">
+                    <span data-i18n="ch4_nav_next">Capitolul 5: Linux &#537;i Open Source</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+            </div>
         </div>
     </main>
+
     <footer>
-        <p>&copy; 2026 Istoria Sistemelor de Operare</p>
+        <p>&copy; 2026 <span data-i18n="footer_site">Evolu&#539;ia Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
     </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/i18n.js"></script>
 </body>
 </html>

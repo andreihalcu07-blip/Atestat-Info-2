@@ -525,7 +525,7 @@ Stilurile vechi rămân funcționale pentru a preveni breaking changes:
 
 ### Pagină de Test
 
-Fișier: **`test-button-system.html`**
+Fișier: **`docs/tests/test-button-system.html`**
 
 Conține:
 - ✅ Toate variantele de butoane

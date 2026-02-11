@@ -3,80 +3,1808 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capitolul 3: Nașterea Unix</title>
+    <title data-i18n="ch3_title">Capitolul 3: Nașterea Unix</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/advanced.css">
     <link rel="stylesheet" href="../../css/pages.css">
+    <link rel="stylesheet" href="../../css/mobile.css">
     <link rel="stylesheet" href="../../css/history.css">
+    <style>
+        /* ==========================================================
+           CAPITOLUL 3 — NAȘTEREA UNIX
+           Theme: Terminal Green / Hacker Aesthetic
+           Unique identity: monospace, phosphor glow, pipe metaphors
+           ========================================================== */
+
+        :root {
+            --unix-primary: #22c55e;
+            --unix-secondary: #10b981;
+            --unix-accent: #f59e0b;
+            --unix-dark: #0a1628;
+            --unix-darker: #060f1d;
+            --unix-glow: rgba(34, 197, 94, 0.2);
+            --unix-border: rgba(34, 197, 94, 0.2);
+        }
+
+        /* ── Terminal Separator ── */
+        .terminal-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 36px 0;
+            position: relative;
+        }
+        .terminal-separator::before,
+        .terminal-separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--unix-border), transparent);
+        }
+        .terminal-separator-core {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid var(--unix-border);
+            border-radius: 20px;
+            position: relative;
+        }
+        .terminal-separator-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--unix-primary);
+            filter: drop-shadow(0 0 6px var(--unix-glow));
+        }
+        .terminal-separator-text {
+            color: var(--unix-primary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        /* ── Unix Card ── */
+        .unix-card {
+            background: linear-gradient(145deg, rgba(10, 22, 40, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--unix-border);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .unix-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--unix-primary) 0%, var(--unix-secondary) 50%, var(--unix-accent) 100%);
+            opacity: 0.8;
+        }
+        .unix-card:hover {
+            border-color: rgba(34, 197, 94, 0.35);
+            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.08), 0 0 60px rgba(34, 197, 94, 0.03);
+        }
+
+        /* ── Unix Header ── */
+        .unix-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .section-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--unix-primary) 0%, var(--unix-secondary) 100%);
+            border-radius: 12px;
+            color: #0f172a;
+            font-weight: 800;
+            font-size: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px var(--unix-glow);
+        }
+        .unix-header h2 {
+            color: #f1f5f9;
+            font-size: 1.35rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        /* ── Terminal Box (quote style) ── */
+        .terminal-box {
+            background: linear-gradient(180deg, var(--unix-darker) 0%, var(--unix-dark) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-left: 4px solid var(--unix-primary);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            position: relative;
+        }
+        .terminal-box::before {
+            content: '>';
+            position: absolute;
+            top: 16px;
+            left: -2px;
+            color: var(--unix-primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            transform: translateX(-50%);
+            text-shadow: 0 0 10px var(--unix-glow);
+        }
+        .terminal-box p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+            font-style: italic;
+        }
+        .terminal-box cite {
+            display: block;
+            color: var(--unix-primary);
+            font-size: 0.85rem;
+            margin-top: 10px;
+            font-style: normal;
+            opacity: 0.8;
+        }
+
+        /* ── Key Tag ── */
+        .key-tag {
+            display: inline;
+            padding: 2px 10px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 6px;
+            color: var(--unix-primary);
+            font-size: 0.9em;
+            font-weight: 600;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        /* ── Unix List ── */
+        .unix-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        .unix-list li {
+            position: relative;
+            padding: 10px 0 10px 32px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.08);
+        }
+        .unix-list li:last-child {
+            border-bottom: none;
+        }
+        .unix-list li::before {
+            content: '$';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: var(--unix-primary);
+            font-weight: 700;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1rem;
+            text-shadow: 0 0 8px var(--unix-glow);
+        }
+        .unix-list li strong {
+            color: #e2e8f0;
+        }
+
+        /* ── Philosophy Grid (concept cards) ── */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .philosophy-item {
+            background: linear-gradient(145deg, rgba(34, 197, 94, 0.06) 0%, rgba(10, 22, 40, 0.8) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            border-radius: 14px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .philosophy-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--unix-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .philosophy-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 197, 94, 0.3);
+            box-shadow: 0 8px 25px var(--unix-glow);
+        }
+        .philosophy-item:hover::after {
+            opacity: 1;
+        }
+        .philosophy-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #f1f5f9;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+        .philosophy-item h4 svg {
+            width: 22px;
+            height: 22px;
+            color: var(--unix-primary);
+            flex-shrink: 0;
+        }
+        .philosophy-item p {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Pipe Pipeline ── */
+        .pipe-container {
+            background: linear-gradient(145deg, rgba(34, 197, 94, 0.05) 0%, rgba(10, 22, 40, 0.6) 100%);
+            border: 1px dashed rgba(34, 197, 94, 0.25);
+            border-radius: 14px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .pipe-title {
+            color: var(--unix-primary);
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .pipe-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            min-width: -webkit-fill-available;
+            min-width: fill-available;
+        }
+        .pipe-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 14px 18px;
+            background: linear-gradient(180deg, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.04) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.25);
+            border-radius: 12px;
+            min-width: 110px;
+            transition: all 0.3s ease;
+        }
+        .pipe-step:hover {
+            transform: translateY(-4px);
+            border-color: var(--unix-primary);
+            box-shadow: 0 6px 20px var(--unix-glow);
+        }
+        .pipe-step-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--unix-primary);
+            margin-bottom: 8px;
+        }
+        .pipe-step-label {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Consolas', 'Monaco', monospace;
+            text-align: center;
+        }
+        .pipe-step-desc {
+            color: #64748b;
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 4px;
+        }
+        .pipe-arrow {
+            color: var(--unix-accent);
+            font-size: 1.5rem;
+            font-family: 'Consolas', monospace;
+            font-weight: 700;
+            padding: 0 8px;
+            animation: pulse-pipe 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-pipe {
+            0%, 100% { opacity: 0.4; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(3px); }
+        }
+
+        /* ── Tech Cards Grid ── */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .tech-card {
+            background: linear-gradient(145deg, rgba(10, 22, 40, 0.9) 0%, rgba(15, 23, 42, 0.85) 100%);
+            border: 1px solid var(--unix-border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--unix-primary), var(--unix-secondary));
+        }
+        .tech-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(34, 197, 94, 0.12);
+            border-color: rgba(34, 197, 94, 0.35);
+        }
+        .tech-card-year {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 20px;
+            color: var(--unix-accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin-bottom: 12px;
+        }
+        .tech-card h4 {
+            color: #fff;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        .tech-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Impact Meters ── */
+        .impact-meters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .impact-meter {
+            background: rgba(34, 197, 94, 0.04);
+            border: 1px solid rgba(34, 197, 94, 0.12);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .impact-meter-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .impact-meter-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--unix-primary);
+        }
+        .impact-meter-label {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .impact-meter-bar {
+            height: 8px;
+            background: rgba(34, 197, 94, 0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        .impact-meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--unix-primary), var(--unix-secondary));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        .impact-meter-desc {
+            color: #64748b;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        /* ── Tech Definitions ── */
+        .tech-definitions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .tech-def-item {
+            display: flex;
+            gap: 16px;
+            padding: 18px;
+            background: rgba(34, 197, 94, 0.04);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .tech-def-item:hover {
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.25);
+        }
+        .tech-def-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 10px;
+        }
+        .tech-def-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--unix-primary);
+        }
+        .tech-def-content h4 {
+            color: #e2e8f0;
+            margin: 0 0 6px 0;
+            font-size: 0.95rem;
+        }
+        .tech-def-content p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Interactive Terminal ── */
+        .unix-terminal {
+            background: linear-gradient(180deg, #020a14 0%, #0a1628 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 14px;
+            overflow: hidden;
+            margin: 24px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(34, 197, 94, 0.1);
+        }
+        .terminal-titlebar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(34, 197, 94, 0.08);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+        }
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-dot.red { background: #ef4444; }
+        .terminal-dot.yellow { background: #f59e0b; }
+        .terminal-dot.green { background: #22c55e; }
+        .terminal-titlebar-text {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin-left: 8px;
+        }
+        .terminal-body {
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .terminal-line {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 2px;
+        }
+        .terminal-prompt {
+            color: var(--unix-primary);
+            text-shadow: 0 0 8px var(--unix-glow);
+            white-space: nowrap;
+        }
+        .terminal-command {
+            color: #7dd3fc;
+        }
+        .terminal-output {
+            color: #94a3b8;
+            margin-left: 18px;
+            margin-bottom: 2px;
+        }
+        .terminal-comment {
+            color: #475569;
+            font-style: italic;
+        }
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--unix-primary);
+            animation: blink-cursor 1s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 4px;
+        }
+        @keyframes blink-cursor {
+            50% { opacity: 0; }
+        }
+
+        /* ── Media Section ── */
+        .media-section {
+            margin-top: 36px;
+        }
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .media-figure {
+            position: relative;
+            margin: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(10, 22, 40, 0.8);
+            border: 1px solid var(--unix-border);
+            transition: all 0.4s ease;
+        }
+        .media-figure:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3), 0 0 30px var(--unix-glow);
+            border-color: rgba(34, 197, 94, 0.35);
+        }
+        .media-figure img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .media-figure:hover img {
+            transform: scale(1.08);
+        }
+        .media-figure figcaption {
+            padding: 16px;
+            background: linear-gradient(180deg, rgba(10, 22, 40, 0.9) 0%, rgba(15, 23, 42, 0.98) 100%);
+            color: #94a3b8;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+        .media-figure figcaption strong {
+            color: var(--unix-primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        /* ── Video Container ── */
+        .video-container {
+            background: linear-gradient(145deg, rgba(10, 22, 40, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--unix-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--unix-accent), #ef4444, var(--unix-accent));
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-description {
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(245, 158, 11, 0.06);
+            border-radius: 10px;
+            border-left: 3px solid var(--unix-accent);
+        }
+        .video-description h4 {
+            color: var(--unix-accent);
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .video-description p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ── Audio Section ── */
+        .audio-section {
+            background: linear-gradient(145deg, rgba(34, 197, 94, 0.08) 0%, rgba(16, 185, 129, 0.03) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .audio-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .audio-header h4 {
+            color: var(--unix-primary);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .audio-icon {
+            width: 28px;
+            height: 28px;
+            color: var(--unix-primary);
+            filter: drop-shadow(0 0 8px var(--unix-glow));
+        }
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        .audio-play-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--unix-primary) 0%, #16a34a 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+            flex-shrink: 0;
+        }
+        .audio-play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(34, 197, 94, 0.4);
+        }
+        .audio-play-btn svg {
+            width: 24px;
+            height: 24px;
+            color: #0f172a;
+            margin-left: 3px;
+        }
+        .audio-info {
+            flex: 1;
+            min-width: 200px;
+        }
+        .audio-info h5 {
+            color: #e2e8f0;
+            margin: 0 0 4px 0;
+            font-size: 0.95rem;
+        }
+        .audio-info p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+        .audio-description {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 2px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* ── Intro Paragraph ── */
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 24px;
+        }
+        .intro-text .highlight {
+            background: linear-gradient(90deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.1));
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* ── Enhanced Navigation ── */
+        .chapter-nav-enhanced {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--unix-border);
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--unix-dark) 0%, #0c2d1b 100%);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            border-color: var(--unix-primary);
+            box-shadow: 0 8px 25px var(--unix-glow);
+            transform: translateY(-2px);
+        }
+        .nav-btn svg {
+            width: 18px;
+            height: 18px;
+            color: var(--unix-primary);
+        }
+        .nav-btn-next {
+            background: linear-gradient(135deg, var(--unix-primary) 0%, var(--unix-secondary) 100%);
+            border-color: transparent;
+        }
+        .nav-btn-next:hover {
+            box-shadow: 0 8px 30px var(--unix-glow);
+        }
+        .nav-btn-next svg {
+            color: #fff;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .unix-card {
+                padding: 20px;
+            }
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+            .tech-definitions {
+                grid-template-columns: 1fr;
+            }
+            .pipe-flow {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .pipe-arrow {
+                transform: rotate(90deg);
+                padding: 4px 0;
+            }
+            .chapter-nav-enhanced {
+                flex-direction: column;
+            }
+            .nav-btn {
+                justify-content: center;
+            }
+            .audio-player {
+                flex-direction: column;
+                text-align: center;
+            }
+            .unix-header h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                <div class="navbar-center">
+                    <ul class="nav-links">
+                        <li><a href="../../index.html" data-i18n="nav_home">Acasă</a></li>
+                        <li><a href="../about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="../history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="../comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="../../windows/index.html">Windows</a></li>
+                        <li><a href="../glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="../faq.html">FAQ</a></li>
+                        <li><a href="../quiz.html">Quiz</a></li>
+                        <li><a href="../resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="../../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" aria-label="Toggle dark mode" id="darkModeToggle">🌙</button>
+                    <button class="btn btn--utility lang-toggle" aria-label="Change language" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <main>
+        <section class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="history_title">Istoria Completă a SO-urilor</h2>
+                <p data-i18n="ch3_subtitle">Capitolul 3: Nașterea Unix</p>
+            </div>
+        </section>
+
         <div class="container chapter-article">
-            <a class="chapter-back" href="../history.html">&larr; Înapoi la Istorie</a>
+            <a class="chapter-back" href="../history.html" data-i18n="ch3_back">&larr; Înapoi la Istorie</a>
+
             <div class="chapter-hero">
                 <h1>
                     <svg class="chapter-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                        <rect x="2" y="4" width="20" height="16" rx="2" />
-                        <path d="M6 8h12M6 12h12M6 16h8" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <rect x="2" y="3" width="20" height="18" rx="2" fill="none" stroke="var(--primary-color)" stroke-width="2"/>
+                        <path d="M7 8l3 3-3 3" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="13" y1="14" x2="17" y2="14" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
                     </svg>
-                    Capitolul 3: Nașterea Unix
+                    <span data-i18n="ch3_title">Capitolul 3: Nașterea Unix</span>
                 </h1>
-                <p class="chapter-lead">Bell Labs, filosofia toolbox și portabilitatea</p>
+                <p class="chapter-lead" data-i18n="ch3_lead">Bell Labs, limbajul C și filosofia care a făcut Unix portabil și elegant</p>
             </div>
+
             <section class="chapter-content">
-                <h2>Context</h2>
-                <p>Unix a fost dezvoltat la Bell Labs la începutul anilor 1970 pentru a oferi un sistem simplu, portabil și eficient pentru cercetare și usabilitate. A fost creat inițial pe hardware DEC (PDP-11) și a fost portat rapid pe alte platforme datorită limbajului C.</p>
 
-                <h3>De ce a contat această eră?</h3>
-                <ul>
-                    <li>A introdus principiile de design: simplitate, small tools, composability.</li>
-                    <li>Portabilitatea prin C a făcut Unix un model replicabil pentru alte sisteme.</li>
-                    <li>A influențat dezvoltarea rețelelor și a mediilor multi-user în mediul academic și industrial.</li>
-                </ul>
+                <!-- INTRO -->
+                <p class="intro-text" data-i18n="ch3_intro">
+                    Imaginează-ți un laborator modest din Murray Hill, New Jersey — câțiva cercetători, un calculator 
+                    <span class="highlight">PDP-7</span> considerat deja depășit, și o idee simplă: un sistem de operare 
+                    care face <strong>puțin, dar face bine</strong>. Acesta este momentul nașterii lui Unix — proiectul 
+                    care a redefinit pentru totdeauna modul în care gândim software-ul.
+                </p>
 
-                <h2>Exemple și tehnologii reprezentative</h2>
-                <ul>
-                    <li><strong>PDP-11</strong> — platforma pe care multe versiuni Unix au fost dezvoltate.</li>
-                    <li><strong>AT&T/Bell Labs Unix</strong> — primele implementări și distribuții interne.</li>
-                    <li><strong>Utilitare Unix (grep, sed, awk)</strong> — instrumente mici, combinate în scripturi pentru fluxuri de lucru complexe.</li>
-                </ul>
-
-                <h2>Impact și moștenire</h2>
-                <p>Unix a oferit baza concepțională pentru multe SO moderne: modelul de procese, fișiere ca obiecte, pipe-uri pentru comunicare și filozofia modulară. Linux, macOS și multe instrumente moderne provin direct din ideile Unix.</p>
-
-                <h2>Media și resurse vizuale</h2>
-                <div class="chapter-media">
-                    <figure style="margin-bottom:18px;">
-                        <img src="media/Ken_Thompson_and_Dennis_Ritchie_1973.jpg" alt="Ken Thompson și Dennis Ritchie" style="max-width:100%;border-radius:12px;">
-                        <figcaption>Ken Thompson și Dennis Ritchie — autorii Unix (Sursa: Wikimedia Commons)</figcaption>
-                    </figure>
-                    <figure style="margin-bottom:18px;">
-                        <img src="media/Pdp-11-40_highres.jpg" alt="DEC PDP-11" style="max-width:100%;border-radius:12px;">
-                        <figcaption>Mini-calculatorul DEC PDP-11, platformă uzuală pentru Unix timpurii (Sursa: Wikimedia Commons)</figcaption>
-                    </figure>
-                    <div style="margin:22px 0;text-align:center;">
-                        <iframe width="640" height="360" src="https://www.youtube.com/embed/K4mYk1kO5Yg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width:100%;border-radius:12px;aspect-ratio:16/9;"></iframe>
-                        <div style="color:#94a3b8;font-size:0.98em;margin-top:6px;">Prelegere/documentar: Istoria Unix — introducere la filozofia și portabilitate (YouTube/Computer History sources)</div>
+                <!-- Terminal Separator -->
+                <div class="terminal-separator">
+                    <div class="terminal-separator-core">
+                        <svg class="terminal-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8m-4-4v4"/>
+                        </svg>
+                        <span class="terminal-separator-text">Context</span>
                     </div>
                 </div>
 
-                <h2>Caracteristici</h2>
-                <ul>
-                    <li><strong>Scris în C</strong> — a facilitat portabilitatea între arhitecturi.</li>
-                    <li><strong>Portabilitate</strong> — codul putea fi adaptat ușor pentru mai multe platforme.</li>
-                    <li><strong>Multi-user și multitasking</strong> — suport pentru mai mulți utilizatori și execuție simultană de procese.</li>
-                </ul>
+                <!-- SECTION 1: Context Istoric -->
+                <div class="unix-card">
+                    <div class="unix-header">
+                        <span class="section-badge">01</span>
+                        <h2 data-i18n="ch3_s1_title">Context: De la Multics la Unix</h2>
+                    </div>
 
-                <h2>Impact</h2>
-                <p>Unix a oferit principii de proiectare (simplicity, small tools, composability) care au stat la baza multor sisteme moderne, inclusiv <strong>Linux</strong> și macOS.</p>
+                    <p data-i18n="ch3_s1_p1">
+                        La sfârșitul anilor <strong>1960</strong>, <span class="key-tag">Bell Labs</span> 
+                        (parte din AT&T) era unul dintre cele mai prestigioase laboratoare de cercetare din lume. 
+                        Informatica, telecomunicațiile și matematica se intersectau aici, iar echipele mici de 
+                        cercetători aveau libertatea de a explora idei ambițioase.
+                    </p>
+
+                    <div class="terminal-box">
+                        <p data-i18n="ch3_s1_quote">Multics a fost un vis grandios. Unix a fost reacția practică — demonstrația că simplitatea poate fi mai puternică decât complexitatea.</p>
+                        <cite data-i18n="ch3_s1_quote_cite">— Reflecție despre filosofia Bell Labs</cite>
+                    </div>
+
+                    <p data-i18n="ch3_s1_p2">
+                        Bell Labs participase la proiectul <span class="key-tag">Multics</span> (Multiplexed Information 
+                        and Computing Service) — un sistem ambițios de time-sharing dezvoltat alături de MIT și GE. 
+                        Deși inovator, Multics devenise prea complex și costisitor. Când Bell Labs s-a retras din proiect 
+                        în 1969, doi cercetători au decis să înceapă de la zero:
+                    </p>
+
+                    <ul class="unix-list">
+                        <li data-i18n="ch3_s1_li1"><strong>Ken Thompson</strong> — a scris prima versiune de Unix pe un PDP-7, în doar câteva săptămâni, parțial motivat de dorința de a juca un joc (Space Travel)</li>
+                        <li data-i18n="ch3_s1_li2"><strong>Dennis Ritchie</strong> — a creat limbajul C specific pentru a putea rescrie Unix portabil, eliminând dependența de limbaj de asamblare</li>
+                        <li data-i18n="ch3_s1_li3"><strong>Brian Kernighan</strong> — a dat numele „Unix" (un joc de cuvinte pe Multics: „uni" vs. „multi") și a contribuit la documentația clasică</li>
+                        <li data-i18n="ch3_s1_li4"><strong>PDP-7, apoi PDP-11</strong> — hardware-ul modest pe care Unix a fost rafinat, demonstrând că un SO puternic nu necesită mașini scumpe</li>
+                    </ul>
+                </div>
+
+                <!-- Terminal Separator -->
+                <div class="terminal-separator">
+                    <div class="terminal-separator-core">
+                        <svg class="terminal-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span class="terminal-separator-text">Motivation</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: De Ce a Apărut Unix -->
+                <div class="unix-card">
+                    <div class="unix-header">
+                        <span class="section-badge">02</span>
+                        <h2 data-i18n="ch3_s2_title">De Ce a Apărut Unix?</h2>
+                    </div>
+
+                    <p data-i18n="ch3_s2_p1">
+                        Unix nu a fost un proiect planificat de o corporație. A fost creat de programatori 
+                        <strong>pentru programatori</strong>, ca răspuns la frustrări reale cu sistemele existente:
+                    </p>
+
+                    <div class="impact-meters">
+                        <div class="impact-meter">
+                            <div class="impact-meter-header">
+                                <svg class="impact-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <path d="M8 21h8m-4-4v4"/>
+                                </svg>
+                                <span class="impact-meter-label" data-i18n="ch3_s2_meter1_label">Simplitate</span>
+                            </div>
+                            <div class="impact-meter-bar">
+                                <div class="impact-meter-fill impact-meter-fill--95"></div>
+                            </div>
+                            <p class="impact-meter-desc" data-i18n="ch3_s2_meter1_desc">Reacție la complexitatea Multics — fiecare componentă trebuia să fie minimală și clară</p>
+                        </div>
+                        <div class="impact-meter">
+                            <div class="impact-meter-header">
+                                <svg class="impact-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                                <span class="impact-meter-label" data-i18n="ch3_s2_meter2_label">Portabilitate</span>
+                            </div>
+                            <div class="impact-meter-bar">
+                                <div class="impact-meter-fill impact-meter-fill--90"></div>
+                            </div>
+                            <p class="impact-meter-desc" data-i18n="ch3_s2_meter2_desc">Scris în C, nu în asamblare — putea fi mutat pe orice arhitectură hardware</p>
+                        </div>
+                        <div class="impact-meter">
+                            <div class="impact-meter-header">
+                                <svg class="impact-meter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                <span class="impact-meter-label" data-i18n="ch3_s2_meter3_label">Colaborare</span>
+                            </div>
+                            <div class="impact-meter-bar">
+                                <div class="impact-meter-fill impact-meter-fill--85"></div>
+                            </div>
+                            <p class="impact-meter-desc" data-i18n="ch3_s2_meter3_desc">Distribuit gratuit universităților, creând prima comunitate open-source</p>
+                        </div>
+                    </div>
+
+                    <p data-i18n="ch3_s2_p2">
+                        Time-sharing-ul eficient, uneltele reutilizabile și suportul multi-user au făcut 
+                        Unix perfect pentru mediul academic. AT&T nu putea vinde software (din cauza unui 
+                        acord antitrust), așa că Unix a fost distribuit universităților aproape gratuit — 
+                        o decizie care i-a accelerat enorm adoptarea.
+                    </p>
+                </div>
+
+                <!-- Terminal Separator -->
+                <div class="terminal-separator">
+                    <div class="terminal-separator-core">
+                        <svg class="terminal-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 8l3 3-3 3"/>
+                            <line x1="13" y1="11" x2="19" y2="11"/>
+                        </svg>
+                        <span class="terminal-separator-text">Philosophy</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Filosofia Unix -->
+                <div class="unix-card">
+                    <div class="unix-header">
+                        <span class="section-badge">03</span>
+                        <h2 data-i18n="ch3_s3_title">Filosofia Unix — „Do One Thing Well"</h2>
+                    </div>
+
+                    <p data-i18n="ch3_s3_p1">
+                        Unix nu era doar un sistem de operare — era o <strong>filosofie de design</strong>. 
+                        În loc de programe monolitice care fac totul, Unix promova componente mici, 
+                        specializate, care se combină elegant:
+                    </p>
+
+                    <div class="philosophy-grid">
+                        <div class="philosophy-item">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>
+                                </svg>
+                                <span data-i18n="ch3_s3_c1_title">Fă Un Singur Lucru Bine</span>
+                            </h4>
+                            <p data-i18n="ch3_s3_c1_desc">Fiecare program trebuie să facă o singură sarcină, dar să o facă perfect. grep caută text. sort sortează. wc numără.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                                <span data-i18n="ch3_s3_c2_title">Compune prin Pipe-uri</span>
+                            </h4>
+                            <p data-i18n="ch3_s3_c2_desc">Ieșirea unui program devine intrarea altuia prin operatorul |. Combinații infinite din piese simple.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <path d="M14 2v6h6"/>
+                                </svg>
+                                <span data-i18n="ch3_s3_c3_title">Totul Este un Fișier</span>
+                            </h4>
+                            <p data-i18n="ch3_s3_c3_desc">Dispozitive, procese, socket-uri — toate sunt accesate ca fișiere. O singură interfață uniformă pentru tot.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/>
+                                </svg>
+                                <span data-i18n="ch3_s3_c4_title">Text ca Format Universal</span>
+                            </h4>
+                            <p data-i18n="ch3_s3_c4_desc">Datele circulă ca text simplu între programe. Oricine poate inspecta, filtra și transforma fluxul de date.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <path d="M8 21h8m-4-4v4"/>
+                                </svg>
+                                <span data-i18n="ch3_s3_c5_title">Scriptare și Automatizare</span>
+                            </h4>
+                            <p data-i18n="ch3_s3_c5_desc">Shell-ul nu este doar o interfață — este un limbaj de programare. Orice secvență de comenzi devine un script reutilizabil.</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Pipe Pipeline -->
+                    <div class="pipe-container">
+                        <div class="pipe-title" data-i18n="ch3_s3_pipe_title">$ cat /var/log/access.log | grep "ERROR" | sort | uniq -c | head -10</div>
+                        <div class="pipe-flow">
+                            <div class="pipe-step">
+                                <svg class="pipe-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <path d="M14 2v6h6"/>
+                                </svg>
+                                <span class="pipe-step-label" data-i18n="ch3_s3_step1">cat</span>
+                                <span class="pipe-step-desc" data-i18n="ch3_s3_step1_desc">Citește fișierul</span>
+                            </div>
+                            <span class="pipe-arrow">|</span>
+                            <div class="pipe-step">
+                                <svg class="pipe-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                                </svg>
+                                <span class="pipe-step-label" data-i18n="ch3_s3_step2">grep</span>
+                                <span class="pipe-step-desc" data-i18n="ch3_s3_step2_desc">Filtrează linii</span>
+                            </div>
+                            <span class="pipe-arrow">|</span>
+                            <div class="pipe-step">
+                                <svg class="pipe-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 6h18M6 6v12M18 6v12M3 18h18"/>
+                                </svg>
+                                <span class="pipe-step-label" data-i18n="ch3_s3_step3">sort</span>
+                                <span class="pipe-step-desc" data-i18n="ch3_s3_step3_desc">Sortează</span>
+                            </div>
+                            <span class="pipe-arrow">|</span>
+                            <div class="pipe-step">
+                                <svg class="pipe-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M9 3v18M3 9h6"/>
+                                </svg>
+                                <span class="pipe-step-label" data-i18n="ch3_s3_step4">uniq -c</span>
+                                <span class="pipe-step-desc" data-i18n="ch3_s3_step4_desc">Numără unice</span>
+                            </div>
+                            <span class="pipe-arrow">|</span>
+                            <div class="pipe-step">
+                                <svg class="pipe-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/>
+                                </svg>
+                                <span class="pipe-step-label" data-i18n="ch3_s3_step5">head</span>
+                                <span class="pipe-step-desc" data-i18n="ch3_s3_step5_desc">Top 10 rezultate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal Separator -->
+                <div class="terminal-separator">
+                    <div class="terminal-separator-core">
+                        <svg class="terminal-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                        <span class="terminal-separator-text">Architecture</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Caracteristici Tehnice -->
+                <div class="unix-card">
+                    <div class="unix-header">
+                        <span class="section-badge">04</span>
+                        <h2 data-i18n="ch3_s4_title">Arhitectură și Caracteristici Tehnice</h2>
+                    </div>
+
+                    <p data-i18n="ch3_s4_p1">
+                        Scrierea nucleului în <span class="key-tag">limbajul C</span> (dezvoltat de Ritchie 
+                        special pentru acest scop) a fost decizia care a schimbat totul. Pentru prima dată, 
+                        un sistem de operare putea fi <strong>portat</strong> pe hardware diferit prin simplă recompilare.
+                    </p>
+
+                    <div class="tech-definitions">
+                        <div class="tech-def-item">
+                            <div class="tech-def-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="tech-def-content">
+                                <h4 data-i18n="ch3_s4_def1_title">Multi-User & Time-Sharing</h4>
+                                <p data-i18n="ch3_s4_def1_desc">Mai mulți utilizatori conectați simultan prin terminale, fiecare cu propriile permisiuni și sesiune izolată.</p>
+                            </div>
+                        </div>
+                        <div class="tech-def-item">
+                            <div class="tech-def-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                                    <rect x="9" y="9" width="6" height="6"/>
+                                    <path d="M9 2v2m6-2v2M9 20v2m6-2v2M2 9h2m-2 6h2M20 9h2m-2 6h2"/>
+                                </svg>
+                            </div>
+                            <div class="tech-def-content">
+                                <h4 data-i18n="ch3_s4_def2_title">Multitasking Preemptiv</h4>
+                                <p data-i18n="ch3_s4_def2_desc">Nucleul decide când să comute între procese. Niciun program nu poate monopoliza procesorul — echitate garantată.</p>
+                            </div>
+                        </div>
+                        <div class="tech-def-item">
+                            <div class="tech-def-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                </svg>
+                            </div>
+                            <div class="tech-def-content">
+                                <h4 data-i18n="ch3_s4_def3_title">Sistem de Fișiere Ierarhic</h4>
+                                <p data-i18n="ch3_s4_def3_desc">Structura de directoare arborescentă (/, /usr, /etc, /home) — modelul copiat de toate SO-urile moderne.</p>
+                            </div>
+                        </div>
+                        <div class="tech-def-item">
+                            <div class="tech-def-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <div class="tech-def-content">
+                                <h4 data-i18n="ch3_s4_def4_title">Procese și Semnale</h4>
+                                <p data-i18n="ch3_s4_def4_desc">Fiecare program rulează ca un proces cu PID unic. Semnalele (SIGTERM, SIGKILL) permit controlul fin al execuției.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="terminal-box">
+                        <p data-i18n="ch3_s4_quote">Unix a demonstrat că un sistem de operare nu trebuie să fie mare pentru a fi puternic. Nucleul original avea sub 10.000 de linii de cod.</p>
+                        <cite data-i18n="ch3_s4_quote_cite">— Despre eleganta simplitate a Unix-ului</cite>
+                    </div>
+                </div>
+
+                <!-- Terminal Separator -->
+                <div class="terminal-separator">
+                    <div class="terminal-separator-core">
+                        <svg class="terminal-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+                        </svg>
+                        <span class="terminal-separator-text">Ecosystem</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: Exemple și Tehnologii -->
+                <div class="unix-card">
+                    <div class="unix-header">
+                        <span class="section-badge">05</span>
+                        <h2 data-i18n="ch3_s5_title">Exemple și Tehnologii Reprezentative</h2>
+                    </div>
+
+                    <p data-i18n="ch3_s5_p1">
+                        Din ecosistemul Unix au apărut tehnologii și instrumente care formează baza informaticii 
+                        moderne. Iată cele mai importante:
+                    </p>
+
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch3_s5_card1_year">1969</span>
+                            <h4 data-i18n="ch3_s5_card1_title">PDP-7 → PDP-11</h4>
+                            <p data-i18n="ch3_s5_card1_desc">
+                                Ken Thompson a scris prima versiune Unix pe un <strong>PDP-7</strong> în limbaj de asamblare. 
+                                Migrarea pe PDP-11 (1970) și rescrierea în C (1973) au stabilit modelul: 
+                                un SO portabil, compact și puternic.
+                            </p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch3_s5_card2_year">1972</span>
+                            <h4 data-i18n="ch3_s5_card2_title">Limbajul C</h4>
+                            <p data-i18n="ch3_s5_card2_desc">
+                                Dennis Ritchie a creat C evoluând din B (Thompson). Combina 
+                                <strong>controlul low-level</strong> al asamblării cu productivitatea unui limbaj 
+                                de nivel înalt. Nucleul Unix rescris în C a avut ~95% cod portabil.
+                            </p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch3_s5_card3_year">1970s</span>
+                            <h4 data-i18n="ch3_s5_card3_title">grep, sed, awk & Tools</h4>
+                            <p data-i18n="ch3_s5_card3_desc">
+                                Suite-ul de utilitare text Unix: <strong>grep</strong> (căutare pattern), 
+                                <strong>sed</strong> (editare stream), <strong>awk</strong> (procesare tabulară). 
+                                Aceste instrumente sunt folosite zilnic de milioane de dezvoltatori și în 2026.
+                            </p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-card-year" data-i18n="ch3_s5_card4_year">1977–1983</span>
+                            <h4 data-i18n="ch3_s5_card4_title">BSD & System V</h4>
+                            <p data-i18n="ch3_s5_card4_desc">
+                                Unix s-a ramificat: <strong>BSD</strong> (Berkeley Software Distribution) a adăugat 
+                                TCP/IP networking, iar <strong>System V</strong> (AT&T) a definit standardele comerciale. 
+                                Ambele ramuri au influențat toate SO-urile ulterioare.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal Separator -->
+                <div class="terminal-separator">
+                    <div class="terminal-separator-core">
+                        <svg class="terminal-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="terminal-separator-text">Legacy</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 6: Impact și Moștenire -->
+                <div class="unix-card">
+                    <div class="unix-header">
+                        <span class="section-badge">06</span>
+                        <h2 data-i18n="ch3_s6_title">Impact și Moștenire</h2>
+                    </div>
+
+                    <p data-i18n="ch3_s6_p1">
+                        Unix a redefinit modul în care gândim software-ul. Moștenirea sa este prezentă 
+                        în fiecare colț al lumii digitale moderne:
+                    </p>
+
+                    <ul class="unix-list">
+                        <li data-i18n="ch3_s6_li1">
+                            <strong>Linux</strong> — Linus Torvalds a creat Linux (1991) inspirat direct de Unix. 
+                            Astăzi, Linux rulează pe ~96% din serverele web, în telefoanele Android și în supercomputerele top 500.
+                        </li>
+                        <li data-i18n="ch3_s6_li2">
+                            <strong>macOS & iOS</strong> — Apple a construit macOS pe bază de BSD/NeXTSTEP, 
+                            făcând fiecare Mac și iPhone un descendent direct al Unix.
+                        </li>
+                        <li data-i18n="ch3_s6_li3">
+                            <strong>POSIX & Standarde</strong> — Standardul POSIX asigură compatibilitatea 
+                            între implementările Unix-like, de la AIX la FreeBSD.
+                        </li>
+                        <li data-i18n="ch3_s6_li4">
+                            <strong>DevOps & Cloud</strong> — Containerele Docker, Kubernetes, CI/CD pipelines — 
+                            toate se bazează pe principii Unix: modularitate, compunere, automatizare.
+                        </li>
+                        <li data-i18n="ch3_s6_li5">
+                            <strong>Cultura Open Source</strong> — Distribuirea Unix în universități a creat 
+                            primul model de software colaborativ, precursor al mișcării open-source moderne.
+                        </li>
+                    </ul>
+
+                    <div class="terminal-box">
+                        <p data-i18n="ch3_s6_quote">Fiecare terminal pe care îl deschizi, fiecare comandă pe care o scrii în Linux sau macOS — 
+                        ești la un keystroke distanță de spiritul lui Thompson și Ritchie din 1969.</p>
+                    </div>
+                </div>
+
+                <!-- Terminal Separator -->
+                <div class="terminal-separator">
+                    <div class="terminal-separator-core">
+                        <svg class="terminal-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="23 7 16 12 23 17 23 7"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2"/>
+                        </svg>
+                        <span class="terminal-separator-text">Interactive</span>
+                    </div>
+                </div>
+
+                <!-- SECTION 7: Media Interactivă -->
+                <div class="media-section">
+                    <div class="unix-card">
+                        <div class="unix-header">
+                            <span class="section-badge">07</span>
+                            <h2 data-i18n="ch3_s7_title">Experiență Unix — Media Interactivă</h2>
+                        </div>
+
+                        <p data-i18n="ch3_s7_p1">
+                            Explorează vizual lumea Unix prin fotografii de arhivă din Bell Labs, video educațional, 
+                            un terminal interactiv demonstrativ și atmosferă sonoră de epocă.
+                        </p>
+
+                        <!-- Image Gallery -->
+                        <h3 class="media-heading media-heading--gallery ch3-color-gallery" data-i18n="ch3_s7_gallery">
+                            📷 Galerie Foto: Bell Labs și Pionierii Unix
+                        </h3>
+
+                        <div class="media-grid">
+                            <figure class="media-figure">
+                                <img src="media/Ken_Thompson_and_Dennis_Ritchie_1973.jpg" alt="Ken Thompson și Dennis Ritchie" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch3_s7_img1_title">Thompson & Ritchie (1973)</strong>
+                                    <span data-i18n="ch3_s7_img1_desc">Ken Thompson (stânga) și Dennis Ritchie (dreapta) la un terminal PDP-11 
+                                    în Bell Labs — momentul definitoriu al creației Unix.</span>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="media-figure">
+                                <img src="media/Pdp-11-40_highres.jpg" alt="PDP-11/40" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch3_s7_img2_title">DEC PDP-11/40</strong>
+                                    <span data-i18n="ch3_s7_img2_desc">Minicomputerul pe care Unix a fost rafinat și rescris în C. Cu resurse modeste, 
+                                    a demonstrat că un SO puternic nu necesită hardware scump.</span>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="media-figure">
+                                <img src="media/DEC_PDPs.jpg" alt="Rack-uri DEC PDP" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch3_s7_img3_title">Rack-uri DEC PDP</strong>
+                                    <span data-i18n="ch3_s7_img3_desc">Rack-uri și console DEC — mediul tipic în care cercetătorii Bell Labs 
+                                    lucrau cu primele versiuni de Unix prin terminale text.</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                        <!-- Video Section -->
+                        <h3 class="media-heading media-heading--video ch3-color-video" data-i18n="ch3_s7_video">
+                            🎬 Video Educativ: Povestea Unix
+                        </h3>
+
+                        <div class="video-container">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://archive.org/embed/ATT_Archives_The_UNIX_Operating_System" 
+                                    title="AT&T Archives: The UNIX Operating System" 
+                                    webkitallowfullscreen="true"
+                                    mozallowfullscreen="true"
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-description">
+                                <h4>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 16v-4M12 8h.01"/>
+                                    </svg>
+                                    <span data-i18n="ch3_s7_video_title">De ce acest video?</span>
+                                </h4>
+                                <p data-i18n="ch3_s7_video_desc">
+                                    „AT&T Archives: The UNIX Operating System" — un film din arhivele AT&T care prezintă 
+                                    Unix direct din perspectiva creatorilor săi. Include demonstrații ale pipe-urilor, 
+                                    shell-ului și filosofiei de design care au revoluționat industria.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Demo -->
+                        <h3 class="media-heading media-heading--terminal ch3-color-terminal" data-i18n="ch3_s7_terminal_heading">
+                            💻 Terminal Demonstrativ Unix
+                        </h3>
+
+                        <div class="unix-terminal">
+                            <div class="terminal-titlebar">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                                <span class="terminal-titlebar-text">unix@bell-labs — /usr/research</span>
+                            </div>
+                            <div class="terminal-body">
+                                <div class="terminal-comment" data-i18n="ch3_term_comment1"># Cine suntem și unde ne aflăm?</div>
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">unix@bell-labs:~$</span>
+                                    <span class="terminal-command">whoami</span>
+                                </div>
+                                <div class="terminal-output">ken</div>
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">unix@bell-labs:~$</span>
+                                    <span class="terminal-command">pwd</span>
+                                </div>
+                                <div class="terminal-output">/usr/research/unix</div>
+
+                                <div class="terminal-comment" data-i18n="ch3_term_comment2"># Listăm structura de directoare</div>
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">unix@bell-labs:~$</span>
+                                    <span class="terminal-command">ls -la</span>
+                                </div>
+                                <div class="terminal-output">drwxr-xr-x  5 ken  staff  160  Jan  1 1970  .</div>
+                                <div class="terminal-output">drwxr-xr-x  3 root root   96  Jan  1 1970  ..</div>
+                                <div class="terminal-output">-rw-r--r--  1 ken  staff  9856 Jan  1 1970  kernel.c</div>
+                                <div class="terminal-output">drwxr-xr-x  8 ken  staff  256  Jan  1 1970  bin</div>
+                                <div class="terminal-output">drwxr-xr-x  4 dmr  staff  128  Jan  1 1970  usr</div>
+
+                                <div class="terminal-comment" data-i18n="ch3_term_comment3"># Puterea pipe-urilor: combinăm comenzi</div>
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">unix@bell-labs:~$</span>
+                                    <span class="terminal-command">cat /etc/passwd | wc -l</span>
+                                </div>
+                                <div class="terminal-output">7</div>
+
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">unix@bell-labs:~$</span>
+                                    <span class="terminal-command">ps aux | grep sh</span>
+                                </div>
+                                <div class="terminal-output">ken   42  0.1  0.2  1024  128  tty1  S  00:00  sh</div>
+                                <div class="terminal-output">dmr   87  0.0  0.1   512   64  tty2  S  00:01  sh</div>
+
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">unix@bell-labs:~$</span>
+                                    <span class="terminal-cursor"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audio Section -->
+                        <h3 class="media-heading media-heading--audio ch3-color-audio" data-i18n="ch3_s7_audio">
+                            🎧 Atmosferă Sonoră: Terminal Room (Opțional)
+                        </h3>
+
+                        <div class="audio-section">
+                            <div class="audio-header">
+                                <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <path d="M7 8l3 3-3 3"/>
+                                    <line x1="13" y1="11" x2="17" y2="11"/>
+                                </svg>
+                                <h4 data-i18n="ch3_s7_audio_title">Sunetele unui Terminal Room (anii '70)</h4>
+                            </div>
+
+                            <div class="audio-player">
+                                <button class="audio-play-btn" id="audioPlayBtn" aria-label="Redă sunetul">
+                                    <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </button>
+                                <div class="audio-info">
+                                    <h5 data-i18n="ch3_s7_audio_subtitle">Unix Terminal Ambience — Simulare Sintetizată</h5>
+                                    <p id="audioStatus" data-i18n="ch3_s7_audio_status">Click pentru a genera și reda sunetul</p>
+                                </div>
+                                <div class="volume-control">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                    </svg>
+                                    <input type="range" id="volumeSlider" min="0" max="100" value="70"
+                                           title="Volume" class="volume-slider ch3-accent-slider">
+                                </div>
+                            </div>
+
+                            <p class="audio-description" data-i18n="ch3_s7_audio_desc">
+                                <strong>Scop:</strong> Acest generator audio recreează atmosfera unui terminal room 
+                                din anii '70 — zgomotul ventilatorelor, click-urile ritmice ale tastaturii unui 
+                                teletype, tonurile caracteristice modemurilor și humul constant al minicomputerelor. 
+                                Sunetul este generat în timp real folosind Web Audio API.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
             </section>
-            <nav class="chapter-nav">
-                <a href="capitol-2-mainframe.html">&larr; Înapoi la Era Mainframe</a>
-                <a href="capitol-4-pc.html">Capitolul următor: Era PC &rarr;</a>
+
+            <!-- Enhanced Navigation -->
+            <nav class="chapter-nav-enhanced">
+                <a href="capitol-2-mainframe.html" class="nav-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span data-i18n="ch3_nav_prev">Capitolul 2: Era Mainframe</span>
+                </a>
+                <a href="capitol-4-pc.html" class="nav-btn nav-btn-next">
+                    <span data-i18n="ch3_nav_next">Capitolul 4: Era PC</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </nav>
         </div>
     </main>
+
     <footer>
-        <p>&copy; 2026 Istoria Sistemelor de Operare</p>
+        <div class="container">
+            <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+        </div>
     </footer>
+
+    <script src="../../js/os-detect.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/enhancements.js"></script>
+    <script src="../../js/history.js"></script>
+
+    <!-- Audio Control Script with Web Audio API -->
+    <script>
+        // =====================================================
+        // WEB AUDIO API - Unix Terminal Room Ambience
+        // Generates realistic 1970s terminal room sounds
+        // =====================================================
+        
+        let audioContext = null;
+        let masterGain = null;
+        let isPlaying = false;
+        let audioNodes = [];
+
+        const playIcon = document.getElementById('playIcon');
+        const audioPlayBtn = document.getElementById('audioPlayBtn');
+        const audioStatus = document.getElementById('audioStatus');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        async function initAudioContext() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                masterGain = audioContext.createGain();
+                masterGain.gain.value = volumeSlider.value / 100 * 3.0;
+                masterGain.connect(audioContext.destination);
+            }
+            if (audioContext.state === 'suspended') {
+                await audioContext.resume();
+            }
+        }
+
+        // Low frequency hum (minicomputer power supplies)
+        function createHum() {
+            [60, 120, 180].forEach((freq, i) => {
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.value = 0.25 / (i + 1);
+                osc.connect(gain);
+                gain.connect(masterGain);
+                osc.start();
+                audioNodes.push({ osc, gain });
+            });
+        }
+
+        // Cooling fan noise (terminal room ventilation)
+        function createFanNoise() {
+            const bufferSize = 2 * audioContext.sampleRate;
+            const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            
+            const whiteNoise = audioContext.createBufferSource();
+            whiteNoise.buffer = noiseBuffer;
+            whiteNoise.loop = true;
+            
+            const lowPass = audioContext.createBiquadFilter();
+            lowPass.type = 'lowpass';
+            lowPass.frequency.value = 750;
+            lowPass.Q.value = 0.7;
+            
+            const gain = audioContext.createGain();
+            gain.gain.value = 0.22;
+            
+            whiteNoise.connect(lowPass);
+            lowPass.connect(gain);
+            gain.connect(masterGain);
+            whiteNoise.start();
+            audioNodes.push({ osc: whiteNoise, gain });
+        }
+
+        // Teletype keyboard clicks (characteristic of 1970s terminals)
+        function createTeletypeClicks() {
+            function scheduleClick() {
+                if (!isPlaying) return;
+                
+                const clickOsc = audioContext.createOscillator();
+                const clickGain = audioContext.createGain();
+                const filter = audioContext.createBiquadFilter();
+                
+                clickOsc.type = 'square';
+                clickOsc.frequency.value = 1200 + Math.random() * 800;
+                
+                filter.type = 'highpass';
+                filter.frequency.value = 800;
+                filter.Q.value = 3;
+                
+                clickGain.gain.setValueAtTime(0, audioContext.currentTime);
+                clickGain.gain.linearRampToValueAtTime(0.18, audioContext.currentTime + 0.001);
+                clickGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.02);
+                
+                clickOsc.connect(filter);
+                filter.connect(clickGain);
+                clickGain.connect(masterGain);
+                clickOsc.start(audioContext.currentTime);
+                clickOsc.stop(audioContext.currentTime + 0.025);
+                
+                // Typing rhythm: bursts of fast clicks then pauses
+                const isBurst = Math.random() > 0.3;
+                const delay = isBurst ? (50 + Math.random() * 120) : (400 + Math.random() * 2000);
+                setTimeout(scheduleClick, delay);
+            }
+            scheduleClick();
+        }
+
+        // Disk drive seek sounds
+        function createDiskSeek() {
+            function scheduleSeek() {
+                if (!isPlaying) return;
+                
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(80, audioContext.currentTime);
+                osc.frequency.linearRampToValueAtTime(40 + Math.random() * 60, audioContext.currentTime + 0.1);
+                
+                gain.gain.setValueAtTime(0, audioContext.currentTime);
+                gain.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+                
+                osc.connect(gain);
+                gain.connect(masterGain);
+                osc.start(audioContext.currentTime);
+                osc.stop(audioContext.currentTime + 0.15);
+                
+                setTimeout(scheduleSeek, 2000 + Math.random() * 5000);
+            }
+            scheduleSeek();
+        }
+
+        // Modem-like beep (occasional terminal bell)
+        function createTerminalBell() {
+            function scheduleBell() {
+                if (!isPlaying) return;
+                
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.value = 1000;
+                
+                gain.gain.setValueAtTime(0, audioContext.currentTime);
+                gain.gain.linearRampToValueAtTime(0.12, audioContext.currentTime + 0.005);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+                
+                osc.connect(gain);
+                gain.connect(masterGain);
+                osc.start(audioContext.currentTime);
+                osc.stop(audioContext.currentTime + 0.3);
+                
+                setTimeout(scheduleBell, 8000 + Math.random() * 15000);
+            }
+            setTimeout(scheduleBell, 3000);
+        }
+
+        async function startAmbience() {
+            await initAudioContext();
+            createHum();
+            createFanNoise();
+            createTeletypeClicks();
+            createDiskSeek();
+            createTerminalBell();
+        }
+
+        function stopAmbience() {
+            audioNodes.forEach(node => {
+                try { if (node.osc) node.osc.stop(); } catch(e) {}
+            });
+            audioNodes = [];
+        }
+
+        async function toggleAudio() {
+            if (isPlaying) {
+                stopAmbience();
+                playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+                audioStatus.textContent = 'Click pentru a genera și reda sunetul';
+                isPlaying = false;
+            } else {
+                try {
+                    await startAmbience();
+                    playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+                    audioStatus.textContent = '▶ Redare în curs... Click pentru a opri';
+                    isPlaying = true;
+                } catch(e) {
+                    console.error('Audio error:', e);
+                    audioStatus.textContent = '⚠ Eroare audio: browserul nu suportă Web Audio API';
+                    audioStatus.style.color = '#ef4444';
+                }
+            }
+        }
+
+        audioPlayBtn.addEventListener('click', toggleAudio);
+        volumeSlider.addEventListener('input', () => {
+            if (masterGain) masterGain.gain.value = volumeSlider.value / 100 * 3.0;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.unix-card, .media-figure, .video-container, .audio-section, .unix-terminal, .pipe-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Animate impact meter bars on scroll
+        const meterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target.querySelector('.impact-meter-fill');
+                    if (fill) {
+                        const width = fill.style.width;
+                        fill.style.width = '0%';
+                        setTimeout(() => { fill.style.width = width; }, 100);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.impact-meter').forEach(el => meterObserver.observe(el));
+    </script>
 </body>
 </html>

@@ -78,3 +78,76 @@ footer .container{ padding-top:14px; padding-bottom:14px; }
 @media (max-width:700px){
   .chapter-media img{ max-width:96%; max-height:260px; }
 }
+
+/* ===== Media section headings (replace inline styles) ===== */
+.media-heading {
+    margin: 28px 0 16px 0;
+    font-size: 1.1rem;
+}
+.media-heading--gallery { color: inherit; }
+.media-heading--video   { margin-top: 32px; }
+.media-heading--audio   { margin-top: 32px; }
+.media-heading--terminal{ margin-top: 32px; }
+
+/* ===== Volume control (replace inline styles) ===== */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+.volume-slider {
+    width: 80px;
+}
+
+/* ===== Responsive video embed (replace inline styles) ===== */
+.video-embed-container {
+    max-width: 640px;
+    margin: 0 auto;
+}
+.video-embed-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+.video-embed-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+.video-embed-caption {
+    color: #cfe6ff;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ===== Impact meter fill widths (replace inline styles) ===== */
+.impact-meter-fill--95 { width: 95%; }
+.impact-meter-fill--90 { width: 90%; }
+.impact-meter-fill--85 { width: 85%; }
+
+/* ===== Per-chapter heading colors (replace inline styles) ===== */
+/* Chapter 1 */
+.ch1-color-gallery  { color: #60a5fa; }
+.ch1-color-video    { color: #f59e0b; }
+.ch1-color-audio    { color: #a855f7; }
+.ch1-accent-slider  { accent-color: #a855f7; }
+
+/* Chapter 2 */
+.ch2-color-gallery  { color: var(--mainframe-primary, #0ea5e9); }
+.ch2-color-video    { color: var(--mainframe-accent, #f59e0b); }
+.ch2-color-audio    { color: var(--terminal-green, #22c55e); }
+.ch2-accent-slider  { accent-color: #22c55e; }
+
+/* Chapter 3 */
+.ch3-color-gallery  { color: var(--unix-primary, #22c55e); }
+.ch3-color-video    { color: var(--unix-accent, #f59e0b); }
+.ch3-color-audio    { color: var(--unix-primary, #22c55e); }
+.ch3-color-terminal { color: var(--unix-primary, #22c55e); }
+.ch3-accent-slider  { accent-color: #22c55e; }

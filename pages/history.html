@@ -76,73 +76,88 @@
             </div>
         </section>
 
+        <!-- ═══════════════════════════════════════════════
+             MINI ANIMATED INTRO — Istoria SO
+             Plays once on load, respects prefers-reduced-motion
+             ═══════════════════════════════════════════════ -->
+        <section class="history-intro" aria-label="Introduction">
+            <div class="history-intro__inner">
+                <div class="history-intro__accent" aria-hidden="true"></div>
+                <h2 class="history-intro__title" data-i18n="history_intro_title">Istoria Sistemelor de Operare</h2>
+                <div class="history-intro__line" aria-hidden="true">
+                    <span class="history-intro__line-glow"></span>
+                </div>
+                <p class="history-intro__subtitle" data-i18n="history_intro_subtitle">De la cartele perforate la cloud și inteligență artificială</p>
+            </div>
+        </section>
+
         <!-- 3D Interactive Timeline -->
         <section class="timeline-3d-container">
-            <h2 style="text-align: center; margin-bottom: 10px;" data-i18n="timeline_3d_title">🗺️ Timeline Interactiv 3D</h2>
-            <p style="text-align: center; color: #64748b; margin-bottom: 20px;" data-i18n="timeline_3d_hint">Trage pentru a naviga • Click pentru detalii • Scroll pentru zoom</p>
+            <h2 class="timeline-3d-heading" data-i18n="timeline_3d_title">🗺️ Timeline Interactiv 3D</h2>
+            <p class="timeline-3d-hint" data-i18n="timeline_3d_hint">Trage pentru a naviga • Click pentru detalii • Scroll pentru zoom</p>
             
             <div class="timeline-3d" id="timeline3d">
-                <div class="timeline-3d-card" style="--card-color: #6b7280; --card-color-end: #374151;">
+                <div class="timeline-3d-card timeline-card--1950">
                     <div class="card-year">1950</div>
                     <div class="card-icon">🖥️</div>
                     <div class="card-title" data-i18n="card_1950_title">Era Mainframe</div>
                     <div class="card-desc" data-i18n="card_1950_desc">Primele SO pentru calculatoare uriașe. Batch processing, carduri perforate, camere întregi.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #0ea5e9; --card-color-end: #0284c7;">
+                <div class="timeline-3d-card timeline-card--1964">
                     <div class="card-year">1964</div>
                     <div class="card-icon">🎯</div>
                     <div class="card-title" data-i18n="card_1964_title">IBM System/360</div>
                     <div class="card-desc" data-i18n="card_1964_desc">Primul SO cu multiprogramming. Mai multe job-uri rulau simultan. O revoluție!</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #8b5cf6; --card-color-end: #6d28d9;">
+                <div class="timeline-3d-card timeline-card--1969">
                     <div class="card-year">1969</div>
                     <div class="card-icon">🔓</div>
                     <div class="card-title" data-i18n="card_1969_title">Nașterea Unix</div>
                     <div class="card-desc" data-i18n="card_1969_desc">Bell Labs creează Unix. Design modular, portabil. Baza pentru toate SO-urile moderne.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #0078D4; --card-color-end: #0063B1;">
+                <div class="timeline-3d-card timeline-card--1981">
                     <div class="card-year">1981</div>
                     <div class="card-icon">💻</div>
                     <div class="card-title" data-i18n="card_1981_title">MS-DOS</div>
                     <div class="card-desc" data-i18n="card_1981_desc">Microsoft DOS pe IBM PC. Calculatoarele personale intră în case și birouri.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #A2AAAD; --card-color-end: #86868b;">
+                <div class="timeline-3d-card timeline-card--1984">
                     <div class="card-year">1984</div>
                     <div class="card-icon">🎨</div>
                     <div class="card-title" data-i18n="card_1984_title">Apple Macintosh</div>
                     <div class="card-desc" data-i18n="card_1984_desc">Primul GUI pentru mase. Click în loc de comenzi. Revoluția interfeței utilizator.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #00a4ef; --card-color-end: #0078d4;">
+                <div class="timeline-3d-card timeline-card--1985">
                     <div class="card-year">1985</div>
                     <div class="card-icon">🪟</div>
                     <div class="card-title" data-i18n="card_1985_title">Windows 1.0</div>
                     <div class="card-desc" data-i18n="card_1985_desc">Prima încercare Microsoft de GUI. Modest început pentru ce urma să domine.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #FCC624; --card-color-end: #f59e0b;">
+                <div class="timeline-3d-card timeline-card--1991">
                     <div class="card-year">1991</div>
                     <div class="card-icon">🐧</div>
                     <div class="card-title" data-i18n="card_1991_title">Nașterea Linux</div>
                     <div class="card-desc" data-i18n="card_1991_desc">Linus Torvalds creează Linux. Open source, gratuit, puternic. Viitorul serverelor.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #00a4ef; --card-color-end: #0078d4;">
+                <div class="timeline-3d-card timeline-card--1995">
                     <div class="card-year">1995</div>
                     <div class="card-icon">⭐</div>
                     <div class="card-title" data-i18n="card_1995_title">Windows 95</div>
                     <div class="card-desc" data-i18n="card_1995_desc">Punctul de cotitură. Start button, taskbar. Vândut în milioane. Dominația începe.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #00a4ef; --card-color-end: #86868b;">
+                <div class="timeline-3d-card timeline-card--2001">
                     <div class="card-year">2001</div>
                     <div class="card-icon">🎯</div>
                     <div class="card-title" data-i18n="card_2001_title">XP & OS X</div>
                     <div class="card-desc" data-i18n="card_2001_desc">Windows XP stabil și popular. Mac OS X unește frumusețea cu puterea Unix.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #3ddc84; --card-color-end: #007AFF;">
+                <div class="timeline-3d-card timeline-card--2007">
                     <div class="card-year">2007</div>
                     <div class="card-icon">📱</div>
                     <div class="card-title" data-i18n="card_2007_title">Revoluția Mobilă</div>
                     <div class="card-desc" data-i18n="card_2007_desc">iPhone lansează iOS. Android urmează. Miliarde au acum SO în buzunar.</div>
                 </div>
-                <div class="timeline-3d-card" style="--card-color: #2563eb; --card-color-end: #8b5cf6;">
+                <div class="timeline-3d-card timeline-card--2015">
                     <div class="card-year">2015+</div>
                     <div class="card-icon">🚀</div>
                     <div class="card-title" data-i18n="card_2015_title">Era Modernă</div>
@@ -211,6 +226,154 @@
     </footer>
 
     <style>
+    /* ═══════════════════════════════════════════════════
+       ANIMATED INTRO — History of Operating Systems
+       ═══════════════════════════════════════════════════ */
+    .history-intro {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 52px 24px 44px;
+        overflow: hidden;
+        background: radial-gradient(ellipse at 50% 60%, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+    }
+    .history-intro__inner {
+        text-align: center;
+        max-width: 720px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Top accent dot-line */
+    .history-intro__accent {
+        width: 6px;
+        height: 6px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: #2563eb;
+        box-shadow: 0 0 12px rgba(37, 99, 235, 0.5), 0 0 32px rgba(37, 99, 235, 0.2);
+        opacity: 0;
+        animation: introFadeIn 0.6s ease-out 0.1s forwards;
+    }
+
+    /* Title */
+    .history-intro__title {
+        font-size: clamp(1.55rem, 4vw, 2.4rem);
+        font-weight: 800;
+        color: #f1f5f9;
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        opacity: 0;
+        transform: translateY(18px);
+        animation: introSlideUp 0.8s ease-out 0.2s forwards;
+    }
+
+    /* Gradient underline */
+    .history-intro__line {
+        width: 100%;
+        max-width: 320px;
+        height: 2px;
+        margin: 0 auto 18px;
+        background: rgba(37, 99, 235, 0.15);
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        animation: introFadeIn 0.6s ease-out 0.45s forwards;
+    }
+    .history-intro__line-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, #2563eb, #8b5cf6, transparent);
+        border-radius: 2px;
+        animation: introLineSwipe 1.4s ease-in-out 0.5s forwards;
+        opacity: 0;
+    }
+
+    /* Subtitle */
+    .history-intro__subtitle {
+        font-size: clamp(0.92rem, 2vw, 1.1rem);
+        font-weight: 400;
+        color: #94a3b8;
+        margin: 0;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+        opacity: 0;
+        transform: translateY(14px);
+        animation: introSlideUp 0.8s ease-out 0.55s forwards;
+    }
+
+    /* ── Keyframes ── */
+    @keyframes introSlideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes introFadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes introLineSwipe {
+        0%   { opacity: 0; left: -40%; }
+        20%  { opacity: 1; }
+        100% { opacity: 0; left: 100%; }
+    }
+
+    /* ── Respect reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+        .history-intro__accent,
+        .history-intro__title,
+        .history-intro__line,
+        .history-intro__subtitle,
+        .history-intro__line-glow {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+        .history-intro {
+            padding: 36px 16px 28px;
+        }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       TIMELINE 3D — Utility Classes
+       ═══════════════════════════════════════════════════ */
+    .timeline-3d-heading {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .timeline-3d-hint {
+        text-align: center;
+        color: #64748b;
+        margin-bottom: 20px;
+    }
+    /* Per-card color themes (replace inline CSS vars) */
+    .timeline-card--1950 { --card-color: #6b7280; --card-color-end: #374151; }
+    .timeline-card--1964 { --card-color: #0ea5e9; --card-color-end: #0284c7; }
+    .timeline-card--1969 { --card-color: #8b5cf6; --card-color-end: #6d28d9; }
+    .timeline-card--1981 { --card-color: #0078D4; --card-color-end: #0063B1; }
+    .timeline-card--1984 { --card-color: #A2AAAD; --card-color-end: #86868b; }
+    .timeline-card--1985 { --card-color: #00a4ef; --card-color-end: #0078d4; }
+    .timeline-card--1991 { --card-color: #FCC624; --card-color-end: #f59e0b; }
+    .timeline-card--1995 { --card-color: #00a4ef; --card-color-end: #0078d4; }
+    .timeline-card--2001 { --card-color: #00a4ef; --card-color-end: #86868b; }
+    .timeline-card--2007 { --card-color: #3ddc84; --card-color-end: #007AFF; }
+    .timeline-card--2015 { --card-color: #2563eb; --card-color-end: #8b5cf6; }
+
+    /* ═══════════════════════════════════════════════════
+       HISTORY CHAPTERS LIST
+       ═══════════════════════════════════════════════════ */
     .history-chapters {
         max-width: 900px;
         margin: 40px auto 0 auto;

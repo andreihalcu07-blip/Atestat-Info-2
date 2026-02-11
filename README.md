@@ -1,2 +1,9 @@
 # Atestat-Info-2
-Evoluția sistemelor de operare
+
+Website despre evoluția sistemelor de operare.
+
+## Ghiduri utile
+
+- Documentație server: `docs/README.md`
+- Rulare locală static: `README_LOCAL_SERVER.md`
+- Teste arhivate: `docs/tests/`

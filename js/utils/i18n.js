@@ -519,6 +519,10 @@
             win10_desc: "Unificare și actualizări continue",
             win11_desc: "Design fluid și productivitate",
             
+            // OS types section (homepage)
+            os_types_title: "Tipuri Majore de Sisteme de Operare",
+            windows_home: "🏠 Pagina Principală",
+            
             // OS cards (homepage)
             os_windows_title: "Windows",
             os_windows_desc: "Cel mai utilizat SO pe desktop-uri. Dezvoltat de Microsoft.",
@@ -1462,6 +1466,10 @@
             win8_desc: "Modern Metro interface",
             win10_desc: "Unification and continuous updates",
             win11_desc: "Fluid design and productivity",
+            
+            // OS types section (homepage)
+            os_types_title: "Major Types of Operating Systems",
+            windows_home: "🏠 Home Page",
             
             // OS cards (homepage)
             os_windows_title: "Windows",

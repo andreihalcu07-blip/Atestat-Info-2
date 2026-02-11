@@ -5,10 +5,10 @@
 }
 
 /* App-wide Apple-like design layers (added) */
-@import url('theme-neutral.css');
-@import url('global.css');
-@import url('layout.css');
-@import url('animations.css');
+@import url('core/theme-neutral.css');
+@import url('core/global.css');
+@import url('core/layout.css');
+@import url('core/animations.css');
 @import url('mobile.css');
 
 

@@ -208,11 +208,7 @@ document.querySelector('.contact-form')?.addEventListener('submit', async functi
         if (!statusEl) return;
         statusEl.textContent = message;
         statusEl.style.color = type === 'error' ? '#ef4444' : '#22c55e';
-        statusEl.hidden = false;
-        statusEl.classList.remove('fade-in');
-        void statusEl.offsetWidth;
-        statusEl.classList.add('fade-in');
-        statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        statusEl.classList.add('visible');
     };
 
     const originalText = submitBtn.textContent;

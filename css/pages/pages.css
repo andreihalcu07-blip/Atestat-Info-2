@@ -1486,10 +1486,18 @@ body.dark-mode .achievement-item {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 999;
-    transition: all 0.3s ease;
+    transform: translateY(0);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.navbar.nav-hidden {
+    transform: translateY(-100%);
 }
 
 body.dark-mode .navbar {

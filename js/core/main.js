@@ -304,19 +304,75 @@ function initMobileMenu() {
 
 document.addEventListener('DOMContentLoaded', initMobileMenu);
 
-// Enhanced scroll effect to navbar
-let lastScrollY = 0;
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('header');
-    const scrollY = window.scrollY;
-    
-    if (scrollY > 50) {
+// Enhanced scroll effect to navbar + auto-hide
+let lastScrollY = Math.max(0, window.scrollY || 0);
+let lastToggleY = lastScrollY;
+let isNavHidden = false;
+let isScrollTicking = false;
+
+function updateNavbarOnScroll(currentScrollY) {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    if (currentScrollY > 50) {
         navbar.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.12)';
     } else {
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
     }
-    
-    lastScrollY = scrollY;
+
+    if (navbar.classList.contains('nav-open')) {
+        if (isNavHidden) {
+            navbar.classList.remove('nav-hidden');
+            isNavHidden = false;
+        }
+        lastScrollY = currentScrollY;
+        lastToggleY = currentScrollY;
+        return;
+    }
+
+    const topThreshold = 80;
+    const jitterThreshold = 15;
+
+    if (currentScrollY < topThreshold) {
+        if (isNavHidden) {
+            navbar.classList.remove('nav-hidden');
+            isNavHidden = false;
+        }
+        lastScrollY = currentScrollY;
+        lastToggleY = currentScrollY;
+        return;
+    }
+
+    const delta = currentScrollY - lastScrollY;
+    const distanceSinceToggle = Math.abs(currentScrollY - lastToggleY);
+
+    if (distanceSinceToggle < jitterThreshold) {
+        lastScrollY = currentScrollY;
+        return;
+    }
+
+    if (delta > 0 && !isNavHidden) {
+        navbar.classList.add('nav-hidden');
+        isNavHidden = true;
+        lastToggleY = currentScrollY;
+    } else if (delta < 0 && isNavHidden) {
+        navbar.classList.remove('nav-hidden');
+        isNavHidden = false;
+        lastToggleY = currentScrollY;
+    }
+
+    lastScrollY = currentScrollY;
+}
+
+window.addEventListener('scroll', function() {
+    const currentScrollY = Math.max(0, window.scrollY || window.pageYOffset || 0);
+    if (!isScrollTicking) {
+        window.requestAnimationFrame(() => {
+            updateNavbarOnScroll(currentScrollY);
+            isScrollTicking = false;
+        });
+        isScrollTicking = true;
+    }
 });
 
 // Add pulse effect on load

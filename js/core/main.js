@@ -193,47 +193,60 @@ createParticles();
 // Form submission cu trimitere la server
 document.querySelector('.contact-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    // Get form values
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const message = this.querySelector('textarea').value;
-    const submitBtn = this.querySelector('button[type="submit"]');
-    
-    // Simple validation
-    if (!name || !email || !message) {
-        alert('Te rog completează toate câmpurile!');
+
+    if (!this.checkValidity()) {
+        this.reportValidity();
         return;
     }
 
-    // Dezactivează butonul și arată loading
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const statusEl = this.querySelector('.contact-status');
+    const actionUrl = this.getAttribute('action');
+    const formData = new FormData(this);
+
+    const showStatus = (message, type) => {
+        if (!statusEl) return;
+        statusEl.textContent = message;
+        statusEl.style.color = type === 'error' ? '#ef4444' : '#22c55e';
+        statusEl.hidden = false;
+        statusEl.classList.remove('fade-in');
+        void statusEl.offsetWidth;
+        statusEl.classList.add('fade-in');
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Se trimite...';
     submitBtn.disabled = true;
 
     try {
-        // Trimite datele la server
-        const response = await fetch('/api/contact', {
+        const response = await fetch(actionUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({ name, email, message })
+            body: formData
         });
 
-        const data = await response.json();
+        let responseData = null;
+        const responseType = response.headers.get('content-type') || '';
+        if (responseType.includes('application/json')) {
+            responseData = await response.json();
+        } else {
+            responseData = await response.text();
+        }
 
-        if (response.ok && data.success) {
-            alert(`Mulțumim, ${name}! ${data.message}`);
+        if (response.ok) {
+            showStatus('Mesajul a fost trimis cu succes. Îți mulțumim!', 'success');
             this.reset();
         } else {
-            alert('Eroare: ' + (data.error || 'Nu s-a putut trimite mesajul'));
+            const errorMessage = responseData && responseData.message ? responseData.message : 'Nu s-a putut trimite mesajul. Încearcă din nou.';
+            showStatus(errorMessage, 'error');
         }
     } catch (error) {
         console.error('Eroare:', error);
-        alert('Eroare la conectare cu serverul. Asigură-te că serverul rulează pe http://localhost:3000');
+        showStatus('Eroare la trimitere. Verifică conexiunea și încearcă din nou.', 'error');
     } finally {
-        // Re-activează butonul
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
     }

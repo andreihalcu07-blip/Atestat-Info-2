@@ -260,11 +260,16 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2 data-i18n="contact_title">Contactează-ne</h2>
-                <form class="contact-form">
-                    <input type="text" data-i18n="contact_name" placeholder="Nume" required>
-                    <input type="email" data-i18n="contact_email" placeholder="Email" required>
-                    <textarea data-i18n="contact_message" placeholder="Mesajul tău" rows="5" required></textarea>
+                <form class="contact-form" action="https://formsubmit.co/andrei.ivan@licmarghilomabz.ro" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Mesaj nou de pe Atestat Info">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="text" name="name" data-i18n="contact_name" placeholder="Nume" required>
+                    <input type="email" name="email" data-i18n="contact_email" placeholder="Email" required>
+                    <textarea name="message" data-i18n="contact_message" placeholder="Mesajul tău" rows="5" required></textarea>
                     <button type="submit" class="btn btn--primary" data-i18n="contact_send">Trimite</button>
+                    <div class="contact-status message fade-in" role="status" aria-live="polite" hidden></div>
                 </form>
             </div>
         </section>

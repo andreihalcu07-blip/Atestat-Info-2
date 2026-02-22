@@ -52,6 +52,7 @@ body {
     min-height: 100vh;
     color: var(--text-dark);
     position: relative;
+    padding-top: 80px;
 }
 
 /* Decorative Circle - like main page */
@@ -97,6 +98,7 @@ body::after {
     color: white;
     position: relative;
     z-index: 1;
+    margin-top: 20px;
 }
 
 /* Header Navigation Bar */
@@ -109,7 +111,18 @@ body::after {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transform: translateY(0);
+    transition: transform 0.3s ease, background 0.3s ease;
+    will-change: transform;
+}
+
+.header-nav.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .header-nav-right {

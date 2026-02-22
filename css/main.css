@@ -151,6 +151,7 @@ body {
     background-color: var(--bg-white);
     background: linear-gradient(135deg, var(--bg-white) 0%, #f0f4ff 100%);
     background-attachment: fixed;
+    padding-top: 80px;
 }
 
 body.dark-mode {
@@ -1438,8 +1439,8 @@ footer::before {
     }
 
     .hero {
-        padding: 100px 20px;
-        min-height: 500px;
+        padding: 80px 20px;
+        min-height: 450px;
     }
 
     .hero-content h2 {

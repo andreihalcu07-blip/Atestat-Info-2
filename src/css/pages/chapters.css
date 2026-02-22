@@ -1,0 +1,439 @@
+/* =========================================================================
+   CAPITOLE - Stiluri articole/capitole + boot screens
+   Include: .chapter-article, .chapter-hero, .chapter-content, .chapter-nav
+   Include: .boot-screen, boot image screens
+   ========================================================================= */
+
+.chapter-content > h2,
+.chapter-content > h3,
+.chapter-content > ul,
+.chapter-content > p {
+    margin-top: 22px;
+}
+.chapter-content > *:first-child {
+    margin-top: 0;
+}
+.chapter-content > *:last-child {
+    margin-bottom: 0;
+}
+/* =====================================================
+   PAGES.CSS - Stiluri specifice pentru fiecare pagină
+   ===================================================== */
+
+/* =====================================================
+   GRADIENT VARIABLES - Pentru consistență
+   ===================================================== */
+:root {
+    --gradient-hero: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #7c3aed 100%);
+    --gradient-primary: linear-gradient(135deg, #2563eb, #1e40af);
+    --gradient-accent: linear-gradient(135deg, #2563eb, #f59e0b);
+    --gradient-button: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+/* ------------------------------------------------------------------
+   Boot screen (Windows 95 style) - single template
+   - Strict: no modern effects (no gradients, no blur, no shadows)
+   - Layout and proportions approximate classic boot screen
+   - Only the version text is dynamic via data-version attribute
+   ------------------------------------------------------------------ */
+.boot-screen.windows95 {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #87b7e6; /* classic sky-blue backdrop */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #000; /* text color kept simple */
+}
+
+.boot-screen .boot-inner {
+    text-align: center;
+    display: inline-block;
+}
+
+/* Windows flag - simple block-style rendition using inline SVG (keeps proportions)
+   Positioning follows the classic composition: flag above and slightly left of text.
+   We avoid any drop-shadows or modern effects. */
+.boot-screen .windows-flag {
+    width: 480px;
+    height: auto;
+    display: block;
+    margin: 0 auto 18px auto;
+}
+
+.boot-screen .windows-version {
+    display: block;
+    font-size: 56px; /* large, proportional; inherits page font-family */
+    line-height: 1;
+    margin-top: 6px;
+    color: #000; /* classic strong text */
+}
+
+/* Small helper to visually match old proportions on narrow viewports */
+@media (max-width: 700px) {
+/* =============================
+     Capitole Istorie - Stilizare
+     ============================= */
+
+.chapter-article {
+    background: rgba(30,40,60,0.03);
+    border-radius: 18px;
+    box-shadow: 0 4px 32px 0 rgba(37,99,235,0.07);
+    margin: 36px auto 36px auto;
+    padding: 32px 24px 32px 24px;
+    max-width: 900px;
+    transition: background 0.3s;
+}
+
+.chapter-hero {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.chapter-hero .chapter-icon {
+    width: 38px;
+    height: 38px;
+    fill: var(--primary-color);
+}
+.chapter-lead {
+    color: var(--text-light);
+    font-size: 1.15rem;
+    margin-bottom: 0;
+}
+
+.chapter-content {
+    margin-bottom: 32px;
+}
+.chapter-content h2 {
+    font-size: 1.35rem;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.chapter-content h3 {
+    font-size: 1.08rem;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+.chapter-content ul {
+    margin-left: 24px;
+    margin-bottom: 12px;
+}
+.chapter-content li {
+    margin-bottom: 5px;
+}
+.chapter-content p {
+    margin-bottom: 10px;
+}
+
+.chapter-media {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.chapter-media figure {
+    background: rgba(37,99,235,0.04);
+    border-radius: 14px;
+    box-shadow: 0 2px 16px 0 rgba(37,99,235,0.08);
+    padding: 12px 12px 8px 12px;
+    margin: 0;
+    text-align: center;
+}
+.chapter-media img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 rgba(37,99,235,0.10);
+    margin-bottom: 6px;
+}
+.chapter-media figcaption {
+    color: #64748b;
+    font-size: 0.98em;
+    margin-top: 2px;
+}
+.chapter-media iframe {
+    border-radius: 12px;
+    box-shadow: 0 2px 16px 0 rgba(37,99,235,0.10);
+}
+
+.chapter-back {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.chapter-back:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.chapter-nav {
+    margin-top: 32px;
+    text-align: right;
+}
+.chapter-nav a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.08rem;
+    transition: color 0.2s;
+}
+.chapter-nav a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .chapter-article {
+        padding: 18px 4vw 18px 4vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .chapter-article {
+        padding: 8px 2vw 8px 2vw;
+    }
+    .chapter-hero h1 {
+        font-size: 1.25rem;
+        gap: 6px;
+    }
+    .chapter-content h2 {
+        font-size: 1.08rem;
+    }
+}
+    .boot-screen .windows-flag { width: 260px; }
+    .boot-screen .windows-version { font-size: 34px; }
+}
+
+/* ------------------------------------------------------------------
+   Boot image-based screens for Windows 95 / 98
+   - Uses boot.jpg from the corresponding windows folder
+   - No text/logo added by code, only a loading bar injected
+   ------------------------------------------------------------------ */
+.boot-screen {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain; /* preserve aspect ratio of boot image */
+}
+
+/* Background images (CSS only) - paths relative to css/pages.css */
+.boot-screen[data-version="95"] {
+    background-image: url('../../images/windows/win95/boot.jpg');
+}
+.boot-screen[data-version="98"] {
+    background-image: url('../../images/windows/win98/boot.jpg');
+}
+
+/* Loading bar (minimal, classic style) */
+.boot-loader {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 6%;
+    display: block;
+}
+.boot-loader-track {
+    width: 420px;
+    max-width: 80vw;
+    height: 18px;
+    border: 2px solid #8f8f8f; /* grey outline */
+    background: transparent;
+    box-sizing: border-box;
+}
+.boot-loader-fill {
+    width: 0%;
+    height: 100%;
+    background: #1e73be; /* blue interior */
+    animation: bootfill 2s linear infinite;
+}
+
+@keyframes bootfill {
+    0% { width: 0%; }
+    50% { width: 100%; }
+    100% { width: 0%; }
+}
+
+
+
+
+
+/* =========================================================================
+   CAPITOL STYLES (LEGACY) - Stiluri capitole din history.css original
+   Include: teme dark per capitol, chapter-media, impact meter, culori capitol
+   ========================================================================= */
+
+/* Styles for history chapter pages - matches project look */
+:root{
+  --bg-card: linear-gradient(90deg,#1e293b 60%, #334155 100%);
+  --accent: #2563eb;
+  --muted: #94a3b8;
+}
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding-left:18px;
+  padding-right:18px;
+}
+.chapter-article{
+  background: rgba(15,23,42,0.84);
+  border-radius: 12px;
+  padding: 22px;
+  margin-top: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.22);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.chapter-back{
+  display:inline-block;
+  margin-bottom: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight:600;
+}
+.chapter-back:hover{ text-decoration:underline; }
+.chapter-hero{
+  margin-bottom: 10px;
+}
+.chapter-hero h1{
+  font-size:1.9rem;
+  margin:0 0 6px 0;
+}
+.chapter-hero p{ color: var(--muted); margin:0 0 10px 0; }
+.chapter-content h2{ color:#fff; margin-top:18px; }
+.chapter-content p, .chapter-content ul{
+  color: #e6eef8;
+  line-height:1.6;
+}
+.chapter-nav{ margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; }
+.chapter-nav a{ color:#cfe6ff; text-decoration:none; padding:8px 12px; border-radius:8px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02); }
+.chapter-nav a:hover{ background: linear-gradient(90deg, rgba(37,99,235,0.12), rgba(51,65,85,0.12)); border-color: rgba(37,99,235,0.18); }
+@media (max-width:700px){
+  .chapter-hero h1{ font-size:1.4rem; }
+  .chapter-article{ padding:18px; }
+}
+
+/* Ensure footer sits just after content and reduce large empty space */
+footer{
+  position: relative;
+  margin-top: 12px;
+  background: transparent;
+}
+footer .container{ padding-top:14px; padding-bottom:14px; }
+
+.chapter-lead{ color: var(--muted); margin: 6px 0 12px 0; }
+.chapter-content h2{ color: #ffffff; margin-top:16px; font-size:1.15rem; }
+.chapter-content h3{ color: #e6eef8; margin-top:12px; font-size:1.03rem; }
+.chapter-content p{ color:#dfeafe; margin:8px 0; }
+.chapter-content ul{ margin:8px 0 12px 1.05rem; color:#dfeafe; }
+.chapter-content strong{ color:#fff; font-weight:700; }
+.chapter-article{ margin-bottom: 6px; }
+
+/* Chapter title icons (minimal, monochrome, aligned) */
+.chapter-hero h1 .chapter-icon{ width:20px; height:20px; vertical-align:middle; margin-right:10px; color: var(--accent); fill: currentColor; display:inline-block; }
+@media (max-width:600px){
+  .chapter-hero h1 .chapter-icon{ width:18px; height:18px; margin-right:8px; }
+}
+
+/* Media responsiveness for images and embedded video */
+.chapter-media img{ max-width:90%; max-height:360px; width:auto; height:auto; display:block; margin:10px auto; border-radius:6px; object-fit:cover; }
+.chapter-media figure{ margin:12px 0; text-align:center; }
+.chapter-media figcaption{ color:var(--muted); font-size:0.92rem; margin-top:6px; }
+.chapter-video iframe{ width:100%; max-width:900px; height:calc(100vw * 9 / 16); max-height:420px; display:block; margin:14px auto; border:0; }
+
+@media (max-width:700px){
+  .chapter-media img{ max-width:96%; max-height:260px; }
+}
+
+/* ===== Media section headings (replace inline styles) ===== */
+.media-heading {
+    margin: 28px 0 16px 0;
+    font-size: 1.1rem;
+}
+.media-heading--gallery { color: inherit; }
+.media-heading--video   { margin-top: 32px; }
+.media-heading--audio   { margin-top: 32px; }
+.media-heading--terminal{ margin-top: 32px; }
+
+/* ===== Volume control (replace inline styles) ===== */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+.volume-slider {
+    width: 80px;
+}
+
+/* ===== Responsive video embed (replace inline styles) ===== */
+.video-embed-container {
+    max-width: 640px;
+    margin: 0 auto;
+}
+.video-embed-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+.video-embed-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+.video-embed-caption {
+    color: #cfe6ff;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ===== Impact meter fill widths (replace inline styles) ===== */
+.impact-meter-fill--95 { width: 95%; }
+.impact-meter-fill--90 { width: 90%; }
+.impact-meter-fill--85 { width: 85%; }
+
+/* ===== Per-chapter heading colors (replace inline styles) ===== */
+/* Chapter 1 */
+.ch1-color-gallery  { color: #60a5fa; }
+.ch1-color-video    { color: #f59e0b; }
+.ch1-color-audio    { color: #a855f7; }
+.ch1-accent-slider  { accent-color: #a855f7; }
+
+/* Chapter 2 */
+.ch2-color-gallery  { color: var(--mainframe-primary, #0ea5e9); }
+.ch2-color-video    { color: var(--mainframe-accent, #f59e0b); }
+.ch2-color-audio    { color: var(--terminal-green, #22c55e); }
+.ch2-accent-slider  { accent-color: #22c55e; }
+
+/* Chapter 3 */
+.ch3-color-gallery  { color: var(--unix-primary, #22c55e); }
+.ch3-color-video    { color: var(--unix-accent, #f59e0b); }
+.ch3-color-audio    { color: var(--unix-primary, #22c55e); }
+.ch3-color-terminal { color: var(--unix-primary, #22c55e); }
+.ch3-accent-slider  { accent-color: #22c55e; }

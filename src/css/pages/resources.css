@@ -1,0 +1,97 @@
+/* =========================================================================
+   RESOURCES PAGE - Resurse
+   Include: .resources-content, .resource-category, .resource-list
+   Include: Dark Mode
+   ========================================================================= */
+
+/* =====================================================
+   RESOURCES PAGE - Resurse
+   ===================================================== */
+.resources-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.resource-category {
+    background: white;
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.resource-category h2 {
+    color: #2563eb;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.resource-list {
+    list-style: none;
+}
+
+.resource-list li {
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9fafb;
+    border-left: 4px solid #2563eb;
+    border-radius: 5px;
+}
+
+.resource-list a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.resource-list a:hover {
+    color: #1e40af;
+    text-decoration: underline;
+}
+
+.resource-desc {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* Dark Mode - Resources */
+body.dark-mode .resources-content {
+    background: transparent;
+}
+
+body.dark-mode .resource-category {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+body.dark-mode .resource-category h2 {
+    color: #60a5fa;
+}
+
+body.dark-mode .resource-list li {
+    background: #0f172a;
+    border-left-color: #3b82f6;
+    color: #e5e7eb;
+}
+
+body.dark-mode .resource-list a {
+    color: #60a5fa;
+}
+
+body.dark-mode .resource-list a:hover {
+    color: #93c5fd;
+}
+
+body.dark-mode .resource-desc {
+    color: #94a3b8;
+}
+
+body.dark-mode .resource-list strong {
+    color: #f1f5f9;
+}
+
+

@@ -1,0 +1,55 @@
+/* =========================================================================
+   MAIN.CSS - Punct de intrare principal pentru stiluri
+   Proiect: Evolutia Sistemelor de Operare (SistemOS)
+   
+   STRUCTURA:
+   1. Base     → Variabile, reset, animatii
+   2. Layout   → Navbar, hero, footer
+   3. Componente → Butoane, logo, formulare, modale
+   4. Pagini   → Home, about, FAQ, quiz, glossary, etc.
+   5. Teme     → Dark mode
+   6. Responsive → Mobile, desktop, breakpoints, print
+   ========================================================================= */
+
+/* ----- 0. LEGACY LAYERS (variabile suplimentare - Apple-design) ----- */
+@import url('core/theme-neutral.css');
+@import url('core/global.css');
+@import url('core/layout.css');
+@import url('core/animations.css');
+
+/* ----- 1. BAZA ----- */
+@import url('base/variables.css');
+@import url('base/reset.css');
+@import url('base/animations.css');
+
+/* ----- 2. LAYOUT ----- */
+@import url('layout/navbar.css');
+@import url('layout/hero.css');
+@import url('layout/footer.css');
+
+/* ----- 3. COMPONENTE ----- */
+@import url('components/buttons.css');
+@import url('components/logo.css');
+@import url('components/forms.css');
+@import url('components/modals.css');
+
+/* ----- 4. PAGINI ----- */
+@import url('pages/home.css');
+@import url('pages/chapters.css');
+@import url('pages/about.css');
+@import url('pages/faq.css');
+@import url('pages/resources.css');
+@import url('pages/comparison.css');
+@import url('pages/history.css');
+@import url('pages/quiz.css');
+@import url('pages/glossary.css');
+@import url('pages/reduced-motion-pages.css');
+
+/* ----- 5. TEME ----- */
+@import url('themes/dark-mode.css');
+
+/* ----- 6. RESPONSIVE ----- */
+@import url('responsive/breakpoints.css');
+@import url('responsive/mobile.css');
+@import url('responsive/desktop.css');
+@import url('print.css');

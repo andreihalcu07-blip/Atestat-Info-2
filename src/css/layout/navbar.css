@@ -1,0 +1,116 @@
+/* =========================================================================
+   NAVBAR - Bara de navigare + link-uri
+   Include: .navbar, .nav-hidden, .navbar-left/center/right, .nav-links
+   ========================================================================= */
+
+.navbar {
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transform: translateY(0);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.navbar.nav-hidden {
+    transform: translateY(-100%);
+}
+
+body.dark-mode .navbar {
+    background: rgba(17, 24, 39, 0.95);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* =============================================================================
+   NAVBAR - Structură cu 3 zone: stânga (logo), centru (meniu), dreapta (toggle-uri)
+   ============================================================================= */
+
+/* Container principal - flexbox cu 3 zone */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 10px; /* Padding mai mic pentru navbar */
+    max-width: 100%; /* Full width pentru navbar */
+}
+
+/* STÂNGA: Logo + text (lipit de margine) */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-start;
+    margin-left: 4px;
+}
+
+/* CENTRU: Meniu navigare - centrat PERFECT */
+.navbar-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+/* DREAPTA: Toggle-uri (lipit de margine) */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex: 1;
+    margin-right: 4px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+    white-space: nowrap;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+

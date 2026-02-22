@@ -1,0 +1,24 @@
+/* =========================================================================
+   REDUCED MOTION - Accesibilitate pagini
+   ========================================================================= */
+
+/* =====================================================
+   ACCESSIBILITY - Reduced Motion Support
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-3d-card,
+    .feature-card,
+    .faq-item,
+    .resource-card,
+    .quiz-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .timeline-3d-card:hover,
+    .feature-card:hover {
+        transform: none !important;
+    }
+}
+

@@ -1,0 +1,639 @@
+/* =========================================================================
+   QUIZ PAGE - Quiz interactiv
+   Include: .quiz-content, .quiz-container, .quiz-options, .quiz-button
+   Include: timer, achievements, leaderboard, confetti, overlay
+   Include: Dark Mode + Animations
+   ========================================================================= */
+
+/* =====================================================
+   QUIZ PAGE - Quiz interactiv
+   ===================================================== */
+.quiz-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.quiz-container {
+    background: var(--bg-light);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-question {
+    margin-bottom: 30px;
+}
+
+.question-number {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.question-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Make sure options are large, tappable and full-width on small screens */
+@media (max-width: 720px) {
+    .quiz-content { padding: 28px 14px; }
+    .quiz-container { padding: 18px; }
+    .question-text { font-size: 1rem; }
+    .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .option {
+        width: 100%;
+        padding: 18px 16px;
+        font-size: 1.05rem;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(0,0,0,0.06);
+    }
+    .option input[type="radio"] { margin-right: 12px; }
+    .option:active, .option:focus {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        outline: none;
+    }
+    /* Ensure question images fit viewport */
+    .question-image { max-width: 100%; height: auto; display:block; margin: 10px 0; }
+    /* Timer smaller and readable */
+    .timer-container { padding: 10px; gap: 6px; }
+    .timer-icon { font-size: 1.2rem; }
+    .timer-value { font-size: 1.2rem; }
+    /* Achievements modal tweaks for small screens */
+    .achievements-modal { width: 96%; padding: 12px; max-height: 88vh; }
+}
+
+.option input[type="radio"] {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+/* New: style the option text so the entire label is tappable and we can style
+   the checked state with input:checked + .option-text */
+.option .option-text {
+    display: block;
+    flex: 1 1 auto;
+    line-height: 1.3;
+}
+
+/* Prefer native radio but make it larger and use accent-color where supported */
+.option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    accent-color: var(--primary-color);
+}
+
+/* When an option is selected, highlight the option-text (works because input is before span) */
+.option input[type="radio"]:checked + .option-text {
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.quiz-button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 40px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.quiz-button:hover {
+    background: var(--secondary-color);
+}
+
+.quiz-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.results {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    background: var(--bg-light);
+    border-radius: 10px;
+}
+
+/* Mobile: make results container scrollable if content extends beyond viewport */
+@media (max-width: 720px) {
+    .results {
+        max-height: 88vh;
+        overflow-y: auto;
+        padding-bottom: 28px; /* space for share button */
+    }
+    /* Ensure leaderboard embed inside results fits comfortably */
+    .leaderboard-embed {
+        padding: 8px 6px;
+    }
+}
+
+.results.show {
+    display: block;
+    animation: slideUp 0.6s ease;
+}
+
+.score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 20px 0;
+}
+
+.score-message {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.restart-btn {
+    padding: 12px 30px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.restart-btn:hover {
+    background: #d97706;
+}
+
+.progress {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    background: var(--border-color);
+    height: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Timer Styles */
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: 10px;
+    border: 2px solid #f59e0b;
+}
+
+.timer-icon {
+    font-size: 1.5rem;
+}
+
+.timer-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d97706;
+    font-family: monospace;
+}
+
+.timer-value.warning {
+    color: #dc2626;
+    animation: pulse 0.5s infinite;
+}
+
+.bonus-time {
+    font-size: 0.9rem;
+    color: #059669;
+    font-weight: 600;
+}
+
+/* Achievements Styles (contextual) */
+/* ===== Quiz helper classes (replace inline styles) ===== */
+.achievements-modal-title { margin-top: 0; }
+.leaderboard-actions { margin-top: 12px; display: flex; gap: 10px; justify-content: flex-end; }
+
+.achievements-panel {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    z-index: 1000;
+}
+
+.achievements-panel.show {
+    display: flex;
+    animation: fadeIn 0.18s ease;
+}
+
+.achievements-modal {
+    width: 92%;
+    max-width: 620px;
+    background: var(--bg-white);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    padding: 18px 18px 22px 18px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.achievements-close {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+/* Achievement chip (contextual indicator) */
+.achievement-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px; /* original padding */
+    border-radius: 25px; /* original pill shape */
+    background: linear-gradient(90deg, #f59e0b 0%, #f59e0b 45%, #d97706 100%); /* gold/orange gradient */
+    color: #ffffff; /* white text */
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18), inset 0 -6px 18px rgba(0,0,0,0.08);
+}
+
+/* Remove custom focus/hover tweaks added recently; keep visual behavior identical to original */
+.achievement-chip:focus { outline: none; }
+.achievement-chip:hover { opacity: 1; }
+
+/* Icon, label and count within the chip */
+.achievement-chip .achievement-icon {
+    font-size: 1.35rem; /* larger icon */
+    line-height: 1;
+    display: inline-block;
+}
+
+.achievement-chip .achievement-label {
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 6px;
+}
+
+.achievement-chip .achievement-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Hero actions: group Achievements + Leaderboard chips */
+.hero-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px; /* consistent spacing between buttons */
+    margin-top: 8px;
+}
+
+/* Ensure leaderboard chip matches achievement chip visually (inherits .achievement-chip) */
+/* .leaderboard-chip intentionally omitted - inherits .achievement-chip styles */
+
+/* Mobile: stack or expand buttons for touch targets */
+@media (max-width: 720px) {
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .achievement-chip {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 1.02rem;
+    }
+    .achievement-chip .achievement-count { margin-left: 8px; }
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin: 8px 0;
+    background: var(--bg-muted, #f3f4f6);
+    border-radius: 10px;
+    transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.achievement-item.unlocked {
+    /* Subtle unlocked style: darkened background with green accent border */
+    background: linear-gradient(180deg, rgba(16,185,129,0.06), rgba(16,185,129,0.03));
+    border-left: 4px solid #10b981;
+}
+
+.achievement-item.locked {
+    opacity: 0.7;
+    filter: grayscale(1);
+}
+
+.achievement-icon { font-size: 1.8rem; }
+.achievement-info .achievement-name { font-weight: 600; }
+.achievement-info .achievement-desc { color: #6b7280; font-size: 0.9rem; }
+
+/* Achievement Popup */
+.achievement-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+    padding: 22px 36px;
+    border-radius: 14px;
+    text-align: center;
+    z-index: 1100;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.achievement-popup.show {
+    animation: popIn 0.45s forwards, popOut 0.45s 2.4s forwards;
+}
+
+.achievement-popup h3 { margin: 0 0 8px; font-size: 1.25rem; }
+.achievement-popup .icon { font-size: 2.5rem; }
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Navbar styling is inherited from css/main.css; avoid page-specific overrides here */
+
+/* Quiz start overlay and locked state */
+.quiz-stage { position: relative; }
+.quiz-stage .quiz-container { position: relative; }
+.quiz-stage.quiz-locked > .quiz-container > .quiz-inner,
+.quiz-stage.quiz-locked > .results {
+    /* Blur only the inner quiz content so overlay (sibling) is not blurred */
+    filter: blur(6px);
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    opacity: 0.98;
+}
+
+.quiz-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+     /* center the card within the quiz container (overlay is now INSIDE the container) */
+     align-items: center;
+     justify-content: center;
+     padding-top: 0;
+     background: transparent; /* don't darken the page */
+    z-index: 1001; /* ensure overlay sits above quiz content and above navbar (navbar is 999) */
+    /* allow page scrolling through the overlay; card still receives pointer events */
+    pointer-events: none;
+}
+
+.quiz-overlay .quiz-overlay-card {
+    pointer-events: auto;
+}
+
+/* Utility hidden class used to force full hide (used by JS) */
+.hidden { display: none !important; }
+
+.quiz-overlay-card {
+    background: var(--bg-white);
+    color: var(--text-main);
+    padding: 22px 28px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 460px;
+    width: calc(100% - 40px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+}
+
+.quiz-overlay-card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.quiz-overlay-card p { margin: 0 0 16px; color: #6b7280; }
+
+.quiz-overlay .btn.btn--primary {
+    padding: 8px 18px;
+    font-size: 0.95rem;
+}
+
+/* When quiz unlocked, remove overlay and restore normal state */
+.quiz-stage:not(.quiz-locked) .quiz-overlay { display: none; }
+.quiz-stage:not(.quiz-locked) .quiz-container { filter: none; pointer-events: auto; -webkit-user-select: auto; user-select: auto; }
+
+/* Dark Mode - Quiz */
+body.dark-mode .quiz-container {
+    background: #1e293b;
+}
+
+body.dark-mode .question-text {
+    color: #f1f5f9;
+}
+
+body.dark-mode .option {
+    background: #0f172a;
+    border-color: #374151;
+    color: #e5e7eb;
+}
+
+body.dark-mode .option:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+body.dark-mode .results {
+    background: #1e293b;
+}
+
+body.dark-mode .timer-container {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-color: #f59e0b;
+}
+
+body.dark-mode .achievements-modal {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+/* No special dark-mode variations for the badge — colors will adapt via variables if needed. */
+/* Keep the badge visually consistent across light/dark. */
+
+body.dark-mode .achievement-item {
+    background: #0f172a;
+}
+
+/* Quiz Animations */
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ------------------------------------------------------------------
+   Ensure canonical navbar styles are applied on pages (restore)
+   This rule is intentionally specific and mirrors main.css to avoid
+   accidental page-level overrides affecting layout/size.
+   ------------------------------------------------------------------ */
+.navbar {
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transform: translateY(0);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.navbar.nav-hidden {
+    transform: translateY(-100%);
+}
+
+body.dark-mode .navbar {
+    background: rgba(17, 24, 39, 0.95);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ------------------------------------------------------------------
+   Confine filters/backdrop effects to quiz area to avoid leaking
+   blur or visual changes to header/navbar or other siblings.
+   isolation creates a new stacking context so filters are contained.
+   ------------------------------------------------------------------ */
+.quiz-stage,
+.quiz-stage .quiz-container {
+    -webkit-isolation: isolate;
+    isolation: isolate;
+}
+
+
+@keyframes popIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes popOut {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+

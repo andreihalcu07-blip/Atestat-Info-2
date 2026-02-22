@@ -1,0 +1,231 @@
+/* =========================================================================
+   MODALE + DIALOGURI - Ferestre modale si custom dialog
+   Include: .modal, .blog-image, .article-header, .custom-dialog
+   ========================================================================= */
+
+/* Blog Images */
+.blog-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    position: relative;
+}
+
+.blog-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    pointer-events: none;
+}
+
+.blog-image svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.blog-image:hover svg {
+    transform: scale(1.05);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--bg-white);
+    margin: 5% auto;
+    padding: 40px;
+    max-width: 800px;
+    border-radius: 15px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.4s ease;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.close {
+    color: var(--text-light);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.close:hover {
+    color: var(--primary-color);
+    background: rgba(37, 99, 235, 0.2);
+    transform: scale(1.2) rotate(90deg);
+}
+
+.article-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(37, 99, 235, 0.2);
+}
+
+.article-header h1 {
+    background: linear-gradient(135deg, var(--primary-color), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.article-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.article-date,
+.article-category {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.article-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.article-category {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(168, 85, 247, 0.1));
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: var(--primary-color);
+    font-weight: 700;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.article-category:hover {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(168, 85, 247, 0.15));
+    transform: translateY(-2px);
+}
+
+.article-content {
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.article-content h2 {
+    background: linear-gradient(135deg, var(--primary-color), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.article-content p {
+    margin-bottom: 15px;
+    line-height: 1.9;
+}
+
+.article-content strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.article-content ul {
+    margin: 20px 0;
+    padding-left: 25px;
+}
+
+.article-content li {
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+/* -------------------------------------------------------------------------
+   Custom Dialog Component Styles
+   ------------------------------------------------------------------------- */
+.custom-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+}
+.custom-dialog-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.custom-dialog {
+    width: 420px;
+    max-width: calc(100% - 40px);
+    background: var(--bg-white);
+    color: var(--text-dark);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(2,6,23,0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.custom-dialog .custom-dialog-message {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.custom-dialog-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.12);
+    font-size: 0.95rem;
+}
+
+.custom-dialog-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+body.dark-mode .custom-dialog {
+    background: #0f172a;
+    color: #f1f5f9;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Ensure buttons use design system classes - easy visual parity */
+.custom-dialog .btn { min-width: 88px; }
+

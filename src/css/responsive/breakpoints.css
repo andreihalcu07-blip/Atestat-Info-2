@@ -1,0 +1,239 @@
+/* =========================================================================
+   RESPONSIVE - Media queries pentru ecrane mai mici
+   Include: 1200px, 992px, 768px, 480px breakpoints
+   ========================================================================= */
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+    
+    .navbar-left,
+    .navbar-right {
+        flex: 0 0 auto;
+    }
+    
+    .navbar-center {
+        flex: 1 1 100%;
+        order: 3;
+        margin-top: 10px;
+    }
+    
+    .nav-links {
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 0;
+    }
+
+    .navbar .container {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .navbar-left {
+        order: 1;
+        flex: 1;
+    }
+    
+    .navbar-right {
+        order: 2;
+        flex: 0 0 auto;
+    }
+    
+    .navbar-center {
+        order: 3;
+        flex: 1 1 100%;
+        margin-top: 10px;
+    }
+
+    .logo-text {
+        font-size: 1.3rem;
+    }
+    
+    .logo-svg {
+        width: 38px;
+        height: 38px;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+    }
+
+    .nav-links a:hover {
+        background: rgba(37, 99, 235, 0.1);
+    }
+
+    /* ❌ NU modifica dimensiunile dark-mode-toggle - trebuie să rămână 42x42px */
+    /* .dark-mode-toggle păstrează dimensiunile originale pe mobile */
+    
+
+    /* Elimină orice override care ar putea strica aspectul butonului de limbă */
+    .lang-toggle {
+        /* Nu forța background, border sau border-radius aici! */
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        min-height: 36px;
+    }
+    
+    /* Button responsive */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .btn--primary {
+        padding: 12px 28px;
+    }
+    
+    .btn--primary.btn--compact {
+        padding: 10px 20px;
+    }
+    
+    .btn--large {
+        padding: 14px 32px;
+        font-size: 1rem;
+    }
+
+    .hero {
+        padding: 80px 20px;
+        min-height: 450px;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .timeline {
+        padding: 60px 20px;
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+
+    .timeline h2,
+    .os-types h2,
+    .contact h2 {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    .timeline-date {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .os-types {
+        padding: 60px 20px;
+    }
+
+    .os-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .os-card {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .os-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact {
+        padding: 60px 20px;
+    }
+
+    .contact-form {
+        max-width: 100%;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 20px;
+        min-height: 0;
+    }
+
+    .hero-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .nav-links {
+        gap: 0.3rem;
+        font-size: 0.85rem;
+    }
+
+    .question-image {
+        max-width: 200px;
+    }
+
+    .timeline h2,
+    .os-types h2,
+    .contact h2 {
+        font-size: 1.5rem;
+    }
+
+    .os-card {
+        padding: 15px;
+    }
+
+    .timeline-item {
+        padding: 15px;
+    }
+}
+

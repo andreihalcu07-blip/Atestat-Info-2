@@ -1,0 +1,117 @@
+/* =========================================================================
+   COMPARISON PAGE - Pagina Comparare
+   Include: .comparison-container, .comparison-table, .charts-section
+   Include: Dark Mode
+   ========================================================================= */
+
+/* =====================================================
+   COMPARISON PAGE - Comparare
+   ===================================================== */
+.comparison-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comparison-table {
+    overflow-x: auto;
+    padding: 40px 20px;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-table th {
+    background-color: #2563eb;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.comparison-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.comparison-table tr:hover {
+    background-color: #f9fafb;
+}
+
+.feature-yes {
+    color: #10b981;
+    font-weight: bold;
+}
+
+.feature-no {
+    color: #ef4444;
+}
+
+.feature-partial {
+    color: #f59e0b;
+}
+
+/* Charts */
+.charts-section {
+    padding: 60px 20px;
+    background: var(--bg-light);
+}
+
+.chart-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+/* Dark Mode - Comparison */
+body.dark-mode .comparison-table table {
+    background: #1e293b;
+}
+
+body.dark-mode .comparison-table th {
+    background-color: #3b82f6;
+}
+
+body.dark-mode .comparison-table td {
+    color: #e5e7eb;
+    border-bottom-color: #374151;
+}
+
+body.dark-mode .comparison-table tr:hover {
+    background-color: #0f172a;
+}
+
+body.dark-mode .chart-container {
+    background: #1e293b;
+}
+
+

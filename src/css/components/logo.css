@@ -1,0 +1,39 @@
+/* =========================================================================
+   LOGO - Logo container si animatii
+   ========================================================================= */
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-svg {
+    width: 45px;
+    height: 45px;
+    animation: spin 20s linear infinite, float 3s ease-in-out infinite;
+    filter: brightness(1.1) saturate(1.2) drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-color), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+

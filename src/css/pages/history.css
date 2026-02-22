@@ -1,0 +1,1620 @@
+/* =========================================================================
+   HISTORY PAGE - Istoria SO (Timeline 3D)
+   Include: .timeline-3d-container/wrapper/card, .zoom-controls
+   Include: Dark Mode
+   ========================================================================= */
+
+/* =====================================================
+   HISTORY PAGE - Istoria SO (Timeline 3D)
+   ===================================================== */
+.timeline-3d-container {
+    perspective: 1500px;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+.timeline-3d {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 40px 20px;
+    scroll-behavior: smooth;
+    transform-style: preserve-3d;
+}
+
+.timeline-3d::-webkit-scrollbar {
+    height: 10px;
+}
+
+.timeline-3d::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.timeline-3d::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2563eb, #f59e0b);
+    border-radius: 10px;
+}
+
+.timeline-3d-card {
+    min-width: 300px;
+    max-width: 300px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    cursor: grab;
+    position: relative;
+    overflow: hidden;
+    /* Entry animation - initial state */
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s ease;
+}
+
+/* Staggered animation delays for 3D cards */
+.timeline-3d-card:nth-child(1) { --card3d-delay: 0s; }
+.timeline-3d-card:nth-child(2) { --card3d-delay: 0.08s; }
+.timeline-3d-card:nth-child(3) { --card3d-delay: 0.16s; }
+.timeline-3d-card:nth-child(4) { --card3d-delay: 0.24s; }
+.timeline-3d-card:nth-child(5) { --card3d-delay: 0.32s; }
+.timeline-3d-card:nth-child(6) { --card3d-delay: 0.40s; }
+.timeline-3d-card:nth-child(7) { --card3d-delay: 0.48s; }
+.timeline-3d-card:nth-child(8) { --card3d-delay: 0.56s; }
+.timeline-3d-card:nth-child(9) { --card3d-delay: 0.64s; }
+.timeline-3d-card:nth-child(10) { --card3d-delay: 0.72s; }
+.timeline-3d-card:nth-child(11) { --card3d-delay: 0.80s; }
+
+.timeline-3d-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: var(--card3d-delay, 0s);
+}
+
+.timeline-3d-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--card-color, #2563eb), var(--card-color-end, #f59e0b));
+}
+
+.timeline-3d-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-3d-card.active {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 30px 60px rgba(37, 99, 235, 0.25);
+}
+
+.card-year {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin: 15px 0;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.card-desc {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.timeline-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.timeline-btn {
+    background: var(--gradient-button);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+}
+
+.timeline-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+}
+
+.timeline-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.indicator-dot.active {
+    background: var(--gradient-accent);
+    transform: scale(1.3);
+}
+
+.zoom-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+.zoom-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.zoom-btn:hover {
+    transform: scale(1.1);
+    background: #2563eb;
+    color: white;
+}
+
+/* Dark Mode - History */
+body.dark-mode .timeline-3d-card {
+    background: #1e293b;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .timeline-3d-card:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card-title {
+    color: #f1f5f9;
+}
+
+body.dark-mode .card-desc {
+    color: #94a3b8;
+}
+
+body.dark-mode .zoom-btn {
+    background: #1e293b;
+    color: #e5e7eb;
+}
+
+body.dark-mode .zoom-btn:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+body.dark-mode .timeline-3d::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+/* =====================================================
+   HISTORY CHAPTER PAGES (Ch 5/6)
+   ===================================================== */
+body.chapter-linux {
+    --chapter-primary: #22c55e;
+    --chapter-secondary: #a3e635;
+    --chapter-accent: #facc15;
+    --chapter-panel: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(15, 23, 42, 0.7) 100%);
+    --chapter-border: rgba(34, 197, 94, 0.35);
+    --chapter-bg: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.35), transparent 50%),
+                  radial-gradient(circle at 80% 10%, rgba(250, 204, 21, 0.25), transparent 45%),
+                  linear-gradient(180deg, #0f1720 0%, #0b1520 100%);
+    --chapter-back-color: #4ade80;
+    --chapter-nav-border: rgba(34, 197, 94, 0.5);
+    --chapter-nav-bg: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(15, 23, 42, 0.85));
+    --chapter-list-border: rgba(34, 197, 94, 0.35);
+}
+
+body.chapter-modern {
+    --chapter-primary: #38bdf8;
+    --chapter-secondary: #6366f1;
+    --chapter-accent: #f97316;
+    --chapter-panel: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(15, 23, 42, 0.7) 100%);
+    --chapter-border: rgba(56, 189, 248, 0.4);
+    --chapter-bg: radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.4), transparent 50%),
+                  radial-gradient(circle at 85% 10%, rgba(99, 102, 241, 0.3), transparent 45%),
+                  linear-gradient(180deg, #0f1720 0%, #0b1520 100%);
+    --chapter-back-color: #38bdf8;
+    --chapter-nav-border: rgba(56, 189, 248, 0.5);
+    --chapter-nav-bg: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(15, 23, 42, 0.85));
+    --chapter-list-border: rgba(99, 102, 241, 0.35);
+}
+
+body.chapter-page {
+    background: var(--chapter-bg, #0b1120);
+}
+
+body.chapter-page .chapter-article {
+    max-width: 980px;
+    margin: 40px auto 80px auto;
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75));
+    border: 1px solid var(--chapter-border);
+    border-radius: 22px;
+    padding: 32px 28px 28px 28px;
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+}
+
+body.chapter-page .chapter-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--chapter-back-color);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+body.chapter-page .chapter-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(45, 56, 72, 0.85));
+    border: 1px solid var(--chapter-border);
+    border-radius: 18px;
+    padding: 24px 24px 20px 24px;
+}
+
+body.chapter-page .chapter-hero h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #f8fafc;
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+}
+
+body.chapter-page .chapter-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--chapter-primary);
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35));
+}
+
+body.chapter-page .chapter-lead {
+    color: #cbd5f5;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+body.chapter-page .chapter-content {
+    margin-top: 26px;
+    display: grid;
+    gap: 18px;
+}
+
+body.chapter-page .chapter-content h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    position: relative;
+}
+
+body.chapter-page .chapter-content h2::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--chapter-primary), var(--chapter-accent));
+}
+
+body.chapter-page .chapter-content p,
+body.chapter-page .chapter-content ul,
+body.chapter-page .chapter-content .chapter-media,
+body.chapter-page .chapter-content .chapter-video {
+    background: var(--chapter-panel);
+    border: 1px solid var(--chapter-border);
+    border-radius: 16px;
+    padding: 18px 20px;
+}
+
+body.chapter-page .chapter-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+body.chapter-page .chapter-content li {
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid var(--chapter-list-border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #e2e8f0;
+}
+
+body.chapter-page .chapter-media {
+    display: grid;
+    gap: 18px;
+}
+
+body.chapter-page .chapter-media figure {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid var(--chapter-border);
+    border-radius: 16px;
+    padding: 14px;
+    margin: 0;
+}
+
+body.chapter-page .chapter-media img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+body.chapter-page .chapter-media figcaption {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+body.chapter-page .chapter-video {
+    background: rgba(17, 24, 39, 0.98);
+    border: 1px solid var(--chapter-border);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+body.chapter-page .chapter-video h3 {
+    margin: 0 0 12px 0;
+    color: #e2e8f0;
+}
+
+body.chapter-page .chapter-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+body.chapter-page .chapter-nav a {
+    text-decoration: none;
+    color: #e2e8f0;
+    background: var(--chapter-nav-bg);
+    border: 1px solid var(--chapter-nav-border);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+@media (max-width: 720px) {
+    body.chapter-page .chapter-article {
+        margin: 24px 16px 60px 16px;
+        padding: 22px 18px;
+    }
+
+    body.chapter-page .chapter-hero {
+        padding: 18px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+   ANIMATED INTRO — History of Operating Systems
+   ═══════════════════════════════════════════════════ */
+.history-intro {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 52px 24px 44px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 60%, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+}
+.history-intro__inner {
+    text-align: center;
+    max-width: 720px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Top accent dot-line */
+.history-intro__accent {
+    width: 6px;
+    height: 6px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.5), 0 0 32px rgba(37, 99, 235, 0.2);
+    opacity: 0;
+    animation: introFadeIn 0.6s ease-out 0.1s forwards;
+}
+
+/* Title */
+.history-intro__title {
+    font-size: clamp(1.55rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: introSlideUp 0.8s ease-out 0.2s forwards;
+}
+
+/* Gradient underline */
+.history-intro__line {
+    width: 100%;
+    max-width: 320px;
+    height: 2px;
+    margin: 0 auto 18px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: introFadeIn 0.6s ease-out 0.45s forwards;
+}
+.history-intro__line-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #2563eb, #8b5cf6, transparent);
+    border-radius: 2px;
+    animation: introLineSwipe 1.4s ease-in-out 0.5s forwards;
+    opacity: 0;
+}
+
+/* Subtitle */
+.history-intro__subtitle {
+    font-size: clamp(0.92rem, 2vw, 1.1rem);
+    font-weight: 400;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: introSlideUp 0.8s ease-out 0.55s forwards;
+}
+
+/* ── Keyframes ── */
+@keyframes introSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes introFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+@keyframes introLineSwipe {
+    0%   { opacity: 0; left: -40%; }
+    20%  { opacity: 1; }
+    100% { opacity: 0; left: 100%; }
+}
+
+/* ── Respect reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .history-intro__accent,
+    .history-intro__title,
+    .history-intro__line,
+    .history-intro__subtitle,
+    .history-intro__line-glow {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .history-intro {
+        padding: 36px 16px 28px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+   TIMELINE 3D — Utility Classes
+   ═══════════════════════════════════════════════════ */
+.timeline-3d-heading {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.timeline-3d-hint {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+/* Per-card color themes */
+.timeline-card--1950 { --card-color: #6b7280; --card-color-end: #374151; }
+.timeline-card--1964 { --card-color: #0ea5e9; --card-color-end: #0284c7; }
+.timeline-card--1969 { --card-color: #8b5cf6; --card-color-end: #6d28d9; }
+.timeline-card--1981 { --card-color: #0078D4; --card-color-end: #0063B1; }
+.timeline-card--1984 { --card-color: #A2AAAD; --card-color-end: #86868b; }
+.timeline-card--1985 { --card-color: #00a4ef; --card-color-end: #0078d4; }
+.timeline-card--1991 { --card-color: #FCC624; --card-color-end: #f59e0b; }
+.timeline-card--1995 { --card-color: #00a4ef; --card-color-end: #0078d4; }
+.timeline-card--2001 { --card-color: #00a4ef; --card-color-end: #86868b; }
+.timeline-card--2007 { --card-color: #3ddc84; --card-color-end: #007AFF; }
+.timeline-card--2015 { --card-color: #2563eb; --card-color-end: #8b5cf6; }
+
+/* ═══════════════════════════════════════════════════
+   HISTORY CHAPTERS LIST
+   ═══════════════════════════════════════════════════ */
+.history-chapters {
+    margin: 60px 0 40px 0;
+    padding: 48px 48px 40px 48px;
+    background: transparent;
+}
+.history-chapters::before {
+    content: '';
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.3), transparent);
+}
+.chapter-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #f1f5f9;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+}
+.chapter-list {
+    list-style: none;
+    padding: 32px 40px;
+    margin: 0;
+    gap: 28px;
+    width: 100%;
+}
+.chapter-list li {
+    margin: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out forwards;
+}
+.chapter-list li:nth-child(1) { animation-delay: 0.05s; }
+.chapter-list li:nth-child(2) { animation-delay: 0.1s; }
+.chapter-list li:nth-child(3) { animation-delay: 0.15s; }
+.chapter-list li:nth-child(4) { animation-delay: 0.2s; }
+.chapter-list li:nth-child(5) { animation-delay: 0.25s; }
+.chapter-list li:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chapter-link {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 18px;
+    padding: 32px 28px;
+    color: #e0e7ef;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 600;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(96, 165, 250, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-height: 180px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+}
+
+/* Colores únicas para cada capítulo */
+.chapter-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.05));
+    pointer-events: none;
+}
+
+/* Capitolul 1 - Albastru */
+.chapter-list li:nth-child(1) .chapter-link {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    border-color: rgba(37, 99, 235, 0.4);
+}
+.chapter-list li:nth-child(1) .chapter-link::after {
+    content: '🔧';
+    font-size: 2.5rem;
+}
+
+/* Capitolul 2 - Mov */
+.chapter-list li:nth-child(2) .chapter-link {
+    background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 100%);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+.chapter-list li:nth-child(2) .chapter-link::after {
+    content: '🏢';
+    font-size: 2.5rem;
+}
+
+/* Capitolul 3 - Verde */
+.chapter-list li:nth-child(3) .chapter-link {
+    background: linear-gradient(135deg, #0f3d2d 0%, #059669 100%);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+.chapter-list li:nth-child(3) .chapter-link::after {
+    content: '🐧';
+    font-size: 2.5rem;
+}
+
+/* Capitolul 4 - Portocaliu */
+.chapter-list li:nth-child(4) .chapter-link {
+    background: linear-gradient(135deg, #38280f 0%, #c2410c 100%);
+    border-color: rgba(245, 158, 11, 0.4);
+}
+.chapter-list li:nth-child(4) .chapter-link::after {
+    content: '🪟';
+    font-size: 2.5rem;
+}
+
+/* Capitolul 5 - Roșu */
+.chapter-list li:nth-child(5) .chapter-link {
+    background: linear-gradient(135deg, #3f0609 0%, #991b1b 100%);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+.chapter-list li:nth-child(5) .chapter-link::after {
+    content: '👨‍💻';
+    font-size: 2.5rem;
+}
+
+/* Capitolul 6 - Cyan */
+.chapter-list li:nth-child(6) .chapter-link {
+    background: linear-gradient(135deg, #0c3d44 0%, #0891b2 100%);
+    border-color: rgba(6, 182, 212, 0.4);
+}
+.chapter-list li:nth-child(6) .chapter-link::after {
+    content: '🚀';
+    font-size: 2.5rem;
+}
+
+.chapter-link::after {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    opacity: 0.6;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.chapter-link:hover, 
+.chapter-link:focus {
+    color: #fff;
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25);
+    transform: translateY(-8px) scale(1.03);
+    border-color: rgba(96, 165, 250, 0.6);
+    text-decoration: none;
+}
+
+.chapter-list li:nth-child(1) .chapter-link:hover::after { color: #60a5fa; }
+.chapter-list li:nth-child(2) .chapter-link:hover::after { color: #a78bfa; }
+.chapter-list li:nth-child(3) .chapter-link:hover::after { color: #6ee7b7; }
+.chapter-list li:nth-child(4) .chapter-link:hover::after { color: #fbbf24; }
+.chapter-list li:nth-child(5) .chapter-link:hover::after { color: #f87171; }
+.chapter-list li:nth-child(6) .chapter-link:hover::after { color: #22d3ee; }
+
+.chapter-link:hover::after { opacity: 1; transform: scale(1.2) rotate(5deg); }
+
+.chapter-index {
+    font-weight: 700;
+    color: #60a5fa;
+    margin-right: 6px;
+    font-size: 0.95em;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(96, 165, 250, 0.15);
+    width: fit-content;
+    margin-bottom: 8px;
+}
+
+.chapter-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.chapter-desc {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    padding-top: 8px;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+.chapter-hint {
+    text-align: center;
+    color: #94a3b8;
+    margin-top: 32px;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .history-chapters {
+        padding: 16px 2vw 12px 2vw;
+    }
+    .chapter-title {
+        font-size: 1.25rem;
+    }
+    .chapter-link {
+        font-size: 1rem;
+        padding: 12px 10px 8px 10px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+       ANIMATED INTRO — History of Operating Systems
+       ═══════════════════════════════════════════════════ */
+    .history-intro {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 52px 24px 44px;
+        overflow: hidden;
+        background: radial-gradient(ellipse at 50% 60%, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+    }
+    .history-intro__inner {
+        text-align: center;
+        max-width: 720px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Top accent dot-line */
+    .history-intro__accent {
+        width: 6px;
+        height: 6px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: #2563eb;
+        box-shadow: 0 0 12px rgba(37, 99, 235, 0.5), 0 0 32px rgba(37, 99, 235, 0.2);
+        opacity: 0;
+        animation: introFadeIn 0.6s ease-out 0.1s forwards;
+    }
+
+    /* Title */
+    .history-intro__title {
+        font-size: clamp(1.55rem, 4vw, 2.4rem);
+        font-weight: 800;
+        color: #f1f5f9;
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        opacity: 0;
+        transform: translateY(18px);
+        animation: introSlideUp 0.8s ease-out 0.2s forwards;
+    }
+
+    /* Gradient underline */
+    .history-intro__line {
+        width: 100%;
+        max-width: 320px;
+        height: 2px;
+        margin: 0 auto 18px;
+        background: rgba(37, 99, 235, 0.15);
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        animation: introFadeIn 0.6s ease-out 0.45s forwards;
+    }
+    .history-intro__line-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, #2563eb, #8b5cf6, transparent);
+        border-radius: 2px;
+        animation: introLineSwipe 1.4s ease-in-out 0.5s forwards;
+        opacity: 0;
+    }
+
+    /* Subtitle */
+    .history-intro__subtitle {
+        font-size: clamp(0.92rem, 2vw, 1.1rem);
+        font-weight: 400;
+        color: #94a3b8;
+        margin: 0;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+        opacity: 0;
+        transform: translateY(14px);
+        animation: introSlideUp 0.8s ease-out 0.55s forwards;
+    }
+
+    /* ── Keyframes ── */
+    @keyframes introSlideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes introFadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes introLineSwipe {
+        0%   { opacity: 0; left: -40%; }
+        20%  { opacity: 1; }
+        100% { opacity: 0; left: 100%; }
+    }
+
+    /* ── Respect reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+        .history-intro__accent,
+        .history-intro__title,
+        .history-intro__line,
+        .history-intro__subtitle,
+        .history-intro__line-glow {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+        .history-intro {
+            padding: 36px 16px 28px;
+        }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       TIMELINE 3D — Utility Classes
+       ═══════════════════════════════════════════════════ */
+    .timeline-3d-heading {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .timeline-3d-hint {
+        text-align: center;
+        color: #64748b;
+        margin-bottom: 20px;
+    }
+    /* Per-card color themes (replace inline CSS vars) */
+    .timeline-card--1950 { --card-color: #6b7280; --card-color-end: #374151; }
+    .timeline-card--1964 { --card-color: #0ea5e9; --card-color-end: #0284c7; }
+    .timeline-card--1969 { --card-color: #8b5cf6; --card-color-end: #6d28d9; }
+    .timeline-card--1981 { --card-color: #0078D4; --card-color-end: #0063B1; }
+    .timeline-card--1984 { --card-color: #A2AAAD; --card-color-end: #86868b; }
+    .timeline-card--1985 { --card-color: #00a4ef; --card-color-end: #0078d4; }
+    .timeline-card--1991 { --card-color: #FCC624; --card-color-end: #f59e0b; }
+    .timeline-card--1995 { --card-color: #00a4ef; --card-color-end: #0078d4; }
+    .timeline-card--2001 { --card-color: #00a4ef; --card-color-end: #86868b; }
+    .timeline-card--2007 { --card-color: #3ddc84; --card-color-end: #007AFF; }
+    .timeline-card--2015 { --card-color: #2563eb; --card-color-end: #8b5cf6; }
+
+    /* ═══════════════════════════════════════════════════
+       HISTORY CHAPTERS LIST
+       ═══════════════════════════════════════════════════ */
+    .history-chapters {
+        max-width: 900px;
+        margin: 40px auto 0 auto;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px 0 rgba(30,41,59,0.10);
+        padding: 32px 18px 24px 18px;
+    }
+    .chapter-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: var(--chapter-title, #fff);
+        letter-spacing: 0.01em;
+    }
+    .chapter-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+    .chapter-list li {
+        margin: 0 0 18px 0;
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .chapter-link {
+        display: block;
+        background: linear-gradient(90deg, #1e293b 60%, #334155 100%);
+        border-radius: 12px;
+        padding: 18px 22px 12px 22px;
+        color: #e0e7ef;
+        text-decoration: none;
+        font-size: 1.13rem;
+        font-weight: 500;
+        box-shadow: 0 2px 10px 0 rgba(30,41,59,0.08);
+        border: 1.5px solid #334155;
+        position: relative;
+        transition: box-shadow 0.18s, border 0.18s, background 0.18s, color 0.18s, transform 0.18s;
+    }
+    .chapter-link:hover, .chapter-link:focus {
+        background: linear-gradient(90deg, #2563eb 60%, #334155 100%);
+        color: #fff;
+        border: 1.5px solid #2563eb;
+        box-shadow: 0 4px 24px 0 rgba(37,99,235,0.13);
+        transform: translateY(-2px) scale(1.025);
+        text-decoration: none;
+    }
+    .chapter-index {
+        font-weight: 700;
+        color: #60a5fa;
+        margin-right: 8px;
+        font-size: 1.08em;
+        letter-spacing: 0.01em;
+        display: inline-block;
+    }
+    .chapter-desc {
+        display: block;
+        color: #94a3b8;
+        font-size: 0.98em;
+        margin-top: 2px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+    }
+    .chapter-hint {
+        text-align: center;
+        color: #64748b;
+        margin-top: 30px;
+        font-size: 0.98em;
+    }
+    @media (max-width: 600px) {
+        .history-chapters {
+            padding: 16px 2vw 12px 2vw;
+        }
+        .chapter-title {
+            font-size: 1.25rem;
+        }
+        .chapter-link {
+            font-size: 1rem;
+            padding: 12px 10px 8px 10px;
+        }
+    }
+
+/* ═══════════════════════════════════════════════════
+   UNIFIED CHAPTER STYLES (1-6)
+   All chapters now use consistent design
+   ═══════════════════════════════════════════════════ */
+
+/* Chapter Color Themes */
+body.chapter-inceputuri {
+    --chapter-primary: #2563eb;
+    --chapter-secondary: #7c3aed;
+    --chapter-accent: #60a5fa;
+    --chapter-panel: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(15, 23, 42, 0.7) 100%);
+    --chapter-border: rgba(96, 165, 250, 0.2);
+    --chapter-bg: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.25), transparent 50%),
+                  radial-gradient(circle at 80% 10%, rgba(124, 58, 237, 0.2), transparent 45%),
+                  linear-gradient(180deg, #0f1720 0%, #0b1520 100%);
+}
+
+body.chapter-mainframe {
+    --chapter-primary: #06b6d4;
+    --chapter-secondary: #0ea5e9;
+    --chapter-accent: #06b6d4;
+    --chapter-panel: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(15, 23, 42, 0.7) 100%);
+    --chapter-border: rgba(6, 182, 212, 0.25);
+    --chapter-bg: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.3), transparent 50%),
+                  radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.2), transparent 45%),
+                  linear-gradient(180deg, #0f1720 0%, #0b1520 100%);
+}
+
+body.chapter-unix {
+    --chapter-primary: #8b5cf6;
+    --chapter-secondary: #a855f7;
+    --chapter-accent: #d8b4fe;
+    --chapter-panel: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(15, 23, 42, 0.7) 100%);
+    --chapter-border: rgba(139, 92, 246, 0.25);
+    --chapter-bg: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.3), transparent 50%),
+                  radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.2), transparent 45%),
+                  linear-gradient(180deg, #0f1720 0%, #0b1520 100%);
+}
+
+body.chapter-pc {
+    --chapter-primary: #f59e0b;
+    --chapter-secondary: #ef4444;
+    --chapter-accent: #fbbf24;
+    --chapter-panel: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(15, 23, 42, 0.7) 100%);
+    --chapter-border: rgba(245, 158, 11, 0.25);
+    --chapter-bg: radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.25), transparent 50%),
+                  radial-gradient(circle at 80% 10%, rgba(239, 68, 68, 0.15), transparent 45%),
+                  linear-gradient(180deg, #0f1720 0%, #0b1520 100%);
+}
+
+/* Unified Chapter Page Styles */
+body.chapter-page {
+    background: var(--chapter-bg, #0b1120);
+}
+
+/* Section Separators */
+body.chapter-page .section-separator {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0 24px 0;
+    opacity: 0.7;
+}
+
+body.chapter-page .section-separator::before,
+body.chapter-page .section-separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--chapter-accent), transparent);
+}
+
+body.chapter-page .section-separator-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--chapter-accent);
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Enhanced Section Headers */
+body.chapter-page .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+body.chapter-page .section-header h2 {
+    margin: 0;
+    color: #f1f5f9;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+body.chapter-page .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--chapter-primary), var(--chapter-secondary));
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Content Cards */
+body.chapter-page .content-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.9) 100%);
+    border: 1px solid var(--chapter-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.chapter-page .content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--chapter-primary), var(--chapter-secondary), var(--chapter-primary));
+    opacity: 0.8;
+}
+
+body.chapter-page .content-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25),
+                0 0 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-color: var(--chapter-accent);
+}
+
+/* Key Term Highlight */
+body.chapter-page .key-term {
+    color: var(--chapter-accent);
+    font-weight: 600;
+    position: relative;
+}
+
+body.chapter-page .key-term::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--chapter-accent), transparent);
+    opacity: 0.5;
+}
+
+/* Enhanced Lists */
+body.chapter-page .enhanced-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+}
+
+body.chapter-page .enhanced-list li {
+    position: relative;
+    padding: 12px 12px 12px 36px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    border-left: 3px solid var(--chapter-accent);
+    transition: all 0.3s ease;
+}
+
+body.chapter-page .enhanced-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 12px;
+    color: var(--chapter-accent);
+    font-weight: bold;
+}
+
+body.chapter-page .enhanced-list li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(4px);
+}
+
+/* Concept Grid */
+body.chapter-page .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+body.chapter-page .concept-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--chapter-border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+body.chapter-page .concept-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--chapter-accent);
+}
+
+body.chapter-page .concept-item h4 {
+    color: var(--chapter-accent);
+    margin: 0 0 8px 0;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body.chapter-page .concept-item p {
+    color: #cbd5e1;
+    font-size: 0.92rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Timeline Items */
+body.chapter-page .timeline-item {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid var(--chapter-border);
+    transition: all 0.3s ease;
+}
+
+body.chapter-page .timeline-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--chapter-accent);
+}
+
+body.chapter-page .timeline-year {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--chapter-primary), var(--chapter-secondary));
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.chapter-page .timeline-content h4 {
+    color: #fff;
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
+}
+
+body.chapter-page .timeline-content p {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Impact Cards */
+body.chapter-page .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+body.chapter-page .impact-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+body.chapter-page .impact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(16, 185, 129, 0.15);
+}
+
+body.chapter-page .impact-card h4 {
+    color: #10b981;
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+}
+
+body.chapter-page .impact-card p {
+    color: #94a3b8;
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Media Figures */
+body.chapter-page .media-figure {
+    position: relative;
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--chapter-border);
+    transition: all 0.4s ease;
+}
+
+body.chapter-page .media-figure:hover {
+    transform: scale(1.02);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--chapter-accent);
+}
+
+body.chapter-page .media-figure img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+body.chapter-page .media-figure:hover img {
+    transform: scale(1.05);
+}
+
+body.chapter-page .media-figure figcaption {
+    padding: 16px;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.98) 100%);
+    color: #94a3b8;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+body.chapter-page .media-figure figcaption strong {
+    color: var(--chapter-accent);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+}
+
+/* Video Container */
+body.chapter-page .video-container {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.9) 100%);
+    border: 1px solid var(--chapter-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+body.chapter-page .video-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--chapter-primary), var(--chapter-secondary), var(--chapter-primary));
+}
+
+body.chapter-page .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+body.chapter-page .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+body.chapter-page .video-description {
+    margin-top: 16px;
+    padding: 16px;
+    background: rgba(245, 158, 11, 0.08);
+    border-radius: 10px;
+    border-left: 3px solid #f59e0b;
+}
+
+body.chapter-page .video-description h4 {
+    color: #f59e0b;
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body.chapter-page .video-description p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Audio Section */
+body.chapter-page .audio-section {
+    background: linear-gradient(145deg, rgba(124, 58, 237, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+body.chapter-page .audio-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+body.chapter-page .audio-header h4 {
+    color: #a855f7;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+body.chapter-page .audio-player {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 12px;
+    margin: 16px 0;
+}
+
+body.chapter-page .audio-play-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+}
+
+body.chapter-page .audio-play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(168, 85, 247, 0.4);
+}
+
+body.chapter-page .audio-description {
+    color: #94a3b8;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-top: 12px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Quote Box */
+body.chapter-page .quote-box {
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+    border-left: 4px solid var(--chapter-accent);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+    position: relative;
+}
+
+body.chapter-page .quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    font-size: 4rem;
+    color: rgba(96, 165, 250, 0.2);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+body.chapter-page .quote-box p {
+    color: #e2e8f0;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0;
+}
+
+body.chapter-page .quote-box cite {
+    display: block;
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    font-style: normal;
+}
+
+/* Intro Text */
+body.chapter-page .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e2e8f0;
+    margin-bottom: 24px;
+}
+
+body.chapter-page .intro-text .highlight {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .history-chapters {
+        padding: 36px 24px 32px 24px;
+    }
+    .chapter-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px 20px;
+        border-radius: 12px;
+    }
+    .chapter-link {
+        min-height: 140px;
+        padding: 24px 20px;
+        border-radius: 14px;
+        font-size: 1.05rem;
+    }
+    .chapter-link::after {
+        right: 18px;
+        top: 18px;
+        font-size: 2.2rem;
+    }
+    .chapter-name {
+        font-size: 1.1rem;
+    }
+    .chapter-desc {
+        font-size: 0.9rem;
+    }
+    
+    body.chapter-page .content-card {
+        padding: 18px;
+    }
+    body.chapter-page .concept-grid {
+        grid-template-columns: 1fr;
+    }
+    body.chapter-page .media-grid {
+        grid-template-columns: 1fr;
+    }
+    body.chapter-page .impact-grid {
+        grid-template-columns: 1fr;
+    }
+    body.chapter-page .timeline-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    body.chapter-page .timeline-year {
+        margin: 0 auto;
+    }
+    body.chapter-page .section-header h2 {
+        font-size: 1.15rem;
+    }
+    body.chapter-page .audio-player {
+        flex-direction: column;
+        text-align: center;
+    }
+}

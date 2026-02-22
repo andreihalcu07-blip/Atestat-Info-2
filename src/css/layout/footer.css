@@ -1,0 +1,27 @@
+/* =========================================================================
+   FOOTER - Subsolul paginii
+   ========================================================================= */
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--text-dark) 0%, #0f172a 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+

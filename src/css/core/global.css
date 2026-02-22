@@ -1,0 +1,74 @@
+/* global.css
+   Base typography and utility classes.
+   Variables bridge to the project's system (variables.css).
+*/
+
+:root {
+    /* Bridge to project variables — these update automatically in dark mode */
+    --bg-gradient: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
+    --bg-surface: var(--bg-white);
+    --bg-muted: var(--bg-light);
+    --glass: rgba(255,255,255,0.6);
+    --glass-strong: rgba(255,255,255,0.75);
+    --text-main: var(--text-dark);
+    --text-muted: var(--text-light);
+    --accent: var(--primary-color);
+    --accent-2: var(--purple, #a855f7);
+    --shadow-1: 0 6px 24px rgba(16,24,40,0.06);
+    --radius-lg: 14px;
+    --radius-md: 10px;
+    --radius-sm: 8px;
+    --glass-blur: 10px;
+    --site-max-width: 1280px;
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 28px;
+    --space-lg: 48px;
+    --transition-default: 300ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Typography - large, airy */
+html { font-size: 16px; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: var(--text-dark);
+    background: var(--bg-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+}
+
+/* Containers */
+.site-container { max-width: var(--site-max-width); margin: 0 auto; padding: 0 20px; }
+.section { padding: var(--space-lg) 0; }
+.section--compact { padding: var(--space-md) 0; }
+
+/* Utility helpers */
+.row { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+.column { display: flex; flex-direction: column; gap: var(--space-sm); }
+.center { display: flex; align-items: center; justify-content: center; }
+
+/* Card surface */
+.surface {
+    background: linear-gradient(180deg, var(--bg-surface), var(--bg-muted));
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-1);
+    padding: 20px;
+    transition: transform var(--transition-default), box-shadow var(--transition-default), background var(--transition-default);
+}
+.surface--elevated { box-shadow: 0 12px 40px rgba(16,24,40,0.08); }
+
+/* Ensure images are fluid */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Utility spacing */
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* Small helpers */
+.lead { font-size: 1.125rem; color: var(--text-dark); line-height: 1.6; }
+.muted { color: var(--text-light); }
+
+/* End global.css */

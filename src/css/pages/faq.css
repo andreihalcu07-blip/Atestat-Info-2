@@ -1,0 +1,76 @@
+/* =========================================================================
+   FAQ PAGE - Intrebari frecvente
+   Include: .faq-content, .faq-item, .faq-question, .faq-answer
+   Include: Dark Mode
+   ========================================================================= */
+
+/* =====================================================
+   FAQ PAGE - Întrebări frecvente
+   ===================================================== */
+.faq-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.faq-item {
+    background: var(--bg-light);
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    padding: 20px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: var(--secondary-color);
+}
+
+.faq-toggle {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 20px;
+    display: none;
+    color: var(--text-light);
+    line-height: 1.8;
+    animation: slideDown 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Dark Mode - FAQ */
+body.dark-mode .faq-item {
+    background: #1e293b;
+}
+
+body.dark-mode .faq-question {
+    background: #3b82f6;
+}
+
+body.dark-mode .faq-answer {
+    color: #94a3b8;
+}
+
+

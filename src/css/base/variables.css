@@ -1,0 +1,31 @@
+/* =========================================================================
+   VARIABILE CSS - Toate variabilele :root
+   Include: culori primare, accent, dark mode overrides
+   ========================================================================= */
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #f59e0b;
+    --text-dark: #0f172a;
+    --text-light: #5b6472;
+    --bg-light: #f7f9fb;
+    --bg-white: #ffffff;
+    --border-color: #e2e8f0;
+    --purple: #a855f7;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --primary-color: #60a5fa;
+    --secondary-color: #3b82f6;
+    --accent-color: #fbbf24;
+    --text-dark: #e2e8f0;
+    --text-light: #94a3b8;
+    --bg-light: #0f172a;
+    --bg-white: #0f172a;
+    --border-color: #1f2a44;
+}
+

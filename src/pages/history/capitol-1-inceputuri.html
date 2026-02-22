@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="ch1_title">Capitolul 1: Începuturile Sistemelor de Operare</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/pages/history.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect x='10' y='15' width='80' height='55' fill='none' stroke='%232563eb' stroke-width='3' rx='5'/>
+        <rect x='15' y='20' width='70' height='45' fill='%23e0e7ff' rx='3'/>
+        <rect x='20' y='25' width='20' height='15' fill='%232563eb' opacity='0.7' rx='2'/>
+        <rect x='45' y='25' width='20' height='8' fill='%23f59e0b' opacity='0.7' rx='2'/>
+        <rect x='20' y='45' width='45' height='12' fill='%2310b981' opacity='0.7' rx='2'/>
+        <path d='M 35 70 L 30 80 L 70 80 L 65 70' fill='none' stroke='%232563eb' stroke-width='2.5'/>
+        <circle cx='50' cy='80' r='3' fill='%232563eb'/>
+    </svg>">
+</head>
+<body class="chapter-page chapter-inceputuri">
+     <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+                <!-- STÂNGA: Logo -->
+                <div class="navbar-left">
+                    <div class="logo-container">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="15" width="80" height="55" fill="none" stroke="#2563eb" stroke-width="3" rx="5"/>
+                            <rect x="15" y="20" width="70" height="45" fill="#e0e7ff" rx="3"/>
+                            <rect x="20" y="25" width="20" height="15" fill="#2563eb" opacity="0.7" rx="2"/>
+                            <rect x="45" y="25" width="20" height="8" fill="#f59e0b" opacity="0.7" rx="2"/>
+                            <rect x="20" y="45" width="45" height="12" fill="#10b981" opacity="0.7" rx="2"/>
+                            <path d="M 35 70 L 30 80 L 70 80 L 65 70" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                            <circle cx="50" cy="80" r="3" fill="#2563eb"/>
+                        </svg>
+                        <h1 class="logo-text">SistemOS</h1>
+                    </div>
+                </div>
+                
+                <!-- MIJLOC: Meniu navigare -->
+                <div class="navbar-center">
+                    <ul class="nav-links">
+                        <li><a href="../index.html" data-i18n="nav_home">Acasă</a></li>
+                        <li><a href="../about.html" data-i18n="nav_about">Despre</a></li>
+                        <li><a href="../history.html" data-i18n="nav_history">Istoria SO</a></li>
+                        <li><a href="../comparison.html" data-i18n="nav_comparison">Comparare</a></li>
+                        <li><a href="../windows/index.html">Windows</a></li>
+                        <li><a href="../glossary.html" data-i18n="nav_glossary">Glosar</a></li>
+                        <li><a href="../faq.html">FAQ</a></li>
+                        <li><a href="../quiz.html">Quiz</a></li>
+                        <li><a href="../resources.html" data-i18n="nav_resources">Resurse</a></li>
+                        <li><a href="../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- DREAPTA: Toggle-uri -->
+                <div class="navbar-right">
+                    <button class="btn btn--utility btn--icon dark-mode-toggle" aria-label="Toggle dark mode" id="darkModeToggle">🌙</button>
+                    <button class="btn btn--utility lang-toggle" aria-label="Change language" id="langToggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero bg-gradient-hero">
+            <div class="hero-content">
+                <h2 data-i18n="history_title">Istoria Completă a SO-urilor</h2>
+                <p data-i18n="ch1_subtitle">Capitolul 1: Începuturile Sistemelor de Operare</p>
+            </div>
+        </section>
+
+        <div class="container chapter-article">
+            <a class="chapter-back" href="../history.html" data-i18n="ch1_back">&larr; Înapoi la Istorie</a>
+            
+            <div class="chapter-hero">
+                <h1>
+                    <svg class="chapter-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path fill="var(--primary-color)" d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13a1 1 0 0 1-1.447.894L12 17.118l-6.553 2.276A1 1 0 0 1 4 18.5v-13Zm2.5-.5A.5.5 0 0 0 6 5.5v11.566l5.553-1.928a1 1 0 0 1 .894 0L18 17.066V5.5a.5.5 0 0 0-.5-.5h-11Z"/>
+                    </svg>
+                    <span data-i18n="ch1_title">Capitolul 1: Începuturile Sistemelor de Operare</span>
+                </h1>
+                <p class="chapter-lead" data-i18n="ch1_lead">O călătorie fascinantă în zorii erei digitale — când ideile revoluționare au luat forma primelor calculatoare</p>
+            </div>
+
+            <section class="chapter-content">
+                
+                <!-- INTRO -->
+                <p class="intro-text" data-i18n="ch1_intro">
+                    Imaginează-ți o cameră cât o sală de sport, plină de cabluri, becuri și comutatoare. 
+                    Aceasta era realitatea anilor <span class="highlight">1940–1950</span>, când umanitatea a construit 
+                    primele <strong>calculatoare electronice</strong>. Nu existau tastaturi, monitoare sau sisteme de operare — 
+                    doar mașini gigantice care trebuiau programate manual, fir cu fir, cartelă cu cartelă.
+                </p>
+
+                <!-- Section Separator -->
+                <div class="section-separator">
+                    <svg class="section-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+                    </svg>
+                </div>
+
+                <!-- SECTION 1: Context Istoric -->
+                <div class="content-card">
+                    <div class="section-header">
+                        <span class="section-number">01</span>
+                        <h2 data-i18n="ch1_s1_title">Context Istoric Extins</h2>
+                    </div>
+                    
+                    <p data-i18n="ch1_s1_p1">
+                        Al Doilea Război Mondial a accelerat dramatic dezvoltarea tehnologiei de calcul. 
+                        Nevoia de a <strong>decripta coduri</strong> și de a calcula traiectorii balistice a condus la 
+                        crearea primelor mașini electronice de calcul.
+                    </p>
+
+                    <div class="quote-box">
+                        <p data-i18n="ch1_s1_quote">Calculatoarele din această eră nu erau „inteligente" — erau doar foarte rapide la a face exact ce li se spunea, pas cu pas.</p>
+                        <cite data-i18n="ch1_s1_quote_cite">— Principiu fundamental al calculului timpuriu</cite>
+                    </div>
+
+                    <p data-i18n="ch1_s1_p2">
+                        Mașinile precum <span class="key-term">ENIAC</span> (Electronic Numerical Integrator and Computer) 
+                        și <span class="key-term">UNIVAC</span> (Universal Automatic Computer) ocupau încăperi întregi 
+                        și consumau energie cât o fabrică mică. Programarea se făcea prin:
+                    </p>
+
+                    <ul class="enhanced-list">
+                        <li data-i18n="ch1_s1_li1"><strong>Reconfigurarea cablurilor</strong> — operatorii conectau fizic circuitele pentru fiecare program nou</li>
+                        <li data-i18n="ch1_s1_li2"><strong>Carduri perforate</strong> — date și instrucțiuni reprezentate prin găuri în cartoane speciale</li>
+                        <li data-i18n="ch1_s1_li3"><strong>Panouri de control</strong> — comutatoare și butoane pentru setarea parametrilor</li>
+                        <li data-i18n="ch1_s1_li4"><strong>Intervenție manuală constantă</strong> — fiecare pas necesita supraveghere umană directă</li>
+                    </ul>
+                </div>
+
+                <!-- Section Separator -->
+                <div class="section-separator">
+                    <svg class="section-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+
+                <!-- SECTION 2: De Ce a Contat -->
+                <div class="content-card">
+                    <div class="section-header">
+                        <span class="section-number">02</span>
+                        <h2 data-i18n="ch1_s2_title">De Ce a Contat Această Eră?</h2>
+                    </div>
+
+                    <p data-i18n="ch1_s2_p1">
+                        Deși primitive după standardele actuale, aceste mașini au pus bazele întregii industrii IT moderne. 
+                        Provocările întâmpinate de pionierii calculului au condus la inovații fundamentale:
+                    </p>
+
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <svg class="impact-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                            <h4 data-i18n="ch1_s2_card1_title">Automatizare</h4>
+                            <p data-i18n="ch1_s2_card1_desc">Nevoia de a reduce intervenția umană a condus la primele sisteme de control automat</p>
+                        </div>
+                        <div class="impact-card">
+                            <svg class="impact-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <path d="M8 21h8m-4-4v4"/>
+                            </svg>
+                            <h4 data-i18n="ch1_s2_card2_title">Gestiune Hardware</h4>
+                            <p data-i18n="ch1_s2_card2_desc">Eficiența limitată a dus la dezvoltarea metodelor de management al resurselor</p>
+                        </div>
+                        <div class="impact-card">
+                            <svg class="impact-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v4m0 12v4M2 12h4m12 0h4m-5.66-5.66l-2.83 2.83m0 5.66l2.83 2.83M6.34 6.34l2.83 2.83m0 5.66l-2.83 2.83"/>
+                            </svg>
+                            <h4 data-i18n="ch1_s2_card3_title">Sisteme de Control</h4>
+                            <p data-i18n="ch1_s2_card3_desc">Primii precursori ai sistemelor de operare moderne au apărut din necesitate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Separator -->
+                <div class="section-separator">
+                    <svg class="section-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4"/>
+                    </svg>
+                </div>
+
+                <!-- SECTION 3: Concepte Cheie -->
+                <div class="content-card">
+                    <div class="section-header">
+                        <span class="section-number">03</span>
+                        <h2 data-i18n="ch1_s3_title">Concepte-Cheie ale Epocii</h2>
+                    </div>
+
+                    <p data-i18n="ch1_s3_p1">
+                        Pentru a înțelege cum funcționau primele calculatoare, trebuie să cunoaștem câteva concepte 
+                        fundamentale care defineau această perioadă:
+                    </p>
+
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h4>
+                                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                    <path d="M6 8h.01M10 8h.01M6 12h.01M10 12h.01M6 16h.01M10 16h.01"/>
+                                </svg>
+                                <span data-i18n="ch1_s3_c1_title">Carduri Perforate</span>
+                            </h4>
+                            <p data-i18n="ch1_s3_c1_desc">Cartoane cu găuri poziționate strategic, reprezentând date și instrucțiuni. Fiecare gaură (sau lipsa ei) era un bit de informație.</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>
+                                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16v16H4zM4 9h16M9 4v16"/>
+                                </svg>
+                                <span data-i18n="ch1_s3_c2_title">Procesare Batch</span>
+                            </h4>
+                            <p data-i18n="ch1_s3_c2_desc">Programele (job-uri) erau grupate și executate secvențial, unul după altul, fără intervenție în timp real.</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>
+                                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                                <span data-i18n="ch1_s3_c3_title">Lipsă Multitasking</span>
+                            </h4>
+                            <p data-i18n="ch1_s3_c3_desc">Un singur program rula la un moment dat. Calculatorul era complet dedicat acelui task până la finalizare.</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>
+                                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                </svg>
+                                <span data-i18n="ch1_s3_c4_title">GM-NAA I/O</span>
+                            </h4>
+                            <p data-i18n="ch1_s3_c4_desc">Primul „sistem de operare" (1956), dezvoltat pentru IBM 704. Automatiza încărcarea și execuția job-urilor batch.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Separator -->
+                <div class="section-separator">
+                    <svg class="section-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                </div>
+
+                <!-- SECTION 4: Exemple și Tehnologii -->
+                <div class="content-card">
+                    <div class="section-header">
+                        <span class="section-number">04</span>
+                        <h2 data-i18n="ch1_s4_title">Exemple și Tehnologii Reprezentative</h2>
+                    </div>
+
+                    <p data-i18n="ch1_s4_p1">
+                        Să explorăm cele mai importante mașini care au marcat această eră fondatoare:
+                    </p>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year" data-i18n="ch1_s4_t1_year">1945</div>
+                        <div class="timeline-content">
+                            <h4 data-i18n="ch1_s4_t1_title">ENIAC — Electronic Numerical Integrator and Computer</h4>
+                            <p data-i18n="ch1_s4_t1_desc">
+                                Primul calculator electronic de uz general. Cântărea 27 de tone, ocupa 167 m² și consuma 150 kW. 
+                                Putea efectua 5.000 de adunări pe secundă — revoluționar pentru acea vreme. 
+                                Programarea dura zile întregi și implica reconectarea a mii de cabluri.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year" data-i18n="ch1_s4_t2_year">1951</div>
+                        <div class="timeline-content">
+                            <h4 data-i18n="ch1_s4_t2_title">UNIVAC I — Universal Automatic Computer</h4>
+                            <p data-i18n="ch1_s4_t2_desc">
+                                Primul calculator comercial produs în serie. A prezis corect rezultatul alegerilor prezidențiale 
+                                din SUA în 1952, demonstrând potențialul calculatoarelor în analiza datelor. 
+                                Folosea bandă magnetică pentru stocare, nu doar carduri perforate.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year" data-i18n="ch1_s4_t3_year">1956</div>
+                        <div class="timeline-content">
+                            <h4 data-i18n="ch1_s4_t3_title">IBM 704 cu GM-NAA I/O</h4>
+                            <p data-i18n="ch1_s4_t3_desc">
+                                Primul calculator cu un sistem rudimentar de operare. GM-NAA I/O (dezvoltat de General Motors 
+                                și North American Aviation) automatiza tranziția între job-uri, reducând timpul pierdut 
+                                între execuții. Acesta este considerat strămoșul tuturor sistemelor de operare moderne.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Separator -->
+                <div class="section-separator">
+                    <svg class="section-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+
+                <!-- SECTION 5: Impact și Moștenire -->
+                <div class="content-card">
+                    <div class="section-header">
+                        <span class="section-number">05</span>
+                        <h2 data-i18n="ch1_s5_title">Impact și Moștenire</h2>
+                    </div>
+
+                    <p data-i18n="ch1_s5_p1">
+                        Lecțiile învățate în această eră primitivă au modelat întreaga evoluție ulterioară a informaticii. 
+                        Iată principalele contribuții care persistă și astăzi:
+                    </p>
+
+                    <ul class="enhanced-list">
+                        <li data-i18n="ch1_s5_li1">
+                            <strong>Conceptul de Job Scheduling</strong> — Ideea de a organiza și prioritiza sarcinile 
+                            este fundamentală în orice sistem de operare modern, de la Windows la Android.
+                        </li>
+                        <li data-i18n="ch1_s5_li2">
+                            <strong>Abstracția Hardware-ului</strong> — Primii pași spre separarea software-ului de hardware, 
+                            permițând programatorilor să scrie cod fără a cunoaște detaliile fizice ale mașinii.
+                        </li>
+                        <li data-i18n="ch1_s5_li3">
+                            <strong>Procesare Automată</strong> — Tranziția de la operare manuală la automatizare 
+                            a deschis calea către multitasking și sistemele în timp real.
+                        </li>
+                        <li data-i18n="ch1_s5_li4">
+                            <strong>Standardizare</strong> — Nevoia de compatibilitate a condus la primele standarde 
+                            și protocoale în industria calculatoarelor.
+                        </li>
+                    </ul>
+
+                    <div class="quote-box">
+                        <p data-i18n="ch1_s5_quote">Fiecare smartphone din buzunarul nostru este mai puternic decât toate calculatoarele din anii '50 combinate — iar aceasta este moștenirea pionierilor acelei ere.</p>
+                    </div>
+                </div>
+
+                <!-- Section Separator -->
+                <div class="section-separator">
+                    <svg class="section-separator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+
+                <!-- SECTION 6: Experiență Interactivă și Media -->
+                <div class="media-section">
+                    <div class="content-card">
+                        <div class="section-header">
+                            <span class="section-number">06</span>
+                            <h2 data-i18n="ch1_s6_title">Experiență Interactivă și Media</h2>
+                        </div>
+
+                        <p data-i18n="ch1_s6_p1">
+                            Explorează vizual această eră fascinantă prin imagini autentice, documentare video și 
+                            atmosferă sonoră. Aceste resurse te vor ajuta să înțelegi mai bine contextul și 
+                            dimensiunea realizărilor din acea perioadă.
+                        </p>
+
+                        <!-- Image Gallery -->
+                        <h3 class="media-heading media-heading--gallery ch1-color-gallery" data-i18n="ch1_s6_gallery">
+                            📷 Galerie Foto Istorică
+                        </h3>
+                        
+                        <div class="media-grid">
+                            <figure class="media-figure">
+                                <img src="../../../assets/images/history/Classic_shot_of_the_ENIAC.jpg" alt="ENIAC în funcțiune" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch1_s6_img1_title">ENIAC (1945)</strong>
+                                    <span data-i18n="ch1_s6_img1_desc">Primul calculator electronic de uz general. Observă dimensiunea enormă și complexitatea 
+                                    cablajului. Operatorii din imagine reconfigurează circuitele pentru un nou program.</span>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="media-figure">
+                                <img src="../../../assets/images/history/Hollerith_punched_card.jpg" alt="Card perforat Hollerith" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch1_s6_img2_title">Card Perforat Hollerith</strong>
+                                    <span data-i18n="ch1_s6_img2_desc">Principalul mediu de stocare a datelor. Fiecare gaură reprezenta un bit de informație. 
+                                    Un program complex necesita mii de astfel de carduri, în ordine precisă.</span>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="media-figure">
+                                <img src="../../../assets/images/history/Human_computer_with_IBM_704_in_1959.jpg" alt="IBM 704 în 1959" loading="lazy">
+                                <figcaption>
+                                    <strong data-i18n="ch1_s6_img3_title">IBM 704 (1959)</strong>
+                                    <span data-i18n="ch1_s6_img3_desc">Calculatorul pe care a rulat GM-NAA I/O, primul sistem de operare. 
+                                    Remarcă panoul de control și operatorul care supraveghează procesul.</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                        <!-- Video Section -->
+                        <h3 class="media-heading media-heading--video ch1-color-video" data-i18n="ch1_s6_video">
+                            🎬 Documentar Video Educativ
+                        </h3>
+
+                        <div class="video-container">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://archive.org/embed/XD1721_92ComputerlandTheVisionaries" 
+                                    title="1992 Computerland - The Visionaries" 
+                                    webkitallowfullscreen="true" 
+                                    mozallowfullscreen="true" 
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-description">
+                                <h4>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 16v-4M12 8h.01"/>
+                                    </svg>
+                                    <span data-i18n="ch1_s6_video_title">De ce acest video?</span>
+                                </h4>
+                                <p data-i18n="ch1_s6_video_desc">
+                                    „Computerland: The Visionaries" (1992) — un documentar care include segmente 
+                                    cu J. Presper Eckert, co-creator al ENIAC și UNIVAC. Oferă o perspectivă 
+                                    autentică asupra începuturilor erei calculatoarelor.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Audio Section -->
+                        <h3 class="media-heading media-heading--audio ch1-color-audio" data-i18n="ch1_s6_audio">
+                            🎧 Atmosferă Sonoră (Opțional)
+                        </h3>
+
+                        <div class="audio-section">
+                            <div class="audio-header">
+                                <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 18V5l12-2v13"/>
+                                    <circle cx="6" cy="18" r="3"/>
+                                    <circle cx="18" cy="16" r="3"/>
+                                </svg>
+                                <h4 data-i18n="ch1_s6_audio_title">Sunetele unei Camere de Calculatoare (anii '50)</h4>
+                            </div>
+
+                            <div class="audio-player">
+                                <button class="audio-play-btn" id="audioPlayBtn" aria-label="Redă sunetul">
+                                    <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </button>
+                                <div class="audio-info">
+                                    <h5 data-i18n="ch1_s6_audio_subtitle">Computer Room Ambience — Simulare Sintetizată</h5>
+                                    <p id="audioStatus" data-i18n="ch1_s6_audio_status">Click pentru a genera și reda sunetul</p>
+                                </div>
+                                <!-- Volume Control -->
+                                <div class="volume-control">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                    </svg>
+                                    <input type="range" id="volumeSlider" min="0" max="100" value="70"
+                                           title="Volume" class="volume-slider ch1-accent-slider">
+                                </div>
+                            </div>
+
+                            <p class="audio-description" data-i18n="ch1_s6_audio_desc">
+                                <strong>Scop:</strong> Acest generator audio recreează atmosfera unei camere de calculatoare 
+                                din anii '50 — zgomotul ventilatoarelor de răcire, frecvențele joase ale echipamentelor 
+                                și tonurile caracteristice electronicii din acea eră. Sunetul este generat în timp real 
+                                folosind Web Audio API, oferind o experiență de imersiune istorică.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Enhanced Navigation -->
+            <nav class="chapter-nav-enhanced">
+                <a href="capitol-2-mainframe.html">
+                    <span data-i18n="ch1_nav_next">Capitolul Următor: Era Mainframe</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-i18n="footer_site">Evoluția Sistemelor de Operare</span>. <span data-i18n="footer_rights">Toate drepturile rezervate.</span></p>
+        </div>
+    </footer>
+
+    <script src="../../js/utils/os-detect.js"></script>
+    <script src="../../js/utils/i18n.js"></script>
+    <script src="../../js/core/main.js"></script>
+    <script src="../../js/modules/enhancements.js"></script>
+    <script src="../../js/modules/history.js"></script>
+
+    <!-- Audio Control Script with Web Audio API -->
+    <script>
+        // =====================================================
+        // WEB AUDIO API - Computer Room Ambience Generator
+        // Generates realistic 1950s computer room sounds
+        // =====================================================
+        
+        let audioContext = null;
+        let masterGain = null;
+        let isPlaying = false;
+        let audioNodes = [];
+
+        const playIcon = document.getElementById('playIcon');
+        const audioPlayBtn = document.getElementById('audioPlayBtn');
+        const audioStatus = document.getElementById('audioStatus');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        // Initialize Audio Context on first user interaction
+        async function initAudioContext() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                masterGain = audioContext.createGain();
+                masterGain.gain.value = volumeSlider.value / 100 * 3.0;
+                masterGain.connect(audioContext.destination);
+            }
+            if (audioContext.state === 'suspended') {
+                await audioContext.resume();
+            }
+        }
+
+        // Create low frequency hum (transformer/power supply sound)
+        function createHum() {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.value = 60; // 60Hz power line hum
+            gain.gain.value = 0.35;
+            
+            osc.connect(gain);
+            gain.connect(masterGain);
+            osc.start();
+            
+            audioNodes.push({ osc, gain });
+            
+            // Add harmonics
+            [120, 180, 240].forEach((freq, i) => {
+                const harmOsc = audioContext.createOscillator();
+                const harmGain = audioContext.createGain();
+                harmOsc.type = 'sine';
+                harmOsc.frequency.value = freq;
+                harmGain.gain.value = 0.15 / (i + 1);
+                harmOsc.connect(harmGain);
+                harmGain.connect(masterGain);
+                harmOsc.start();
+                audioNodes.push({ osc: harmOsc, gain: harmGain });
+            });
+        }
+
+        // Create fan/ventilation noise
+        function createFanNoise() {
+            const bufferSize = 2 * audioContext.sampleRate;
+            const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            
+            const whiteNoise = audioContext.createBufferSource();
+            whiteNoise.buffer = noiseBuffer;
+            whiteNoise.loop = true;
+            
+            // Low-pass filter to simulate fan sound
+            const lowPass = audioContext.createBiquadFilter();
+            lowPass.type = 'lowpass';
+            lowPass.frequency.value = 800;
+            lowPass.Q.value = 1;
+            
+            const gain = audioContext.createGain();
+            gain.gain.value = 0.25;
+            
+            whiteNoise.connect(lowPass);
+            lowPass.connect(gain);
+            gain.connect(masterGain);
+            whiteNoise.start();
+            
+            audioNodes.push({ osc: whiteNoise, gain });
+        }
+
+        // Create occasional relay clicks
+        function createRelayClicks() {
+            function scheduleClick() {
+                if (!isPlaying) return;
+                
+                const clickOsc = audioContext.createOscillator();
+                const clickGain = audioContext.createGain();
+                const filter = audioContext.createBiquadFilter();
+                
+                clickOsc.type = 'square';
+                clickOsc.frequency.value = 800 + Math.random() * 400;
+                
+                filter.type = 'bandpass';
+                filter.frequency.value = 2000;
+                filter.Q.value = 5;
+                
+                clickGain.gain.setValueAtTime(0, audioContext.currentTime);
+                clickGain.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.002);
+                clickGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+                
+                clickOsc.connect(filter);
+                filter.connect(clickGain);
+                clickGain.connect(masterGain);
+                
+                clickOsc.start(audioContext.currentTime);
+                clickOsc.stop(audioContext.currentTime + 0.05);
+                
+                // Schedule next click randomly between 0.3 and 2 seconds
+                setTimeout(scheduleClick, 300 + Math.random() * 1700);
+            }
+            
+            scheduleClick();
+        }
+
+        // Create tape drive motor sound
+        function createTapeDriveSound() {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const lfo = audioContext.createOscillator();
+            const lfoGain = audioContext.createGain();
+            
+            osc.type = 'sawtooth';
+            osc.frequency.value = 45;
+            
+            lfo.type = 'sine';
+            lfo.frequency.value = 0.2;
+            lfoGain.gain.value = 3;
+            
+            lfo.connect(lfoGain);
+            lfoGain.connect(osc.frequency);
+            
+            gain.gain.value = 0.03;
+            
+            osc.connect(gain);
+            gain.connect(masterGain);
+            osc.start();
+            lfo.start();
+            
+            audioNodes.push({ osc, gain }, { osc: lfo, gain: lfoGain });
+        }
+
+        // Start all sounds
+        async function startAmbience() {
+            await initAudioContext();
+            createHum();
+            createFanNoise();
+            createTapeDriveSound();
+            createRelayClicks();
+        }
+
+        // Stop all sounds
+        function stopAmbience() {
+            audioNodes.forEach(node => {
+                try {
+                    if (node.osc) node.osc.stop();
+                } catch(e) {}
+            });
+            audioNodes = [];
+        }
+
+        // Toggle audio playback
+        async function toggleAudio() {
+            if (isPlaying) {
+                stopAmbience();
+                playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+                audioStatus.textContent = 'Click pentru a genera și reda sunetul';
+                isPlaying = false;
+            } else {
+                try {
+                    await startAmbience();
+                    playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+                    audioStatus.textContent = '▶ Redare în curs... Click pentru a opri';
+                    isPlaying = true;
+                } catch(e) {
+                    console.error('Audio error:', e);
+                    audioStatus.textContent = '⚠ Eroare audio: browserul nu suportă Web Audio API';
+                    audioStatus.style.color = '#ef4444';
+                }
+            }
+        }
+
+        // Event listeners
+        audioPlayBtn.addEventListener('click', toggleAudio);
+        
+        volumeSlider.addEventListener('input', () => {
+            if (masterGain) {
+                masterGain.gain.value = volumeSlider.value / 100 * 3.0;
+            }
+        });
+
+        // Add smooth scroll behavior for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe content cards for animation
+        document.querySelectorAll('.content-card, .media-figure, .video-container, .audio-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

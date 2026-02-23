@@ -7,6 +7,11 @@
     <meta name="theme-color" content="#2563eb">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script>
+        if (location.protocol !== 'file:' && /\/src\/pages$/.test(location.pathname)) {
+            location.replace(location.pathname + '/' + location.search + location.hash);
+        }
+    </script>
     <title>Evoluția Sistemelor de Operare</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/print.css" media="print">
@@ -257,7 +262,7 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2 data-i18n="contact_title">Contactează-ne</h2>
-                <form class="contact-form" action="https://formsubmit.co/andrei.ivan@licmarghilomabz.ro" method="POST">
+                <form class="contact-form" action="https://formsubmit.co/andrei.ivan@licmarghilomanbz.ro" method="POST">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="Mesaj nou de pe Atestat Info">
                     <input type="hidden" name="_template" value="table">

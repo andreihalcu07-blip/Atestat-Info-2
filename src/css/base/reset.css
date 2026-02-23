@@ -59,3 +59,12 @@ body.dark-mode {
     padding: 0 20px;
 }
 
+/* Prevent oversized inline SVG icons in interactive controls */
+a > svg:not([width]):not([height]),
+button > svg:not([width]):not([height]) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: 0 0 1.25rem;
+    display: block;
+}
+

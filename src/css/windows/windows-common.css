@@ -3,6 +3,15 @@
  * Proiect Atestat - Evoluția Sistemelor de Operare
  */
 
+/* Fallback: prevent oversized inline SVG icons inside controls */
+.windows-desktop-simulation a > svg:not([width]):not([height]),
+.windows-desktop-simulation button > svg:not([width]):not([height]) {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: block;
+}
+
 /* =========================================================================
    BOOT SCREEN - STILURI GENERALE
    ========================================================================= */

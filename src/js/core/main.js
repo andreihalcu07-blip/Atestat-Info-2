@@ -205,6 +205,16 @@ createParticles();
 
 // Form submission cu trimitere la server
 document.querySelector('.contact-form')?.addEventListener('submit', async function(e) {
+    const isFileProtocol = window.location.protocol === 'file:';
+
+    if (isFileProtocol) {
+        if (!this.checkValidity()) {
+            e.preventDefault();
+            this.reportValidity();
+        }
+        return;
+    }
+
     e.preventDefault();
 
     if (!this.checkValidity()) {
@@ -216,6 +226,7 @@ document.querySelector('.contact-form')?.addEventListener('submit', async functi
     const statusEl = this.querySelector('.contact-status');
     const actionUrl = this.getAttribute('action');
     const formData = new FormData(this);
+    const translate = window.i18n?.t || window.t || ((key) => key);
 
     const showStatus = (message, type) => {
         if (!statusEl) return;
@@ -224,8 +235,13 @@ document.querySelector('.contact-form')?.addEventListener('submit', async functi
         statusEl.classList.add('visible');
     };
 
+    if (!actionUrl) {
+        showStatus(translate('contact_error_default'), 'error');
+        return;
+    }
+
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Se trimite...';
+    submitBtn.textContent = translate('contact_sending');
     submitBtn.disabled = true;
 
     try {
@@ -246,15 +262,15 @@ document.querySelector('.contact-form')?.addEventListener('submit', async functi
         }
 
         if (response.ok) {
-            showStatus('Mesajul a fost trimis cu succes. Îți mulțumim!', 'success');
+            showStatus(translate('contact_success'), 'success');
             this.reset();
         } else {
-            const errorMessage = responseData && responseData.message ? responseData.message : 'Nu s-a putut trimite mesajul. Încearcă din nou.';
+            const errorMessage = responseData && responseData.message ? responseData.message : translate('contact_error_default');
             showStatus(errorMessage, 'error');
         }
     } catch (error) {
         console.error('Eroare:', error);
-        showStatus('Eroare la trimitere. Verifică conexiunea și încearcă din nou.', 'error');
+        showStatus(translate('contact_error_network'), 'error');
     } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;

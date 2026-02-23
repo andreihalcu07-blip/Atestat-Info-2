@@ -150,6 +150,10 @@
             contact_email: "Email",
             contact_message: "Mesaj",
             contact_send: "Trimite mesajul",
+            contact_sending: "Se trimite...",
+            contact_success: "Mesajul a fost trimis cu succes. Îți mulțumim!",
+            contact_error_default: "Nu s-a putut trimite mesajul. Încearcă din nou.",
+            contact_error_network: "Eroare la trimitere. Verifică conexiunea și încearcă din nou.",
             
             // Footer
             footer_site: "Evoluția Sistemelor de Operare",
@@ -190,10 +194,19 @@
             about_who_professionals: "Profesioniști: Care doresc să-și completeze cunoștințele despre baza sistemelor pe care lucrează",
             about_who_enthusiasts: "Pasionați: De tehnologie și istoria acesteia",
             about_who_educators: "Educatori: Căutând resurse pentru a preda subiecte legate de SO-uri",
+            about_project_title: "🎓 Detalii Atestat",
+            about_project_type: "<strong>Atestat:</strong> Informatică",
+            about_project_theme: "<strong>Temă atestat:</strong> Evoluția sistemelor de operare",
+            about_project_student: "<strong>Elev:</strong> Ivan Andrei",
+            about_project_school: "<strong>Liceu:</strong> Liceul Teoretic de Informatică „Alexandru Marghiloman”",
+            about_project_year: "<strong>An școlar:</strong> Clasa a XII-a B",
+            about_project_teacher: "<strong>Profesor îndrumător:</strong> Avram Luiza",
             
             // Pagina History
             history_title: "Istoria Completă a SO-urilor",
             history_subtitle: "Explorează evoluția completă",
+            history_hero_title: "Istoria Sistemelor de Operare",
+            history_hero_subtitle: "De la cartele perforate la cloud și inteligență artificială – o călătorie prin evoluția tehnologiei",
             history_intro_title: "Istoria Sistemelor de Operare",
             history_intro_subtitle: "De la cartele perforate la cloud și inteligență artificială",
             history_chapters_title: "Capitolele Istoriei Sistemelor de Operare",
@@ -972,7 +985,48 @@
 
             // Navigation
             ch4_nav_prev: "Capitolul 3: Nașterea Unix",
-            ch4_nav_next: "Capitolul 5: Linux și Open Source"
+            ch4_nav_next: "Capitolul 5: Linux și Open Source",
+
+            // Capitolul 5: Linux și Open Source
+            ch5_title: "Capitolul 5: Linux și Open Source",
+            ch5_subtitle: "Capitolul 5: Linux și Open Source",
+            ch5_back: "← Înapoi la Istorie",
+            ch5_lead: "Linus Torvalds și revoluția software-ului liber",
+            ch5_context_title: "Context",
+            ch5_context_body: "Linux a fost inițiat ca un nucleu liber, dezvoltat de Linus Torvalds și susținut de o comunitate globală de dezvoltatori.",
+            ch5_features_title: "Caracteristici",
+            ch5_feature_open: "<strong>Cod sursă deschis</strong> — oricine poate studia și modifica codul.",
+            ch5_feature_community: "<strong>Comunitate globală</strong> — dezvoltare colaborativă și review comun.",
+            ch5_feature_security: "<strong>Stabilitate și securitate</strong> — folosit pe servere și sisteme critice.",
+            ch5_usage_title: "Utilizare",
+            ch5_usage_body: "Linux este folosit pe servere, dispozitive embedded, supercomputere și, în multe distribuții, ca sistem de zi cu zi pentru dezvoltatori.",
+            ch5_media_title: "Media și resurse vizuale",
+            ch5_media_tux: "Tux — mascota neoficială a Linux (sursa: Wikimedia Commons)",
+            ch5_media_linus: "Linus Torvalds — inițiatorul nucleului Linux (sursa: Wikimedia Commons)",
+            ch5_media_video_title: "Prelegere recomandată",
+            ch5_nav_prev: "← Înapoi la Era PC și GUI",
+            ch5_nav_next: "Capitolul următor: Era Modernă →",
+
+            // Capitolul 6: Era Modernă
+            ch6_title: "Capitolul 6: Era Modernă",
+            ch6_subtitle: "Capitolul 6: Era Modernă",
+            ch6_back: "← Înapoi la Istorie",
+            ch6_lead: "Windows, macOS, Linux, mobil, cloud și AI",
+            ch6_context_title: "Context",
+            ch6_context_body: "În era modernă, <strong>sistemele de operare</strong> rulează pe dispozitive diverse: PC-uri, telefoane, servere și infrastructuri cloud. Cerințele pentru performanță, securitate și interoperabilitate au crescut substanțial.",
+            ch6_features_title: "Caracteristici cheie",
+            ch6_feature_multitask: "<strong>Multitasking avansat</strong> — planificare eficientă a proceselor și managementul resurselor.",
+            ch6_feature_cloud: "<strong>Suport pentru cloud și AI</strong> — integrare cu servicii externe și funcționalități inteligente.",
+            ch6_feature_security: "<strong>Securitate și actualizări constante</strong> — patch-uri, sandboxing și izolarea proceselor.",
+            ch6_examples_title: "Exemple",
+            ch6_examples_body: "Printre cele mai răspândite se numără <strong>Windows</strong>, <strong>macOS</strong>, <strong>Linux</strong>, <strong>Android</strong> și <strong>iOS</strong>, fiecare optimizat pentru domenii diferite de utilizare.",
+            ch6_notes_title: "Observații",
+            ch6_notes_body: "Focalizarea actuală este pe securitate, experiență utilizator și interoperabilitate între dispozitive, iar actualizările regulate mențin sisteme mai sigure și mai performante.",
+            ch6_media_title: "Media și resurse vizuale",
+            ch6_media_android: "Android — platformă mobilă dominantă (mascotă oficială)",
+            ch6_media_servers: "Servere și centre de date — coloana vertebrală a cloud-ului",
+            ch6_media_video_title: "Lectură / video recomandat",
+            ch6_nav_prev: "← Înapoi la Linux și Open Source"
         },
         
         // =====================================================================
@@ -1098,6 +1152,10 @@
             contact_email: "Email",
             contact_message: "Message",
             contact_send: "Send message",
+            contact_sending: "Sending...",
+            contact_success: "Your message was sent successfully. Thank you!",
+            contact_error_default: "Message could not be sent. Please try again.",
+            contact_error_network: "Send error. Check your connection and try again.",
             
             // Footer
             footer_site: "Evolution of Operating Systems",
@@ -1138,10 +1196,19 @@
             about_who_professionals: "Professionals: Who want to complete their knowledge about the systems they work on",
             about_who_enthusiasts: "Enthusiasts: Of technology and its history",
             about_who_educators: "Educators: Looking for resources to teach subjects related to OSs",
+            about_project_title: "🎓 Certificate Project Details",
+            about_project_type: "<strong>Certificate:</strong> Computer Science",
+            about_project_theme: "<strong>Project theme:</strong> Evolution of operating systems",
+            about_project_student: "<strong>Student:</strong> Ivan Andrei",
+            about_project_school: "<strong>High school:</strong> Alexandru Marghiloman Theoretical High School of Informatics",
+            about_project_year: "<strong>School year:</strong> 12th Grade B",
+            about_project_teacher: "<strong>Supervising teacher:</strong> Avram Luiza",
             
             // History page
             history_title: "Complete OS History",
             history_subtitle: "Explore the complete evolution",
+            history_hero_title: "History of Operating Systems",
+            history_hero_subtitle: "From punched cards to cloud and artificial intelligence – a journey through technological evolution",
             history_intro_title: "History of Operating Systems",
             history_intro_subtitle: "From punched cards to cloud and artificial intelligence",
             history_chapters_title: "Chapters of Operating Systems History",
@@ -1920,7 +1987,48 @@
 
             // Navigation
             ch4_nav_prev: "Chapter 3: The Birth of Unix",
-            ch4_nav_next: "Chapter 5: Linux and Open Source"
+            ch4_nav_next: "Chapter 5: Linux and Open Source",
+
+            // Chapter 5: Linux and Open Source
+            ch5_title: "Chapter 5: Linux and Open Source",
+            ch5_subtitle: "Chapter 5: Linux and Open Source",
+            ch5_back: "← Back to History",
+            ch5_lead: "Linus Torvalds and the free software revolution",
+            ch5_context_title: "Context",
+            ch5_context_body: "Linux started as a free kernel developed by Linus Torvalds and supported by a global developer community.",
+            ch5_features_title: "Features",
+            ch5_feature_open: "<strong>Open source code</strong> — anyone can study and modify the code.",
+            ch5_feature_community: "<strong>Global community</strong> — collaborative development and shared review.",
+            ch5_feature_security: "<strong>Stability and security</strong> — used on servers and critical systems.",
+            ch5_usage_title: "Usage",
+            ch5_usage_body: "Linux is used on servers, embedded devices, supercomputers, and in many distributions as a daily driver for developers.",
+            ch5_media_title: "Media and visual resources",
+            ch5_media_tux: "Tux — the unofficial Linux mascot (source: Wikimedia Commons)",
+            ch5_media_linus: "Linus Torvalds — initiator of the Linux kernel (source: Wikimedia Commons)",
+            ch5_media_video_title: "Recommended lecture",
+            ch5_nav_prev: "← Back to the PC and GUI Era",
+            ch5_nav_next: "Next chapter: The Modern Era →",
+
+            // Chapter 6: The Modern Era
+            ch6_title: "Chapter 6: The Modern Era",
+            ch6_subtitle: "Chapter 6: The Modern Era",
+            ch6_back: "← Back to History",
+            ch6_lead: "Windows, macOS, Linux, mobile, cloud, and AI",
+            ch6_context_title: "Context",
+            ch6_context_body: "In the modern era, <strong>operating systems</strong> run on diverse devices: PCs, phones, servers, and cloud infrastructure. Requirements for performance, security, and interoperability have grown substantially.",
+            ch6_features_title: "Key features",
+            ch6_feature_multitask: "<strong>Advanced multitasking</strong> — efficient process scheduling and resource management.",
+            ch6_feature_cloud: "<strong>Cloud and AI support</strong> — integration with external services and smart capabilities.",
+            ch6_feature_security: "<strong>Security and constant updates</strong> — patches, sandboxing, and process isolation.",
+            ch6_examples_title: "Examples",
+            ch6_examples_body: "Among the most widespread are <strong>Windows</strong>, <strong>macOS</strong>, <strong>Linux</strong>, <strong>Android</strong>, and <strong>iOS</strong>, each optimized for different usage domains.",
+            ch6_notes_title: "Notes",
+            ch6_notes_body: "The current focus is on security, user experience, and cross-device interoperability, while regular updates keep systems safer and faster.",
+            ch6_media_title: "Media and visual resources",
+            ch6_media_android: "Android — dominant mobile platform (official mascot)",
+            ch6_media_servers: "Servers and data centers — the backbone of the cloud",
+            ch6_media_video_title: "Recommended reading / video",
+            ch6_nav_prev: "← Back to Linux and Open Source"
         }
     };
 
@@ -1933,6 +2041,25 @@
         storageKey: 'site_language', // Cheia pentru localStorage
         supportedLangs: ['ro', 'en'] // Limbi suportate
     };
+
+    // Fallback storage in case localStorage is blocked or unavailable
+    const memoryStorage = { value: null };
+
+    function getStoredLang() {
+        try {
+            return localStorage.getItem(CONFIG.storageKey);
+        } catch (e) {
+            return memoryStorage.value;
+        }
+    }
+
+    function setStoredLang(lang) {
+        try {
+            localStorage.setItem(CONFIG.storageKey, lang);
+        } catch (e) {
+            memoryStorage.value = lang;
+        }
+    }
 
     // Limba curentă
     let currentLang = CONFIG.defaultLang;
@@ -1974,8 +2101,8 @@
         // Setează limba curentă
         currentLang = lang;
         
-        // Salvează în localStorage
-        localStorage.setItem(CONFIG.storageKey, lang);
+        // Salvează limba (cu fallback)
+        setStoredLang(lang);
         
         // Actualizează atributul lang pe HTML
         document.documentElement.lang = lang;
@@ -2159,7 +2286,13 @@
         const path = window.location.pathname.toLowerCase();
         let titleKey = 'footer_site';
 
-        if (path.includes('about')) titleKey = 'about_title';
+        if (path.includes('capitol-1-inceputuri')) titleKey = 'ch1_title';
+        else if (path.includes('capitol-2-mainframe')) titleKey = 'ch2_title';
+        else if (path.includes('capitol-3-unix')) titleKey = 'ch3_title';
+        else if (path.includes('capitol-4-pc')) titleKey = 'ch4_title';
+        else if (path.includes('capitol-5-linux')) titleKey = 'ch5_title';
+        else if (path.includes('capitol-6-modern')) titleKey = 'ch6_title';
+        else if (path.includes('about')) titleKey = 'about_title';
         else if (path.includes('history')) titleKey = 'history_title';
         else if (path.includes('comparison')) titleKey = 'comparison_title';
         else if (path.includes('glossary')) titleKey = 'glossary_title';
@@ -2197,7 +2330,7 @@
      */
     function init() {
         // Verifică limba salvată în localStorage
-        let savedLang = localStorage.getItem(CONFIG.storageKey);
+        let savedLang = getStoredLang();
         
         // Dacă nu există, folosește limba implicită
         if (!savedLang || !CONFIG.supportedLangs.includes(savedLang)) {
